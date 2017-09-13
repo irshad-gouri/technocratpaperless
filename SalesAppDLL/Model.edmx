@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SalesAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivitiesType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="CompanyDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RegistrationNo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PlacesDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Address" Type="varchar" MaxLength="150" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="10" />
+          <Property Name="Note" Type="varchar" MaxLength="100" />
+          <Property Name="Website" Type="varchar" MaxLength="100" />
+          <Property Name="PhotoUrl" Type="varchar" MaxLength="100" />
+          <Property Name="PlaceId" Type="varchar" MaxLength="150" />
+          <Property Name="Latitude" Type="decimal" Precision="9" Scale="7" />
+          <Property Name="Longitude" Type="decimal" Precision="9" Scale="7" />
+          <Property Name="Tags" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesAppLogInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyId" Type="int" Nullable="false" />
+          <Property Name="KeyDescription" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAssignedPlaces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Language" Type="varchar" MaxLength="50" />
+          <Property Name="Teritory" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="150" />
+          <Property Name="PhotoUrl" Type="varchar" MaxLength="200" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CreatedById" Type="int" />
+        </EntityType>
+        <EntityType Name="UsersActivities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PhotoUrl" Type="varchar" MaxLength="150" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="FormName" Type="varchar" MaxLength="50" />
+          <Property Name="OrderCost" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="AuditItems" Type="int" />
+          <Property Name="PlaceId" Type="int" />
+        </EntityType>
+        <Association Name="FK_UserAssignedPlaces_PlacesDetails">
+          <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="1" />
+          <End Role="UserAssignedPlaces" Type="Self.UserAssignedPlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacesDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAssignedPlaces">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedPlaces_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserAssignedPlaces" Type="Self.UserAssignedPlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAssignedPlaces">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_CompanyDetails">
+          <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersActivities_ActivitiesType">
+          <End Role="ActivitiesType" Type="Self.ActivitiesType" Multiplicity="1" />
+          <End Role="UsersActivities" Type="Self.UsersActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivitiesType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersActivities">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersActivities_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersActivities" Type="Self.UsersActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersActivities">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAllPlacesInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SalesAppModelStoreContainer">
+          <EntitySet Name="ActivitiesType" EntityType="Self.ActivitiesType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlacesDetails" EntityType="Self.PlacesDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesAppLogInfo" EntityType="Self.SalesAppLogInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAssignedPlaces" EntityType="Self.UserAssignedPlaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersActivities" EntityType="Self.UsersActivities" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserAssignedPlaces_PlacesDetails" Association="Self.FK_UserAssignedPlaces_PlacesDetails">
+            <End Role="PlacesDetails" EntitySet="PlacesDetails" />
+            <End Role="UserAssignedPlaces" EntitySet="UserAssignedPlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedPlaces_Users" Association="Self.FK_UserAssignedPlaces_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAssignedPlaces" EntitySet="UserAssignedPlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_CompanyDetails" Association="Self.FK_Users_CompanyDetails">
+            <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersActivities_ActivitiesType" Association="Self.FK_UsersActivities_ActivitiesType">
+            <End Role="ActivitiesType" EntitySet="ActivitiesType" />
+            <End Role="UsersActivities" EntitySet="UsersActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersActivities_Users" Association="Self.FK_UsersActivities_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersActivities" EntitySet="UsersActivities" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalesAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SalesAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActivitiesTypes" EntityType="SalesAppModel.ActivitiesType" />
+          <EntitySet Name="CompanyDetails" EntityType="SalesAppModel.CompanyDetail" />
+          <EntitySet Name="PlacesDetails" EntityType="SalesAppModel.PlacesDetail" />
+          <EntitySet Name="Roles" EntityType="SalesAppModel.Role" />
+          <EntitySet Name="SalesAppLogInfoes" EntityType="SalesAppModel.SalesAppLogInfo" />
+          <EntitySet Name="UserAssignedPlaces" EntityType="SalesAppModel.UserAssignedPlace" />
+          <EntitySet Name="Users" EntityType="SalesAppModel.User" />
+          <AssociationSet Name="FK_Users_CompanyDetails" Association="SalesAppModel.FK_Users_CompanyDetails">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedPlaces_PlacesDetails" Association="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails">
+            <End Role="PlacesDetail" EntitySet="PlacesDetails" />
+            <End Role="UserAssignedPlace" EntitySet="UserAssignedPlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="SalesAppModel.FK_Users_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAssignedPlaces_Users" Association="SalesAppModel.FK_UserAssignedPlaces_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserAssignedPlace" EntitySet="UserAssignedPlaces" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllPlacesInfo" ReturnType="Collection(SalesAppModel.GetAllPlacesInfo_Result)">
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="UsersActivities" EntityType="SalesAppModel.UsersActivity" />
+          <AssociationSet Name="FK_UsersActivities_ActivitiesType" Association="SalesAppModel.FK_UsersActivities_ActivitiesType">
+            <End Role="ActivitiesType" EntitySet="ActivitiesTypes" />
+            <End Role="UsersActivity" EntitySet="UsersActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersActivities_Users" Association="SalesAppModel.FK_UsersActivities_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UsersActivity" EntitySet="UsersActivities" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActivitiesType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UsersActivities" Relationship="SalesAppModel.FK_UsersActivities_ActivitiesType" FromRole="ActivitiesType" ToRole="UsersActivity" />
+        </EntityType>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="SalesAppModel.FK_Users_CompanyDetails" FromRole="CompanyDetail" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PlacesDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="9" Scale="7" />
+          <Property Name="Longitude" Type="Decimal" Precision="9" Scale="7" />
+          <Property Name="Tags" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAssignedPlaces" Relationship="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails" FromRole="PlacesDetail" ToRole="UserAssignedPlace" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="SalesAppModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SalesAppLogInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyId" Type="Int32" Nullable="false" />
+          <Property Name="KeyDescription" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserAssignedPlace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PlacesDetail" Relationship="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails" FromRole="UserAssignedPlace" ToRole="PlacesDetail" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_UserAssignedPlaces_Users" FromRole="UserAssignedPlace" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Teritory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="Int32" />
+          <NavigationProperty Name="CompanyDetail" Relationship="SalesAppModel.FK_Users_CompanyDetails" FromRole="User" ToRole="CompanyDetail" />
+          <NavigationProperty Name="Role" Relationship="SalesAppModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="UserAssignedPlaces" Relationship="SalesAppModel.FK_UserAssignedPlaces_Users" FromRole="User" ToRole="UserAssignedPlace" />
+          <NavigationProperty Name="UsersActivities" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="User" ToRole="UsersActivity" />
+        </EntityType>
+        <Association Name="FK_Users_CompanyDetails">
+          <End Type="SalesAppModel.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedPlaces_PlacesDetails">
+          <End Type="SalesAppModel.PlacesDetail" Role="PlacesDetail" Multiplicity="1" />
+          <End Type="SalesAppModel.UserAssignedPlace" Role="UserAssignedPlace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacesDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAssignedPlace">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Type="SalesAppModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAssignedPlaces_Users">
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="SalesAppModel.UserAssignedPlace" Role="UserAssignedPlace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAssignedPlace">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetAllPlacesInfo_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Decimal" Name="Latitude" Nullable="true" Precision="9" Scale="7" />
+          <Property Type="Decimal" Name="Longitude" Nullable="true" Precision="9" Scale="7" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PhotoUrl" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PostalCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="UsersActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderCost" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="AuditItems" Type="Int32" />
+          <Property Name="PlaceId" Type="Int32" />
+          <NavigationProperty Name="ActivitiesType" Relationship="SalesAppModel.FK_UsersActivities_ActivitiesType" FromRole="UsersActivity" ToRole="ActivitiesType" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="UsersActivity" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UsersActivities_ActivitiesType">
+          <End Type="SalesAppModel.ActivitiesType" Role="ActivitiesType" Multiplicity="1" />
+          <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivitiesType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersActivity">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersActivities_Users">
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersActivity">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalesAppModelStoreContainer" CdmEntityContainer="SalesAppEntities">
+          <EntitySetMapping Name="ActivitiesTypes">
+            <EntityTypeMapping TypeName="SalesAppModel.ActivitiesType">
+              <MappingFragment StoreEntitySet="ActivitiesType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="SalesAppModel.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlacesDetails">
+            <EntityTypeMapping TypeName="SalesAppModel.PlacesDetail">
+              <MappingFragment StoreEntitySet="PlacesDetails">
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SalesAppModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesAppLogInfoes">
+            <EntityTypeMapping TypeName="SalesAppModel.SalesAppLogInfo">
+              <MappingFragment StoreEntitySet="SalesAppLogInfo">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="KeyDescription" ColumnName="KeyDescription" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAssignedPlaces">
+            <EntityTypeMapping TypeName="SalesAppModel.UserAssignedPlace">
+              <MappingFragment StoreEntitySet="UserAssignedPlaces">
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SalesAppModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Teritory" ColumnName="Teritory" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPlacesInfo" FunctionName="SalesAppModel.Store.GetAllPlacesInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesAppModel.GetAllPlacesInfo_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="UsersActivities">
+            <EntityTypeMapping TypeName="SalesAppModel.UsersActivity">
+              <MappingFragment StoreEntitySet="UsersActivities">
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="AuditItems" ColumnName="AuditItems" />
+                <ScalarProperty Name="OrderCost" ColumnName="OrderCost" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

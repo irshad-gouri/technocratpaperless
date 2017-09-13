@@ -1,0 +1,14 @@
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\obj\Debug\SalesAppBLL.csprojResolveAssemblyReference.cache
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\SalesAppBLL.dll.config
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\SalesAppBLL.dll
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\SalesAppBLL.pdb
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\EntityFramework.dll
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\EntityFramework.SqlServer.dll
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\SalesAppDLL.dll
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\System.Data.Entity.Repository.dll
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\SalesAppDLL.pdb
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\SalesAppDLL.dll.config
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\EntityFramework.xml
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\bin\Debug\EntityFramework.SqlServer.xml
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\obj\Debug\SalesAppBLL.dll
+c:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesAppBLL\obj\Debug\SalesAppBLL.pdb
