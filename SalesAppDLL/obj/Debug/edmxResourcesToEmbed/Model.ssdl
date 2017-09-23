@@ -17,6 +17,76 @@
     <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="RegistrationNo" Type="varchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="CustomForms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="150" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Tags" Type="varchar" MaxLength="150" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormsAnswers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="FormId" Type="int" />
+    <Property Name="FormsQuestionId" Type="int" />
+    <Property Name="Answer" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FormsQuestionFields">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormId" Type="int" />
+    <Property Name="Question" Type="varchar" MaxLength="150" />
+    <Property Name="IsMandatory" Type="bit" />
+    <Property Name="InputFieldsId" Type="int" />
+    <Property Name="ListOptions" Type="varchar" MaxLength="300" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModefiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="InputFields">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FieldName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NotesActivities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="Note" Type="varchar(max)" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PhotoActivities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="PhotoUrl" Type="varchar" MaxLength="150" />
+    <Property Name="Tags" Type="varchar" MaxLength="150" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Note" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="PlacesDetails">
     <Key>
       <PropertyRef Name="Id" />
@@ -100,6 +170,54 @@
     <Property Name="AuditItems" Type="int" />
     <Property Name="PlaceId" Type="int" />
   </EntityType>
+  <Association Name="FK_Notes_PlacesDetails">
+    <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="0..1" />
+    <End Role="NotesActivities" Type="Self.NotesActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlacesDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotesActivities">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notes_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="NotesActivities" Type="Self.NotesActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotesActivities">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhotoActivities_PlacesDetails">
+    <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="0..1" />
+    <End Role="PhotoActivities" Type="Self.PhotoActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlacesDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhotoActivities">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhotoActivities_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PhotoActivities" Type="Self.PhotoActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhotoActivities">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserAssignedPlaces_PlacesDetails">
     <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="1" />
     <End Role="UserAssignedPlaces" Type="Self.UserAssignedPlaces" Multiplicity="*" />
@@ -178,12 +296,34 @@
   <EntityContainer Name="SalesAppModelStoreContainer">
     <EntitySet Name="ActivitiesType" EntityType="Self.ActivitiesType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomForms" EntityType="Self.CustomForms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormsAnswers" EntityType="Self.FormsAnswers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormsQuestionFields" EntityType="Self.FormsQuestionFields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InputFields" EntityType="Self.InputFields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotesActivities" EntityType="Self.NotesActivities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhotoActivities" EntityType="Self.PhotoActivities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlacesDetails" EntityType="Self.PlacesDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalesAppLogInfo" EntityType="Self.SalesAppLogInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAssignedPlaces" EntityType="Self.UserAssignedPlaces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersActivities" EntityType="Self.UsersActivities" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Notes_PlacesDetails" Association="Self.FK_Notes_PlacesDetails">
+      <End Role="PlacesDetails" EntitySet="PlacesDetails" />
+      <End Role="NotesActivities" EntitySet="NotesActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notes_Users" Association="Self.FK_Notes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="NotesActivities" EntitySet="NotesActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhotoActivities_PlacesDetails" Association="Self.FK_PhotoActivities_PlacesDetails">
+      <End Role="PlacesDetails" EntitySet="PlacesDetails" />
+      <End Role="PhotoActivities" EntitySet="PhotoActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhotoActivities_Users" Association="Self.FK_PhotoActivities_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PhotoActivities" EntitySet="PhotoActivities" />
+    </AssociationSet>
     <AssociationSet Name="FK_UserAssignedPlaces_PlacesDetails" Association="Self.FK_UserAssignedPlaces_PlacesDetails">
       <End Role="PlacesDetails" EntitySet="PlacesDetails" />
       <End Role="UserAssignedPlaces" EntitySet="UserAssignedPlaces" />

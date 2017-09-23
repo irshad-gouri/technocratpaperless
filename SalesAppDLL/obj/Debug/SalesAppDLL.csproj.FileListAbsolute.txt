@@ -17,3 +17,13 @@ C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\
 C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesAppDLL\obj\Debug\SalesAppDLL.csprojResolveAssemblyReference.cache
 C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesAppDLL\obj\Debug\SalesAppDLL.dll
 C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesAppDLL\obj\Debug\SalesAppDLL.pdb
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\SalesAppDLL.dll.config
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\SalesAppDLL.dll
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\SalesAppDLL.pdb
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\EntityFramework.dll
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\EntityFramework.xml
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\obj\Debug\SalesAppDLL.csprojResolveAssemblyReference.cache
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\obj\Debug\SalesAppDLL.dll
+D:\projects\technocrat-paperless\technocratpaperless\SalesAppDLL\obj\Debug\SalesAppDLL.pdb

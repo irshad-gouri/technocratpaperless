@@ -56,8 +56,20 @@
     <Compile Include="CompanyDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomForm.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="CustomModels\PlaceDetail.cs" />
+    <Compile Include="FormsAnswer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormsQuestionField.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllPlacesInfo_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InputField.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
@@ -74,6 +86,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="NotesActivity.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoActivity.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="PlacesDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
