@@ -16,8 +16,11 @@ namespace SalesAppBLL.Repository
             {
                 //det.Id is userid when adding place
                 var check = DbContext.PlacesDetails.Where(i => i.PlaceId == det.PlaceId).FirstOrDefault();
+
                 if (check != null)
                 {
+                    DbContext.UserAssignedPlaces.Add(new UserAssignedPlace { PlaceId = check.Id, UserId = det.Id });
+                    DbContext.SaveChanges();
                     return new PlaceDetailModel
                     {
                         Address = check.Address,
