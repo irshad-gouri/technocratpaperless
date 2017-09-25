@@ -21,6 +21,7 @@ namespace SalesAppDLL
             this.UsersActivities = new HashSet<UsersActivity>();
             this.NotesActivities = new HashSet<NotesActivity>();
             this.PhotoActivities = new HashSet<PhotoActivity>();
+            this.FormsVisibleOnTheseReps = new HashSet<FormsVisibleOnTheseRep>();
         }
     
         public int Id { get; set; }
@@ -53,5 +54,7 @@ namespace SalesAppDLL
         public virtual ICollection<NotesActivity> NotesActivities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhotoActivity> PhotoActivities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }
     }
 }

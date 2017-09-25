@@ -14,6 +14,12 @@ namespace SalesAppDLL
     
     public partial class CustomForm
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CustomForm()
+        {
+            this.FormsVisibleOnTheseReps = new HashSet<FormsVisibleOnTheseRep>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -22,5 +28,8 @@ namespace SalesAppDLL
         public Nullable<int> UserId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }
     }
 }

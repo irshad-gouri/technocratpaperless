@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SalesAppDLL;
 using SalesAppDLL.CustomModels;
+using SalesAppBLL.Models;
 
 namespace SalesAppBLL.Repository
 {
@@ -98,6 +99,85 @@ namespace SalesAppBLL.Repository
             {
                 return null;
             }
+        }
+
+        public AddCustomFormsResponse AddCustomForms(CustomFormsDetails customFormDetails)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (string.IsNullOrEmpty(customFormDetails.Title))
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Please fill forms title!";
+                }
+                else if (customFormDetails.FormsQuestionFieldDetail == null)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Please enter atleast one question!";
+                }
+                else if (customFormDetails.FormsQuestionFieldDetail.Count == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Please enter atleast one question!";
+                }
+                else
+                {
+                    // TODO: Add values in  CustomForm table.
+                    CustomForm objCustForm = new CustomForm();
+                    objCustForm.Title = customFormDetails.Title;
+                    objCustForm.Description = customFormDetails.Description;
+                    objCustForm.IsActive = customFormDetails.IsActive;
+                    objCustForm.Tags = customFormDetails.Tags;
+                    objCustForm.UserId = customFormDetails.UserId;
+                    objCustForm.CreatedDate = System.DateTime.Now;
+                    objCustForm.ModifiedDate = System.DateTime.Now;
+                    // TODO: Perform on db
+                    DbContext.CustomForms.Add(objCustForm);
+                    DbContext.SaveChanges();
+
+                    // TODO: Add questions list.
+                    FormsQuestionField objFrmQueFld;
+                    foreach (var item in customFormDetails.FormsQuestionFieldDetail)
+                    {
+                        objFrmQueFld = new FormsQuestionField();
+                        objFrmQueFld.FormId = objCustForm.Id;
+                        objFrmQueFld.Question = item.Question;
+                        objFrmQueFld.IsMandatory = item.IsMandatory;
+                        objFrmQueFld.InputFieldsId = item.InputFieldsId;
+                        objFrmQueFld.ListOptions = item.ListOptions;
+                        objFrmQueFld.CreatedDate = System.DateTime.Now;
+                        objFrmQueFld.ModefiedDate = System.DateTime.Now;
+                        // TODO: Perform on db
+                        DbContext.FormsQuestionFields.Add(objFrmQueFld);
+                        DbContext.SaveChanges();
+                    }
+
+                    if (customFormDetails.FormsVisibleOnTheseRepsDetail != null)
+                    {
+                        //TODO: Add FormsVisibleOnTheseReps list.
+                        FormsVisibleOnTheseRep objfrmVisOnThsRep;
+                        foreach (var item in customFormDetails.FormsVisibleOnTheseRepsDetail)
+                        {
+                            objfrmVisOnThsRep = new FormsVisibleOnTheseRep();
+                            objfrmVisOnThsRep.UserId = item.UserId;
+                            objfrmVisOnThsRep.CustomFormsId = objCustForm.Id;
+                            // TODO: Perform on db
+                            DbContext.FormsVisibleOnTheseReps.Add(objfrmVisOnThsRep);
+                            DbContext.SaveChanges();
+                        }
+                    }
+
+                    objResp.Status = "Success";
+                    objResp.Message = "Custom Forms Details Successfully Saved!";
+                }
+            }
+            catch (Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+            }
+            return objResp;
         }
     }
 }

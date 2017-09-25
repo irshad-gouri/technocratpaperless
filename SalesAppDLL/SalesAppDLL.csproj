@@ -59,11 +59,15 @@
     <Compile Include="CustomForm.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomModels\CustomFormsDetails.cs" />
     <Compile Include="CustomModels\PlaceDetail.cs" />
     <Compile Include="FormsAnswer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="FormsQuestionField.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormsVisibleOnTheseRep.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetAllPlacesInfo_Result.cs">

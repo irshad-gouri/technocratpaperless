@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Models\AddCustomFormsResponse.cs" />
     <Compile Include="Models\UploadImageResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
