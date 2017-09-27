@@ -6,37 +6,6 @@ using System.Threading.Tasks;
 
 namespace SalesAppDLL.CustomModels
 {
-    //public class CustomFormsDetails
-    //{
-    //    public int Id { get; set; }
-    //    public string Title { get; set; }
-    //    public string Description { get; set; }
-    //    public Nullable<bool> IsActive { get; set; }
-    //    public string Tags { get; set; }
-    //    public Nullable<int> UserId { get; set; }
-    //    public Nullable<System.DateTime> CreatedDate { get; set; }
-    //    public Nullable<System.DateTime> ModifiedDate { get; set; }
-    //    public List<FormsQuestionFieldDetails> FormsQuestionFieldDetail { get; set; }
-    //    public List<FormsVisibleOnTheseRepsDetails> FormsVisibleOnTheseRepsDetail { get; set; }
-    //}
-
-    //public class FormsQuestionFieldDetails
-    //{
-    //    public Nullable<int> FormId { get; set; }
-    //    public string Question { get; set; }
-    //    public Nullable<bool> IsMandatory { get; set; }
-    //    public Nullable<int> InputFieldsId { get; set; }
-    //    public string ListOptions { get; set; }
-    //    public Nullable<System.DateTime> CreatedDate { get; set; }
-    //    public Nullable<System.DateTime> ModefiedDate { get; set; }
-    //}
-
-    //public class FormsVisibleOnTheseRepsDetails
-    //{
-    //    public int Id { get; set; }
-    //    public Nullable<int> UserId { get; set; }
-    //}
-
     public class CustomFormsDetails
     {
         public int Id { get; set; }

@@ -179,5 +179,145 @@ namespace SalesAppBLL.Repository
             }
             return objResp;
         }
+
+        public List<FormsQuestionFieldResponse> GetQuestionsByFormsId(int formId)
+        {
+            try
+            {
+                var checkExistingImg = (from adImg in DbContext.FormsQuestionFields
+                                        join inputf in DbContext.InputFields on adImg.InputFieldsId equals inputf.Id
+                                        where adImg.FormId == formId
+                                        select new FormsQuestionFieldResponse { Id = adImg.Id, FormId = adImg.FormId, Question = adImg.Question, IsMandatory = adImg.IsMandatory, InputFieldsId = adImg.InputFieldsId, InputFieldName = inputf.FieldName, ListOptions = adImg.ListOptions }).ToList();
+                return checkExistingImg;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public AddCustomFormsResponse AddAnswerByQuestionId(FormsAnswer formAns)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (formAns.PlaceId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Place Id Can't be blank!";
+                }
+                else if (formAns.UserId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "UserId Can't be blank!";
+                }
+                else if (formAns.FormsQuestionId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "QuestionId Can't be blank!";
+                }
+                else if (string.IsNullOrEmpty(formAns.Answer))
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Answer Can't be blank!";
+                }
+                else
+                {
+                    // TODO: Perform on db
+                    formAns.CreatedDate = System.DateTime.Now;
+                    formAns.ModifiedDate = System.DateTime.Now;
+                    DbContext.FormsAnswers.Add(formAns);
+                    DbContext.SaveChanges();
+
+                    objResp.Status = "Success";
+                    objResp.Message = "Thanks for submit your answer!";
+                }
+            }
+            catch (Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+            }
+            return objResp;
+        }
+
+        public AddCustomFormsResponse AddUsersActivities(UsersActivity userAct)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (userAct.ActivityId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Please select the activity type!";
+                }
+                else
+                {
+                    // TODO: Perform on db
+                    DbContext.UsersActivities.Add(userAct);
+                    DbContext.SaveChanges();
+
+                    objResp.Status = "Success";
+                    objResp.Message = "Activity submited successfully!";
+                }
+            }
+            catch (Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+            }
+            return objResp;
+        }
+
+        public object GetUsersActivitiesByUserId(int userId)
+        {
+            try
+            {
+                var getUserAct = (from userAct in DbContext.UsersActivities
+                                  join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
+                                  join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
+                                  where userAct.UserId == userId
+                                  select new { Id = userAct.ActivityId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                return getUserAct;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public object GetUsersActivitiesByPlaceId(int placeId)
+        {
+            try
+            {
+                var getUserAct = (from userAct in DbContext.UsersActivities
+                                  join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
+                                  join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
+                                  where userAct.PlaceId == placeId
+                                  select new { Id = userAct.ActivityId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                return getUserAct;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public object GetUsersActivitiesByActivityTypeId(int activityId)
+        {
+            try
+            {
+                var getUserAct = (from userAct in DbContext.UsersActivities
+                                  join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
+                                  join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
+                                  where userAct.ActivityId == activityId
+                                  select new { Id = userAct.ActivityId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                return getUserAct;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
