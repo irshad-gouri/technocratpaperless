@@ -56,6 +56,14 @@
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="ModefiedDate" Type="datetime" />
   </EntityType>
+  <EntityType Name="FormsVisibleOnTheseReps">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomFormsId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
   <EntityType Name="InputFields">
     <Key>
       <PropertyRef Name="Id" />
@@ -170,6 +178,30 @@
     <Property Name="AuditItems" Type="int" />
     <Property Name="PlaceId" Type="int" />
   </EntityType>
+  <Association Name="FK_FormsVisibleOnTheseReps_CustomForms">
+    <End Role="CustomForms" Type="Self.CustomForms" Multiplicity="0..1" />
+    <End Role="FormsVisibleOnTheseReps" Type="Self.FormsVisibleOnTheseReps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomForms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormsVisibleOnTheseReps">
+        <PropertyRef Name="CustomFormsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormsVisibleOnTheseReps_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="FormsVisibleOnTheseReps" Type="Self.FormsVisibleOnTheseReps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormsVisibleOnTheseReps">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Notes_PlacesDetails">
     <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="0..1" />
     <End Role="NotesActivities" Type="Self.NotesActivities" Multiplicity="*" />
@@ -299,6 +331,7 @@
     <EntitySet Name="CustomForms" EntityType="Self.CustomForms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FormsAnswers" EntityType="Self.FormsAnswers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FormsQuestionFields" EntityType="Self.FormsQuestionFields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormsVisibleOnTheseReps" EntityType="Self.FormsVisibleOnTheseReps" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InputFields" EntityType="Self.InputFields" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NotesActivities" EntityType="Self.NotesActivities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhotoActivities" EntityType="Self.PhotoActivities" Schema="dbo" store:Type="Tables" />
@@ -308,6 +341,14 @@
     <EntitySet Name="UserAssignedPlaces" EntityType="Self.UserAssignedPlaces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersActivities" EntityType="Self.UsersActivities" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FormsVisibleOnTheseReps_CustomForms" Association="Self.FK_FormsVisibleOnTheseReps_CustomForms">
+      <End Role="CustomForms" EntitySet="CustomForms" />
+      <End Role="FormsVisibleOnTheseReps" EntitySet="FormsVisibleOnTheseReps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormsVisibleOnTheseReps_Users" Association="Self.FK_FormsVisibleOnTheseReps_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="FormsVisibleOnTheseReps" EntitySet="FormsVisibleOnTheseReps" />
+    </AssociationSet>
     <AssociationSet Name="FK_Notes_PlacesDetails" Association="Self.FK_Notes_PlacesDetails">
       <End Role="PlacesDetails" EntitySet="PlacesDetails" />
       <End Role="NotesActivities" EntitySet="NotesActivities" />

@@ -29,6 +29,9 @@
         <AssociationConnector Association="SalesAppModel.FK_Notes_Users" />
         <AssociationConnector Association="SalesAppModel.FK_PhotoActivities_PlacesDetails" />
         <AssociationConnector Association="SalesAppModel.FK_PhotoActivities_Users" />
+        <EntityTypeShape EntityType="SalesAppModel.FormsVisibleOnTheseRep" Width="1.5" PointX="13" PointY="2.375" />
+        <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_CustomForms" />
+        <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

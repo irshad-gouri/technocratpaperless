@@ -1,258 +1,86 @@
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\ApplicationInsights.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\csc.exe
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\csc.exe.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\csc.rsp
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\csi.exe
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\csi.rsp
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\System.AppContext.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\vbc.exe
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\vbc.exe.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\vbc.rsp
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\VBCSCompiler.exe
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesApp.dll.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesApp.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesApp.pdb
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Antlr3.Runtime.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\EntityFramework.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\EntityFramework.SqlServer.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.Agent.Intercept.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.DependencyCollector.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.PerfCounterCollector.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.Web.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.WindowsServer.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.ApplicationInsights.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Newtonsoft.Json.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesAppBLL.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesAppDLL.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Net.Http.Formatting.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Cors.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Helpers.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Http.Cors.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Http.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Http.WebHost.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Mvc.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Optimization.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Razor.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.WebPages.Deployment.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.WebPages.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.WebPages.Razor.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\WebGrease.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesAppBLL.pdb
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesAppBLL.dll.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesAppDLL.pdb
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\SalesAppDLL.dll.config
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\EntityFramework.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\EntityFramework.SqlServer.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Http.Cors.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Newtonsoft.Json.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Net.Http.Formatting.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Helpers.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Http.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Http.WebHost.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Mvc.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Optimization.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.Razor.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.WebPages.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.WebPages.Deployment.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\System.Web.WebPages.Razor.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Antlr3.Runtime.pdb
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.ApplicationInsights.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.DependencyCollector.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.WindowsServer.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\bin\Microsoft.AI.Web.xml
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\obj\Debug\SalesApp.csprojResolveAssemblyReference.cache
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\obj\Debug\SalesApp.dll
-C:\Users\boss\documents\visual studio 2017\Projects\SalesApp\SalesApp\obj\Debug\SalesApp.pdb
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\ApplicationInsights.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\csc.exe
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\csc.exe.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\csc.rsp
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\csi.exe
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\csi.rsp
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\System.AppContext.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\vbc.exe
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\vbc.exe.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\vbc.rsp
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\VBCSCompiler.exe
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesApp.dll.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesApp.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesApp.pdb
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Antlr3.Runtime.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\EntityFramework.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\EntityFramework.SqlServer.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.Agent.Intercept.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.DependencyCollector.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.PerfCounterCollector.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.Web.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.WindowsServer.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.ApplicationInsights.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Newtonsoft.Json.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesAppBLL.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesAppDLL.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Net.Http.Formatting.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Cors.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Helpers.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Http.Cors.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Http.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Http.WebHost.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Mvc.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Optimization.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Razor.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.WebPages.Deployment.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.WebPages.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.WebPages.Razor.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\WebGrease.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesAppBLL.pdb
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesAppBLL.dll.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesAppDLL.pdb
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\SalesAppDLL.dll.config
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\EntityFramework.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\EntityFramework.SqlServer.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Http.Cors.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Newtonsoft.Json.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Net.Http.Formatting.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Helpers.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Http.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Http.WebHost.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Mvc.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Optimization.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.Razor.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.WebPages.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.WebPages.Deployment.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\System.Web.WebPages.Razor.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Antlr3.Runtime.pdb
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.ApplicationInsights.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.DependencyCollector.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.WindowsServer.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\bin\Microsoft.AI.Web.xml
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\obj\Debug\SalesApp.csprojResolveAssemblyReference.cache
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\obj\Debug\SalesApp.dll
-C:\Users\boss\Documents\Visual Studio 2017\Projects\server-technocrat-paperless\SalesApp\obj\Debug\SalesApp.pdb
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\ApplicationInsights.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\csc.exe
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\csc.exe.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\csc.rsp
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\csi.exe
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\csi.rsp
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\System.AppContext.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\System.Collections.Immutable.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\System.IO.FileSystem.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\System.Reflection.Metadata.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\vbc.exe
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\vbc.exe.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\vbc.rsp
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\VBCSCompiler.exe
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\roslyn\VBCSCompiler.exe.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesApp.dll.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesApp.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesApp.pdb
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Antlr3.Runtime.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\EntityFramework.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\EntityFramework.SqlServer.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.Agent.Intercept.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.DependencyCollector.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.Web.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.WindowsServer.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.ApplicationInsights.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.Web.Infrastructure.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Newtonsoft.Json.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesAppBLL.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesAppDLL.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Net.Http.Formatting.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Cors.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Helpers.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Http.Cors.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Http.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Http.WebHost.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Mvc.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Optimization.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Razor.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.WebPages.Deployment.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.WebPages.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.WebPages.Razor.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\WebGrease.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesAppBLL.pdb
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesAppBLL.dll.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesAppDLL.pdb
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\SalesAppDLL.dll.config
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\EntityFramework.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\EntityFramework.SqlServer.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Http.Cors.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Newtonsoft.Json.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Net.Http.Formatting.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Helpers.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Http.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Http.WebHost.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Mvc.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Optimization.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.Razor.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.WebPages.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.WebPages.Deployment.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\System.Web.WebPages.Razor.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Antlr3.Runtime.pdb
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.ApplicationInsights.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.DependencyCollector.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.WindowsServer.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\bin\Microsoft.AI.Web.xml
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\obj\Debug\SalesApp.csprojResolveAssemblyReference.cache
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\obj\Debug\SalesApp.dll
-D:\projects\technocrat-paperless\technocratpaperless\SalesApp\obj\Debug\SalesApp.pdb
+C:\Development\technocratpaperless\SalesApp\bin\ApplicationInsights.config
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\csc.exe
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\csc.exe.config
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\csc.rsp
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\csi.exe
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\csi.rsp
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\System.AppContext.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\System.IO.FileSystem.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\vbc.exe
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\vbc.exe.config
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\vbc.rsp
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\VBCSCompiler.exe
+C:\Development\technocratpaperless\SalesApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Development\technocratpaperless\SalesApp\bin\SalesApp.dll.config
+C:\Development\technocratpaperless\SalesApp\bin\SalesApp.dll
+C:\Development\technocratpaperless\SalesApp\bin\SalesApp.pdb
+C:\Development\technocratpaperless\SalesApp\bin\Antlr3.Runtime.dll
+C:\Development\technocratpaperless\SalesApp\bin\EntityFramework.dll
+C:\Development\technocratpaperless\SalesApp\bin\EntityFramework.SqlServer.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.Web.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.ApplicationInsights.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Development\technocratpaperless\SalesApp\bin\Newtonsoft.Json.dll
+C:\Development\technocratpaperless\SalesApp\bin\SalesAppBLL.dll
+C:\Development\technocratpaperless\SalesApp\bin\SalesAppDLL.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Net.Http.Formatting.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Cors.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Helpers.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Http.Cors.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Http.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Http.WebHost.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Mvc.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Optimization.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Razor.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.WebPages.Deployment.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.WebPages.dll
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.WebPages.Razor.dll
+C:\Development\technocratpaperless\SalesApp\bin\WebGrease.dll
+C:\Development\technocratpaperless\SalesApp\bin\SalesAppBLL.pdb
+C:\Development\technocratpaperless\SalesApp\bin\SalesAppBLL.dll.config
+C:\Development\technocratpaperless\SalesApp\bin\SalesAppDLL.pdb
+C:\Development\technocratpaperless\SalesApp\bin\SalesAppDLL.dll.config
+C:\Development\technocratpaperless\SalesApp\bin\EntityFramework.xml
+C:\Development\technocratpaperless\SalesApp\bin\EntityFramework.SqlServer.xml
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Http.Cors.xml
+C:\Development\technocratpaperless\SalesApp\bin\Newtonsoft.Json.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Net.Http.Formatting.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Helpers.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Http.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Http.WebHost.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Mvc.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Optimization.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.Razor.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.WebPages.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.WebPages.Deployment.xml
+C:\Development\technocratpaperless\SalesApp\bin\System.Web.WebPages.Razor.xml
+C:\Development\technocratpaperless\SalesApp\bin\Antlr3.Runtime.pdb
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.ApplicationInsights.xml
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Development\technocratpaperless\SalesApp\bin\Microsoft.AI.Web.xml
+C:\Development\technocratpaperless\SalesApp\obj\Debug\SalesApp.csprojResolveAssemblyReference.cache
+C:\Development\technocratpaperless\SalesApp\obj\Debug\SalesApp.dll
+C:\Development\technocratpaperless\SalesApp\obj\Debug\SalesApp.pdb

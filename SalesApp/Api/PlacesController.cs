@@ -7,6 +7,7 @@ using System.Web.Http;
 using SalesAppBLL.Repository;
 using SalesAppBLL;
 using SalesAppDLL;
+using SalesAppDLL.CustomModels;
 
 namespace SalesApp.Api
 {
@@ -22,7 +23,7 @@ namespace SalesApp.Api
             try
             {
                 var lst = _placeRepo.AddPlace(place);
-                if (lst!=null)
+                if (lst != null)
                 {
                     data.Data = lst;
                     data.Status = "SUCCESS";
@@ -49,7 +50,7 @@ namespace SalesApp.Api
 
         }
 
-        [HttpGet,Route("showallplaces")]
+        [HttpGet, Route("showallplaces")]
         public ResponseData ShowAllPlaces(int userId)
         {
             ResponseData data = new ResponseData();
@@ -65,7 +66,7 @@ namespace SalesApp.Api
                 }
                 else
                 {
-                    data.Data =null;
+                    data.Data = null;
                     data.Status = "FAIL";
                     data.Error = "";
                     data.ErrorCode = "";
@@ -82,7 +83,7 @@ namespace SalesApp.Api
             }
         }
 
-        [HttpGet,Route("getplacebyid")]
+        [HttpGet, Route("getplacebyid")]
         public ResponseData GetPlaceById(int placeId)
         {
 
@@ -106,7 +107,251 @@ namespace SalesApp.Api
                 }
                 return data;
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpPost, Route("addcustomeforms")]
+        public ResponseData AddCustomForms(CustomFormsDetails customFormDetails)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                // TODO:Check validation.
+                if (customFormDetails == null)
+                {
+                    data.Data = "Invalid json details!";
+                    data.Status = "Fail";
+                    data.Error = "";
+                }
+
+                var lst = _placeRepo.AddCustomForms(customFormDetails);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpGet, Route("getquestionsbyformsid")]
+        public ResponseData GetQuestionsByFormsId(int formId)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetQuestionsByFormsId(formId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpPost, Route("addanswerbyquestionid")]
+        public ResponseData AddAnswerByQuestionId(FormsAnswer formAns)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.AddAnswerByQuestionId(formAns);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpPost, Route("addusersactivities")]
+        public ResponseData AddUsersActivities(UsersActivity userAct)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.AddUsersActivities(userAct);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpGet, Route("getusersactivitiesbyuserid")]
+        public ResponseData GetUsersActivitiesByUserId(int userId)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetUsersActivitiesByUserId(userId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpGet, Route("getusersactivitiesbyplaceid")]
+        public ResponseData GetUsersActivitiesByPlaceId(int placeId)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetUsersActivitiesByPlaceId(placeId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpGet, Route("getusersactivitiesbyactivitytypeid")]
+        public ResponseData GetUsersActivitiesByActivityTypeId(int activityId)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetUsersActivitiesByActivityTypeId(activityId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
             {
                 data.Data = "FAIL";
                 data.Status = "FAIL";
