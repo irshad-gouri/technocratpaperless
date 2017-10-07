@@ -535,5 +535,121 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+
+        public AddCustomFormsResponse AddNotesActivities(AddNotesActivities notesAct)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (string.IsNullOrEmpty(notesAct.Note))
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "User comment can't be blank!";
+                }
+                else if (notesAct.UserId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "UserId!";
+                }
+                else if (notesAct.PlaceId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "PlaceId Can't blank!";
+                }
+                else
+                {
+                    // TODO: Add values in  CustomForm table.
+                    NotesActivity objACTComm = new NotesActivity();
+                    objACTComm.PlaceId = notesAct.PlaceId;
+                    objACTComm.UserId = notesAct.UserId;
+                    objACTComm.Note = notesAct.Note;
+                    objACTComm.CreatedDate = System.DateTime.Now;
+                    objACTComm.ModifiedDate = System.DateTime.Now;
+
+                    // TODO: Perform on db
+                    DbContext.NotesActivities.Add(objACTComm);
+                    DbContext.SaveChanges();
+
+
+
+                    // TODO : Add logs in UserActivity
+                    UsersActivity objUAct = new UsersActivity();
+
+                    objUAct.UserId = (int)objACTComm.UserId;
+                    objUAct.PhotoUrl = string.Empty;
+                    objUAct.Note = objACTComm.Note;
+                    objUAct.PlaceId = objACTComm.PlaceId;
+                    AddUsersActivities(objUAct);
+
+                    objResp.Status = "Success";
+                    objResp.Message = "User Notes Activity Successfully Added!";
+                }
+            }
+            catch (Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+            }
+            return objResp;
+        }
+
+        public AddCustomFormsResponse AddPhotoctivities(AddPhotoActivities photoAct)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (string.IsNullOrEmpty(photoAct.PhotoUrl))
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Please Select Photo!";
+                }
+                else if (photoAct.UserId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "UserId!";
+                }
+                else if (photoAct.PlaceId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "PlaceId Can't blank!";
+                }
+                else
+                {
+                    // TODO: Add values in  CustomForm table.
+                    PhotoActivity objACTComm = new PhotoActivity();
+                    objACTComm.PhotoUrl = photoAct.PhotoUrl;
+                    objACTComm.Tags = photoAct.Tags;
+                    objACTComm.PlaceId = photoAct.PlaceId;
+                    objACTComm.UserId = photoAct.UserId;
+                    objACTComm.Note = photoAct.Note;
+                    objACTComm.CreatedDate = System.DateTime.Now;
+                    objACTComm.ModifiedDate = System.DateTime.Now;
+
+                    // TODO: Perform on db...
+                    DbContext.PhotoActivities.Add(objACTComm);
+                    DbContext.SaveChanges();
+
+
+                    // TODO : Add logs in UserActivity
+                    UsersActivity objUAct = new UsersActivity();
+
+                    objUAct.UserId = (int)objACTComm.UserId;
+                    objUAct.PhotoUrl = photoAct.PhotoUrl;
+                    objUAct.Note = objACTComm.Note;
+                    //objUAct.Tags = objACTComm.Tags;
+                    objUAct.PlaceId = objACTComm.PlaceId;
+                    AddUsersActivities(objUAct);
+
+                    objResp.Status = "Success";
+                    objResp.Message = "User Photo Activity Successfully Added!";
+                }
+            }
+            catch (Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+            }
+            return objResp;
+        }
     }
 }

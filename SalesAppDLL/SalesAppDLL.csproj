@@ -59,6 +59,8 @@
     <Compile Include="CustomForm.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomModels\AddNotesActivities.cs" />
+    <Compile Include="CustomModels\AddPhotoActivities.cs" />
     <Compile Include="CustomModels\AddUserActivityComments.cs" />
     <Compile Include="CustomModels\CustomFormsDetails.cs" />
     <Compile Include="CustomModels\PlaceDetail.cs" />
