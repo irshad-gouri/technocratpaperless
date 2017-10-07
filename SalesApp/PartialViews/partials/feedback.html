@@ -1,0 +1,274 @@
+<style>
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover {
+  color: #fff;
+  background-color: #53B889;
+  font-size: 21px;
+  font-weight: bolder;
+}
+.nav-tabs>li {
+  width: 33%;
+  text-align: center;
+}
+.nav>li>a {
+  color: #53B889;
+}
+.nav-tabs>li>a {
+  font-size: 21px;
+  font-weight: bolder;
+}
+.checkbox-custom, .radio-custom {
+    opacity: 0;
+    position: absolute;   
+}
+
+.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.checkbox-custom-label, .radio-custom-label {
+    position: relative;
+}
+
+.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    background: #62D7D8;
+    border: 2px solid #62D7D8;
+    box-shadow: inset 0px 0px 0px 4px #fff;
+}
+
+.radio-custom + .radio-custom-label:before {
+    border-radius: 50%;
+}
+
+.radio-custom:checked + .radio-custom-label:before {
+    background: #62D7D8;
+    box-shadow: inset 0px 0px 0px 4px #fff;
+}
+</style>
+<!-- <div class="animate">
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="card">
+              <div class="card-header card-info card-inverse">
+                  <h3 class="card-title">Services</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <table class="table table-bordered table-striped table-hover" ng-if="feedbackList.length > 0">
+                <thead>
+                  <tr>
+                    <th>Feedback #</th>
+                    <th>Phone</th>
+                    <th>Feedback</th>
+                    <th>Date</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="feedback in feedbackList">
+                    <th>{{ feedback.feedback_id }}</th>
+                    <td>{{ feedback.phone_number }}</td>
+                    <td>{{ feedback.feedback }}</td>
+                    <td>{{ feedback.date | date}}</td>
+                    <td><i ng-click="deleteFeedback(feedback)" class="fa fa-times cursor-pointer text-danger"></i>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="content animate">
+    <span id="menu_pointer" class="hidden menu_pointer"></span>
+    <div id="main">
+
+        <link href="/frontend-app/dist/css/forms.min.css?402" async="" type="text/css" rel="stylesheet" media="screen">
+        <script>
+            if (API.Settings.isTestOrDemoUser == "false") {
+                var formsScript = document.createElement('script');
+                formsScript.type = 'text/javascript';
+                formsScript.src = '/frontend-app/dist/js/forms.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
+                document.write(formsScript.outerHTML);
+            }
+        </script>
+        <script type="text/javascript" src="/frontend-app/dist/js/forms.min.js?402"></script>
+
+        <div data-ng-controller="FormListController" class="ng-scope">
+            <h1 class="page-head forms">
+        <i class="icon icon-forms"></i>
+        <span class="header-main" id="NazivLabel">Forms</span>
+        <span class="header-sub">Use forms to keep record of your reps activities.</span>
+    </h1>
+            <div class="actions with_menu">
+                <a id="lnkCreate" class="button_create master-action rounded" ng-click="open()">
+                    <i class="icon icon-plus"></i>New formdddddddd
+                </a>
+                <a href="#" id="lnkSaveSort" class="sort" style="display: none;">
+                    <input type="button" id="btnSaveSort" value="Save sort" class="button_save rounded">
+                </a>
+                <span id="lnkCancel" class="lnkCancel sort" style="display: none;">Cancel</span>
+                <span class="action_menu plain" href="#">
+            <input id="rn-form-import-arrow" type="button" class="action_menu_button rounded border" value=" ">
+            <div class="menu_list" style="display: none;">
+                <span class="clip"></span>
+                <ul>
+                    <li id="SortFormTrigger" type="sort" class="menu_item rounded">Reorder forms list on a mobile app</li>
+                </ul>
+            </div>
+            </span>
+        </div>
+        <div id="filter" class="filter">
+            <div class="actions_header filter_padding">
+                <div class="filter-list">
+                    <div class="relatived place_left">
+                        <input type="text" id="search" class="filter-data grid_filter border rounded search list toggle-action plainlist" datatype="search" placeholder="Search forms">
+                        <span class="input-loader" style="display: none;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="form-list-container" class="display-sheet" style="display: block;">
+            <div class="table_content">
+                <table class="datatable grid" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td sorttype="code">
+                                Title
+                            </td>
+                            <td sorttype="name" class="active">
+                                Active
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr elementid="117070" class="list-item-container">
+                            <td class="action-cell">
+                                <a class="action-detail action icon icon-details" href="/form/view/117070"></a>
+                            </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117070">Job Estimate</a> <span class="subtext">This form is used to describe the work that will be done in general terms, and present the customer with an estimate for that work.
+
+This is a sample form that we have prepared for you.  Your account administrator can can customize this form to meet your specific needs using Repsly's form editor.</span> </td>
+                            <td class="active"> <span class="active-icon true">          </span> </td>
+                        </tr>
+                        <tr elementid="117063" class="list-item-container">
+                            <td class="action-cell">
+                                <a class="action-detail action icon icon-details" href="/form/view/117063"></a>
+                            </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117063">Merchandising and Competitor Insight Report</a> <span class="subtext">Here's a sample form you might use for teams that do merchandising, retail execution, or competitor analysis. Feel free to customize this form to capture the details that are most important to your brand. These forms are available for your reps to complete out in the field via the Repsly mobile app.</span> </td>
+                            <td class="active"> <span class="active-icon true">          </span> </td>
+                        </tr>
+                        <tr elementid="117064" class="list-item-container">
+                            <td class="action-cell">
+                                <a class="action-detail action icon icon-details" href="/form/view/117064"></a>
+                            </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117064">Out of Stock</a> <span class="subtext">Here's a sample form you might use for teams that report out of stocks. Feel free to customize this form to capture the details that are most important to your brand. 
+
+These forms are available for your reps to complete out in the field via the Repsly mobile app.</span> </td>
+                            <td class="active"> <span class="active-icon true">          </span> </td>
+                        </tr>
+                        <tr elementid="117065" class="list-item-container">
+                            <td class="action-cell">
+                                <a class="action-detail action icon icon-details" href="/form/view/117065"></a>
+                            </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117065">Sampling Event Recap</a> <span class="subtext">Here's a sample form you might use for teams that do product demos or events out in the field. Feel free to customize this form to capture the details that are most important to your brand. 
+
+These forms are available for your reps to complete out in the field via the Repsly mobile app.</span> </td>
+                            <td class="active"> <span class="active-icon true">          </span> </td>
+                        </tr>
+                        <tr elementid="117071" class="list-item-container">
+                            <td class="action-cell">
+                                <a class="action-detail action icon icon-details" href="/form/view/117071"></a>
+                            </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117071">Service Form Checklist</a> <span class="subtext">Complete before &amp; after every service.
+
+This is a sample form that we have prepared for you.  Your account administrator can can customize this form to meet your specific needs using Repsly's form editor.</span> </td>
+                            <td class="active"> <span class="active-icon true">          </span> </td>
+                        </tr>
+                        <tr elementid="117647" class="list-item-container">
+                            <td class="action-cell">
+                                <a class="action-detail action icon icon-details" href="/form/view/117647"></a>
+                            </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117647">visit place</a> <span class="subtext">gather information regarding place</span> </td>
+                            <td class="active"> <span class="active-icon true">          </span> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pager-holder"></div>
+        </div>
+        <div id="form-sort-container" class="display-sheet page_content clearfix" style="display: none;">
+            <div class="left_bar hints_right">
+                <h3>Reorder forms list on a mobile app</h3>
+                <ul class="sortable ui-sortable"></ul>
+            </div>
+            <div id="hint-container" class="right_bar">
+                <h3>Hints</h3>
+                <ul class="hints">
+                    <li class="hint">
+                        Sort active forms by dragging them up and down. Active forms will appear in Repsly mobile app sorted according to this order.
+                    </li>
+                    <li class="hint">
+                        When you setup your forms don't forget to press <b>Save</b> to keep changes.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="nodata-container" class="display-sheet" style="display: none;">
+            <div class="nodatafound entity">
+                <span class="coach-sprite no-data"></span> No forms found..
+            </div>
+        </div>
+    </div>
+    <script type="text/x-jquery-tmpl" id="tmpl-form-row">
+        <tr elementID=${IDUniDocZag} class="list-item-container">
+            <td class="action-cell">
+                <a class="action-detail action icon icon-details" href="/form/view/${IDUniDocZag}"></a>
+            </td>
+            <td class="name">
+                <a class="table-link" href="/form/view/${IDUniDocZag}">${Title}</a>
+                <span class="subtext">${Description}</span>
+                <td class="active">
+                    <span class="active-icon ${IsActive}">
+         </span>
+                </td>
+        </tr>
+    </script>
+    <script type="text/x-jquery-tmpl" id="tmpl-form-sort-row">
+        <li elementID="${IDUniDocZag}" class="list-item-container sort-row">
+            <span class="up-down"></span><span class="name">${Title}</span>
+            <div class="desc">${Description}</div>
+        </li>
+    </script>
+</div>
+<footer></footer>
+
+<div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+</div>

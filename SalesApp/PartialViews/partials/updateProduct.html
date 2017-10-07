@@ -1,0 +1,438 @@
+<!-- <div class="animate">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header card-info card-inverse">
+                    <h3 class="card-title text-xl-center"><span  ng-show="dat.hasData">Update</span><span  ng-show="!dat.hasData">Add</span> Property</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-block">
+                    <form name="updatepropertyForm" novalidate class="form-horizontal">
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Propety name
+                              <span class="text-danger">*</span>
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="property Name" name="property_name" class="form-control" ng-model="property.property_description_address" required>
+                            <div class="error-message padding-right" ng-show="updatepropertyForm.property_description_address.$invalid && !updatepropertyForm.property_description_address.$pristine">Enter property Name</div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Address
+                              <span class="text-danger">*</span>
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Address" name="address" class="form-control" ng-model="property.address" required>
+                            <div class="error-message padding-right" ng-show="updatepropertyForm.address.$invalid && !updatepropertyForm.address.$pristine">Enter Address</div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">City
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="City" name="city" class="form-control" ng-model="property.city">
+                          </div>
+                      </div>
+                        <div class="form-group">
+                            <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                Strategy City
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-5">
+                                <input type="text" placeholder="Strategy City" name="property_strategy_city" class="form-control" ng-model="property.property_strategy_city">
+                            </div>
+                        </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Province
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Province" name="province" class="form-control" ng-model="property.province">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Beds
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Beds" name="beds"  class="form-control" ng-model="property.beds">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Bath
+                          </label>
+                          
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Bath" name="baths"  class="form-control" ng-model="property.baths">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Ownership Type
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Ownership Type" name="ownership_type"  class="form-control" ng-model="property.ownership_type">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Funding amount
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="number" placeholder="Funding Amount" name="funding_amount" class="form-control" ng-model="property.funding_amount ">
+                          </div>
+                      </div>
+                        <div class="form-group">
+                            <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                Minimum investment amount
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-5">
+                                <input type="number" placeholder="Minimum investment amount" name="min_invest_amount" class="form-control" ng-model="property.min_invest_amount ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                Property Size
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-5">
+                                <input type="text" placeholder="Property Size" name="property_size" class="form-control" ng-model="property.property_size ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                Status
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-5">
+                               
+                                <select ng-model="property.property_status" class="form-control">
+                                    <option value="ACTIVE" ng-selected="(property.property_status=='ACTIVE')?true:false">Active</option>
+                                    <option value="INACTIVE" ng-selected="(property.property_status=='INACTIVE')?true:false">InActive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                End Date
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-5">
+                                <datepicker date-format="MM/dd/yyyy">
+                                    <input type="text" placeholder="End Date" name="end_date" class="form-control" ng-model="property.end_date">
+                                </datepicker>
+                            </div>
+                            </div>
+                       
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Description
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <textarea type="text" rows="3" placeholder="Description" name="property_description" class="form-control" ng-model="property.property_description"></textarea>
+                            <div class="error-message padding-right" ng-show="updatepropertyForm.property_description.$invalid && !updatepropertyForm.property_description.$pristine">Enter property Description</div>
+                          </div>
+                      </div>
+
+                     
+                     
+                      <div class="form-group margin-top">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                Upload property Images 
+                              <span class="text-danger">*</span>
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                              <div class="form-group" style="margin-right:0px;margin-left:0px">
+                                  <img ng-src="{{url_prifix}}{{property.image_url}}" height="100" width="100" />
+                              </div>
+                            <button class="btn btn-primary" ngf-select="uploadPhoto($file)" accept="image/*">Upload
+                                <span>
+                                    <i style="padding-left:6px;" class="fa fa-cloud-upload"></i>
+                                </span>
+                            </button>
+                        </div>
+                      </div>
+                       
+                      <div class="form-group text-right">
+                          <button class="btn btn-success margin-right" ng-show="dat.hasData" type="submit" ng-disabled="updatepropertyForm.$invalid || !property.image_url" ng-click="updateproperty(property)">Update
+                              <span>
+                                  <i style="padding-left:6px;" class="fa fa-upload"></i>
+                              </span>
+                          </button>
+                          <button class="btn btn-success margin-right" ng-show="!dat.hasData" type="submit" ng-disabled="updatepropertyForm.$invalid || !property.image_url" ng-click="addProduct(property)">
+                              Add
+                             
+                          </button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="content animate" >
+    <span id="menu_pointer" class="hidden menu_pointer"></span>
+    <div id="main">
+
+        <script>
+            if (API.Settings.isTestOrDemoUser == "false") {
+                var reportsScript = document.createElement('script');
+                reportsScript.type = 'text/javascript';
+                reportsScript.src = '/frontend-app/dist/js/reports.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
+                document.write(reportsScript.outerHTML);
+            }
+        </script>
+        <script type="text/javascript" src="/frontend-app/dist/js/reports.min.js?402"></script>
+        <!-- ngInclude: templateUrl -->
+        <div data-ng-controller="ReportsController" ng-include="templateUrl" class="ng-scope">
+            <style type="text/css" class="ng-binding ng-scope">
+                @import url("/frontend-app/dist/css/reports.min.css?402");
+            </style>
+            <div cg-busy="promise" class="cg-busy-loader ng-scope">
+                <div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()"></div>
+                <div class="cg-busy cg-busy-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()">
+                    <div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div>
+                </div>
+            </div>
+            <div ng-show="loadPage" class="reports-container ng-scope">
+                <div class="reports-container__header">
+                    <div class="reports-container__reports-icon"></div>
+                    <div class="reports-container__title ng-binding">
+                        Reports
+                    </div>
+                    <div class="reports-container__description ng-binding">
+                        One place for all of your Repsly reporting
+                    </div>
+                </div>
+
+                <!-- ngIf: isReportingAvailable -->
+                <div ng-if="isReportingAvailable" class="reports-container__body ng-scope">
+
+                    <!--dashboards-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Dashboard</div>
+                        <a class="reports-container__section-box reports-container__section-box--add-dashboard" ng-click="openAddDashboardPopup()" title="Add Dashboard">
+                            <span class="reports-container__section-box-icon--add-dashboard reports-container__section-box-icon">+</span>
+                            <div class="reports-container__section-box-title ng-binding">
+                                Add Dashboard
+                            </div>
+                        </a>
+
+                        <!-- ngRepeat: dashboard in dashboardList -->
+                        <a class="reports-container__section-box reports-container__section-box--dashboard ng-scope ng-isolate-scope" ng-href="https://user.repsly.com/dashboard/#24900" title="Default dashboard" ng-repeat="dashboard in dashboardList" dashboard="dashboard" href="https://user.repsly.com/dashboard/#24900">
+                            <div class="reports-container__section-box-icon--dashboard reports-container__section-box-icon"></div>
+                            <!-- ngIf: dashboard.ReferentID == null -->
+                            <div ng-if="dashboard.ReferentID == null" class="reports-container__section-box-title ng-binding ng-scope">
+                                Default dashboa...
+                            </div>
+                            <!-- end ngIf: dashboard.ReferentID == null -->
+                            <!-- ngIf: dashboard.ReferentID != null -->
+                        </a>
+                        <!-- end ngRepeat: dashboard in dashboardList -->
+                        <a class="reports-container__section-box reports-container__section-box--dashboard ng-scope ng-isolate-scope" ng-href="https://user.repsly.com/dashboard/#25359" title="Test dashboard" ng-repeat="dashboard in dashboardList" dashboard="dashboard" href="https://user.repsly.com/dashboard/#25359">
+                            <div class="reports-container__section-box-icon--dashboard reports-container__section-box-icon"></div>
+                            <!-- ngIf: dashboard.ReferentID == null -->
+                            <!-- ngIf: dashboard.ReferentID != null -->
+                            <div ng-if="dashboard.ReferentID != null" class="reports-container__section-box-title ng-binding ng-scope">
+                                Test dashboard
+                            </div>
+                            <!-- end ngIf: dashboard.ReferentID != null -->
+                        </a>
+                        <!-- end ngRepeat: dashboard in dashboardList -->
+                    </div>
+
+                    <!--summary report-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Summary report</div>
+                        <a class="reports-container__section-box reports-container__section-box--summary" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmRGF0ZUJlZ2luPTkvMjUvMjAxNyZEYXRlRW5kPTkvMjUvMjAxNyZFeHBvcnRUeXBlPXhsc3gmVmlld1NlbGVjdGlvbj1zdW1tYXJ5" title="Summary report" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmRGF0ZUJlZ2luPTkvMjUvMjAxNyZEYXRlRW5kPTkvMjUvMjAxNyZFeHBvcnRUeXBlPXhsc3gmVmlld1NlbGVjdGlvbj1zdW1tYXJ5">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Summary report
+                            </div>
+                            <div class="reports-container__section-box-icon--summary reports-container__section-box-icon">
+                                <i class="icon icon-summary"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!--form explore reports-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Form Reports</div>
+                        <!-- ngRepeat: form in formList -->
+                        <a class="reports-container__section-box reports-container__section-box--form-explore ng-isolate-scope" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDYzJlVuaURvY05heml2PU1lcmNoYW5kaXNpbmcgYW5kIENvbXBldGl0b3IgSW5zaWdodCBSZXBvcnQmVW5pRG9jUm93SUQ9MDU4NjExNDQtNTZmYi00ZjA2LTkxZTEtM2ExMjAyZjlmNmVl" title="Merchandising and Competitor Insight Report" ng-repeat="form in formList" form="form" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDYzJlVuaURvY05heml2PU1lcmNoYW5kaXNpbmcgYW5kIENvbXBldGl0b3IgSW5zaWdodCBSZXBvcnQmVW5pRG9jUm93SUQ9MDU4NjExNDQtNTZmYi00ZjA2LTkxZTEtM2ExMjAyZjlmNmVl">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Merchandising a...
+                            </div>
+                            <div class="icon icon-forms reports-container__section-box-icon--form-explore reports-container__section-box-icon"></div>
+                        </a>
+                        <!-- end ngRepeat: form in formList -->
+                        <a class="reports-container__section-box reports-container__section-box--form-explore ng-isolate-scope" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDY0JlVuaURvY05heml2PU91dCBvZiBTdG9jayZVbmlEb2NSb3dJRD1jNWZmOWUyOC1iNDM1LTRlOTgtYTQxNi1lZTM4ZTdiYTEwMzk=" title="Out of Stock" ng-repeat="form in formList" form="form" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDY0JlVuaURvY05heml2PU91dCBvZiBTdG9jayZVbmlEb2NSb3dJRD1jNWZmOWUyOC1iNDM1LTRlOTgtYTQxNi1lZTM4ZTdiYTEwMzk=">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Out of Stock
+                            </div>
+                            <div class="icon icon-forms reports-container__section-box-icon--form-explore reports-container__section-box-icon"></div>
+                        </a>
+                        <!-- end ngRepeat: form in formList -->
+                        <a class="reports-container__section-box reports-container__section-box--form-explore ng-isolate-scope" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDY1JlVuaURvY05heml2PVNhbXBsaW5nIEV2ZW50IFJlY2FwJlVuaURvY1Jvd0lEPTI2ZTM1YTBiLTU0MjItNGJhMS1iMGE1LTYwNDk2NWM2MTM1OQ==" title="Sampling Event Recap" ng-repeat="form in formList" form="form" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDY1JlVuaURvY05heml2PVNhbXBsaW5nIEV2ZW50IFJlY2FwJlVuaURvY1Jvd0lEPTI2ZTM1YTBiLTU0MjItNGJhMS1iMGE1LTYwNDk2NWM2MTM1OQ==">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Sampling Event ...
+                            </div>
+                            <div class="icon icon-forms reports-container__section-box-icon--form-explore reports-container__section-box-icon"></div>
+                        </a>
+                        <!-- end ngRepeat: form in formList -->
+                        <a class="reports-container__section-box reports-container__section-box--form-explore ng-isolate-scope" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDcwJlVuaURvY05heml2PUpvYiBFc3RpbWF0ZSZVbmlEb2NSb3dJRD05Y2QzYTU4My1iNjdiLTRiNDUtOWYwZS1hNGI4YzE3MTY2Yjk=" title="Job Estimate" ng-repeat="form in formList" form="form" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDcwJlVuaURvY05heml2PUpvYiBFc3RpbWF0ZSZVbmlEb2NSb3dJRD05Y2QzYTU4My1iNjdiLTRiNDUtOWYwZS1hNGI4YzE3MTY2Yjk=">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Job Estimate
+                            </div>
+                            <div class="icon icon-forms reports-container__section-box-icon--form-explore reports-container__section-box-icon"></div>
+                        </a>
+                        <!-- end ngRepeat: form in formList -->
+                        <a class="reports-container__section-box reports-container__section-box--form-explore ng-isolate-scope" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDcxJlVuaURvY05heml2PVNlcnZpY2UgRm9ybSBDaGVja2xpc3QmVW5pRG9jUm93SUQ9YzdhZGZhMzgtMmI2NS00N2JmLThkNzktNDUxNTVmNmYyZjAx" title="Service Form Checklist" ng-repeat="form in formList" form="form" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3MDcxJlVuaURvY05heml2PVNlcnZpY2UgRm9ybSBDaGVja2xpc3QmVW5pRG9jUm93SUQ9YzdhZGZhMzgtMmI2NS00N2JmLThkNzktNDUxNTVmNmYyZjAx">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Service Form Ch...
+                            </div>
+                            <div class="icon icon-forms reports-container__section-box-icon--form-explore reports-container__section-box-icon"></div>
+                        </a>
+                        <!-- end ngRepeat: form in formList -->
+                        <a class="reports-container__section-box reports-container__section-box--form-explore ng-isolate-scope" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3NjQ3JlVuaURvY05heml2PXZpc2l0IHBsYWNlJlVuaURvY1Jvd0lEPTA5OTAzNTgxLTA2MzYtNGEyNS04YmQ0LWMzNjVhYjUzMTEzYw==" title="visit place" ng-repeat="form in formList" form="form" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9Zm9ybSZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JkV4cG9ydFR5cGU9eGxzeCZWaWV3U2VsZWN0aW9uPXN1bW1hcnkmVW5pRG9jWmFnSUQ9MTE3NjQ3JlVuaURvY05heml2PXZpc2l0IHBsYWNlJlVuaURvY1Jvd0lEPTA5OTAzNTgxLTA2MzYtNGEyNS04YmQ0LWMzNjVhYjUzMTEzYw==">
+                            <div class="reports-container__section-box-title ng-binding">
+                                visit place
+                            </div>
+                            <div class="icon icon-forms reports-container__section-box-icon--form-explore reports-container__section-box-icon"></div>
+                        </a>
+                        <!-- end ngRepeat: form in formList -->
+                        <div class="reports-container__section-no-data ng-binding"></div>
+                    </div>
+
+                    <!--rankings-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Rankings</div>
+                        <a class="reports-container__section-box reports-container__section-box--rankings" ng-href="https://user.repsly.com/client/#bbq=RXhwb3J0VHlwZT14bHN4JkZpbGVuYW1lPVBsYWNlcyZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JmluY2x1ZGVJbmFjdGl2ZT1mYWxzZSZWaWV3U2VsZWN0aW9uPXJhbmtpbmdz" title="By place" href="https://user.repsly.com/client/#bbq=RXhwb3J0VHlwZT14bHN4JkZpbGVuYW1lPVBsYWNlcyZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JmluY2x1ZGVJbmFjdGl2ZT1mYWxzZSZWaWV3U2VsZWN0aW9uPXJhbmtpbmdz">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By place
+                            </div>
+                            <div class="reports-container__section-box-icon--rankings reports-container__section-box-icon">
+                                <i class="icon icon-tabular"></i>
+                            </div>
+                        </a>
+
+                        <a class="reports-container__section-box reports-container__section-box--rankings" ng-href="https://user.repsly.com/representative/#bbq=RXhwb3J0VHlwZT14bHN4JkZpbGVuYW1lPVJlcHJlc2VudGF0aXZlcyZGaWxlbmFtZVJhbmtpbmdzPVJlcHJlc2VudGF0aXZlcyBSYW5raW5ncyZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JmluY2x1ZGVJbmFjdGl2ZT1mYWxzZSZWaWV3U2VsZWN0aW9uPXJhbmtpbmdz" title="By representative" href="https://user.repsly.com/representative/#bbq=RXhwb3J0VHlwZT14bHN4JkZpbGVuYW1lPVJlcHJlc2VudGF0aXZlcyZGaWxlbmFtZVJhbmtpbmdzPVJlcHJlc2VudGF0aXZlcyBSYW5raW5ncyZEYXRlQmVnaW49OS8yNS8yMDE3JkRhdGVFbmQ9OS8yNS8yMDE3JmluY2x1ZGVJbmFjdGl2ZT1mYWxzZSZWaWV3U2VsZWN0aW9uPXJhbmtpbmdz">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By representati...
+                            </div>
+                            <div class="reports-container__section-box-icon--rankings reports-container__section-box-icon">
+                                <i class="icon icon-tabular"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!--sales reports-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Sales Reports</div>
+                        <a ng-show="usesSalesReport" class="reports-container__section-box reports-container__section-box--sales" ng-href="https://user.repsly.com/SalesReport/Products" title="By product" href="https://user.repsly.com/SalesReport/Products">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By product
+                            </div>
+                            <div class="reports-container__section-box-icon--sales reports-container__section-box-icon">
+                                <i class="icon icon-invoice"></i>
+                            </div>
+                        </a>
+
+                        <a ng-show="usesSalesReport" class="reports-container__section-box reports-container__section-box--sales" ng-href="https://user.repsly.com/SalesReport/ProductGroups" title="By product group" href="https://user.repsly.com/SalesReport/ProductGroups">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By product grou...
+                            </div>
+                            <div class="reports-container__section-box-icon--sales reports-container__section-box-icon">
+                                <i class="icon icon-invoice"></i>
+                            </div>
+                        </a>
+
+                        <a ng-show="usesSalesReport" class="reports-container__section-box reports-container__section-box--sales" ng-href="https://user.repsly.com/SalesReport/Places" title="By place" href="https://user.repsly.com/SalesReport/Places">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By place
+                            </div>
+                            <div class="reports-container__section-box-icon--sales reports-container__section-box-icon">
+                                <i class="icon icon-invoice"></i>
+                            </div>
+                        </a>
+
+                        <a ng-show="usesSalesReport" class="reports-container__section-box reports-container__section-box--sales" ng-href="https://user.repsly.com/SalesReport/Territories" title="By territory" href="https://user.repsly.com/SalesReport/Territories">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By territory
+                            </div>
+                            <div class="reports-container__section-box-icon--sales reports-container__section-box-icon">
+                                <i class="icon icon-invoice"></i>
+                            </div>
+                        </a>
+
+                        <a ng-show="usesSalesReport" class="reports-container__section-box reports-container__section-box--sales" ng-href="https://user.repsly.com/SalesReport/Representatives" title="By representative" href="https://user.repsly.com/SalesReport/Representatives">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By representati...
+                            </div>
+                            <div class="reports-container__section-box-icon--sales reports-container__section-box-icon">
+                                <i class="icon icon-invoice"></i>
+                            </div>
+                        </a>
+
+                        <!-- ngIf: !usesSalesReport -->
+                    </div>
+
+                    <!--schedule reports-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Schedule Reports</div>
+                        <a ng-show="usesSchedules" class="reports-container__section-box reports-container__section-box--schedule" ng-href="https://user.repsly.com/VisitScheduleReport/PlaceSummary" title="By place" href="https://user.repsly.com/VisitScheduleReport/PlaceSummary">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By place
+                            </div>
+                            <div class="reports-container__section-box-icon--schedule reports-container__section-box-icon">
+                                <i class="icon icon-history"></i>
+                            </div>
+                        </a>
+
+                        <a ng-show="usesSchedules" class="reports-container__section-box reports-container__section-box--schedule" ng-href="https://user.repsly.com/VisitScheduleReport/RepresentativeSummary" title="By representative" href="https://user.repsly.com/VisitScheduleReport/RepresentativeSummary">
+                            <div class="reports-container__section-box-title ng-binding">
+                                By representati...
+                            </div>
+                            <div class="reports-container__section-box-icon--schedule reports-container__section-box-icon">
+                                <i class="icon icon-history"></i>
+                            </div>
+                        </a>
+
+                        <!-- ngIf: !usesSchedules -->
+                    </div>
+
+                    <!--Coverage report-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Coverage Report</div>
+                        <a class="reports-container__section-box reports-container__section-box--coverage" ng-href="https://user.repsly.com/coverage" title="Coverage Report" href="https://user.repsly.com/coverage">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Coverage Report
+                            </div>
+                            <div class="reports-container__section-box-icon--coverage reports-container__section-box-icon">
+                                <i class="icon icon-tabular"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!--Time & mileage report-->
+                    <div class="reports-container__section">
+                        <div class="reports-container__section-header ng-binding">Time &amp; mileage report</div>
+                        <a class="reports-container__section-box reports-container__section-box--coverage" ng-href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9dGltZW1pbGVhZ2UmRGF0ZUJlZ2luPTkvMjUvMjAxNyZEYXRlRW5kPTkvMjUvMjAxNyZFeHBvcnRUeXBlPXhsc3gmVmlld1NlbGVjdGlvbj10YWJsZQ==" title="Time &amp; mileage report" href="https://user.repsly.com/home/index#bbq=Q2x1c3RlckxldmVsPTEmUGVyaW9kPWgmQWN0aXZpdHk9dGltZW1pbGVhZ2UmRGF0ZUJlZ2luPTkvMjUvMjAxNyZEYXRlRW5kPTkvMjUvMjAxNyZFeHBvcnRUeXBlPXhsc3gmVmlld1NlbGVjdGlvbj10YWJsZQ==">
+                            <div class="reports-container__section-box-title ng-binding">
+                                Time &amp; mileage ...
+                            </div>
+                            <div class="reports-container__section-box-icon--coverage reports-container__section-box-icon">
+                                <i class="icon icon-tabular"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- end ngIf: isReportingAvailable -->
+
+                <!-- ngIf: !isReportingAvailable -->
+
+            </div>
+        </div>
+
+    </div>
+    <footer></footer>
+
+    <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+</div>

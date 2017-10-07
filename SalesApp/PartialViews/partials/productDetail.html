@@ -1,0 +1,318 @@
+<!-- <div class="animate">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header card-info card-inverse">
+                    <h3 class="card-title text-xl-center">Property Detail</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-4" ng-if="task.Address!='virtual'">
+                           
+                        
+                          <img ng-src="{{url+task.image_url}}" style="width: 100%; height:100%;" />
+
+                        </div>
+                        <div class="col-md-4" ng-if="task.Address=='virtual'">
+                            <img src="img/virtualtask.png" />
+                        </div>
+                        <div class="col-md-8 text-xs-left">
+                          <div class="card card-default card-block">
+                              <div class="row">
+                                <div class="col-md-12">
+                                   
+                                    
+                                  <blockquote class="card-blockquote">
+                                     
+                                  <h5 class="text-default fs-16 "><strong>Address: </strong>{{task.address}}</h5>
+                                      <p><button class="btn btn-pad-0" ng-if="task.Tags!=''" ng-repeat="tag in evalueateTag(task.Tags) track by $index">{{tag}}</button></p>
+                                 
+                                  <p class="fs-16" ><strong>Annual return : </strong> {{ task.anual_return }}</p>
+                                  <p class="fs-16" ><strong>Baths : </strong> {{ task.baths }}</p>
+                                  <p class="fs-16" ><strong>Beds : </strong> {{ task.beds }}</p>
+                                  <p class="fs-16" ><strong>City : </strong> {{ task.city }}</p>
+                                 
+                                  <p class="fs-16" ><strong>End date : </strong> {{ task.end_date }}</p>
+                                  <p class="fs-16" ><strong>Funding amount : </strong> {{ task.funding_amount }}</p>
+                                  <p class="fs-16" ><strong>Investors : </strong> {{ task.investors.length}}</p>
+                                  <p class="fs-16" ><strong>Minimum investment amount : </strong> {{ task.min_invest_amount }}</p>
+                                  <p class="fs-16" ><strong>Ownership type : </strong> {{ task.ownership_type }}</p>
+                                  <p class="fs-16" ><strong>Description : </strong> {{ task.property_description }}</p>
+                                  <p class="fs-16" ><strong>Location : </strong> {{ task.property_description_address }}</p>
+                                  <p class="fs-16" ><strong>Size : </strong> {{ task.property_size }}</p>
+                                  <p class="fs-16" ><strong>Status : </strong> {{ task.property_status }}</p>
+                                 
+                                  <p class="fs-16" ><strong>Province : </strong> {{ task.province }}</p>
+                                  <p class="fs-16" ><strong>Term : </strong> {{ task.term }}</p>
+                                
+                                
+                                
+                                      <a ng-click="showUpdateProperty(task)" class="btn btn-success">Update</a>
+                                    
+                                  </blockquote>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="content animate">
+            <span id="menu_pointer" class="hidden menu_pointer"></span>
+            <div id="main">
+                
+
+<link href="/frontend-app/dist/css/forms.min.css?402" async="" type="text/css" rel="stylesheet" media="screen">
+<script>
+    if (API.Settings.isTestOrDemoUser == "false") {
+        var formsScript = document.createElement('script');
+        formsScript.type = 'text/javascript';
+        formsScript.src = '/frontend-app/dist/js/forms.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
+        document.write(formsScript.outerHTML);
+    }
+</script><script type="text/javascript" src="/frontend-app/dist/js/forms.min.js?402"></script>
+<!-- ngInclude: templateUrl --><div class="view-content ng-scope" data-ng-controller="FormEditController" ng-include="templateUrl"><style type="text/css" class="ng-binding ng-scope">
+     @import url("/frontend-app/dist/css/custom-attributes.min.css?402");
+</style>
+
+<div cg-busy="promise" class="cg-busy-loader ng-scope"><div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()"></div><div class="cg-busy cg-busy-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()"><div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div></div></div>
+
+<div class="view-content clearfix ng-scope">
+    <div class="view-content-head clearfix">
+        <h1 class="page-head forms">
+            <i class="icon icon-forms"></i>
+            <span class="header-main ng-binding" id="NazivLabel">
+                Forms
+            </span>
+            <span class="header-sub ng-binding">
+                Use forms to keep record of your reps activities.
+            </span>
+        </h1>
+    </div>
+
+    <div class="actions_header clearfix"></div>
+
+    <!-- ngIf: pageLoaded --><div id="form-edit-container" ng-if="pageLoaded" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
+
+        <!-- ngIf: SystemUser != null -->
+
+        <div class="left_bar flat">
+            <div id="common-data-editor" class="">
+                <div class="form_container clearleft basic-info form-editor">
+
+                    <div class="form-grid">
+                        <div class="unit w-2-3">
+                            <div for="tbCode" class="label ng-binding">
+                                Title:
+                            </div>
+                            <input id="Title" type="text" value="" class="name border-edit rounded ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="data.Title" ng-class="{'border_red': !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" maxlength="256" placeholder="...">
+                        </div>
+                        <div class="unit w-1-3">
+                            <span class="isActiveCheckbox afterInput rounded inline-block" type="">
+                                <input type="checkbox" id="IsActive" class="ng-pristine ng-untouched ng-valid" ng-model="data.IsActive">
+                                <label for="IsActive" class="ng-binding">
+                                    active form
+                                </label>
+                            </span>
+                            <span class="isActiveCheckbox afterInput rounded inline-block" type="">
+                                <input type="checkbox" id="KoristiPredupis" class="ng-pristine ng-untouched ng-valid" ng-model="data.KoristiPredupis">
+                                <label for="KoristiPredupis" class="ng-binding">
+                                    Auto-fill on open
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="unit w-1-1">
+                            <div for="tbCode" class="label ng-binding">
+                                Description:
+                            </div>
+                            <textarea ng-model="data.Description" rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Description" placeholder="..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right_bar flat save-discard" ng-style="showSaveDiscardButtons ?  { 'visibility':'visible' } : { 'visibility':'hidden' }" style="visibility: visible;">
+            <div class="clearfix save-discard-inner ng-isolate-scope" sticky="" offset="30" style="display: block; z-index: 10; width: 245px; position: static; left: auto; top: auto; margin-top: 0px; height: 61px;">
+                <div class="actions clearfix">
+                    <input type="button" id="btnSave" ng-click="saveFormTrigger()" value="Save" class="button_save rounded">
+                    <span ng-click="discardChanges()" id="Reload" class="lnkCancel ng-binding">
+                        Discard
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="left_bar obrazac-extended flat">
+
+            <div class="form_container clearleft relatived ">
+                <div class="form-editor__title ng-binding">Set form accessibility</div>
+                <div class="form-text ng-binding">Connected to places with any of these tags:</div>
+                <div class="clientTags rounded border">
+                    <ul class="clientTag-list">
+                        <!-- ngIf: placeTags.length == 0 --><li ng-if="placeTags.length == 0" class="all-clientTags ng-binding ng-scope" tabindex="0">
+                            All places
+                        </li><!-- end ngIf: placeTags.length == 0 -->
+                        <!-- ngRepeat: item in placeTags -->
+                        <li class="input-holder">
+                            <angucomplete localdata="placeTagsAutocompleteList" searchfields="value" titlefield="value" pause="10" minlength="1" add-item="addPlaceTag(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeClientName" class="ng-isolate-scope"><div class="angucomplete-holder">
+    <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{'border_red': inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing a place tag" size="24">
+    <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
+    <!-- ngIf: showDropdown -->
+</div></angucomplete>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- ngIf: !isPersonalEdition --><div ng-if="!isPersonalEdition" class="ng-scope">
+                    <div class="form-text ng-binding">Visible to these reps:</div>
+                    <div class="reps rounded border">
+                        <ul class="rep-list">
+                            <!-- ngIf: reps.length == 0 --><li ng-if="reps.length == 0" class="all-reps ng-binding ng-scope" tabindex="0">
+                                All reps
+                            </li><!-- end ngIf: reps.length == 0 -->
+                            <!-- ngRepeat: item in reps -->
+                            <li class="input-holder">
+                                <angucomplete localdata="repsAutocompleteList" searchfields="Naziv" titlefield="Naziv" pause="10" minlength="1" add-item="addRep(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeRepName" class="ng-isolate-scope"><div class="angucomplete-holder">
+    <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{'border_red': inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing rep's name" size="23">
+    <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
+    <!-- ngIf: showDropdown -->
+</div></angucomplete>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- end ngIf: !isPersonalEdition -->
+                <div class="clear-fix"></div>
+            </div>
+
+            <div id="custFieldEditor" class="form_container clearleft relatived">
+                <div class="form-editor__title ng-binding">
+                    Questions &amp; input fields
+                </div>
+                <div ng-show="data.FormCount > 0" class="form-container__formcountalert ng-binding ng-hide" ng-bind-html="dictionary.FormChangeWarning">This form has been submitted 0 time(s). <br>If you change the structure of the questions all previously submitted forms won't be editable.</div>
+                <ul id="input-questions" ui-sortable="sortableOptions" ng-model="data.inputRows" class="obrazac-container ui-sortable ng-pristine ng-untouched ng-valid ng-isolate-scope">
+                    <!-- ngRepeat: item in data.inputRows --><li class="the-row sortable ng-scope ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-6b4fe880-4d74-455c-88f8-d8de05ad2b8c" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+
+    <div class="form-row form-grid">
+
+        <span class="mover form-control"></span>
+
+        <span class="type  icon-text" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
+
+        <span class="input">
+
+            <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
+        
+        </span>
+        
+        <span ng-show="item.datatype != 8" class="switch row-switch">
+            
+            <label class="ng-binding">
+
+                Mandatory
+
+                <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
+
+            </label>
+
+        </span>
+
+        <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
+
+    </div>
+
+    <!-- ngIf: item.datatype == 2 && entity == 'form' -->
+
+    <!-- ngIf: item.datatype == 3 -->
+
+</li><!-- end ngRepeat: item in data.inputRows -->
+                </ul>
+
+                <span class="addField secondary-button rounded add ng-binding" ng-click="addNewField()" title="Add new field to this form">
+                    Add question
+                </span>
+
+                <!-- ngRepeat: item in questionGroups -->
+
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="form-editor__alerts-container ng-hide" ng-show="data.IDUniDocZag">
+
+                <div class="form-editor__title ng-binding">Alerts</div>
+
+                <div class="form-editor__alert-description ng-binding" ng-show="formAlerts.length === 0">Here you can define alerts based on certain answers from form question. If answer match desired criteria, you'll get alert on your email!</div>
+
+                <!-- ngRepeat: alert in formAlerts -->
+
+                <button id="create-alert" class="form-editor__create-alert-button ng-binding" ng-show="showCreateAlertButton" ng-click="createAlertTrigger()">Create alert</button>
+
+            </div>
+
+        </div>
+
+    </div><!-- end ngIf: pageLoaded -->
+
+</div>
+
+<div id="question-options" class="toolbar-icons ng-scope ng-hide" ng-hide="true">
+    <a href="#" data-type="0" class="ng-binding">
+        <i class="icon-text"></i>
+        Short text
+    </a>
+    <a href="#" data-type="1" class="ng-binding">
+        <i class="icon-longtext"></i> 
+        Long text
+    </a>
+    <a href="#" data-type="4" class="ng-binding">
+        <i class="icon-numeric"></i> 
+        Numeric
+    </a>
+    <a href="#" data-type="2" class="ng-binding">
+        <i class="icon-boolean"></i> 
+        Yes/No
+    </a>
+    <a href="#" data-type="3" class="ng-binding">
+        <i class="icon-selection"></i> 
+        Selection
+    </a>
+    <!-- ngIf: usesPhotos --><a href="#" data-type="6" ng-if="usesPhotos" class="ng-binding ng-scope">
+        <i class="icon-form-photo"></i>
+        Photo
+    </a><!-- end ngIf: usesPhotos -->
+    <a href="#" data-type="7" class="ng-binding">
+        <i class="icon-date"></i>
+        Date
+    </a>
+    <a href="#" data-type="8" class="ng-binding">
+        <i class="icon-header"></i>
+        Section header
+    </a>
+    <a href="#" data-type="9" class="ng-binding">
+        <i class="icon-form-barcode"></i>
+        Barcode
+    </a>
+    <!-- ngIf: usesProducts --><a href="#" data-type="10" ng-if="usesProducts" class="ng-binding ng-scope">
+        <i class="icon icon-product"></i>
+        Product
+    </a><!-- end ngIf: usesProducts -->
+</div></div>
+            </div>
+            <footer></footer>
+
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div></div>

@@ -1,0 +1,141 @@
+<!-- <div class="login-page animate">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <img src="32154689745/../img/Logo.png" height="150" width="150" class="user-avatar" />
+            <h1>Growthpool</h1>
+            <form name="loginForm" ng-hide="forgotPass">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="email" ng-model="loginData.email" class="form-control input-underline input-lg" name="email" placeholder="Email" required>
+                        <div ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="padding-right">Invalid Email</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" ng-model="loginData.password" class="form-control input-underline input-lg" name="password" placeholder="Password" required>
+                        <div ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="padding-right">Password is required</div>
+                        <div ng-click="forgotPass=!forgotPass" class="pull-right margin-top cursor-pointer">Forgot Password</div>
+                    </div>
+                </div>
+                <div class="text-center padding-bottom">{{ message }}</div>
+                <button ng-disabled="loginForm.$invalid" class="btn rounded-btn" ng-click="doLogin(loginData);"> Log in </button>
+            </form>
+            <div ng-show="forgotPass">
+              <div class="text-center padding-bottom">{{ forgotMessage }}</div>
+              <button class="btn rounded-btn" ng-click="sendPassword();"> Send Password </button>
+            </div>
+        </div>	
+    </div>
+</div>
+ -->
+
+ <div id="main">
+
+    <form action="/Account/Logon" method="post">
+        <input data-val="true" data-val-number="The field Timeoffset must be a number." data-val-required="The Timeoffset field is required." id="Timeoffset" name="Timeoffset" type="hidden" value="-330">
+        <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="/">
+        <div id="dialog-box" class="hidden"></div>
+        <div id="confirm-box" class="hidden"></div>
+        <div id="fade-message-box" class="hidden"></div>
+        <div class="horizon">
+            <div class="login_wrapper">
+                <a href="http://www.repsly.com"><h1 id="repsly-logo" class="logo"></h1></a>
+                <div class="login_content clearfix">
+                    <div class="box-header">
+                        <div class="left">
+
+                            <select id="Language" style="color: black;">
+                                <option value="en-US">English</option>
+                                <option value="es-ES">Español</option>
+
+                                <option value="ru-RU">Pусский</option>
+
+                                <option value="hr-HR">Hrvatski</option>
+
+                                <option value="cs-CZ">Ceski</option>
+
+                                <option value="pt-PT">Portuguęs</option>
+
+                                <option value="fr-FR">Français</option>
+
+                                <option value="de-DE">Deutsch</option>
+                            </select>
+
+                            <!--<script type="text/javascript">
+                                $(function() {
+                                    if (getCookie("Culture") == undefined) {
+                                        setCookie("Culture", "en-US", 30);
+                                        $('#Language').val('en-US');
+                                    }
+                                });
+                            </script>-->
+                        </div>
+                    </div>
+
+                    <div class="login_bg">
+                        <div class="login_left">
+                            <div class="row_container">
+                               <div class="form-group">
+                                  <label for="username" class="control-label">Username</label>
+                                  <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                                  <span class="help-block"></span>
+                              </div>
+                              
+                            </div>
+
+                            <div class="row_container">
+                                <div class="form-group">
+                                  <label for="password" class="control-label">Password</label>
+                                  <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                  <span class="help-block"></span>
+                               </div>
+                            </div>
+
+                            <div class="row_container action_container">
+                                <input id="loginButton" type="submit" value="Log in" class="login_btn rounded" ui-sref="app.product" >
+                                <a id="forgotPassword" >Forgot your password?</a>
+                            </div>
+                        </div>
+                        <div class="login_right" style="    margin-left: 20px;">
+                            <span class="or">or</span>
+                            <div class="intuit-sign-in">
+
+                                <ipp:login href="https://user.repsly.com/Account/LogOnWithIntuit?fromIntuit=false" type="vertical"><a href="https://user.repsly.com/Account/LogOnWithIntuit?fromIntuit=false" class="intuitPlatformLoginButtonVertical">Sign in with Intuit</a></ipp:login>
+
+                            </div>
+                        </div>
+                        <div class="login_footer" style="clear:both;">
+                            <span>
+                            Don't have an account?
+                                <a href="https://www.repsly.com/free-trial-registration-choose-your-industry" id="rn-registerHere-link">Register here!</a>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="logos clearfix">
+
+                        <div class="comodoSeal black">
+                            <img src="./images/RapidSSL_SEAL-90x50.gif" />
+                        </div>
+                    </div>
+
+                    <div class="menu_pointer">
+                        <!-- page menu pointer -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="resetPasswordBox" class="hidden">
+
+        <div class="dialog-title">Forgotten password</div>
+        <div class="dialog-content">Please enter your e-mail address.</div>
+        <div>
+            <form action="/Account/SendPassword" method="post" name="SendPassword">
+                <input id="inEmail" placeholder="Type your email" name="inEmail" style="width:240px" type="text">
+            </form>
+        </div>
+    </div>
+
+    <div id="IE7User" class="hidden browser-warning unsupported">
+        <p>You are using version of Internet Explorer that is not supported by Repsly. Please upgrade you Internet Explorer to a newer version.</p>
+        <p><strong>Thank you for using Repsly!</strong></p>
+    </div>
+</div>

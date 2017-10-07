@@ -1,0 +1,409 @@
+<div class="top-line">
+    <div id="notifications-controller" class="ng-scope">
+        <div cg-busy="notificationsPromise" class="cg-busy-loader">
+            <div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope"></div>
+            <div class="cg-busy cg-busy-animation ng-hide ng-scope">
+                <div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div>
+            </div>
+        </div>
+
+        <ul class="top-line-menu clearfix">
+            <li class="search liner">
+                <input type="text" id="GlobalSearch" title="Use this &quot;Global Search&quot; to quickly access particular representative or place data." placeholder="Quick find" class="rounded border">
+                <span class="input-loader" style="display: none;"></span>
+                <div id="GlobalSearchResults" class="ui-corner-bottom ui-corner-tl" style="display: none;">
+                    <span class="arrow"></span>
+                    <ul>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="border-line right liner end">&nbsp;</li>
+            <li class="learn-menu submenu-holder liner">
+                <span id="LearnMoreTrigger" class="submenu-trigger rounded" title="Learn more"></span>
+                <div class="submenu learnmore_container rounded" style="display: none;">
+                    <div class="learnmore_content clearfix">
+                        <ul class="content-list">
+                            <li class="content-list-leaf first"><span class="explore-page button rounded border">Explore this page</span></li>
+                            <li class="content-list-leaf">
+                                <h4>Tutorials, tips &amp; tricks</h4>
+                                <ul class="links">
+                                    <li>
+                                        <a href="#" class="connect-device"></a>
+                                    </li>
+                                    <li><a target="_blank">Web app "Tips &amp; Tricks"</a></li>
+                                    <li><a target="_blank">Mobile app "Tips &amp; Tricks"</a></li>
+                                </ul>
+                            </li>
+                            <li class="content-list-leaf">
+                                <h4>Product News</h4>
+                                <ul class="links">
+                                    <li><a target="_blank" class="get-coaching-session-list">Product News And Updates Blog</a></li>
+                                </ul>
+                            </li>
+                            <li class="content-list-leaf">
+                                <h4>Contact us</h4>
+                                <ul class="links">
+                                    <li><a target="_blank" class="get-coaching-session-list">Sign up for a Coaching Session</a></li>
+                                </ul>
+                            </li>
+                            <li class="content-list-leaf">
+                                <h4>Watch a video</h4>
+                                <ul class="links">
+                                    <li><a id="TourTrigger" target="_blank" class="menu-trigger rounded">Video Support Center</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_pointer">
+                    </div>
+                </div>
+            </li>
+            <li class="personal-menu submenu-holder liner">
+                <span id="UserName" class="submenu-trigger">Glen Bruce<span class="icon"></span></span>
+                <div class="submenu" style="display: none;">
+                    <span class="menu_pointer"></span>
+                    <ul>
+                        <li class="menu_item rounded my-profile" title="Manage your profile name, email and phone.">
+                            <a href="/Profile" id="my-profile" class=""><span class="icon icon-profile"></span>My profile</a></li>
+                        <li class="menu_separator"></li>
+                        <li class="menu_item rounded change-password" title="Change your password.">
+                            <a href="javascript:;" id="ChangePasswordTrigger" class="">
+                                <span class="icon icon-changepassword"></span>Change password</a>
+                        </li>
+                        <li class="menu_separator"></li>
+                        <li class="menu_item rounded logout">
+                            <a href="/Account/Logoff" id="logout" class=""><span class="icon icon-logout"></span>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="submenu-holder liner send-message-trigger" ng-click="openNewMessagePopupTrigger()">
+                <i class="icon icon-messages"></i>
+            </li>
+            <li class="notifications-menu submenu-holder liner notifications-area" style="opacity: 1;">
+                <div id="notifications-bell-container" class="stretch" ng-click="showHideNotifications()">
+                    <div id="notifications-bell" class="notifications-bell" title="Notifications"></div>
+                    <div id="notifications-badge" class="notifications-badge ng-binding ng-hide" ng-bind="badgeNum" ng-show="badgeNum > 0">0</div>
+                </div>
+                <div class="submenu-notifications notifications-container ng-hide" ng-show="show">
+                    <span class="menu_pointer"></span>
+                    <div id="notifications-list-container">
+                        <ul id="notifications-list" tabindex="0" style="max-height: 366px; overflow: hidden; outline: none;">
+
+                            <li ng-show="notifications.length == 0" class="noticifation-item ng-hide">
+                                <div class="no-notifications-message">You have no notifications</div>
+                            </li>
+
+                            <!-- ngRepeat: item in notifications -->
+                            <li ng-show="notifications.length > 0" ng-click="openModal(item)" data-noticifation-item="" class="noticifation-item clearfix pointer ng-scope ng-isolate-scope" ng-repeat="item in notifications" content="item">
+                                <div class="notification-template-container  true" generation="2017-08-22T06:13:52">
+                                    <div class="notification-avatar">
+                                        <!-- ngIf: content.Avatar != null --><img class="rounded avatar ng-scope" >
+                                        <!-- end ngIf: content.Avatar != null -->
+                                        <!-- ngIf: content.Avatar == null -->
+                                    </div>
+
+                                    <div class="notification-content">
+
+                                        <!-- ngIf: content.NotificationType == 'comment' -->
+
+                                        <!-- ngIf: content.NotificationType == 'post' -->
+                                        <div ng-if="content.NotificationType == 'post'" class="ng-scope">
+                                            <span class="notification-link">
+                <notificationlink class="ng-binding">Glen- Sales Representative</notificationlink>
+            </span>
+                                            <!-- ngIf: content.FeedItemTypeID == 6 -->
+                                            <!-- ngIf: content.FeedItemTypeID != 6 --><span ng-if="content.FeedItemTypeID != 6" class="ng-binding ng-scope">posted a message.</span>
+                                            <!-- end ngIf: content.FeedItemTypeID != 6 -->
+                                        </div>
+                                        <!-- end ngIf: content.NotificationType == 'post' -->
+
+                                    </div>
+
+                                    <div class="notification-timestamp">
+                                        <p class="ng-binding">8/22/2017</p>
+                                        <p class="ng-binding">6:13 AM</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!-- end ngRepeat: item in notifications -->
+                            <li ng-show="notifications.length > 0" ng-click="openModal(item)" data-noticifation-item="" class="noticifation-item clearfix pointer ng-scope ng-isolate-scope" ng-repeat="item in notifications" content="item">
+                                <div class="notification-template-container  true" generation="2017-08-14T16:30:14">
+                                    <div class="notification-avatar">
+                                        <!-- ngIf: content.Avatar != null --><img class="rounded avatar ng-scope" >
+                                        <!-- end ngIf: content.Avatar != null -->
+                                        <!-- ngIf: content.Avatar == null -->
+                                    </div>
+
+                                    <div class="notification-content">
+
+                                        <!-- ngIf: content.NotificationType == 'comment' -->
+
+                                        <!-- ngIf: content.NotificationType == 'post' -->
+                                        <div ng-if="content.NotificationType == 'post'" class="ng-scope">
+                                            <span class="notification-link">
+                <notificationlink class="ng-binding">xyz</notificationlink>
+            </span>
+                                            <!-- ngIf: content.FeedItemTypeID == 6 -->
+                                            <!-- ngIf: content.FeedItemTypeID != 6 --><span ng-if="content.FeedItemTypeID != 6" class="ng-binding ng-scope">posted a message.</span>
+                                            <!-- end ngIf: content.FeedItemTypeID != 6 -->
+                                        </div>
+                                        <!-- end ngIf: content.NotificationType == 'post' -->
+
+                                    </div>
+
+                                    <div class="notification-timestamp">
+                                        <p class="ng-binding">8/14/2017</p>
+                                        <p class="ng-binding">4:30 PM</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!-- end ngRepeat: item in notifications -->
+                            <li ng-show="notifications.length > 0" ng-click="openModal(item)" data-noticifation-item="" class="noticifation-item clearfix pointer ng-scope ng-isolate-scope" ng-repeat="item in notifications" content="item">
+                                <div class="notification-template-container  true" generation="2017-08-11T22:05:21">
+                                    <div class="notification-avatar">
+                                        <!-- ngIf: content.Avatar != null --><img class="rounded avatar ng-scope" >
+                                        <!-- end ngIf: content.Avatar != null -->
+                                        <!-- ngIf: content.Avatar == null -->
+                                    </div>
+
+                                    <div class="notification-content">
+
+                                        <!-- ngIf: content.NotificationType == 'comment' -->
+                                        <div ng-if="content.NotificationType == 'comment'" class="ng-binding ng-scope">
+                                            <span class="notification-link">
+                <notificationlink class="ng-binding">Glen- Sales Representative</notificationlink>
+            </span> commented on Glen- Sales Representative's
+                                            <!-- ngIf: content.FeedItemTypeID == 1 || content.FeedItemTypeID == 7 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 2 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 3 --><span ng-if="content.FeedItemTypeID == 3" class="ng-binding ng-scope"> Post</span>
+                                            <!-- end ngIf: content.FeedItemTypeID == 3 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 6 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 4 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 5 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 1 -->
+                                        </div>
+                                        <!-- end ngIf: content.NotificationType == 'comment' -->
+
+                                        <!-- ngIf: content.NotificationType == 'post' -->
+
+                                    </div>
+
+                                    <div class="notification-timestamp">
+                                        <p class="ng-binding">8/11/2017</p>
+                                        <p class="ng-binding">10:05 PM</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!-- end ngRepeat: item in notifications -->
+                            <li ng-show="notifications.length > 0" ng-click="openModal(item)" data-noticifation-item="" class="noticifation-item clearfix pointer ng-scope ng-isolate-scope" ng-repeat="item in notifications" content="item">
+                                <div class="notification-template-container  true" generation="2017-08-11T14:49:18">
+                                    <div class="notification-avatar">
+                                        <!-- ngIf: content.Avatar != null --><img class="rounded avatar ng-scope" >
+                                        <!-- end ngIf: content.Avatar != null -->
+                                        <!-- ngIf: content.Avatar == null -->
+                                    </div>
+
+                                    <div class="notification-content">
+
+                                        <!-- ngIf: content.NotificationType == 'comment' -->
+                                        <div ng-if="content.NotificationType == 'comment'" class="ng-binding ng-scope">
+                                            <span class="notification-link">
+                <notificationlink class="ng-binding">Glen- Sales Representative</notificationlink>
+            </span> commented on Glen- Sales Representative's
+                                            <!-- ngIf: content.FeedItemTypeID == 1 || content.FeedItemTypeID == 7 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 2 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 3 --><span ng-if="content.FeedItemTypeID == 3" class="ng-binding ng-scope"> Post</span>
+                                            <!-- end ngIf: content.FeedItemTypeID == 3 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 6 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 4 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 5 -->
+                                            <!-- ngIf: content.FeedItemTypeID == 1 -->
+                                        </div>
+                                        <!-- end ngIf: content.NotificationType == 'comment' -->
+
+                                        <!-- ngIf: content.NotificationType == 'post' -->
+
+                                    </div>
+
+                                    <div class="notification-timestamp">
+                                        <p class="ng-binding">8/11/2017</p>
+                                        <p class="ng-binding">2:49 PM</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!-- end ngRepeat: item in notifications -->
+                            <li ng-show="notifications.length > 0" ng-click="openModal(item)" data-noticifation-item="" class="noticifation-item clearfix pointer ng-scope ng-isolate-scope" ng-repeat="item in notifications" content="item">
+                                <div class="notification-template-container  true" generation="2017-08-11T14:46:30">
+                                    <div class="notification-avatar">
+                                       <img class="rounded avatar ng-scope">
+                                    </div>
+
+                                    <div class="notification-content">
+                                        <div ng-if="content.NotificationType == 'post'" class="ng-scope">
+                                            <span class="notification-link">
+                                                <notificationlink class="ng-binding">Glen- Sales Representative</notificationlink>
+                                            </span>
+                                            <!-- ngIf: content.FeedItemTypeID == 6 -->
+                                            <!-- ngIf: content.FeedItemTypeID != 6 -->
+                                            <span ng-if="content.FeedItemTypeID != 6" class="ng-binding ng-scope">posted a message.</span>
+                                            <!-- end ngIf: content.FeedItemTypeID != 6 -->
+                                        </div>
+                                        <!-- end ngIf: content.NotificationType == 'post' -->
+
+                                    </div>
+
+                                    <div class="notification-timestamp">
+                                        <p class="ng-binding">8/11/2017</p>
+                                        <p class="ng-binding">2:46 PM</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!-- end ngRepeat: item in notifications -->
+
+                            <li ng-show="viewMore" class="more-notifications-li">
+                                <span class="action view-more notification-link pointer">
+                            <span class="view-more-notifications" ng-hide="loadingNotifications" ng-click="getMoreNotifications()">View more</span>
+                                <div class="notifications-spinner ng-hide" ng-show="loadingNotifications"></div>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ascrail2000" class="nicescroll-rails nicescroll-rails-vr" style="width: 10px; z-index: 1000; cursor: default; position: absolute; top: 0px; left: -10px; height: 0px; opacity: 1; display: none;">
+                        <div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 8px; height: 0px; background-color: rgb(0, 165, 156); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div>
+                    </div>
+                    <div id="ascrail2000-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 10px; z-index: 1000; top: -10px; left: 0px; position: absolute; opacity: 1; cursor: default; display: none;">
+                        <div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 8px; width: 0px; background-color: rgb(0, 165, 156); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="settings-menu submenu-holder liner" ng-click="hideNotifications()"><span id="SettingsTrigger" class="submenu-trigger" title="Manage account">
+                <span class="icon"></span></span>
+                <div class="submenu manage" style="display: none;">
+                    <span class="menu_pointer"></span>
+                    <ul>
+                          <li class="menu_item rounded products" title="Define products that you use in your organization">
+                              <a href="/Product" id="more-settings-products"><span class="icon icon-product"></span>
+                                                          Products</a>
+                              <img id="ProductImportBadge" class="product-import-icon" src="/content2/img/import-badge.png">
+                              <img id="ProductLoaderBadge" class="product-import-icon" src="/content2/img/input-loader3.gif">
+                          </li>
+                          <li class="menu_separator"></li>
+                          <li class="menu_item rounded billboard" title="Pin important news and announcements on company billboard.">
+                              <a href="/BillboardItem" id="more-settings-billboard">
+                                  <span class="icon icon-billboard"></span>Billboard
+                              </a>
+                          </li>
+                          <li class="menu_separator"></li>
+                          <li class="menu_item rounded pricescan" title="Use retail audits to research your market.">
+                              <a href="/Pricescan" id="more-settings-audits"><span class="icon icon-pricescan"></span>
+                                                          Retail audits</a> </li>
+                          <li class="menu_separator"></li>
+                          <li class="menu_item rounded integrations" title="Integrations(key)">
+                              <a href="/Manage/Integrations" id="more-settings-audits">
+                                  <span class="icon icon-applicationsettings"></span> Integrations
+                              </a>
+                          </li>
+                          <li class="menu_separator double"></li>
+                          <li class="menu_item rounded more_settings export_import" title="Export and import your activities and documents">
+                              <a href="/Manage/Export" id="rn-more-settings-personal">
+                                  <span class="icon icon-download"></span> Export and Import
+                              </a>
+                          </li>
+
+                          <li class="menu_separator double"></li>
+
+                          <li class="menu_item rounded more_settings" title="Manage your account and Repsly settings">
+                              <a href="/Manage" id="rn-more-settings"><span class="icon icon-settings"></span>
+                                                      Settings...</a> </li>
+                      </ul>
+                </div>
+            </li>
+            <li class="border-line left liner start">&nbsp;</li>
+        </ul>
+
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <aside id="sidebar" style="width: 8.33333%;">
+        <div class="sidenav-outer">
+              <div class="menu-body">
+                  
+              </div>
+        </div>
+    </aside>
+  </div>
+  <div class="col-md-10" style="margin-top: 50px;">
+
+  <a id="repsly-logo" href="/Home/Index" title="Use home page to view activities or find particular event, as well as use activity-based reports.">
+            <h1 class="logo"><span>Repsly</span></h1>
+
+        </a>
+
+        <ul class="main_menu">
+            <li title="Use home page to view activities or find particular event, as well as use activity-based reports." class="menu-item menu-activities">
+                <a id="rn-top-menu-activities" class="top-link activity-link" ui-sref="app.orders" >Activities</a><!-- href="/Home/Index" -->
+                <span id="menu_pointer" class="hidden menu_pointer"></span>
+            </li>
+                <li title="Manage your team of field representatives" class="menu-item menu-representative">
+                    <a id="rn-top-menu-reps" class="top-link" ui-sref="app.userinvestment" >Representatives</a><!-- href="/Representative" -->
+                    <span id="menu_pointer" class="menu_pointer"></span>
+                </li>
+            <li class=" menu-item menu-client" title="Manage list of your places and easily analyze activities and trends.">
+                <a id="rn-top-menu-clients" class="top-link" ui-sref="app.product" >Places</a><!-- href="/Client" -->
+                <img id="ClientImportBadge" src="/content2/img/import-badge.png">
+                <img id="ClientLoaderBadge" src="/content2/img/input-loader3.gif">
+                <span id="menu_pointer" class="hidden menu_pointer"></span>
+            </li>
+
+                <li class=" menu-item menu-form" title="Use forms to keep record of your reps activities.">
+                    <a id="rn-top-menu-forms" class="top-link" ui-sref="app.feedback">Forms</a> <!-- href="/Form" -->
+                    <span id="menu_pointer" class="hidden menu_pointer"></span>
+                </li>
+
+                <li class=" menu-item menu-schedule" title="Schedule">
+                    <a id="rn-top-menu-schedule" class="top-link" ui-sref="app.updateCategory" >Schedule</a><!-- href="/VisitSchedule" -->
+                    <img id="VisitScheduleImportBadge" src="/Content/img/import-badge.png">
+                    <img id="VisitScheduleLoaderBadge" src="/Content/img/input-loader3.gif">
+                    <span id="menu_pointer" class="hidden menu_pointer"></span>
+                </li>
+
+            <li class="last menu-item menu-dashboard" title="Reports">
+                <a id="rn-top-menu-reports" class="top-link" ui-sref="app.addCategory" >Reports</a><!-- href="/Reports" -->
+                <span id="menu_pointer" class="hidden menu_pointer reports"></span>
+                <span id="menu_pointer" class="hidden menu_pointer dashboard-coverage"></span>
+            </li>
+        </ul>
+
+    <div ui-view="container"></div>
+    <div ng-show='loadCompetition'>
+      <div class="loading_div">
+       <!--  <img src="32154689745/../img/loader.svg" style="width: 40% !important;" /> -->
+      </div>
+    </div>
+    <!--<div style="margin-top:30%;" us-spinner="{radius:30, width:8, length: 16}"></div>-->
+  </div>
+
+  <div class="col-md-1">
+    <aside id="sidebar" style="width: 8.33333%;">
+    <div class="sidenav-outer">
+          <div class="menu-body">
+              
+          </div>
+      </div>
+    </aside>
+  </div>
+</div>

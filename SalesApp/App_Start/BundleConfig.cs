@@ -27,7 +27,32 @@ namespace SalesApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/all.css",
+                      "~/Content/angular-ui-tree.min.css",
+                      "~/Content/custom.css",
+                      "~/Content/ngDialog-theme-default.min.css",
+                      "~/Content/ngDialog.min.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/ui-bootstrap-csp.css"));
+            bundles.Add(new ScriptBundle("~/bundles/TechnocratWeb").Include(
+                     "~/Scripts/TechnocratWeb/js/app.js",
+                      "~/Scripts/TechnocratWeb/js/service.js",
+                     "~/Scripts/TechnocratWeb/js/authService.js",
+                     "~/Scripts/TechnocratWeb/js/controllers.js",
+                     "~/Scripts/TechnocratWeb/js/feedback.js",
+                     "~/Scripts/TechnocratWeb/js/filter.js",
+                     "~/Scripts/TechnocratWeb/js/login.js",
+                     "~/Scripts/TechnocratWeb/js/orders.js",
+                     "~/Scripts/TechnocratWeb/js/product.js",
+                     "~/Scripts/TechnocratWeb/js/productDetail.js",
+                     "~/Scripts/TechnocratWeb/js/requestService.js",
+                     "~/Scripts/TechnocratWeb/js/updateProduct.js"
+                     ));
+            bundles.Add(new ScriptBundle("~/bundles/lib").Include(
+                    "~/Scripts/TechnocratWeb/lib/ng-file-upload.min.js",
+                    "~/Scripts/TechnocratWeb/lib/ngDialog.min.js"
+                    ));
         }
     }
 }
