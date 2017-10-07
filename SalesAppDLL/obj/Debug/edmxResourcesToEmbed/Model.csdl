@@ -67,6 +67,15 @@
       <End Role="User" EntitySet="Users" />
       <End Role="FormsVisibleOnTheseRep" EntitySet="FormsVisibleOnTheseReps" />
     </AssociationSet>
+    <EntitySet Name="UseActivitiesComments" EntityType="SalesAppModel.UseActivitiesComment" />
+    <AssociationSet Name="FK_UseActivitiesComments_UsersActivities" Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities">
+      <End Role="UsersActivity" EntitySet="UsersActivities" />
+      <End Role="UseActivitiesComment" EntitySet="UseActivitiesComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UseActivitiesComments_Users" Association="SalesAppModel.FK_UseActivitiesComments_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UseActivitiesComment" EntitySet="UseActivitiesComments" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ActivitiesType">
     <Key>
@@ -168,6 +177,7 @@
     <NavigationProperty Name="NotesActivities" Relationship="SalesAppModel.FK_Notes_Users" FromRole="User" ToRole="NotesActivity" />
     <NavigationProperty Name="PhotoActivities" Relationship="SalesAppModel.FK_PhotoActivities_Users" FromRole="User" ToRole="PhotoActivity" />
     <NavigationProperty Name="FormsVisibleOnTheseReps" Relationship="SalesAppModel.FK_FormsVisibleOnTheseReps_Users" FromRole="User" ToRole="FormsVisibleOnTheseRep" />
+    <NavigationProperty Name="UseActivitiesComments" Relationship="SalesAppModel.FK_UseActivitiesComments_Users" FromRole="User" ToRole="UseActivitiesComment" />
   </EntityType>
   <Association Name="FK_Users_CompanyDetails">
     <End Type="SalesAppModel.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
@@ -247,6 +257,7 @@
     <Property Name="PlaceId" Type="Int32" />
     <NavigationProperty Name="ActivitiesType" Relationship="SalesAppModel.FK_UsersActivities_ActivitiesType" FromRole="UsersActivity" ToRole="ActivitiesType" />
     <NavigationProperty Name="User" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="UsersActivity" ToRole="User" />
+    <NavigationProperty Name="UseActivitiesComments" Relationship="SalesAppModel.FK_UseActivitiesComments_UsersActivities" FromRole="UsersActivity" ToRole="UseActivitiesComment" />
   </EntityType>
   <Association Name="FK_UsersActivities_ActivitiesType">
     <End Type="SalesAppModel.ActivitiesType" Role="ActivitiesType" Multiplicity="1" />
@@ -426,6 +437,43 @@
       </Principal>
       <Dependent Role="FormsVisibleOnTheseRep">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UseActivitiesComment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersActivitiesId" Type="Int32" />
+    <Property Name="UserComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UsersActivity" Relationship="SalesAppModel.FK_UseActivitiesComments_UsersActivities" FromRole="UseActivitiesComment" ToRole="UsersActivity" />
+    <Property Name="CommentByUserId" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="SalesAppModel.FK_UseActivitiesComments_Users" FromRole="UseActivitiesComment" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_UseActivitiesComments_UsersActivities">
+    <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="0..1" />
+    <End Type="SalesAppModel.UseActivitiesComment" Role="UseActivitiesComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersActivity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UseActivitiesComment">
+        <PropertyRef Name="UsersActivitiesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UseActivitiesComments_Users">
+    <End Type="SalesAppModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="SalesAppModel.UseActivitiesComment" Role="UseActivitiesComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UseActivitiesComment">
+        <PropertyRef Name="CommentByUserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

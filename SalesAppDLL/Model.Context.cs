@@ -42,6 +42,7 @@ namespace SalesAppDLL
         public virtual DbSet<NotesActivity> NotesActivities { get; set; }
         public virtual DbSet<PhotoActivity> PhotoActivities { get; set; }
         public virtual DbSet<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }
+        public virtual DbSet<UseActivitiesComment> UseActivitiesComments { get; set; }
     
         public virtual ObjectResult<GetAllPlacesInfo_Result> GetAllPlacesInfo(Nullable<int> userId)
         {

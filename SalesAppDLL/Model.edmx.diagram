@@ -32,6 +32,9 @@
         <EntityTypeShape EntityType="SalesAppModel.FormsVisibleOnTheseRep" Width="1.5" PointX="13" PointY="2.375" />
         <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_CustomForms" />
         <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_Users" />
+        <EntityTypeShape EntityType="SalesAppModel.UseActivitiesComment" Width="2.875" PointX="9.25" PointY="13.375" />
+        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities" />
+        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

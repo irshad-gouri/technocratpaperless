@@ -319,5 +319,221 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+
+        public AddCustomFormsResponse AddUserActivityComments(AddUserActivityComments userActComments)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (string.IsNullOrEmpty(userActComments.UserComment))
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "User comment can't be blank!";
+                }
+                else if (userActComments.UsersActivitiesId == null || userActComments.UsersActivitiesId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Please select UserActivity!";
+                }
+                else if (userActComments.UsersActivitiesId == 0)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Invalid user adding comment!";
+                }
+                else
+                {
+                    // TODO: Add values in  CustomForm table.
+                    UseActivitiesComment objACTComm = new UseActivitiesComment();
+                    objACTComm.UsersActivitiesId = userActComments.UsersActivitiesId;
+                    objACTComm.UserComment = userActComments.UserComment;
+                    objACTComm.CreatedDate = System.DateTime.Now;
+                    objACTComm.ModifiedDate = System.DateTime.Now;
+                    objACTComm.CommentByUserId = userActComments.CommentByUserId;
+                    // TODO: Perform on db
+                    DbContext.UseActivitiesComments.Add(objACTComm);
+                    DbContext.SaveChanges();
+
+                    objResp.Status = "Success";
+                    objResp.Message = "User Activity Comments Successfully Added!";
+                }
+            }
+            catch (Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+            }
+            return objResp;
+        }
+
+        public object GetUsersActivitiesForDashBoard(int userId)
+        {
+            List<UserActivityDashBoardList> objActDashList = new List<UserActivityDashBoardList>();
+            try
+            {
+
+                var getUserDetail = (from user in DbContext.Users
+                                     where user.Id == userId
+                                     select user).FirstOrDefault();
+
+                if (getUserDetail.RoleId == 1)
+                {
+
+                    var getUserIdList = (from uactlist in DbContext.Users
+                                         where uactlist.CreatedById == userId
+                                         select uactlist.Id).ToList();
+
+                    if (getUserIdList != null)
+                        getUserIdList.Add(userId);
+                    else
+                    {
+                        getUserIdList = new List<int>();
+                        getUserIdList.Add(userId);
+                    }
+
+                    foreach (var getUItem in getUserIdList)
+                    {
+
+                        var getUserActList = (from uactlist in DbContext.UsersActivities
+                                              where uactlist.UserId == getUItem
+                                              select uactlist).ToList();
+
+
+
+                        UserActivityDashBoardList objDB;
+                        foreach (var item in getUserActList)
+                        {
+                            objDB = new UserActivityDashBoardList();
+                            objDB.Id = item.Id;
+                            objDB.ActivityId = item.ActivityId;
+                            objDB.Activity_Type = (from actType in DbContext.ActivitiesTypes
+                                                   where actType.Id == item.ActivityId
+                                                   select new Activities_Type { Id = actType.Id, Description = actType.Description, Type = actType.Type }).FirstOrDefault();
+
+                            objDB.UserId = item.UserId;
+
+                            objDB.AcivityAdded_UserDetails = (from userDtls in DbContext.Users
+                                                              join cmDtls in DbContext.CompanyDetails on userDtls.CompanyId equals cmDtls.Id
+                                                              where userDtls.Id == item.UserId
+                                                              select new User_Detail
+                                                              {
+                                                                  UserId = userDtls.Id,
+                                                                  FirstName = userDtls.FirstName,
+                                                                  LastName = userDtls.LastName,
+                                                                  Email = userDtls.Email,
+                                                                  Phone = userDtls.Phone,
+                                                                  Language = userDtls.Language,
+                                                                  Teritory = userDtls.Teritory,
+                                                                  CompanyId = userDtls.CompanyId,
+                                                                  ComplanyDetail = new Company_Detail { Id = cmDtls.Id, CompanyName = cmDtls.CompanyName, Address = cmDtls.Address, RegistrationNo = cmDtls.RegistrationNo },
+                                                                  Password = userDtls.Password,
+                                                                  Note = userDtls.Note,
+                                                                  PhotoUrl = userDtls.PhotoUrl,
+                                                                  RoleId = userDtls.RoleId,
+                                                                  //RoleName = userDtls.RoleName,
+                                                                  UserName = userDtls.UserName,
+                                                                  PostalCode = userDtls.PostalCode,
+                                                                  Country = userDtls.Country,
+                                                                  City = userDtls.City,
+                                                                  Address = userDtls.Address,
+                                                              }).FirstOrDefault();
+                            objDB.PhotoUrl = item.PhotoUrl;
+                            objDB.Note = item.Note;
+                            objDB.FormName = item.FormName;
+                            objDB.OrderCost = item.OrderCost;
+                            objDB.AuditItems = item.AuditItems;
+                            objDB.PlaceId = item.PlaceId;
+                            objDB.Place_Details = (from plsDtls in DbContext.PlacesDetails
+                                                   where plsDtls.Id == item.PlaceId
+                                                   select new Places_Detail { Id = plsDtls.Id, Name = plsDtls.Name, IsActive = plsDtls.IsActive, Address = plsDtls.Address, State = plsDtls.State, PostalCode = plsDtls.PostalCode, Country = plsDtls.Country, CountryCode = plsDtls.CountryCode, Note = plsDtls.Note, Website = plsDtls.Website, PhotoUrl = plsDtls.PhotoUrl, PlaceId = plsDtls.PlaceId, Latitude = plsDtls.Latitude, Longitude = plsDtls.Longitude, Tags = plsDtls.Tags }).FirstOrDefault();
+
+
+
+                            objActDashList.Add(objDB);
+                        }
+                    }
+                }
+                else if (getUserDetail.RoleId == 2)
+                {
+                    var getUserActList = (from uactlist in DbContext.UsersActivities
+                                          where uactlist.UserId == userId
+                                          select uactlist).ToList();
+                    UserActivityDashBoardList objDB;
+                    foreach (var item in getUserActList)
+                    {
+                        objDB = new UserActivityDashBoardList();
+                        objDB.Id = item.Id;
+                        objDB.ActivityId = item.ActivityId;
+                        objDB.Activity_Type = (from actType in DbContext.ActivitiesTypes
+                                               where actType.Id == item.ActivityId
+                                               select new Activities_Type { Id = actType.Id, Description = actType.Description, Type = actType.Type }).FirstOrDefault();
+
+
+                        objDB.UserId = item.UserId;
+
+                        objDB.AcivityAdded_UserDetails = (from userDtls in DbContext.Users
+                                                          join cmDtls in DbContext.CompanyDetails on userDtls.CompanyId equals cmDtls.Id
+                                                          where userDtls.Id == item.UserId
+                                                          select new User_Detail
+                                                          {
+                                                              UserId = userDtls.Id,
+                                                              FirstName = userDtls.FirstName,
+                                                              LastName = userDtls.LastName,
+                                                              Email = userDtls.Email,
+                                                              Phone = userDtls.Phone,
+                                                              Language = userDtls.Language,
+                                                              Teritory = userDtls.Teritory,
+                                                              CompanyId = userDtls.CompanyId,
+                                                              ComplanyDetail = new Company_Detail { Id = cmDtls.Id, CompanyName = cmDtls.CompanyName, Address = cmDtls.Address, RegistrationNo = cmDtls.RegistrationNo },
+                                                              Password = userDtls.Password,
+                                                              Note = userDtls.Note,
+                                                              PhotoUrl = userDtls.PhotoUrl,
+                                                              RoleId = userDtls.RoleId,
+                                                              //RoleName = userDtls.RoleName,
+                                                              UserName = userDtls.UserName,
+                                                              PostalCode = userDtls.PostalCode,
+                                                              Country = userDtls.Country,
+                                                              City = userDtls.City,
+                                                              Address = userDtls.Address,
+                                                          }).FirstOrDefault();
+                        objDB.PhotoUrl = item.PhotoUrl;
+                        objDB.Note = item.Note;
+                        objDB.FormName = item.FormName;
+                        objDB.OrderCost = item.OrderCost;
+                        objDB.AuditItems = item.AuditItems;
+                        objDB.PlaceId = item.PlaceId;
+                        objDB.Place_Details = (from plsDtls in DbContext.PlacesDetails
+                                               where plsDtls.Id == item.PlaceId
+                                               select new Places_Detail { Id = plsDtls.Id, Name = plsDtls.Name, IsActive = plsDtls.IsActive, Address = plsDtls.Address, State = plsDtls.State, PostalCode = plsDtls.PostalCode, Country = plsDtls.Country, CountryCode = plsDtls.CountryCode, Note = plsDtls.Note, Website = plsDtls.Website, PhotoUrl = plsDtls.PhotoUrl, PlaceId = plsDtls.PlaceId, Latitude = plsDtls.Latitude, Longitude = plsDtls.Longitude, Tags = plsDtls.Tags }).FirstOrDefault();
+
+
+                        objActDashList.Add(objDB);
+                    }
+
+
+                }
+                return objActDashList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public object GetUsersActivitiesCommentsByActivityId(int actId)
+        {
+            try
+            {
+                var getUserAct = (from userComments in DbContext.UseActivitiesComments
+                                  join userDtls in DbContext.Users on userComments.CommentByUserId equals userDtls.Id
+                                  where userComments.UsersActivitiesId == actId
+                                  select new UserComments { Id = userComments.CommentId, UserActivityId = userComments.UsersActivitiesId, UserComment = userComments.UserComment, CommentByUserId = userComments.CommentByUserId, CommentByUserName = (userDtls.FirstName + " " + userDtls.LastName), CreatedDate = userComments.CreatedDate }).ToList();
+                return getUserAct;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

@@ -132,6 +132,17 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="UseActivitiesComments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsersActivitiesId" Type="int" />
+    <Property Name="UserComment" Type="nvarchar(max)" />
+    <Property Name="CommentByUserId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="UserAssignedPlaces">
     <Key>
       <PropertyRef Name="Id" />
@@ -250,6 +261,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UseActivitiesComments_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UseActivitiesComments" Type="Self.UseActivitiesComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UseActivitiesComments">
+        <PropertyRef Name="CommentByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UseActivitiesComments_UsersActivities">
+    <End Role="UsersActivities" Type="Self.UsersActivities" Multiplicity="0..1" />
+    <End Role="UseActivitiesComments" Type="Self.UseActivitiesComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersActivities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UseActivitiesComments">
+        <PropertyRef Name="UsersActivitiesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserAssignedPlaces_PlacesDetails">
     <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="1" />
     <End Role="UserAssignedPlaces" Type="Self.UserAssignedPlaces" Multiplicity="*" />
@@ -338,6 +373,7 @@
     <EntitySet Name="PlacesDetails" EntityType="Self.PlacesDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalesAppLogInfo" EntityType="Self.SalesAppLogInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UseActivitiesComments" EntityType="Self.UseActivitiesComments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAssignedPlaces" EntityType="Self.UserAssignedPlaces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersActivities" EntityType="Self.UsersActivities" Schema="dbo" store:Type="Tables" />
@@ -364,6 +400,14 @@
     <AssociationSet Name="FK_PhotoActivities_Users" Association="Self.FK_PhotoActivities_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="PhotoActivities" EntitySet="PhotoActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UseActivitiesComments_Users" Association="Self.FK_UseActivitiesComments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UseActivitiesComments" EntitySet="UseActivitiesComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UseActivitiesComments_UsersActivities" Association="Self.FK_UseActivitiesComments_UsersActivities">
+      <End Role="UsersActivities" EntitySet="UsersActivities" />
+      <End Role="UseActivitiesComments" EntitySet="UseActivitiesComments" />
     </AssociationSet>
     <AssociationSet Name="FK_UserAssignedPlaces_PlacesDetails" Association="Self.FK_UserAssignedPlaces_PlacesDetails">
       <End Role="PlacesDetails" EntitySet="PlacesDetails" />

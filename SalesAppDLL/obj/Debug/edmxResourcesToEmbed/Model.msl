@@ -213,5 +213,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UseActivitiesComments">
+      <EntityTypeMapping TypeName="SalesAppModel.UseActivitiesComment">
+        <MappingFragment StoreEntitySet="UseActivitiesComments">
+          <ScalarProperty Name="CommentByUserId" ColumnName="CommentByUserId" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UserComment" ColumnName="UserComment" />
+          <ScalarProperty Name="UsersActivitiesId" ColumnName="UsersActivitiesId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
