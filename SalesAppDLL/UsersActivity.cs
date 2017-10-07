@@ -14,6 +14,12 @@ namespace SalesAppDLL
     
     public partial class UsersActivity
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UsersActivity()
+        {
+            this.UseActivitiesComments = new HashSet<UseActivitiesComment>();
+        }
+    
         public int Id { get; set; }
         public int ActivityId { get; set; }
         public int UserId { get; set; }
@@ -26,5 +32,7 @@ namespace SalesAppDLL
     
         public virtual ActivitiesType ActivitiesType { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UseActivitiesComment> UseActivitiesComments { get; set; }
     }
 }

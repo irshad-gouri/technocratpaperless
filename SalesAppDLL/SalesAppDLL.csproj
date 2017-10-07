@@ -59,8 +59,12 @@
     <Compile Include="CustomForm.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomModels\AddNotesActivities.cs" />
+    <Compile Include="CustomModels\AddPhotoActivities.cs" />
+    <Compile Include="CustomModels\AddUserActivityComments.cs" />
     <Compile Include="CustomModels\CustomFormsDetails.cs" />
     <Compile Include="CustomModels\PlaceDetail.cs" />
+    <Compile Include="CustomModels\UserActivityDashBoardList.cs" />
     <Compile Include="FormsAnswer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -105,6 +109,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SalesAppLogInfo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UseActivitiesComment.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

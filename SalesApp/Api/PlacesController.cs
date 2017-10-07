@@ -360,5 +360,173 @@ namespace SalesApp.Api
                 return data;
             }
         }
+
+        [HttpPost, Route("adduseractivitycomments")]
+        public ResponseData AddUserActivityComments(AddUserActivityComments userActComments)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.AddUserActivityComments(userActComments);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpGet, Route("getusersactivitiesfordashboard")]
+        public ResponseData GetUsersActivitiesForDashBoard(int userId)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetUsersActivitiesForDashBoard(userId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpGet, Route("getusersactivitiescommentsbyactivityid")]
+        public ResponseData GetUsersActivitiesCommentsByActivityId(int actId)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetUsersActivitiesCommentsByActivityId(actId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpPost, Route("addnotesactivities")]
+        public ResponseData AddNotesActivities(AddNotesActivities userActNotes)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.AddNotesActivities(userActNotes);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpPost, Route("addphotoctivities")]
+        public ResponseData AddPhotoctivities(AddPhotoActivities userActPhoto)
+        {
+
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.AddPhotoctivities(userActPhoto);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
     }
 }
