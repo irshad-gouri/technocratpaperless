@@ -1,7 +1,7 @@
 //var url_prifix = 'http://192.168.0.9:8000/';
 // var url_prifix = 'http://localhost:8000/';
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
-    'login.controllers', 'APIModule','product.controllers'])
+    'login.controllers', 'APIModule', 'product.controllers', 'form.addcustomform','feedback.controllers'])
 
 .run(function($rootScope, $state, AuthService){
     if(localStorage.getItem('isLoggedIn') === 'success'){
@@ -78,7 +78,17 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
         controller: 'OrdersCtrl'
       }
     }
-  })
+      })
+      .state('app.customforms', {
+          url: '/customforms',
+          authenticate: true,
+          views: {
+              'container': {
+                  templateUrl: './PartialViews/partials/addcustomforms.html',
+                  controller: 'addcustomformCtrl'
+              }
+          }
+      })
 
   .state('app.userinvestment', {
     url: '/userinvestment',
@@ -119,7 +129,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
     authenticate: true,
     views: {
       'container': {
-        templateUrl: 'partials/feedback.html',
+          templateUrl: './PartialViews/partials/feedback.html',
         controller: 'FeedbackCtrl'
       }
     }

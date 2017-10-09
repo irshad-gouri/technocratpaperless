@@ -120,15 +120,15 @@
         </script>
         <script type="text/javascript" src="/frontend-app/dist/js/forms.min.js?402"></script>
 
-        <div data-ng-controller="FormListController" class="ng-scope">
+        <div  class="ng-scope">
             <h1 class="page-head forms">
         <i class="icon icon-forms"></i>
         <span class="header-main" id="NazivLabel">Forms</span>
         <span class="header-sub">Use forms to keep record of your reps activities.</span>
     </h1>
             <div class="actions with_menu">
-                <a id="lnkCreate" class="button_create master-action rounded" ng-click="open()">
-                    <i class="icon icon-plus"></i>New formdddddddd
+                <a id="lnkCreate" class="button_create master-action rounded" ui-sref="app.customforms">
+                    <i class="icon icon-plus"></i>New form
                 </a>
                 <a href="#" id="lnkSaveSort" class="sort" style="display: none;">
                     <input type="button" id="btnSaveSort" value="Save sort" class="button_save rounded">

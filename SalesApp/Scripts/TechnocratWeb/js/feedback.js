@@ -1,6 +1,6 @@
 angular.module('feedback.controllers', [])
 
-.controller('FeedbackCtrl', function($scope, APIService, $state, $uibModal, ngDialog, $modal, $modalInstance) {
+.controller('FeedbackCtrl', function($scope, APIService, $state) {
 
 
     $scope.open = function () {

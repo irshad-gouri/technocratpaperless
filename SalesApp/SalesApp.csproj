@@ -221,6 +221,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="PartialViews\partials\addcustomforms.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1048,6 +1049,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\ngDialog-theme-default.min.css" />
     <Content Include="Content\ngDialog.min.css" />
+    <Content Include="Scripts\TechnocratWeb\js\addcustomforms.js" />
     <Content Include="Scripts\TechnocratWeb\js\app.js" />
     <Content Include="Scripts\TechnocratWeb\js\authService.js" />
     <Content Include="Scripts\TechnocratWeb\js\controllers.js" />
