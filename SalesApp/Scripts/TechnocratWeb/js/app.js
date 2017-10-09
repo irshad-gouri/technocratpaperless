@@ -4,7 +4,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
     'login.controllers', 'APIModule','product.controllers'])
 
 .run(function($rootScope, $state, AuthService){
-    if(localStorage.getItem('isLoggedIn') == 'success'){
+    if(localStorage.getItem('isLoggedIn') === 'success'){
         $state.go('app.product');
     }
     else {

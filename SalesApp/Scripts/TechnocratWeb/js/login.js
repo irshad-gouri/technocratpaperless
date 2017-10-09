@@ -8,7 +8,7 @@ angular.module('login.controllers', [])
           data: loginData
       }).then(function(resp) {
           $scope.message = resp.data.message;
-          if($scope.message == 'success') {
+          if($scope.message === 'success') {
               localStorage.setItem('isLoggedIn', 'success');
               localStorage.setItem('token', resp.data.token);
             $state.go('app.product');
