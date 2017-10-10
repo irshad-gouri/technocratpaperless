@@ -565,6 +565,7 @@ namespace SalesAppBLL.Repository
                     objACTComm.Note = notesAct.Note;
                     objACTComm.CreatedDate = System.DateTime.Now;
                     objACTComm.ModifiedDate = System.DateTime.Now;
+                    
 
                     // TODO: Perform on db
                     DbContext.NotesActivities.Add(objACTComm);
@@ -575,11 +576,14 @@ namespace SalesAppBLL.Repository
                     // TODO : Add logs in UserActivity
                     UsersActivity objUAct = new UsersActivity();
 
+                    objUAct.ActivityId = 4;
                     objUAct.UserId = (int)objACTComm.UserId;
                     objUAct.PhotoUrl = string.Empty;
                     objUAct.Note = objACTComm.Note;
                     objUAct.PlaceId = objACTComm.PlaceId;
                     AddUsersActivities(objUAct);
+
+
 
                     objResp.Status = "Success";
                     objResp.Message = "User Notes Activity Successfully Added!";
