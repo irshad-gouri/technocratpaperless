@@ -1,0 +1,1028 @@
+<!-- <div class="animate">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header card-info card-inverse">
+                    <h3 class="card-title">Update Category</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-block">
+                    <form name="addCategoryForm" novalidate class="form-horizontal">
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Category Name
+                              <span class="text-danger">*</span>
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Category Name" name="category_name" class="form-control" ng-model="addCategory.category_name" required>
+                            <div class="error-message padding-right" ng-show="addCategoryForm.category_name.$invalid && !addCategoryForm.category_name.$pristine">Enter Category Name</div>
+                          </div>
+                      </div>
+
+                      <div ng-hide="addCategory.image_path" class="form-group margin-top">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">
+                                Upload Image 
+                              <span class="text-danger">*</span>
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <button class="btn btn-primary" ngf-select="uploadPhoto($file)" accept="image/*">Upload
+                                <span>
+                                    <i style="padding-left:6px;" class="fa fa-cloud-upload"></i>
+                                </span>
+                            </button>
+                        </div>
+                      </div>
+                      <div class="row margin-top" ng-show ="addCategory.image_path">
+                        <div class="hidden-sm hidden-xs col-md-5"></div>
+                        <div class="col-md-7">
+                          <div style="    width: 36%;margin-bottom: 20px;margin-right: 40px;float: left;">
+                            <img height="170" width="170" src="{{addCategory.image_path}}" class="thumb">
+                            <i ng-click="removeChoice(addCategory.image_path)" style="margin-top: 65px;font-size: 27px;cursor:pointer;" class="close pull-right fa fa-times"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group text-right">
+                          <button class="btn btn-success margin-right" type="submit" ng-disabled="addCategoryForm.$invalid || !addCategory.image_path" ng-click="updateCategory(addCategory)">Submit
+                              <span>
+                                  <i style="padding-left:6px;" class="fa fa-upload"></i>
+                              </span>
+                          </button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="content animate">
+    <span id="menu_pointer" class="hidden menu_pointer"></span>
+    <div id="main">
+
+        <input id="Page" name="Page" type="hidden" value="VisitSchedule" class="rounded border">
+        <div id="default-header">
+            <h1 class="page-head">
+        <i class="icon icon-history"></i>
+        <span id="rn-reps-header" class="header-main">Schedules</span>
+        <span class="header-sub">Manage lists of your schedules.</span>
+    </h1>
+        </div>
+        <div id="byrep-header" class="hide-element">
+            <h1 class="page-head reps">
+        <i class="icon icon-representative"></i>
+        <span class="header-main"></span>
+        <span class="header-date header-sub"></span>
+    </h1>
+        </div>
+        <div id="byclient-header" class="hide-element">
+            <h1 class="page-head clients">
+        <i class="icon icon-client"></i>
+        <span class="client-name"></span>
+    </h1>
+        </div>
+
+        <div class="actions with_menu">
+            <a id="new-schedule" class="button_create master-action rounded" href="javascript:void(0);">
+                <i class="icon icon-plus"></i>New visit
+            </a>
+            <span class="action_menu plain" href="">
+        <input type="button" class="action_menu_button rounded border" value=" ">
+        <div class="menu_list" style="display: none;">
+            <span class="clip"></span>
+            <ul>
+                <li id="ImportVisitSchedule" class="menu_item rounded import" url="/VisitSchedule/ImportVisitSchedule">
+                    <i class="icon icon-upload"></i> Import schedules
+                    <div class="separator">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </span>
+    </div>
+    <div class="actions_header filter_padding filter">
+        <div id="filters-header" class="hide-element" style="display: block;">
+            <input type="hidden" id="Filename" class="filter-data rounded border">
+            <input type="hidden" id="FilenameRankings" class="filter-data rounded border">
+            <input type="hidden" id="sortBy" class="filter-data rounded border">
+            <input type="hidden" id="ascending" class="filter-data rounded border">
+            <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
+            <input type="hidden" id="PutnikID" class="filter-data rounded border" value="">
+            <input type="hidden" id="VisitDate" class="filter-data rounded border" value="">
+            <input type="hidden" id="details" class="filter-data rounded border" value="">
+            <input type="hidden" id="KupacLokacijaID" class="filter-data rounded border" value="">
+
+            <a href="#" class="back-link" title="Go back" style="display: none;">&lt;</a>
+            <div class="place_left">
+                <ul>
+                    <li class="relatived filter-item">
+                        <input type="text" id="search" class="filter-data grid_filter border rounded company-timeline-filter-type" datatype="search" placeholder="Search reps">
+
+                        <span class="input-loader" style="display: none;"></span>
+                    </li>
+                    <li id="dateFilter" class="filter-item range-wrapper" style="display: none;">
+
+                        <input id="DateBegin" type="text" class="date_picker datebegin rounded border filter-data hasDatepicker" value="9/25/2017"> -
+                        <input id="DateEnd" type="text" class="date_picker dateend rounded border filter-data hasDatepicker" value="9/25/2017">
+                        <span class="range-picker ui-corner-all">
+<span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
+                        <div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
+                            <ul class="">
+                                <li id="rn-range-picker-today" class="range rounded" db="9/25/2017" de="9/25/2017">Today</li>
+                                <li id="rn-range-picker-yesterday" class="range rounded" db="9/24/2017" de="9/24/2017">Yesterday</li>
+                                <li class="delimiter"></li>
+                                <li id="rn-range-picker-this-week" class="range rounded" db="9/25/2017" de="9/25/2017">This week</li>
+                                <li id="rn-range-picker-last-week" class="range rounded" db="9/18/2017" de="9/24/2017">Last week</li>
+                                <li class="delimiter"></li>
+                                <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/25/2017">This month</li>
+                                <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
+                                <li class="delimiter"></li>
+                                <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/25/2017">This year</li>
+                                <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
+                            </ul>
+                            <span class="clip"></span>
+                        </div>
+                        </span>
+
+                    </li>
+                    <li id="AdditionalFiltersWrapper" class="filter-item drop" style="margin-left: 5px; margin-right: 5px; display: none;">
+                        <a id="rn-client-addMoreFilters-trigger" href="#" class="megadrop more-filters" tipsy="true" title="Add more things in filter: status, tags etc.">Add more filters</a>
+                        <div id="AdditionalFilters" class="mega_content mega_home align_right" style="display: none;">
+                            <ul class="drop_content">
+
+                                <li class="in-megadrop">
+                                    <h3 class="">Filter by territory</h3>
+                                    <select class="filter-data border rounded" datatype="PoslovnaJedinicaID" id="PoslovnaJedinicaID">
+                                        <option value="">-</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="TriggerWrapper" class="filter-item" style="display: none;">
+
+                        <span id="rn-company-timeline-apply-button" class="filter-trigger-schedule standalone rounded company-timeline-filter-type" title="Refresh screen according to filter selection.">Apply</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script language="javascript" type="text/javascript" src="/Content/js/action-header-filter.js?402"></script>
+        <div class="drop place_right">
+            <input id="ViewSelection" type="hidden" class="filter-data rounded border"> View as: <a id="rn-schedule-viewas-dropdown" href="#" class="megadrop selected-view" title="">Company timeline</a>
+            <div id="megadrop_container" class="mega_content mega_viewas align_right" style="display: none;">
+                <ul class="drop_content">
+                    <li><a href="#" id="company-timeline" value="company-timeline" class="option viewas_table">Company timeline</a></li>
+                    <li><a href="#" id="client-visits" value="client-visits" class="option viewas_table">Place visit summary</a></li>
+                    <li><a href="#" id="representative-visits" value="representative-visits" class="option viewas_table">Representative visit summary</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="ImportNotification" style="visibility: hidden; display: none;">
+
+        <script type="text/javascript">
+            function closeErrors() {
+                $('#ImportNotification').css({
+                    'display': 'none'
+                });
+                localStorage.setItem("ImportVisitSchedulesJob", "UserNotified");
+            }
+        </script>
+        <script type="text/javascript">
+            $('#ImportNotification').css({
+                'display': 'none'
+            });
+        </script>
+
+        <input type="hidden" id="redirect-link" value="" class="rounded border">
+        <input type="hidden" id="import-job" value="" class="rounded border">
+
+    </div>
+    <div id="representative-calendar-container" type="calendar-container" class="fullcalendar clearfix display-sheet calendar-container">
+
+        <script type="text/javascript">
+            var UseScheduling = true;
+            var VisitScheduleCalendarEntity = '';
+            var urlPutnikNoAvatar = 'Content/img/no_avatar_putnik.png';
+            var hasScheduleRole = 'True' == 'True' ? true : false;
+            var quickSearchUri = '/home/quicksearchvp';
+
+            var dayIDs = [
+                'sun',
+                'mon',
+                'tue',
+                'wed',
+                'thu',
+                'fri',
+                'sat'
+            ];
+
+            var dayName = {
+                Monday: 'monday',
+                Tuesday: 'tuesday',
+                Wednesday: 'wednesday',
+                Thursday: 'thursday',
+                Friday: 'friday',
+                Saturday: 'saturday',
+                Sunday: 'sunday'
+            };
+
+            var monthIDs = [
+                API.Functions.capitalizeFirstLetter('january'),
+                API.Functions.capitalizeFirstLetter('february'),
+                API.Functions.capitalizeFirstLetter('march'),
+                API.Functions.capitalizeFirstLetter('april'),
+                API.Functions.capitalizeFirstLetter('may'),
+                API.Functions.capitalizeFirstLetter('june'),
+                API.Functions.capitalizeFirstLetter('july'),
+                API.Functions.capitalizeFirstLetter('august'),
+                API.Functions.capitalizeFirstLetter('september'),
+                API.Functions.capitalizeFirstLetter('october'),
+                API.Functions.capitalizeFirstLetter('november'),
+                API.Functions.capitalizeFirstLetter('december')
+            ];
+
+            var dictionaryMonth = 'month';
+            var dictionaryWeek = 'week';
+            var dictionaryDay = 'day';
+            var dictionarySummary = 'agenda';
+            var dictionaryToday = 'Today';
+
+            var dictionaryDate = 'Date';
+            var dictionaryVisitsDone = 'Total visits done';
+            var dictionaryPlanned = 'Scheduled';
+            var dictionaryVisitsByPlan = 'Visits as scheduled';
+            var dictionaryUnplanned = 'Unscheduled visits';
+            var dictionaryMissed = 'Missed schedule';
+
+            var dictionaryAnyTime = 'Any time';
+            var dictionaryMoveAllEvents = 'Move All Events?';
+            var dictionaryMoveOne = 'Move only this visit';
+            var dictionaryMoveAll = 'Move all future visits';
+            var dictionarySaveSchedule = 'Save Schedule';
+            var dictionaryRemoveFromSchedule = 'Remove from schedule';
+            var dictionaryCancel = 'Cancel';
+            var dictionaryAddToSchedule = 'Add to Schedule';
+            var dictionaryMaximumOccurance = 'Maximum allowed recurring interval is 99!';
+            var dictionaryAjaxErrorOcccured = 'An error occurred. Please try again.';
+            var dictionaryAddToScheduleFor = 'Schedule new visit for ';
+            var dictionaryRepresentatives = 'Representatives';
+        </script>
+
+        <div style="display:none;" class="preloader"></div>
+
+        <div style="display:none;" class="dialogConfirm" id="dialog-confirm" title="Delete all visits?">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These changes are permanent. Are you sure you want to proceed?</p>
+        </div>
+
+        <div style="display:none;" class="ui-dialog-buttonpane slideEdit ui-widget-content ui-helper-clearfix">
+            <div class="ui-dialog-buttonset dialog-slider">
+                <span style="display: block; width: 200px; left: -25px; position: relative;">Update a recurring event:</span>
+                <button id="rn-schedule-only-this-event-button" type="button" class="confirm one voidClass ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+                    <span id="rn-schedule-only-this-event-span" class="ui-button-text">Only this event</span>
+                </button>
+                <button id="rn-schedule-all-future-events-button" type="button" class="confirm all voidClass ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+                    <span id="rn-schedule-all-future-events-span" class="ui-button-text">This and all future events</span>
+                </button>
+                <button id="rn-schedule-cancel" type="button" class="cancel buttonNew voidClass ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only removeBtn" role="button" aria-disabled="false">
+                    <span class="ui-button-text">Cancel</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- MODALS -->
+        <div id="add-to-schedule" style="display:none;">
+            <div class="inner-container">
+                <div class="avatarImg"><i class="icon icon-client"></i></div>
+                <h1 class="with-icon client"></h1>
+
+                <div class="row">
+                    <div tabindex="1" class="unit">
+                        <label>Date</label>
+                        <input type="text" id="add-date" class="short rounded border hasDatepicker" disabled="disabled">
+                    </div>
+                    <div class="unit">
+                        <label>Time (optional)</label>
+                        <input type="text" id="add-time" placeholder="Any time" class="short rounded border ui-timepicker-input" autocomplete="off">
+                    </div>
+                    <div class="unit ">
+                        <label>Representative</label>
+                        <input type="text" id="add-representative" class="wide rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i id="link-add-representative" class="icon icon-link link-newtab hidden"></i>
+                    </div>
+                </div>
+                <div class="row top-separated">
+                    <div class="unit">
+                        <label>Place</label>
+                        <input type="text" id="add-client" class="wider rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i id="link-add-client" class="icon icon-link link-newtab hidden"></i>
+                    </div>
+                </div>
+                <div class="row top-separated">
+                    <div class="unit">
+                        <label class="">Visit note (optional)</label>
+                        <textarea class="visitPlanNote rounded border" id="addNote" cols="5" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="row top-separated">
+                    <label class="root-label">Repeats</label>
+                    <label for="rb-no-repeat">
+                        <input id="rb-no-repeat" checked="" type="radio" class="rounded border"> Don't repeat</label>
+                    <label for="rb-repeat">
+                        <input id="rb-repeat" type="radio" class="rounded border"> Repeat every
+                        <input type="text" id="repeat" maxlength="2" class="mini rounded border"> week(s)</label>
+                </div>
+            </div>
+        </div>
+        <div id="edit-schedule" style="display:none;">
+            <div class="inner-container">
+                <div class="avatarImg"><i class="icon icon-client"></i></div>
+                <h1 class="with-icon client">Edit schedule</h1>
+
+                <div class="row">
+                    <div tabindex="1" class="unit">
+                        <label>Date</label>
+                        <input type="text" id="edit-date" class="short rounded border hasDatepicker">
+                    </div>
+                    <div class="unit">
+                        <label>Time (optional)</label>
+                        <input type="text" id="edit-time" placeholder="Time (optional)" class="short rounded border ui-timepicker-input" autocomplete="off">
+                    </div>
+                    <div class="unit ">
+                        <label>Representative</label>
+                        <input type="text" id="edit-representative" class="wide rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i id="link-edit-representative" class="icon icon-link link-newtab"></i>
+                    </div>
+                </div>
+                <div class="row top-separated">
+                    <div class="unit">
+                        <label>Place</label>
+                        <input type="text" id="edit-client" class="wider rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i id="link-edit-client" class="icon icon-link link-newtab"></i>
+                    </div>
+                </div>
+                <div class="row top-separated">
+                    <div class="unit">
+                        <label class="">Visit note (optional)</label>
+                        <textarea class="visitPlanNote rounded border" id="editNote" cols="5" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="row top-separated">
+                    <label class="root-label">Repeats</label>
+                    <label for="rb-no-repeat-e">
+                        <input id="rb-no-repeat-e" type="radio" class="rounded border"> Don't repeat</label>
+                    <label for="rb-repeat-e">
+                        <input id="rb-repeat-e" type="radio" class="rounded border"> Repeat every
+                        <input type="text" id="repeat-e" maxlength="2" class="mini rounded border"> week(s)</label>
+                </div>
+                <div class="inner-overlay"></div>
+            </div>
+        </div>
+
+        <link href="/content/css/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+        <link href="/content/css/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
+        <link href="/content/css/fullcalendar/scheduler.min.css" rel="stylesheet">
+        <link href="/content/css/visit-schedule.css?402" type="text/css" rel="stylesheet">
+        <link href="/content/css/jquery.timepicker.css?402" type="text/css" rel="stylesheet">
+
+        <script src="/bundles/visitplans?v=smdOKQ2XIdLNulIr8B86kAUvkgey4aMeoWaVpUvh6zg1"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                VisitSchedule.init(); // located in visit-schedule.js
+            });
+        </script>
+        <div class="company-timeline-filters">
+            <label for="to-visit" class="filter-label to_visit" title="Scheduled">
+                <input checked="" id="to-visit" type="checkbox" class="to-visit"> Scheduled
+            </label>
+
+            <label for="completed-scheduled" class="filter-label completed_scheduled" title="Visited as scheduled">
+                <input checked="" id="completed-scheduled" type="checkbox" class="completed-scheduled"> Visited as scheduled
+            </label>
+
+            <label for="completed-unscheduled" class="filter-label completed_unscheduled" title="Unscheduled visits">
+                <input checked="" id="completed-unscheduled" type="checkbox" class="completed-unscheduled"> Unscheduled visits
+            </label>
+
+            <label for="missed-schedule" class="filter-label missed_schedule" title="Missed schedule">
+                <input checked="" id="missed-schedule" type="checkbox" class="missed-schedule"> Missed schedule
+            </label>
+        </div>
+
+        <div id="calendar" class="fc fc-ltr fc-unthemed">
+            <div class="fc-toolbar">
+                <div class="fc-left"></div>
+                <div class="fc-right">
+                    <button type="button" class="fc-today-button fc-button fc-state-default fc-corner-left fc-corner-right fc-state-disabled" disabled="disabled">Today</button>
+                    <button type="button" class="fc-prev-button fc-button fc-state-default fc-corner-left fc-corner-right"><span class="fc-icon fc-icon-left-single-arrow"></span></button><span class="fc-title-right pointer"><h2>September 25, 2017</h2></span>
+                    <button type="button" class="fc-next-button fc-button fc-state-default fc-corner-left fc-corner-right"><span class="fc-icon fc-icon-right-single-arrow"></span></button>
+                </div>
+                <div class="fc-center"></div>
+                <div class="fc-clear"></div>
+            </div>
+            <div class="fc-view-container" style="">
+                <div class="fc-view fc-timelineDay-view fc-timeline fc-flat">
+                    <table>
+                        <thead class="fc-head">
+                            <tr>
+                                <td class="fc-resource-area fc-widget-header">
+                                    <div class="fc-scrollpane">
+                                        <div class="fc-no-scrollbars" style="overflow-x: scroll; overflow-y: hidden; margin: 0px;">
+                                            <div class="fc-scrollpane-inner" style="min-width: 70px;">
+                                                <div class="fc-content">
+                                                    <table style="height: 38px;">
+                                                        <colgroup>
+                                                            <col class="fc-main-col">
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th class="fc-widget-header">
+                                                                    <div>
+                                                                        <div class="fc-cell-content">
+                                                                            <div class="fc-icon fc-expander-space"></div><span class="fc-cell-text">Representatives</span></div>
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="fc-bg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="fc-divider fc-col-resizer fc-widget-header"></td>
+                                <td class="fc-time-area fc-widget-header">
+                                    <div class="fc-scrollpane">
+                                        <div class="fc-no-scrollbars" style="overflow-x: scroll; overflow-y: hidden; margin: 0px;">
+                                            <div class="fc-scrollpane-inner" style="width: 1248px;">
+                                                <div class="fc-content">
+                                                    <table style="height: 38px;">
+                                                        <colgroup>
+                                                            <col style="width: 26px;">
+                                                                <col style="width: 26px;">
+                                                                    <col style="width: 26px;">
+                                                                        <col style="width: 26px;">
+                                                                            <col style="width: 26px;">
+                                                                                <col style="width: 26px;">
+                                                                                    <col style="width: 26px;">
+                                                                                        <col style="width: 26px;">
+                                                                                            <col style="width: 26px;">
+                                                                                                <col style="width: 26px;">
+                                                                                                    <col style="width: 26px;">
+                                                                                                        <col style="width: 26px;">
+                                                                                                            <col style="width: 26px;">
+                                                                                                                <col style="width: 26px;">
+                                                                                                                    <col style="width: 26px;">
+                                                                                                                        <col style="width: 26px;">
+                                                                                                                            <col style="width: 26px;">
+                                                                                                                                <col style="width: 26px;">
+                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                                                                        <col>
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr class="fc-chrono">
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">12am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">1am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">2am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">3am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">4am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">5am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">6am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">7am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">8am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">9am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">10am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">11am</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">12pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">1pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">2pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">3pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">4pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">5pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">6pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">7pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">8pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">9pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">10pm</span></div>
+                                                                </th>
+                                                                <th class="fc-widget-header " colspan="2">
+                                                                    <div class="fc-cell-content"><span class="fc-cell-text">11pm</span></div>
+                                                                </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="fc-bg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody class="fc-body">
+                            <tr>
+                                <td class="fc-resource-area fc-widget-content">
+                                    <div class="fc-scrollpane">
+                                        <div style="height: 520px; overflow-x: auto; overflow-y: scroll; margin: 0px -17px 0px 0px;">
+                                            <div class="fc-scrollpane-inner" style="min-width: 70px; padding-bottom: 17px;">
+                                                <div class="fc-content">
+                                                    <table>
+                                                        <colgroup>
+                                                            <col class="fc-main-col">
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="fc-widget-content rep-link pointer" putnikid="67586">
+                                                                    <div style="height: 30px;">
+                                                                        <div class="fc-cell-content"><span class="fc-icon fc-expander-space"></span><span class="fc-cell-text">Glen- Sales Representative</span></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="fc-widget-content rep-link pointer" putnikid="68066">
+                                                                    <div style="height: 30px;">
+                                                                        <div class="fc-cell-content"><span class="fc-icon fc-expander-space"></span><span class="fc-cell-text">(xyz)</span></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="fc-bg" style="bottom: 17px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="fc-divider fc-col-resizer fc-widget-header"></td>
+                                <td class="fc-time-area fc-widget-content">
+                                    <div class="fc-scrollpane">
+                                        <div style="height: 520px; overflow: auto; margin: 0px;">
+                                            <div class="fc-scrollpane-inner" style="width: 1248px;">
+                                                <div class="fc-content">
+                                                    <div class="fc-rows">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="fc-widget-content">
+                                                                        <div style="height: 30px;">
+                                                                            <div class="fc-event-container"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fc-widget-content">
+                                                                        <div style="height: 30px;">
+                                                                            <div class="fc-event-container"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="fc-bg">
+                                                    <div class="fc-slats">
+                                                        <table>
+                                                            <colgroup>
+                                                                <col style="width: 26px;">
+                                                                    <col style="width: 26px;">
+                                                                        <col style="width: 26px;">
+                                                                            <col style="width: 26px;">
+                                                                                <col style="width: 26px;">
+                                                                                    <col style="width: 26px;">
+                                                                                        <col style="width: 26px;">
+                                                                                            <col style="width: 26px;">
+                                                                                                <col style="width: 26px;">
+                                                                                                    <col style="width: 26px;">
+                                                                                                        <col style="width: 26px;">
+                                                                                                            <col style="width: 26px;">
+                                                                                                                <col style="width: 26px;">
+                                                                                                                    <col style="width: 26px;">
+                                                                                                                        <col style="width: 26px;">
+                                                                                                                            <col style="width: 26px;">
+                                                                                                                                <col style="width: 26px;">
+                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                                                            <col style="width: 26px;">
+                                                                                                                                                                                                                                                <col style="width: 26px;">
+                                                                                                                                                                                                                                                    <col style="width: 26px;">
+                                                                                                                                                                                                                                                        <col style="width: 26px;">
+                                                                                                                                                                                                                                                            <col>
+                                                            </colgroup>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T00:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T00:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T01:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T01:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T02:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T02:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T03:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T03:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T04:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T04:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T05:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T05:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T06:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T06:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T07:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T07:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T08:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T08:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T09:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T09:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T10:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T10:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T11:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T11:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T12:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T12:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T13:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T13:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T14:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T14:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T15:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T15:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T16:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T16:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T17:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T17:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T18:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T18:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T19:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T19:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T20:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T20:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T21:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T21:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T22:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T22:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-major" data-date="2017-09-25T23:00:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                    <td class="fc-widget-content fc-minor" data-date="2017-09-25T23:30:00">
+                                                                        <div></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Summary views container - dynamically loaded-->
+    <div id="partial-container">
+    </div>
+    <div id="nodata-container" class="display-sheet" style="display: none;">
+        <div class="nodatafound entity">
+            <span class="coach-sprite icon  no-data"></span> No data available in table.
+        </div>
+    </div>
+    <script language="javascript" type="text/javascript" src="/Content/js/visit-schedule-extension.js?402"></script>
+    <script language="javascript" type="text/javascript">
+        API.Handlers.cache.filter = {};
+
+        ;
+
+        // we use this in visit-schedule-extension.js - VisitScheduleExtension.clientSummary.renderVisits
+        var Tags = {
+            filter: {
+                title: "Choose tags to filter cplaces",
+                set: "Apply to filter"
+            },
+            editor: {
+                titleFilterList: "Add tags to all filtered places",
+                titleCheckList: "Add tags to selected places",
+                set: "Add tags"
+            }
+
+        };
+
+        var onClientInfoFieldChange = function(e) {
+            var template = '<option value="$1">$2</option>';
+            var element;
+            if (Object.isDefined(e)) {
+                element = $(this);
+            } else {
+                element = $("#ClientExtraInfoCode");
+            }
+            if (element.val() == "") {
+                $("input,select", element.next()).hide().val("");
+            } else {
+                var option = $("option[value='" + element.val() + "']");
+                if (option.length > 0) {
+                    $(":text,select", element.next()).hide();
+                    if (option.attr("datatype") == "2") {
+                        var target = $("select", element.next());
+                        target.html(template.replaceAll("$1", Dictionary.Yes).replaceAll("$2", Dictionary.Yes) + template.replaceAll("$1", Dictionary.No).replaceAll("$2", Dictionary.No));
+                        target.show();
+                    } else if (option.attr("datatype") == "3") {
+                        var target = $("select", element.next()).html("");
+                        $(option.attr("ddl").split("|")).each(function() {
+                            target.append(template.replaceAll("$1", this).replaceAll("$2", this));
+                        });
+                        target.show();
+                    } else if ($.inArray(option.attr("datatype"), ["0", "1", "4"]) >= 0) {
+                        var target = $(":text", element.next()).val("").show();
+                    }
+                }
+            }
+        };
+        var oldGetFilter = API.Functions.getFilter;
+
+        API.Handlers.page.init = function() {
+
+            API.Design.actionmenu.init(); // initialize action menu
+
+            API.Design.daterange.triggerFunction = function(ctx, param) {
+                if (Object.isDefined(ctx.e)) {
+                    ctx.e.preventDefault();
+                }
+                var val = $(".drop .drop_content .option.selected").attr("value");
+                switch (val) {
+                    case ("client-visits"):
+                        VisitScheduleExtension.list = VisitScheduleExtension.clientSummary.visits;
+                        break;
+                    case ("representative-visits"):
+                        VisitScheduleExtension.list = VisitScheduleExtension.representativeSummary.visits;
+                        break;
+                }
+                VisitScheduleExtension.executeList();
+            };
+
+            API.Functions.userAccess();
+
+            $('body').on('change', '#ClientExtraInfoCode', onClientInfoFieldChange);
+
+            var a = API.Design.tags.getDefaultContext("KUPACLOKACIJA");
+            a.editor.data("stickerFunction", function() {
+                var list = $(".display-sheet:visible .row-checkbox :checked");
+                var entityList = $.map($(".display-sheet:visible .row-checkbox :checked"), function(i) {
+                    return $(i).attr("valueid");
+                }).join(",");
+                a.ApplyTagsMessage = "You have added tags to selected places.";
+                API.Design.tags.applyTags(a, entityList);
+            });
+            API.Functions.getFilter = function(filter) {
+                var result = oldGetFilter(filter);
+                if (result.ClientExtraInfoCode == "") {
+                    delete result.ClientExtraInfoValue;
+                    delete result.ClientExtraInfoValue;
+                } else {
+                    var element = $("#ClientExtraInfoCode");
+                    var option = element.find("option[value='" + result.ClientExtraInfoCode + "']");
+                    if ($.inArray(option.attr("datatype"), ["0", "1", "4"]) >= 0) {
+                        result.ClientExtraInfoValue = element.next().find("input").val();
+                    } else if ($.inArray(option.attr("datatype"), ["2", "3"]) >= 0) {
+                        result.ClientExtraInfoValue = element.next().find("select").val();
+                    }
+                }
+                return result;
+            };
+
+            // default view
+            API.Handlers.cache.filter['ViewSelection'] = VisitScheduleExtension.views.companyTimeline;
+
+            API.Export.init();
+            API.Handlers.page.initComplete = true;
+            API.Handlers.page.isBackForwardOrInit = false;
+
+            if ("false" === "false") {
+                $(".action_menu #ImportVisitSchedule").click(function(e) {
+                    window.location = $(this).attr("url");
+                });
+                var ImportJob = localStorage.getItem("ImportVisitSchedulesJob");
+                if (Object.isDefined(ImportJob) && (ImportJob === "JobDone" || ImportJob === "Undefined")) {
+                    $('#ImportNotification').css({
+                        'visibility': 'visible'
+                    });
+                };
+            } else {
+                $(".action_menu #ImportVisitSchedule").addClass("hide-icon").css({
+                    'background': 'url("content/img/input-loader3.gif") no-repeat scroll 5px 50%'
+                });
+            }
+        }
+        $(function() {
+            /*  calendar is loaded for first time from visit-schedule.js,
+                so we just attach event handlers here and cache needed filters
+            */
+            VisitScheduleExtension.init({}, true);
+            if (API.Settings.useBBQ) {
+                $(window).bind('hashchange', VisitScheduleExtension.onHashChange);
+            }
+        })
+    </script>
+</div>
+<footer></footer>
+
+<div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+</div>

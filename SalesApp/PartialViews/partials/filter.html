@@ -1,0 +1,1115 @@
+<!-- <div class="animate">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header card-info card-inverse">
+                    <h3 class="card-title">Filter</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-block">
+                    <form name="filterForm" novalidate class="form-horizontal">
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Product Name
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="text" placeholder="Product Name" name="product_name" class="form-control" ng-model="filter.product_name">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Min Price
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="number" placeholder="Min Price" name="min_price" class="form-control" ng-model="filter.min_price">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Max Price
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="number" placeholder="Max Price" name="max_price" class="form-control" ng-model="filter.max_price">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="hidden-sm hidden-xs col-md-5 control-label">Product Id
+                          </label>
+                          <div class="col-xs-12 col-sm-12 col-md-5">
+                            <input type="number" placeholder="Product Id" name="product_id" class="form-control" ng-model="filter.product_id">
+                          </div>
+                      </div>
+                      <div class="form-group text-right">
+                          <button class="btn btn-success margin-right" type="submit" ng-click="filterProduct(filter)">Filter
+                              <span>
+                                  <i style="padding-left:6px;" class="fa fa-filter"></i>
+                              </span>
+                          </button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="content animate">
+            <span id="menu_pointer" class="hidden menu_pointer"></span>
+            <div id="main">
+                
+
+
+
+<link href="/frontend-app/dist/css/places.min.css?402" async="" type="text/css" rel="stylesheet" media="screen">
+<script>
+    if (API.Settings.isTestOrDemoUser == "false") {
+        var placesScript = document.createElement('script');
+        placesScript.type = 'text/javascript';
+        placesScript.src = '/frontend-app/dist/js/places.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
+        document.write(placesScript.outerHTML);
+    }
+</script><script type="text/javascript" src="/frontend-app/dist/js/places.min.js?402"></script>
+
+
+
+<style>
+    .range-picker:hover{border:solid 1px #BBB; background-color: white;}
+</style>
+
+<div cg-busy="promise" class="cg-busy-loader"><div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()"><div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div></div></div> 
+
+<div class="rep-card-main ng-scope" data-ng-controller="PlaceEditController">
+<div id="kupacHref" style="display:none"><a href="/client/view"></a></div>
+<div class="view-content clearfix">
+    <div class="view-content-head clearfix">
+        <h1 class="page-head clients" id="report-header">
+        <i class="icon icon-client"></i>
+            <span class="header-sub pull-right">
+                <a id="EMailLabel" class="email_label block" href="mailto:"></a>
+                <a id="PhoneLabel" class="phone_label block" href="tel:" style="display: none;"></a>
+                <a id="MobileLabel" class="mobile_label block" href="tel:" style="display: none;"></a>
+            </span>
+            <span class="header-main" id="NazivLabel">New place</span>
+            <span class="header-sub"><label id="lblAddress"></label></span>
+            
+        </h1>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="actions_header clearfix">
+        <ul class="tabs">
+            <li class="view-tab details ui-corner-top current" type="details">Contact info</li>
+            <li class="view-tab card ui-corner-top disabled" type="card">Report</li>
+            
+            <li class="view-tab visitplan ui-corner-top disabled" type="visitplan">Schedule</li>
+        </ul>
+    </div>
+    
+    <div id="client-edit-container" type="details-container" class="details_edit display-sheet clearfix" style="">
+        <input type="hidden" id="Tutorial" class="rounded border">
+        <input type="hidden" id="IDKupacLokacija" class="rounded border">
+        <input type="hidden" id="KupacLokacijaRowID" class="rounded border">
+        <input type="hidden" id="Naziv" value="" class="rounded border">
+        <input type="hidden" id="GpsLatitude" value="" class="rounded border">
+        <input type="hidden" id="GpsLongitude" value="" class="rounded border">
+        <div class="left_bar flat">
+            <div class="form_container clearleft basic-info client">
+
+                <input type="hidden" id="PutnikSifra" class="rep-code border-edit rounded" placeholder="...">
+
+                <input type="hidden" id="sifreOld" class="rounded border" value="">
+
+                <input type="hidden" id="CodeSuggestion" class="rounded border">
+
+                <div class="form-grid">
+                    <div class="unit w-2-5" title="Place name. Required field when inserting new records.">
+                        <div for="Name" class="label">Name:</div>
+                        
+                        <input type="text" id="NazivEdit" class="name border-edit rounded required_field " placeholder="">
+                    </div>
+                    <div class="unit w-2-5">
+                            
+                            <div for="Code" class="label" title="Place ID - must be unique! This is the ID that's used for any inserts and updates.">ID:</div>
+                            <input type="text" id="Sifra" class="code border-edit rounded required_field " placeholder="..." title="Place ID - must be unique! This is the ID that's used for any inserts and updates.">
+                            <div id="msgWrong" class="hidden">
+                            Morate promijeniti šifru jer je ova loša.
+                            <button type="button">Iskoristi našu</button>
+                            </div>
+                            
+                        
+                    </div>
+                    <div class="unit w-1-5">
+                    <span class="isActiveCheckbox afterInput rounded" type="" title="Determines whether place is active or not. Similar to trash can, places that are not active will not be avalable on mobile device. This field is not required.">
+                            <input type="checkbox" checked="checked" id="Aktivan" class="">
+                            <label for="Aktivan">active place</label></span>
+                    </div>
+                </div>
+                <div class="form-grid">
+                        <div class="unit w-2-5" style="" title="Representative name, used to assign a rep to the place. When rep is assigned to the place and filtering is ON, then the place is not visible to other reps. This field is not required.">
+                            <span class="relatived">
+                                <div for="tbPerson" class="label" id="PersonAutocompleteLabel">Representatives:</div>
+                                <input type="hidden" id="PutnikID" value="" class="rounded border">
+                                
+                                <input type="text" id="PutnikNaziv" class="medium border rounded  ui-autocomplete-input putnikNaziv" autocomplete="off" placeholder="There are no reps assigned to this place"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+
+                                <span class="range-picker ui-corner-all" style="display:inline-table;">
+                                <span id="show-reps" class="range-picker-overlay closed" title="Show all reps"></span>
+                                </span>
+                            </span>
+
+
+                              <!--  <span class="clear-filter ui-icon ui-icon-closethick initial-hidden"></span><span
+                                    class="input-loader initial-hidden" style="top: -4px;"></span></span> -->
+                        </div>
+                                            <div class="unit w-1-4" title="Status in the sales pipeline. This field is not required.">
+                            <div class="label">Status:</div>
+                            <select class="medium border rounded" id="StatusPodjelaGrupaID">
+                                    
+                                    <option title="-" value="">-</option>
+                                    
+                                    
+                                    <option title="Lead" value="204622">Lead</option>
+                                    
+                                    
+                                    <option title="Qualified prospect" value="204624">Qualified prospect</option>
+                                    
+                                    
+                                    <option title="Negotiation" value="204623">Negotiation</option>
+                                    
+                                    
+                                    <option title="Active Client" value="204621">Active Client</option>
+                                    
+                            </select>
+                        </div>
+                                            <div class="unit w-1-4">
+                             <div class="label">Territory:</div>
+                             <select id="PoslovnaJedinicaID" class="territory border-edit rounded"><option value="">-</option></select>
+                        </div>
+                </div>
+
+                <div id="reps-entered" style="top: -450px;">
+                <ul id="reps-selected"></ul>
+                <ul id="reps-not-selected"></ul>
+                </div> 
+                <!--
+                <span class="input-loader initial-hidden"></span>
+                <div id="GlobalSearchResults" class="initial-hidden ui-corner-bottom ui-corner-tl">
+                    <span class="arrow"></span>
+                    <ul>
+                    </ul>
+                </div>
+                -->
+
+                    <div class="form_container place-pricelists-section hidden">
+                        <div class="title ng-binding">Place price lists</div>
+                        <!-- ngIf: companyPricelists.length > 0 -->
+
+                        <!-- ngIf: companyPricelists.length == 0 --><div ng-if="companyPricelists.length == 0" class="ng-scope">
+                            <div class="place-pricelists-section__no-data-alert ng-binding">
+                                Please use import Price lists feature to import additional prices for this and other products.
+                                <a ng-href="https://user.repsly.com/pricelist/ImportPricelists" class="place-pricelists-section__import-link ng-binding" href="https://user.repsly.com/pricelist/ImportPricelists">
+                                    Import price lists
+                                </a>
+                            </div>
+                        </div><!-- end ngIf: companyPricelists.length == 0 -->
+                    </div>
+
+            </div>
+        </div>
+        <div class="right_bar flat save-discard">
+            <div class="clearfix">
+                <div class="actions clearfix">
+                    <input type="button" id="btnSave" value="Save" class="button_save rounded">
+                    <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
+                </div>
+            </div>
+                <div class="help-container" style="position:absolute;margin-top: 50px;">
+                    <span class="coach-sprite icon icon-info"></span>
+                    <div class="title">Place Attributes</div>
+                    <div class="help-box">
+                        <p>Place ID is a unique identifier we assign to each place.</p>
+                        <p>Un-check 'active place' if you don't want to see this place in lists.</p>
+                        <p>STATUS is a way to track your places in a pipeline</p>
+                            <p>TERRITORIES let you group places. Manage Territories on the Settings page.</p>
+                    </div>
+                    <div class="bottom">
+                    </div>
+                </div>
+        </div>
+        <div id="AddresContactWrapper" class="left_bar flat">
+            
+            <div class="form_container clearleft">
+                
+                <div class="title">
+                        Address info
+                    <a href="#" id="OpenClientMap" onclick="popupMap()" class="hidden">Map view</a>
+                </div>
+                <div class="form_row" title="Street address. Required field when inserting new records.">
+                    <label for="name" class="inline">
+                        Address:</label>
+                    <input type="text" id="AdresaLine1" class="medium rounded border-edit" placeholder="..." autocomplete="off">
+                </div>
+                <div class="form_row" title="City. This field is not required.">
+                    <label for="email" class="inline">
+                        City:</label>
+                    <input type="text" id="AdresaNaselje" value="" class="medium rounded border-edit" placeholder="...">
+                </div>
+                <div class="form_row" title="State. This field is not required.">
+                    <label for="email" class="inline">
+                        State:</label>
+                    <input type="text" id="AdresaRegija" value="" class="medium rounded border-edit">
+                </div>
+                <div class="form_row" title="ZIP code. This field is not required.">
+                    <label for="email" class="inline">
+                        ZIP:</label>
+                    <input type="text" id="AdresaPostBroj" value="" class="small rounded border-edit">&nbsp;
+                    <input type="text" id="AdresaPostBrojNastavak" value="" class="mini rounded border-edit" placeholder="...">
+                </div>
+                <div class="form_row" title="Country. This field is not required.">
+                    <label for="email" class="inline">
+                        Country:</label>
+                    <input type="text" id="AdresaDrzava" value="" class="medium rounded border-edit">
+                </div>
+                <div class="form_row" title="">
+                    <label for="email" class="inline">
+                        Country code:</label>
+                    <input type="text" id="AdresaDrzavaKratica" value="" class="medium rounded border-edit">
+                </div>
+            </div>
+            
+            <div class="form_container second">
+                <div class="title">Contact info</div>
+                <div class="form_row" title="Email. This field is not required.">
+                    <label for="tbEmail" class="inline">
+                        Email:</label>
+                    <input type="text" id="Email" class="medium border-edit rounded" placeholder="...">
+                </div>
+                <div class="form_row" title="Telephone. This field is not required.">
+                    <label for="tbPhone" class="inline">
+                        Phone:</label>
+                    <input type="text" id="Telefon" class="medium border-edit rounded" placeholder="...">
+                </div>
+                <div class="form_row" title="Mobile phone. This field is not required.">
+                    <label for="tbMobile" class="inline">
+                        Cell phone:</label>
+                    <input type="text" id="Mobitel" class="medium border-edit rounded" placeholder="...">
+                </div>
+                <div class="form_row" title="Website. This field is not required.">
+                    <label class="inline">
+                        Website:</label>
+                    <input type="text" id="Website" class="medium border-edit rounded" placeholder="...">
+                </div>
+                <div class="form_row" title="Contact name. This field is not required.">
+                    <label class="inline">
+                        Contact name:</label>
+                    <input type="text" id="AdresaKontaktIme" class="medium border-edit rounded" placeholder="...">
+                </div>
+                <div class="form_row" title="Contact title. This field is not required.">
+                    <label class="inline">
+                        Contact title:</label>
+                    <input type="text" id="AdresaKontaktTitula" class="medium border-edit rounded" placeholder="...">
+                </div>
+            </div>
+        </div>
+       <!-- <div class="right_bar flat">
+            <div class="help-container" style="margin-top: 30px;">
+                <span class="coach-sprite icon icon-info"></span>
+                <div class="title">Contact info</div>
+                <div class="help-box">
+                    Place information (email, phone, cell, website) are readily available via the Repsly mobile app and, if allowed, can be updated via mobile device.
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+        </div> -->
+        <div class="left_bar flat">
+            
+            <div class="form_container" title="Note. This field is not required.">
+                <div class="title">Note</div>
+                <textarea id="Napomena" class="note border-edit rounded" rows="5" cols="" placeholder="..."></textarea>
+            </div>
+                <div class="form_container tags-wrapper second" title="Tags on a place separated with comma. For example &quot;New place, Big store, Promotion&quot;. This field is not required.">
+                    <div class="title">Tags</div>
+                               
+<div>
+        
+        <div class="tags-container KUPACLOKACIJA clearfix" mode="" tagtype="KUPACLOKACIJA" isreadonly="false">
+        
+            <input class="tag-list-holder rounded border" type="hidden" id="Tags">
+            <div class="tag-list rounded border clearfix"></div>
+            <span class="tags-trigger icon-tags rounded">Add tags</span>
+        </div>
+
+        
+</div>
+
+
+                </div>
+        </div>
+
+        <div class="right_bar flat">
+                <div class="help-container" style="margin-top: 30px;">
+                    <span class="coach-sprite icon icon-info"></span>
+                    <div class="title">Tags</div>
+                    <div class="help-box">
+                        Use tags to label your places in separate groups. Place lists can be filtered by tags to help you narrow your search.
+                    </div>
+                    <div class="bottom">
+                    </div>
+                </div>
+        </div>
+            <div class="left_bar flat">
+                <div id="customFields-container" class="form_container add-item-container">
+                    <div class="title">Additional attributes</div>
+<a class="addGroups" href="/CustomClientAttributes">Customize</a>                    <ul id="fields" class="left_bar"><li id="117067"><div id="cmd_117067" class="edit_cust_group">                 <div class="closed-line"></div>         <span class="toggle-trigger">Custom fields</span>             </div>     <ul id="f_117067" class="activities" style="display: block; ">             </ul></li></ul>
+                    <div class="form_container clearleft new_fields_contaner">
+                        <div class="form_row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_bar flat">
+                <div class="help-container" style="margin-top: 30px;">
+                    <span class="coach-sprite icon icon-info"></span>
+                    <div class="title">About custom attributes</div>
+                    <div class="help-box">
+                        <p>You can organize your place information in your custom groups and fields, sort them the way you want to see them on your mobile devices</p>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+
+    </div>
+    
+    <div id="card-view" type="card-container" class="details_content clearfix display-sheet" style="display: none;">
+        <div class="full-content">
+            <div class="filter rounded full-width-centered">
+            <input id="Period" type="hidden" value="h" class="filter-data rounded border">
+                <div class="range-wrapper">
+                    
+<input id="DateBegin" type="text" class="date_picker datebegin rounded border filter-data hasDatepicker" value="9/26/2017"> - <input id="DateEnd" type="text" class="date_picker dateend rounded border filter-data hasDatepicker" value="9/26/2017"> 
+<span class="range-picker ui-corner-all">
+<span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
+<div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
+<ul class="">
+    <li id="rn-range-picker-today" class="range rounded" db="9/26/2017" de="9/26/2017">Today</li>
+    <li id="rn-range-picker-yesterday" class="range rounded" db="9/25/2017" de="9/25/2017">Yesterday</li>
+    <li class="delimiter"></li>
+    <li id="rn-range-picker-this-week" class="range rounded" db="9/25/2017" de="9/26/2017">This week</li>
+    <li id="rn-range-picker-last-week" class="range rounded" db="9/18/2017" de="9/24/2017">Last week</li>
+    <li class="delimiter"></li>
+    <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/26/2017">This month</li>
+    <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
+    <li class="delimiter"></li>
+    <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/26/2017">This year</li>
+    <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
+</ul>
+<span class="clip"></span>
+</div>
+</span>
+
+<li id="AdditionalFiltersWrapper" class="filter-item drop" style="margin-left: 5px; margin-right: 5px;">
+    <a id="rn-additional-filters-trigger" href="#" class="megadrop more-filters" tipsy="true" title="">Add more filters</a>
+    <div id="AdditionalFilters" class="mega_content mega_home align_right" style="display: none;">
+        <ul class="drop_content">
+            <li class="in-megadrop">
+                <h3 class="">Filter representatives by territory</h3>
+                <select class="filter-data border rounded" datatype="PoslovnaJedinicaID" id="PoslovnaJedinicaID"><option value="">-</option></select>
+            </li>
+        </ul>
+    </div>
+ </li>
+
+
+
+
+<span id="rn-daterange-submit" class="daterange-submit filter-style standalone rounded">Apply</span>
+
+                </div>
+            </div>
+            <div id="client-card-container">
+            </div>
+        </div>
+       <!-- <div class="right_bar">
+            
+            <div class="help-container" style="margin-top: 100px;">
+                <span class="coach-sprite icon icon-info"></span>
+                <div class="title">Work results</div>
+                <div class="help-box">
+                    The following data shows how many activities were done in the selected time period.
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div id="representative-calendar-container" type="calendar-container" class="fullcalendar clearfix display-sheet" style="display: none;">
+        
+
+
+
+
+<script type="text/javascript">
+
+var UseScheduling = true;
+var VisitScheduleCalendarEntity = 'client';
+var urlPutnikNoAvatar = 'Content/img/no_avatar_putnik.png';
+var hasScheduleRole = 'True' == 'True' ? true : false;
+var quickSearchUri = '/home/quicksearchvp';
+
+var dayIDs = [
+    'sun',
+    'mon',
+    'tue',
+    'wed',
+    'thu',
+    'fri',
+    'sat'
+];
+
+var dayName = {
+    Monday: 'monday',
+    Tuesday: 'tuesday',
+    Wednesday: 'wednesday',
+    Thursday: 'thursday',
+    Friday: 'friday',
+    Saturday: 'saturday',
+    Sunday: 'sunday'
+};
+
+var monthIDs = [
+    API.Functions.capitalizeFirstLetter('january'),
+    API.Functions.capitalizeFirstLetter('february'),
+    API.Functions.capitalizeFirstLetter('march'),
+    API.Functions.capitalizeFirstLetter('april'),
+    API.Functions.capitalizeFirstLetter('may'),
+    API.Functions.capitalizeFirstLetter('june'),
+    API.Functions.capitalizeFirstLetter('july'),
+    API.Functions.capitalizeFirstLetter('august'),
+    API.Functions.capitalizeFirstLetter('september'),
+    API.Functions.capitalizeFirstLetter('october'),
+    API.Functions.capitalizeFirstLetter('november'),
+    API.Functions.capitalizeFirstLetter('december')
+];
+
+
+var dictionaryMonth = 'month';
+var dictionaryWeek = 'week';
+var dictionaryDay = 'day';
+var dictionarySummary = 'agenda';
+var dictionaryToday = 'Today';
+
+var dictionaryDate = 'Date';
+var dictionaryVisitsDone = 'Total visits done';
+var dictionaryPlanned = 'Scheduled';
+var dictionaryVisitsByPlan = 'Visits as scheduled';
+var dictionaryUnplanned = 'Unscheduled visits';
+var dictionaryMissed = 'Missed schedule';
+
+var dictionaryAnyTime = 'Any time';
+var dictionaryMoveAllEvents = 'Move All Events?';
+var dictionaryMoveOne = 'Move only this visit';
+var dictionaryMoveAll = 'Move all future visits';
+var dictionarySaveSchedule = 'Save Schedule';
+var dictionaryRemoveFromSchedule = 'Remove from schedule';
+var dictionaryCancel = 'Cancel';
+var dictionaryAddToSchedule = 'Add to Schedule';
+var dictionaryMaximumOccurance = 'Maximum allowed recurring interval is 99!';
+var dictionaryAjaxErrorOcccured = 'An error occurred. Please try again.';
+var dictionaryAddToScheduleFor = 'Schedule new visit for ';
+var dictionaryRepresentatives = 'Representatives';
+
+</script>
+
+<div style="display:none;" class="preloader"></div>
+
+<div style="display:none;" class="dialogConfirm" id="dialog-confirm" title="Delete all visits?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These changes are permanent. Are you sure you want to proceed?</p>
+</div>
+
+
+<div style="display:none;" class="ui-dialog-buttonpane slideEdit ui-widget-content ui-helper-clearfix">
+    <div class="ui-dialog-buttonset dialog-slider">
+        <span style="display: block; width: 200px; left: -25px; position: relative;">Update a recurring event:</span>
+        <button id="rn-schedule-only-this-event-button" type="button" class="confirm one voidClass ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+            <span id="rn-schedule-only-this-event-span" class="ui-button-text">Only this event</span>
+        </button>
+        <button id="rn-schedule-all-future-events-button" type="button" class="confirm all voidClass ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+            <span id="rn-schedule-all-future-events-span" class="ui-button-text">This and all future events</span>
+        </button>
+        <button id="rn-schedule-cancel" type="button" class="cancel buttonNew voidClass ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only removeBtn" role="button" aria-disabled="false">
+            <span class="ui-button-text">Cancel</span>
+        </button>
+    </div>
+</div>
+
+
+
+<!-- MODALS -->
+<div id="add-to-schedule" style="display:none;">
+    <div class="inner-container">
+        <div class="avatarImg"><i class="icon icon-client"></i></div>
+        <h1 class="with-icon client"></h1>
+
+        <div class="row">
+            <div tabindex="1" class="unit">
+                <label>Date</label>
+                <input type="text" id="add-date" class="short rounded border hasDatepicker" disabled="disabled">
+            </div>
+            <div class="unit">
+                <label>Time (optional)</label>
+                <input type="text" id="add-time" placeholder="Any time" class="short rounded border ui-timepicker-input" autocomplete="off">
+            </div>
+            <div class="unit ">
+                <label>Representative</label>
+                <input type="text" id="add-representative" class="wide rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                <i id="link-add-representative" class="icon icon-link link-newtab hidden"></i>
+            </div>
+        </div>
+        <div class="row top-separated">
+            <div class="unit">
+                <label>Place</label>
+                <input type="text" id="add-client" class="wider rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                <i id="link-add-client" class="icon icon-link link-newtab hidden"></i>
+            </div>
+        </div>
+        <div class="row top-separated">
+            <div class="unit">
+                <label class="">Visit note (optional)</label>
+                <textarea class="visitPlanNote rounded border" id="addNote" cols="5" rows="2"></textarea>
+            </div>
+        </div>
+        <div class="row top-separated">
+            <label class="root-label">Repeats</label>
+            <label for="rb-no-repeat"><input id="rb-no-repeat" checked="" type="radio" class="rounded border"> Don't repeat</label>
+            <label for="rb-repeat"><input id="rb-repeat" type="radio" class="rounded border"> Repeat every <input type="text" id="repeat" maxlength="2" class="mini rounded border"> week(s)</label>
+        </div>
+    </div>
+</div>
+<div id="edit-schedule" style="display:none;">
+    <div class="inner-container">
+        <div class="avatarImg"><i class="icon icon-client"></i></div>
+        <h1 class="with-icon client">Edit schedule</h1>
+
+        <div class="row">
+            <div tabindex="1" class="unit">
+                <label>Date</label>
+                <input type="text" id="edit-date" class="short rounded border hasDatepicker">
+            </div>
+            <div class="unit">
+                <label>Time (optional)</label>
+                <input type="text" id="edit-time" placeholder="Time (optional)" class="short rounded border ui-timepicker-input" autocomplete="off">
+            </div>
+            <div class="unit ">
+                <label>Representative</label>
+                <input type="text" id="edit-representative" class="wide rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                <i id="link-edit-representative" class="icon icon-link link-newtab"></i>
+            </div>
+        </div>
+        <div class="row top-separated">
+            <div class="unit">
+                <label>Place</label>
+                <input type="text" id="edit-client" class="wider rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                <i id="link-edit-client" class="icon icon-link link-newtab"></i>
+            </div>
+        </div>
+        <div class="row top-separated">
+            <div class="unit">
+                <label class="">Visit note (optional)</label>
+                <textarea class="visitPlanNote rounded border" id="editNote" cols="5" rows="2"></textarea>
+            </div>
+        </div>
+        <div class="row top-separated">
+            <label class="root-label">Repeats</label>
+            <label for="rb-no-repeat-e"><input id="rb-no-repeat-e" type="radio" class="rounded border"> Don't repeat</label>
+            <label for="rb-repeat-e"><input id="rb-repeat-e" type="radio" class="rounded border"> Repeat every <input type="text" id="repeat-e" maxlength="2" class="mini rounded border"> week(s)</label>
+        </div>
+        <div class="inner-overlay"></div>
+    </div>
+</div>
+
+<link href="/content/css/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+<link href="/content/css/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
+
+ <script src="/bundles/visitplans?v=smdOKQ2XIdLNulIr8B86kAUvkgey4aMeoWaVpUvh6zg1"></script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+
+<link href="/content/css/jquery.timepicker.css" rel="stylesheet" type="text/css">
+<link href="/content/css/fullcalendar/jquery.qtip.min.css" rel="stylesheet" type="text/css">
+
+<link href="/content/css/visit-schedule.css?402" type="text/css" rel="stylesheet">
+
+<script src="/content/js/visit-schedule.js?402" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        if ($("#IDPutnik").val() == undefined) {
+            VisitSchedule.isClient = true;
+        }
+        else if ($("#IDKupacLokacija").val() == undefined) {
+            VisitSchedule.isRep = true;
+        }
+
+        VisitSchedule.isCompany = false;
+
+        $("#repeat, #repeat-e").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+                // Ensure that it is a number and stop the keypress
+            else if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+
+        var labelID;
+
+        // repeat/don't repeat radio buttons label click event
+        $('label').click(function (event) {
+            labelID = $(this).attr('for');
+            if (labelID == 'rb-repeat-e')
+                $('#repeat-e').focus();
+            else if (labelID == 'rb-repeat')
+                $('#repeat').focus();
+        });
+
+        // repeat every n weeks input click event
+        $('#repeat-e').click(function (event) {
+            $('#rb-repeat-e').click(); // trriger click on 'Repeat every' radio button
+            //$('#repeat-e').focus();
+        });
+
+        // datepicker for selecting date in add/edit schedule popup
+        $('#edit-date, #add-date').datepicker();
+
+        // timepicker for selecting date in add/edit schedule popup
+        $('#add-time, #edit-time').timepicker({
+            'step': 15,
+            'scrollDefault': 'now',
+            'noneOption': [
+                {
+                    'label': dictionaryAnyTime,
+                    'className': 'shibby',
+                    'value': dictionaryAnyTime
+                }
+            ],
+            'defaultValue': 'now',
+            'timeFormat': 'h:i A'
+        });
+
+        // repeat/dont' repeat radio buttons click event on new schedule popup
+        $('#add-to-schedule input[type=radio]').click(function () {
+            $('#add-to-schedule input[type=radio]').not($(this)).prop("checked", false);
+            if ($('#add-to-schedule #rb-no-repeat').prop("checked"))
+                $('#add-to-schedule #repeat').val('');
+        });
+
+        // repeat/dont' repeat radio buttons click event on edit schedule popup
+        $('#edit-schedule input[type=radio]').click(function () {
+            $('#edit-schedule input[type=radio]').not($(this)).prop("checked", false);
+            if ($('#edit-schedule #rb-no-repeat-e').prop("checked"))
+                $('#edit-schedule #repeat-e').val('');
+        });
+
+        // repeat every n weeks input click event on new schedule popup
+        $('#edit-schedule #repeat').click(function () {
+            $('#edit-schedule #rb-repeat-e').prop("checked", true);
+            $('#edit-schedule #rb-no-repeat-e').prop("checked", false);
+        });
+
+        // repeat every n weeks input click event on edit schedule popup
+        $('#add-to-schedule #repeat').click(function () {
+            $('#add-to-schedule #rb-repeat').prop("checked", true);
+            $('#add-to-schedule #rb-no-repeat').prop("checked", false);
+        });
+
+
+        // representative autocomplete
+        $("#edit-representative, #add-representative").autocomplete({
+            minLength: 2,
+            delay: 300,
+            source: function (request, response) {
+                var term = request.term;
+                var quickSearchUri = '/home/quicksearchvp';
+                $.ajax({
+                    dataType: "json",
+                    url: quickSearchUri,
+                    data: {
+                        term: term,
+                        entityId: 0
+                    },
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", "Basic " + API.Communication.basic);
+                    },
+                    success: function (data, status, xhr) { // quickSearchUri = '/home/quicksearchvp'
+                        response(data.Results);
+                    },
+                    error: function () {
+                        if (arguments[0].responseText == undefined || arguments[0].responseText.indexOf('<unauthorized></unauthorized>') > 0) {
+                            window.location = API.Communication.httpRoot + "account/logon";
+                        }
+                        $('#link-edit-representative, #link-add-representative').unbind().addClass('hidden');
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $(this).attr('data-objectId', ui.item.id);
+                $('#link-edit-representative, #link-add-representative').unbind().click(function () { window.open(API.Communication.httpRoot + 'Representative/View/' + ui.item.id + '#calendar', '_blank'); }).removeClass('hidden'); // update link
+            }
+        });
+
+        // client autocomplete
+        $("#edit-client, #add-client").autocomplete({
+            minLength: 2,
+            delay: 300,
+            source: function (request, response) {
+                var term = request.term;
+                var quickSearchUri = '/home/quicksearchvp';
+                $.ajax({
+                    dataType: "json",
+                    url: quickSearchUri,
+                    data: {
+                        term: term,
+                        entityId: 1
+                    },
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", "Basic " + API.Communication.basic);
+                    },
+                    success: function (data, status, xhr) { // quickSearchUri = '/home/quicksearchvp'
+                        response(data.Results);
+                    },
+                    error: function () {
+                        if (arguments[0].responseText == undefined || arguments[0].responseText.indexOf('<unauthorized></unauthorized>') > 0) {
+                            window.location = API.Communication.httpRoot + "account/logon";
+                        }
+                        $('#link-edit-client, #link-add-client').unbind().addClass('hidden');
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $(this).attr('data-objectId', ui.item.id);
+                $('#link-edit-client, #link-add-client').unbind().click(function () { window.open('/Client/View/' + ui.item.id + '#calendar', '_blank'); }).removeClass('hidden'); // update link
+            }
+        });
+
+        // timepicker for selecting date in add/edit schedule popup
+        $('#add-time, #edit-time').timepicker({
+            'step': 15,
+            'scrollDefault': 'now',
+            'noneOption': [
+                {
+                    'label': dictionaryAnyTime,
+                    'className': 'shibby',
+                    'value': dictionaryAnyTime
+                }
+            ],
+            'defaultValue': 'now',
+            'timeFormat': 'h:i A'
+        });
+
+    });
+
+</script>
+
+
+
+<div id="calendar"></div>
+
+
+
+
+<div class="legends hidden">
+    <ul>
+        <li>Past visits:</li>
+        <li><span class="completed-scheduled"> </span> Visited as scheduled</li>
+        <li><span class="completed-unscheduled"> </span> Unscheduled visits</li>
+        <li><span class="missed-schedule"> </span> Missed schedule</li>
+    </ul>
+    <ul>
+        <li>Upcoming visits:</li>
+        <li><span class="to-visit"> </span> Scheduled</li>
+    </ul>
+    <ul></ul>
+</div>
+
+    </div>
+</div>
+<div id="nodata-container" class="nodatafound display-sheet" style="display: none;">
+    <span class="coach-sprite no-data"></span>
+    <div id="device-connected">
+        Place had no activities yet
+        <div class="device-not-connected-image rounded">
+        </div>
+        Field activities are created through the mobile app on smartphone or tablet
+    </div>
+    <div id="device-not-connected" style="display: none;">
+        <p>Use Repsly mobile app to create field actitivites.</p><p><span class="connect-mobile-device link-like">Connect</span> your first mobile device.</p>
+        <div class="device-not-connected-image rounded">
+        </div>
+        Field activities are created through the mobile app on smartphone or tablet
+    </div>
+</div>
+
+<div id="custFieldEditor" class="hidden">
+    <h2 class="warning">
+        Customize group attributes</h2>
+        <br>
+    <span class="subtitle">Deleting or adding attributes will affect all your places.</span>
+    <div id="common-data-editor">
+        <br><input type="hidden" id="IDUniDocZag" value="" class="rounded border">
+        <div class="form_row">
+        <br><label for="tbCode" class="inline">
+                Custom group name:</label>
+            <input id="Title" type="text" value="" class="big border-edit rounded" placeholder="Name">
+        </div>
+    </div>
+    <div id="input-questions" class="obrazac-container  ui-sortable">
+    </div>
+    <span class="addField secondary-button rounded add" title="Add new field to this form">Add new field</span>
+    <div class="clearfix">
+    </div>
+    <div class="hidden">
+        <div id="obrazac-row-cloner" class="obrazac-row float-container">
+            <span class="up-down"></span>
+            <div class="question obrazac-cell">
+                Field:
+                <input type="text" name="question" class="rounded border">
+            </div>
+            <div class="required obrazac-cell">
+                Mandatory:
+                <input type="checkbox" name="isRequired">
+            </div>
+            <div class="datatype obrazac-cell">
+                Type:
+                <select name="datatype" class="rounded border">
+                    <option value="0">Text</option>
+                    <option value="4">Numeric</option>
+                    <option value="1">Long text</option>
+                    <option value="2">Yes/No</option>
+                    <option value="3">Selection</option>
+                </select>
+            </div>
+            <div class="selection obrazac-cell">
+                <div class="dropDownData">
+                    <textarea name="dropDownData" cols="30" rows="5" style="margin: 0 3px;" class="rounded border"></textarea>
+                </div>
+            </div>
+            <div class="row-delete ui-icon ui-icon-close icon_close">
+            </div>
+            <div class="clear-fix">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="deleteCustomField-dialog" class="hidden">
+    Are you sure you want to delete this form?
+</div>
+<div id="newItemField" class="hidden">
+    <input type="text" class="medium rounded border-edit newField" placeholder="New custom field">
+</div>
+</div>
+<script type="text/x-jquery-tmpl" id="tmpl-client-card">
+
+    
+    
+
+   <div class="trinity-box one raised">
+                        <h2 class="">Time at place</h2>
+                        <span class="value">${UkVrijemeKodKupcaSati}h:${UkVrijemeKodKupcaMinuta}m</span>
+                        <span class="average">Total time spent at place</span>
+                    </div>
+                    <div class="trinity-box two">
+                        <h2 class="">Place visits</h2>
+                        <span class="value">${UkObilazaka}</span>
+                        <span class="average">Avg. visits/day: ${ProsObilazakaDnevno}</span>
+                    </div>
+                    <div class="trinity-box three">
+                        <h2 class="">Activities</h2>
+                        <span class="value">${UkupnoAktivnosti}</span>
+                        <span class="average">Avg. field activities/visit: ${ProsjekAktivnostiPoDanu}</span>
+                    </div>
+                    <div class="chart-header">
+                        <ul class="chart-buttons">
+                            <li><a class="period-hour">Hourly</a></li>
+                            <li><a class="period-day">day</a></li>
+                            <li><a class="period-week">week</a></li>
+                            <li><a class="period-month">month</a></li>
+                        </ul>
+                    </div>
+                    <div id="main-chart" class="chart" data-highcharts-chart="0" style="margin-left:20px; overflow:auto; margin-bottom: 0;"></div>
+                    
+                    <div class="summary_segment">
+                        <h3>Activities by Type</h3>
+                        <div class="left-bar">
+                            <ul class="activities list">
+                                <li class="hasicon"><span class="activity"><i class="icon icon-forms"></i> Forms</span><span activity="form" class="value home-post-link" id="UkLokacija" unidocid="">${UkAnketa}</span></li>
+                                                            <li class="hasicon"><span class="activity"><i class="icon icon-pricescan"></i> Retail audits</span><span activity="pricescan" class="value home-post-link" id="UkLokacija">${UkAsortimanInfo}</span></li>
+                                                            <li class="hasicon"><span class="activity"><i class="icon icon-photos"></i> Photos</span><span activity="photo" class="value home-post-link" id="UkLokacija">${UkDatoteka}</span></li>
+                                <li class="hasicon"><span class="activity"><i class="icon icon-clientnotes"></i> Notes</span><span activity="clientnote" class="value home-post-link" id="UkLokacija">${UkPorukaKupac}</span></li>
+                            </ul>
+                        </div>
+                        <div class="right_bar">  
+                        <div id="activities-pie" data-highcharts-chart="1" style="text-align:center; color:#818182;"></div>
+                         </div>
+                    </div>
+
+                     <div class="summary_segment" style="vertical-align:middle">
+                        <h3>Schedule planning</h3>
+                        <div class="left-bar">
+                            <ul class="activities list">  
+                                <li class="hasicon"><span class="activity"><i class="icon icon-visit total"></i> Total visits done</span><span activity="pricescan" class="value" id="UkLokacija">${UkPosjetaTotal}</span></li>
+                                <li class="hasicon"><span class="activity"><i class="icon icon-visit planned"></i> Scheduled</span><span activity="form" class="value" id="UkLokacija">${UkPosjetaPlanirano}</span></li>                          
+                                <li class="hasicon"><span class="activity"><i class="icon icon-visit according-to-plan"></i> Visited as scheduled</span><span activity="photo" class="value" id="UkLokacija">${UkPosjetaPoPlanu}</span></li>
+                                <li class="hasicon"><span class="activity"><i class="icon icon-visit unplanned"></i> Unscheduled visits</span><span activity="clientnote" class="value" id="UkLokacija">${UkPosjetaNeplanirano}</span></li>
+                                <li class="hasicon"><span class="activity"><i class="icon icon-visit missed"></i> Missed schedule</span><span activity="newclient" class="value" id="UkLokacija">${UkPosjetaNeobavljeno}</span></li>                     
+                            </ul>
+                        </div>
+                        <div class="right_bar">  
+                        <div id="visit-planning-pie" data-highcharts-chart="1" style="text-align:center; color:#818182"></div>
+                         </div>
+                    </div>
+
+                    {{if KarticaAnketa.length > 0}}
+                    <div class="summary_segment">
+                      <h3>Forms</h3>
+                        <div class="left-bar">
+                            <ul class="activities list">
+                            {{each KarticaAnketa}}
+                                <li class="hasicon"><span class="activity"><i class="icon icon-forms"></i> ${Naziv}</span><span activity="form" unidoczagid="${UniDocZagID}" class="value home-post-link" id="UkAnketa">${UkAnketa}</span></li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                        <div class="right_bar">
+                                <div id="forms-pie" data-highcharts-chart="2" style="margin-left:40px; min-height:200px"></div>
+                        </div>
+                    </div>
+                    {{/if}}
+                                  {{if Pricescans.length > 0}}
+                    <div class="summary_segment">
+                      <h3>Retail audits</h3>
+                        <div class="left-bar">
+                            <ul class="activities list">
+                            {{each Pricescans}}
+                                <li class="hasicon"><span class="activity"><i class="icon icon-pricescan"></i> ${Naziv}</span><span activity="pricescan" formid="${ID}" class="value home-post-link" id="UkAnketa">${Count}</span></li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                        <div class="right_bar">
+                                <div id="pricescans-pie" data-highcharts-chart="2" style="margin-left:40px; min-height:200px"></div>
+                        </div>
+                    </div>
+                    {{/if}}
+                                        <div class="summary_segment">
+                       <h3>Sales and Merchandising</h3>
+                       <div class="left-bar">
+                            <ul class="activities list">
+                                <li class="hasicon"><span class="activity"><i class="icon icon-purchaseorder"></i> Orders</span><span activity="document" class="value home-post-link" style="text-align:right; margin-left:-20px" id="UkLokacija">${UkDokumenata}</span></li>
+                            </ul>
+                        </div>
+                         <div class="right_bar_snm">
+                         <div class="sales-total">
+                               <span class="activity">Total</span><span activity="document" class="value home-post-link money" id="UkLokacija">${_UkOsnovicaFormatted}</span> 
+                               </div>
+                        </div>
+                    </div>
+</script>
+<script type="text/x-jquery-tmpl" id="tmpl-form-list">
+    <ul class="activities">
+        {{each KarticaAnketa}}<li><span class="activity">${Naziv}</span><span id="UkAnketa" class="value home-post-link" unidoczagid="${UniDocZagID}"  activity="form">${UkAnketa}</span><span class="description home-post-link-prev">${Description}</span></li>{{/each}}
+    </ul>
+</script>
+<script type="text/x-jquery-tmpl" id="tmpl-custom-group">
+    <div id="cmd_${IDUniDocZag}" class="edit_cust_group">
+       
+        <div class="closed-line"></div>
+        <span class="toggle-trigger">${Title}</span>
+       
+    </div>
+    <ul id="f_${IDUniDocZag}" class="activities" style="display: block; ">
+       
+    </ul>
+</script>
+<script type="text/x-jquery-tmpl" id="tmpl-custom-group-item">
+<li id="li_${id}">
+    <span class="activity" title="${question}">${question}</span>
+    {{if datatype == 1 || datatype == 0 || datatype == 4}}
+    <input id="${id}" type="text" class="medium rounded border-edit {{if isRequired}}required_extra_attribute{{/if}}{{if datatype == 4}} decimal_number{{/if}}" placeholder="..." value="${defaultValue}" />
+    {{/if}}
+    {{if datatype == 2}}
+    <select id="${id}" class="medium yesno rounded border {{if isRequired}}required_extra_attribute{{/if}}">
+        <option value="">...</option>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+    </select>
+    {{/if}}
+    {{if datatype == 3}}
+    <select id="${id}" class="medium rounded border {{if isRequired}}required_extra_attribute{{/if}}">
+        <option value=""></option>
+        {{each options}}
+            <option value="${$value}">${$value}</option>
+        {{/each}}
+    </select>
+    {{/if}}
+</li>
+</script>
+<script type="text/x-jquery-tmpl" id="client-history-tmpl">
+<tr id="history_item_${id}" date="${Datum}" class="history-item no-init" numdate=${NumDate} putnikid=${ReferalID}>
+    <td class="action-cell"><a class="action-detail action post-to-stream icon icon-details"  date="${Datum}" numdate=${NumDate} putnikid=${ReferalID} href="/Home/Index"></a></td>
+    <td class="date-cell">${Datum}</td>
+    <td>${ReferalName}</td>
+    <td class="activity-cell">
+        <ul class="activities-list">
+        {{if DokumentNum > 0}}
+            <li class="dokument-num trigger" activity="document" title="Orders"><i class="icon icon-purchaseorder"></i> ${DokumentNum}</li>
+        {{else}}
+            <li class="dokument-num empty" title="Orders"><i class="icon icon-purchaseorder"></i>  0</li>
+        {{/if}}
+        {{if FormNum > 0}}
+            <li class="form-num trigger" activity="form" title="Forms"><i class="icon icon-forms"></i> ${FormNum}</li>
+        {{else}}
+            <li class="form-num empty" title="Forms"><i class="icon icon-forms"></i> 0</li>
+        {{/if}}
+        {{if PricescanNum > 0}}
+            <li class="pricescan-num trigger" activity="pricescan" title="Retail audits"><i class="icon icon-pricescan"></i> ${PricescanNum}</li>
+        {{else}}
+            <li class="pricescan-num empty" title="Retail audits"><i class="icon icon-pricescan"></i> 0</li>
+        {{/if}}
+        {{if PhotoNum > 0}}
+            <li class="photo-num trigger" activity="photo" title="Photos"><i class="icon icon-photos"></i> ${PhotoNum}</li>
+        {{else}}
+            <li class="photo-num empty" title="Photos"><i class="icon icon-photos"></i> 0</li>
+        {{/if}}
+        {{if ClientConversionNum > 0}}
+            <li class="conversion-num trigger" activity="clientstatuschange" title="Status changes"><i class="icon icon-salespipeline"></i> ${ClientConversionNum}</li>
+        {{else}}
+            <li class="conversion-num empty" title="Status changes"><i class="icon icon-salespipeline"></i> 0</li>
+        {{/if}}
+        {{if ClientNote > 0}}
+            <li class="client-note-num trigger" activity="clientnote" title="Notes"><i class="icon icon-clientnotes"></i> ${ClientNote}</li>
+        {{else}}
+            <li class="client-note-num empty" title="Notes"><i class="icon icon-clientnotes"></i> 0</li>
+        {{/if}}
+        </ul>
+    </td>
+</tr>
+</script>
+
+            </div>
+            <footer></footer>
+
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div></div>
