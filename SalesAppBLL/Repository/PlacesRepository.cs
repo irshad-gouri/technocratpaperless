@@ -809,5 +809,58 @@ namespace SalesAppBLL.Repository
             }
             return objResp;
         }
+
+        public object GetAssignedPlacesByUserId(int userId)
+        {
+            try
+            {
+                List<PlaceDetail_WithUserModel> objPlaceDtlsList = new List<PlaceDetail_WithUserModel>();
+
+                var getUserList = (from user in DbContext.Users
+                                   where user.CreatedById == userId
+                                   select user).ToList();
+
+                foreach (var item in getUserList)
+                {
+                    var getAssignedPlaceId = (from uAPlace in DbContext.UserAssignedPlaces
+                                              where uAPlace.UserId == item.Id
+                                              select uAPlace).ToList();
+
+                    foreach (var itemAP in getAssignedPlaceId)
+                    {
+                        var getPlaceDtls = (from uAPlaceDlt in DbContext.PlacesDetails
+                                            where uAPlaceDlt.Id == itemAP.PlaceId
+                                            select new PlaceDetail_WithUserModel
+                                            {
+                                                Id = uAPlaceDlt.Id,
+                                                Name = uAPlaceDlt.Name,
+                                                IsActive = uAPlaceDlt.IsActive,
+                                                Address = uAPlaceDlt.Address,
+                                                State = uAPlaceDlt.State,
+                                                PostalCode = uAPlaceDlt.PostalCode,
+                                                Country = uAPlaceDlt.Country,
+                                                CountryCode = uAPlaceDlt.CountryCode,
+                                                Note = uAPlaceDlt.Note,
+                                                Website = uAPlaceDlt.Website,
+                                                PhotoUrl = uAPlaceDlt.PhotoUrl,
+                                                PlaceId = uAPlaceDlt.PlaceId,
+                                                Latitude = uAPlaceDlt.Latitude,
+                                                Longitude = uAPlaceDlt.Longitude,
+                                                Tags = uAPlaceDlt.Tags,
+                                                UserName = (item.FirstName + " " + item.LastName),
+                                                UserId = item.Id,
+                                            }).FirstOrDefault();
+
+                        objPlaceDtlsList.Add(getPlaceDtls);
+                    }
+                }
+
+                return objPlaceDtlsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

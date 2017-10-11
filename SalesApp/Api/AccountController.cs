@@ -181,7 +181,6 @@ namespace SalesApp.Api
                 return data;
             }
         }
-
-
+        
     }
 }
