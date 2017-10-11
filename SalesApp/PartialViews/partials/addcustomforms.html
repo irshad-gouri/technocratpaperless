@@ -3,7 +3,6 @@
 <link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
 <!--<link href="../../Content/angucomplete-alt.css" rel="stylesheet" />-->
 
-<body class="en-US Forms ng-scope form" data-ng-controller="GlobalController">
 
     <div id="activity-popup-container" class="activity-megapopup hidden">
         <div class="actions-stripe">
@@ -21,27 +20,17 @@
         </div>
     </div>
 
-    <div class="wrapper" "=" ">
+    <div class="wrapper">
         <!-- TOP MENU -->
 
         <div class="content">
             <span id="menu_pointer" class="hidden menu_pointer"></span>
             <div id="main">
 
-                <link href="./Forms_files/forms.min.css" async="" type="text/css" rel="stylesheet" media="screen">
-                <script>
-                    if (API.Settings.isTestOrDemoUser == "false") {
-                        var formsScript = document.createElement('script');
-                        formsScript.type = 'text/javascript';
-                        formsScript.src = '/frontend-app/dist/js/forms.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
-                        document.write(formsScript.outerHTML);
-                    }
-                </script>
-                <script type="text/javascript" src="./Forms_files/forms.min.js.download"></script>
-                <!-- ngInclude: templateUrl --><div class="view-content ng-scope" data-ng-controller="FormEditController" ng-include="templateUrl">
-                    <style type="text/css" class="ng-binding ng-scope">
-                        @import url("/frontend-app/dist/css/custom-attributes.min.css?404");
-                    </style>
+              <!--  <link href="./Forms_files/forms.min.css" async="" type="text/css" rel="stylesheet" media="screen">-->
+              
+                <!-- ngInclude: templateUrl --><div class="view-content ng-scope">
+                  
 
                     <div class="view-content clearfix ng-scope">
                         <div class="view-content-head clearfix">
@@ -56,7 +45,7 @@
                             </h1>
                         </div>
                         <div class="actions_header clearfix"></div>
-                        <!-- ngIf: pageLoaded --><div id="form-edit-container" ng-if="pageLoaded" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
+                        <!-- ngIf: pageLoaded --><div id="form-edit-container" ng-if="true" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
                             <!-- ngIf: SystemUser != null -->
                             <div class="left_bar flat">
                                 <div id="common-data-editor" class="">
@@ -111,28 +100,28 @@
                                     <div class="clientTags rounded border">
                                         <ul class="clientTag-list">
                                             <!-- ngIf: placeTags.length == 0 -->
-                                            <li ng-if="placeTags.length == 0" class="all-clientTags ng-binding ng-scope" tabindex="0">
+                                            <li ng-if="true" class="all-clientTags ng-binding ng-scope" tabindex="0">
                                                 All places
                                             </li><!-- end ngIf: placeTags.length == 0 -->
                                             <!-- ngRepeat: item in placeTags -->
                                             <li class="input-holder">
-                                                <angucomplete localdata="placeTagsAutocompleteList" searchfields="value" titlefield="value" pause="10" minlength="1" add-item="addPlaceTag(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeClientName" class="ng-isolate-scope">
+                                                <!--<angucomplete localdata="placeTagsAutocompleteList" searchfields="value" titlefield="value" pause="10" minlength="1" add-item="addPlaceTag(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeClientName" class="ng-isolate-scope">
                                                     <div class="angucomplete-holder">
                                                         <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{&#39;border_red&#39;: inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing a place tag" size="24">
                                                         <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
-                                                        <!-- ngIf: showDropdown -->
+                                                      
                                                     </div>
-                                                </angucomplete>
+                                                </angucomplete>-->
                                             </li>
                                         </ul>
                                     </div>
 
-                                    <!-- ngIf: !isPersonalEdition --><div ng-if="!isPersonalEdition" class="ng-scope">
+                                    <!-- ngIf: !isPersonalEdition --><div ng-if="true" class="ng-scope">
                                         <div class="form-text ng-binding">Visible to these reps:</div>
                                         <div class="reps rounded border">
                                             <ul class="rep-list">
                                                 <!-- ngIf: reps.length == 0 -->
-                                                <li ng-if="reps.length == 0" class="all-reps ng-binding ng-scope" tabindex="0">
+                                                <li ng-if="true" class="all-reps ng-binding ng-scope" tabindex="0">
                                                     All reps
                                                 </li><!-- end ngIf: reps.length == 0 -->
                                                 <!-- ngRepeat: item in reps -->
@@ -140,7 +129,7 @@
                                                     <angucomplete localdata="repsAutocompleteList" searchfields="Naziv" titlefield="Naziv" pause="10" minlength="1" add-item="addRep(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeRepName" class="ng-isolate-scope">
                                                         <div class="angucomplete-holder">
                                                             <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{&#39;border_red&#39;: inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing rep&#39;s name" size="23">
-                                                            <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
+                                                            <span class="angucomplete-hint ng-binding ng-hide" ng-show="true"></span>
                                                             <!-- ngIf: showDropdown -->
                                                         </div>
                                                     </angucomplete>
@@ -154,9 +143,9 @@
                                     <div class="form-editor__title ng-binding">
                                         Questions &amp; input fields
                                     </div>
-                                    <ul id="input-questions" ui-sortable="sortableOptions" ng-model="data.inputRows" class="obrazac-container ui-sortable ng-pristine ng-untouched ng-valid ng-isolate-scope">
-                                        <!-- ngRepeat: item in data.inputRows -->
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{&#39;group-question&#39;:isInGroup}" id="question-0ede6996-70e8-4a46-aa8e-52db61d8fec1" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                    <ul id="input-questions" ui-sortable="sortableOptions" ng-model="[0]" class="obrazac-container ui-sortable ng-pristine ng-untouched ng-valid ng-isolate-scope">
+                                        <!-- ngRepeat: item in [0] -->
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{&#39;group-question&#39;:isInGroup}" id="question-0ede6996-70e8-4a46-aa8e-52db61d8fec1" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
                                             <div class="form-row form-grid">
                                                 <span class="mover form-control"></span>
                                                 <span class="type  icon-text" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
@@ -165,7 +154,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
                                                         Mandatory
@@ -179,7 +168,7 @@
                                             <!-- ngIf: item.datatype == 3 -->
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-16a55374-469e-4681-a765-ce1bb7806728" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-16a55374-469e-4681-a765-ce1bb7806728" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
 
                                             <div class="form-row form-grid">
 
@@ -193,7 +182,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -214,7 +203,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-45b9376f-4649-4524-b7a5-dc1a30ec5206" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-45b9376f-4649-4524-b7a5-dc1a30ec5206" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
 
                                             <div class="form-row form-grid">
 
@@ -228,7 +217,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -249,7 +238,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-17e949ea-2892-40f3-b75f-5161345180ca" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-17e949ea-2892-40f3-b75f-5161345180ca" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
 
                                             <div class="form-row form-grid">
 
@@ -263,7 +252,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -279,26 +268,26 @@
 
                                             </div>
 
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' --><div ng-if="item.datatype == 2 &amp;&amp; entity == 'form'" class="grid multiples selection ng-scope">
+                                            <!-- ngIf: item.datatype == 2 && entity == 'form' --><div ng-if="true" class="grid multiples selection ng-scope">
 
                                                 <ul class="yes-no">
 
                                                     <!-- ngRepeat: option in item.yesNoOptions -->
-                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in item.yesNoOptions" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
+                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in [0]" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
                                                         <!-- ngIf: datatype == 3 -->
                                                         <!-- ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 2 --><span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="datatype == 2">
+                                                        <!-- ngIf: datatype == 2 --><span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="true">
                                                             Yes
                                                         </span><!-- end ngIf: datatype == 2 -->
                                                     </li><!-- end ngRepeat: option in item.yesNoOptions -->
-                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in item.yesNoOptions" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
+                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in [0]" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
                                                         <!-- ngIf: datatype == 3 -->
                                                         <!-- ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 2 --><span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="datatype == 2">
+                                                        <!-- ngIf: datatype == 2 --><span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="true">
                                                             No
                                                         </span><!-- end ngIf: datatype == 2 -->
 
-                                                        <span class="remove ng-hide" ng-click="removeSelectionOption({index: index})" ng-show="datatype == 3"></span>
+                                                        <span class="remove ng-hide" ng-click="removeSelectionOption({index: index})" ng-show="true"></span>
                                                     </li><!-- end ngRepeat: option in item.yesNoOptions -->
 
                                                 </ul>
@@ -308,7 +297,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-040826b4-2799-44dc-8d9e-6d00e33bfa65" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-040826b4-2799-44dc-8d9e-6d00e33bfa65" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
 
                                             <div class="form-row form-grid">
 
@@ -322,7 +311,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -339,27 +328,27 @@
                                             </div>
 
                                             <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 --><div ng-if="item.datatype == 3" class="grid multiples selection ng-scope">
+                                            <!-- ngIf: item.datatype == 3 --><div ng-if="true" class="grid multiples selection ng-scope">
 
                                                 <ul ui-sortable="sortableOptions" ng-model="item.selectionOptions" class="dropDownData ng-pristine ng-untouched ng-valid ng-isolate-scope ui-sortable">
 
                                                     <!-- ngRepeat: option in item.selectionOptions -->
-                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in item.selectionOptions" option="option" index="$index" datatype="3" add-empty-selection-option="addEmptySelectionOption()" remove-selection-option="removeOptionTrigger(index)" paste-selection-options="pasteSelectionOptions(options)" question-groups="questionGroups" question-id="entity == 'form' ? item.id : null">
-                                                        <!-- ngIf: datatype == 3 --><span class="selection-option__sortable ng-scope" ng-if="datatype == 3"></span><!-- end ngIf: datatype == 3 -->
+                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in [0]" option="option" index="$index" datatype="3" add-empty-selection-option="addEmptySelectionOption()" remove-selection-option="removeOptionTrigger(index)" paste-selection-options="pasteSelectionOptions(options)" question-groups="questionGroups" question-id="entity == 'form' ? item.id : null">
+                                                        <!-- ngIf: datatype == 3 --><span class="selection-option__sortable ng-scope" ng-if="true"></span><!-- end ngIf: datatype == 3 -->
                                                         <!-- ngIf: datatype == 3 --><input class="rounded border ng-pristine ng-valid ng-scope ng-touched" ng-class="{'border_red': !option.isOptionValid}" data-edit="true" ng-if="datatype == 3" ng-model="option.title" focus-input="option.focusInput" ng-paste="pasteTextTrigger($event)" on-enter="addEmptySelectionOption()" ng-blur="selectionOptionInputOnBlur()"><!-- end ngIf: datatype == 3 -->
                                                         <!-- ngIf: datatype == 2 -->
 
-                                                        <span class="selection-option__choose-action-link ng-binding" ng-click="actionsDropdownToggle()" ng-show="optionIndex == 0 &amp;&amp; questionId &amp;&amp; !showActionsDropdown">
+                                                        <span class="selection-option__choose-action-link ng-binding" ng-click="actionsDropdownToggle()" ng-show="true">
                                                             Conditional action
                                                         </span>
 
-                                                        <span class="selection-option__branching-option ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="optionIndex != 0">
+                                                        <span class="selection-option__branching-option ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="true">
                                                             Conditional action
                                                         </span>
 
-                                                        <span class="selection-option__choose-action-arrow" ng-click="actionsDropdownToggle($event)" ng-show="questionId"></span>
+                                                        <span class="selection-option__choose-action-arrow" ng-click="actionsDropdownToggle($event)" ng-show="true"></span>
 
-                                                        <span class="remove" ng-click="removeSelectionOption({index: index})" ng-show="datatype == 3"></span>
+                                                        <span class="remove" ng-click="removeSelectionOption({index: index})" ng-show="true"></span>
                                                     </li><!-- end ngRepeat: option in item.selectionOptions -->
 
                                                     <li class="new-item">
@@ -377,7 +366,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d2a55c25-18a6-43b1-b166-229bd77b1765" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d2a55c25-18a6-43b1-b166-229bd77b1765" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
 
                                             <div class="form-row form-grid">
 
@@ -391,7 +380,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -412,7 +401,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-c8c42dfa-9683-40f0-8fb9-53d1a803adba" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-c8c42dfa-9683-40f0-8fb9-53d1a803adba" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
 
                                             <div class="form-row form-grid">
 
@@ -426,7 +415,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -447,7 +436,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-3843102c-2bbd-482f-bd5c-48caa45444f7" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-3843102c-2bbd-482f-bd5c-48caa45444f7" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
 
                                             <div class="form-row form-grid">
 
@@ -461,7 +450,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch ng-hide">
+                                                <span ng-show="true" class="switch row-switch ng-hide">
 
                                                     <label class="ng-binding">
 
@@ -482,7 +471,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d72c3201-01b0-4f69-82ac-45825ed19447" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d72c3201-01b0-4f69-82ac-45825ed19447" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
 
                                             <div class="form-row form-grid">
 
@@ -496,7 +485,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -517,7 +506,7 @@
 
                                         </li>
 
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d0711570-97c6-4902-8a7b-09ae6894f465" ng-show="showItem" ng-repeat="item in data.inputRows" item="item" all-form-questions="data.inputRows" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
+                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d0711570-97c6-4902-8a7b-09ae6894f465" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
 
                                             <div class="form-row form-grid">
 
@@ -531,7 +520,7 @@
 
                                                 </span>
 
-                                                <span ng-show="item.datatype != 8" class="switch row-switch">
+                                                <span ng-show="true" class="switch row-switch">
 
                                                     <label class="ng-binding">
 
@@ -551,7 +540,7 @@
                                             <!-- ngIf: item.datatype == 3 -->
 
                                         </li>
-                                        <!-- end ngRepeat: item in data.inputRows -->
+                                        <!-- end ngRepeat: item in [0] -->
                                     </ul>
                                     <span class="addField secondary-button rounded add ng-binding" ng-click="addNewField()" title="Add new field to this form">
                                         Add question
@@ -586,7 +575,7 @@
                 </a><a href="#" data-type="3" class="ng-binding tool-item gradient">
                     <i class="icon-selection"></i>
                     Selection
-                </a><a href="#" data-type="6" ng-if="usesPhotos" class="ng-binding ng-scope tool-item gradient">
+                </a><a href="#" data-type="6" ng-if="true" class="ng-binding ng-scope tool-item gradient">
                     <i class="icon-form-photo"></i>
                     Photo
                 </a><a href="#" data-type="7" class="ng-binding tool-item gradient">
@@ -598,12 +587,10 @@
                 </a><a href="#" data-type="9" class="ng-binding tool-item gradient">
                     <i class="icon-form-barcode"></i>
                     Barcode
-                </a><a href="#" data-type="10" ng-if="usesProducts" class="ng-binding ng-scope tool-item gradient">
+                </a><a href="#" data-type="10" ng-if="true" class="ng-binding ng-scope tool-item gradient">
                     <i class="icon icon-product"></i>
                     Product
                 </a>
             </div><div class="arrow"></div>
         </div>
     </div>
-
-</body>

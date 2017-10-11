@@ -31,6 +31,8 @@ namespace SalesApp
                       "~/Content/all.css",
                       "~/Content/angular-ui-tree.min.css",
                       "~/Content/custom.css",
+                      "~/Content/StyleSheet_Main.css",
+                       "~/Content/forms.min.css",
                       "~/Content/ngDialog-theme-default.min.css",
                       "~/Content/ngDialog.min.css",
                       "~/Content/font-awesome.min.css",
