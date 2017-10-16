@@ -241,6 +241,7 @@
     <Content Include="PartialViews\partials\addcustomforms.html" />
     <Content Include="Content\angucomplete-alt.css" />
     <Content Include="Content\forms.min.css" />
+    <Content Include="PartialViews\partials\AddRepresentatives.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1448,7 +1449,9 @@
     <Content Include="PartialViews\partials\updateCategory.html" />
     <Content Include="PartialViews\partials\updateProduct.html" />
     <Content Include="PartialViews\partials\userinvestment.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

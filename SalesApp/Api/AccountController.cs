@@ -27,26 +27,26 @@ namespace SalesApp.Api
                     var lst = _accountRepo.ForgotPassword(email);
                     if (lst)
                     {
-                       
-                        data.Status="SUCCESS";
-                        data.Error="";
-                        data.ErrorCode="";
-                        data.Message="Your password has been sent to your registered email id.";
+
+                        data.Status = "SUCCESS";
+                        data.Error = "";
+                        data.ErrorCode = "";
+                        data.Message = "Your password has been sent to your registered email id.";
                     }
                     else
                     {
-                        data.Data="";
-                        data.Message="Wrong email id.";
-                        data.Status="FAIL";
-                        data.Error="";
-                        data.ErrorCode="";
+                        data.Data = "";
+                        data.Message = "Wrong email id.";
+                        data.Status = "FAIL";
+                        data.Error = "";
+                        data.ErrorCode = "";
                     }
                 }
                 catch (Exception exception)
                 {
-                    data.Status="FAIL";
-                    data.Error=exception.Message;
-                    data.ErrorCode="";
+                    data.Status = "FAIL";
+                    data.Error = exception.Message;
+                    data.ErrorCode = "";
                 }
                 return data;
             }
@@ -63,28 +63,28 @@ namespace SalesApp.Api
             try
             {
                 var lst = _accountRepo.LoginUser(log);
-                if ( lst != null)
+                if (lst != null)
                 {
-                    data.Data=lst;
-                    data.Status="SUCCESS";
-                    data.Error="";
-                    data.ErrorCode="";
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
                 }
                 else
                 {
-                    data.Data="Invalid credentials";
-                    data.Status="FAIL";
-                    data.Error="";
-                    data.ErrorCode="";
+                    data.Data = "Invalid credentials";
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
                 }
                 return data;
             }
             catch (Exception exception)
             {
-                data.Data="";
-                data.Status="FAIL";
-                data.Error=exception.Message;
-                data.ErrorCode="";
+                data.Data = "";
+                data.Status = "FAIL";
+                data.Error = exception.Message;
+                data.ErrorCode = "";
                 return data;
             }
         }
@@ -96,31 +96,31 @@ namespace SalesApp.Api
             try
             {
                 string str = _accountRepo.RegisterUser(reg);
-                data.Data=str;
+                data.Data = str;
                 if (str == "User successfully registered")
                 {
-                    data.Status="SUCCESS";
+                    data.Status = "SUCCESS";
                 }
                 else
                 {
-                    data.Status="FAIL";
+                    data.Status = "FAIL";
                 }
-                data.Error="";
-                data.ErrorCode="";
+                data.Error = "";
+                data.ErrorCode = "";
                 return data;
             }
             catch (Exception exception)
             {
-                data.Data="";
-                data.Status="FAIL";
-                data.Error=exception.Message;
-                data.ErrorCode="";
+                data.Data = "";
+                data.Status = "FAIL";
+                data.Error = exception.Message;
+                data.ErrorCode = "";
                 return data;
             }
         }
 
-        [HttpPut,Route("updateuserphoto")]
-        public ResponseData UpdateUserPhoto( User user)
+        [HttpPut, Route("updateuserphoto")]
+        public ResponseData UpdateUserPhoto(User user)
         {
             ResponseData data = new ResponseData();
             try
@@ -181,6 +181,6 @@ namespace SalesApp.Api
                 return data;
             }
         }
-        
+       
     }
 }
