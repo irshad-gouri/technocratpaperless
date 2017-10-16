@@ -194,7 +194,7 @@ namespace SalesApp.Api
         }
 
         [HttpPost, Route("addanswerbyquestionid")]
-        public ResponseData AddAnswerByQuestionId(FormsAnswer formAns)
+        public ResponseData AddAnswerByQuestionId(List<FormsAnswer> formAns)
         {
             ResponseData data = new ResponseData();
             try

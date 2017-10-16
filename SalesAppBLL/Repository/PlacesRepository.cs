@@ -196,41 +196,44 @@ namespace SalesAppBLL.Repository
             }
         }
 
-        public AddCustomFormsResponse AddAnswerByQuestionId(FormsAnswer formAns)
+        public AddCustomFormsResponse AddAnswerByQuestionId(List<FormsAnswer> ansList)
         {
             AddCustomFormsResponse objResp = new AddCustomFormsResponse();
             try
             {
-                if (formAns.PlaceId == 0)
+                foreach (var formAns in ansList)
                 {
-                    objResp.Status = "Failed";
-                    objResp.Message = "Place Id Can't be blank!";
-                }
-                else if (formAns.UserId == 0)
-                {
-                    objResp.Status = "Failed";
-                    objResp.Message = "UserId Can't be blank!";
-                }
-                else if (formAns.FormsQuestionId == 0)
-                {
-                    objResp.Status = "Failed";
-                    objResp.Message = "QuestionId Can't be blank!";
-                }
-                else if (string.IsNullOrEmpty(formAns.Answer))
-                {
-                    objResp.Status = "Failed";
-                    objResp.Message = "Answer Can't be blank!";
-                }
-                else
-                {
-                    // TODO: Perform on db
-                    formAns.CreatedDate = System.DateTime.Now;
-                    formAns.ModifiedDate = System.DateTime.Now;
-                    DbContext.FormsAnswers.Add(formAns);
-                    DbContext.SaveChanges();
+                    if (formAns.PlaceId == 0)
+                    {
+                        objResp.Status = "Failed";
+                        objResp.Message = "Place Id Can't be blank!";
+                    }
+                    else if (formAns.UserId == 0)
+                    {
+                        objResp.Status = "Failed";
+                        objResp.Message = "UserId Can't be blank!";
+                    }
+                    else if (formAns.FormsQuestionId == 0)
+                    {
+                        objResp.Status = "Failed";
+                        objResp.Message = "QuestionId Can't be blank!";
+                    }
+                    else if (string.IsNullOrEmpty(formAns.Answer))
+                    {
+                        objResp.Status = "Failed";
+                        objResp.Message = "Answer Can't be blank!";
+                    }
+                    else
+                    {
+                        // TODO: Perform on db
+                        formAns.CreatedDate = System.DateTime.Now;
+                        formAns.ModifiedDate = System.DateTime.Now;
+                        DbContext.FormsAnswers.Add(formAns);
+                        DbContext.SaveChanges();
 
-                    objResp.Status = "Success";
-                    objResp.Message = "Thanks for submit your answer!";
+                        objResp.Status = "Success";
+                        objResp.Message = "Thanks for submit your answer!";
+                    }
                 }
             }
             catch (Exception ex)
