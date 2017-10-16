@@ -14,7 +14,7 @@ namespace SalesAppBLL.Repository
         {
             try
             {
-                var lst = Query(i => i.Password == log.Password && i.UserName == log.UserName).FirstOrDefault();
+                var lst = Query(i => i.Password == log.Password && i.UserName == log.UserName && i.RoleId==log.RoleId).FirstOrDefault();
                
                 return lst;
             }

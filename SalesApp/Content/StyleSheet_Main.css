@@ -16070,7 +16070,7 @@ ul.stream .gm-style {
 .form_container .remove-rep-clientTag, .form_container .remove-rep-clientTag.disabled {
     width: 16px;
     height: 16px;
-    background: url(/frontend-app/dist/img/jq_icon_sprites/ui-icons_454545_256x240.png) -80px -128px no-repeat;
+    background: url(../images/ui-icons_454545_256x240.png) -80px -128px no-repeat;
     position: absolute;
     cursor: pointer;
     display: inline-block

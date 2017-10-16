@@ -17,9 +17,9 @@ namespace SalesAppBLL.Repository
         {
             try
             {
-                var getFormsList = (from user in DbContext.CustomForms
+                var getFormsList = (from user in DbContext.FormsVisibleOnTheseReps join customFrm in DbContext.CustomForms on user.CustomFormsId equals customFrm.Id
                                    where user.UserId == userId
-                                   select user).ToList();
+                                   select customFrm).ToList();
 
                 return getFormsList;
             }

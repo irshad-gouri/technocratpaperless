@@ -1,596 +1,281 @@
 ﻿<!--<h1>Custom formssss</h1>-->
-<link href="../../Content/forms.min.css" rel="stylesheet" />
-<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
 <!--<link href="../../Content/angucomplete-alt.css" rel="stylesheet" />-->
 
 
-    <div id="activity-popup-container" class="activity-megapopup hidden">
-        <div class="actions-stripe">
-            <div class="close-modal"><span class="close-button"></span></div>
-            <div id="action-bar"></div>
-        </div>
-        <div class="activity-popup">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title"></h3>
-                </div>
-                <div class="modal-body">
-                </div>
+<div id="activity-popup-container" class="activity-megapopup hidden">
+    <div class="actions-stripe">
+        <div class="close-modal"><span class="close-button"></span></div>
+        <div id="action-bar"></div>
+    </div>
+    <div class="activity-popup">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body">
             </div>
         </div>
     </div>
+</div>
 
-    <div class="wrapper">
-        <!-- TOP MENU -->
+<div class="wrapper">
+    <!-- TOP MENU -->
 
-        <div class="content">
-            <span id="menu_pointer" class="hidden menu_pointer"></span>
-            <div id="main">
+    <div class="content">
+        <span id="menu_pointer" class="hidden menu_pointer"></span>
+        <div id="main">
 
-              <!--  <link href="./Forms_files/forms.min.css" async="" type="text/css" rel="stylesheet" media="screen">-->
-              
-                <!-- ngInclude: templateUrl --><div class="view-content ng-scope">
-                  
+            <!--  <link href="./Forms_files/forms.min.css" async="" type="text/css" rel="stylesheet" media="screen">-->
+            <!-- ngInclude: templateUrl --><div class="view-content ng-scope">
 
-                    <div class="view-content clearfix ng-scope">
-                        <div class="view-content-head clearfix">
-                            <h1 class="page-head forms">
-                                <i class="icon icon-forms"></i>
-                                <span class="header-main ng-binding" id="NazivLabel">
-                                    Forms
-                                </span>
-                                <span class="header-sub ng-binding">
-                                    Use forms to keep record of your reps activities.
-                                </span>
-                            </h1>
+
+                <div class="view-content clearfix ng-scope">
+                    <div class="view-content-head clearfix">
+                        <h1 class="page-head forms">
+                            <i class="icon icon-forms"></i>
+                            <span class="header-main ng-binding" id="NazivLabel">
+                                Forms
+                            </span>
+                            <span class="header-sub ng-binding">
+                                Use forms to keep record of your reps activities.
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="actions_header clearfix"></div>
+                    <!-- ngIf: pageLoaded --><div id="form-edit-container" ng-if="true" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
+                        <!-- ngIf: SystemUser != null -->
+                        <div class="left_bar flat">
+                            <div id="common-data-editor" class="">
+                                <div class="form_container clearleft basic-info form-editor">
+                                    <div class="form-grid">
+                                        <div class="unit w-2-3">
+                                            <div for="tbCode" class="label ng-binding">
+                                                Title:
+                                            </div>
+                                            <input id="Title" type="text" value="" class="name border-edit rounded ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="addcustomformCtrl.Title" ng-class="{&#39;border_red&#39;: !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" maxlength="256" placeholder="...">
+                                        </div>
+                                        <div class="unit w-1-3">
+                                            <span class="isActiveCheckbox afterInput rounded inline-block" type="">
+                                                <input type="checkbox" id="IsActive" class="ng-pristine ng-untouched ng-valid" ng-model="addcustomformCtrl.IsActive">
+                                                <label for="IsActive" class="ng-binding">
+                                                    active form
+                                                </label>
+                                            </span>
+                                            <span class="isActiveCheckbox afterInput rounded inline-block" type="">
+                                                <input type="checkbox" id="KoristiPredupis" class="ng-pristine ng-untouched ng-valid" ng-model="data.KoristiPredupis">
+                                                <label for="KoristiPredupis" class="ng-binding">
+                                                    Auto-fill on open
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-grid">
+                                        <div class="unit w-1-1">
+                                            <div for="tbCode" class="label ng-binding">
+                                                Description:
+                                            </div>
+                                            <textarea ng-model="addcustomformCtrl.Description" rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Description" placeholder="..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="actions_header clearfix"></div>
-                        <!-- ngIf: pageLoaded --><div id="form-edit-container" ng-if="true" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
-                            <!-- ngIf: SystemUser != null -->
-                            <div class="left_bar flat">
-                                <div id="common-data-editor" class="">
-                                    <div class="form_container clearleft basic-info form-editor">
-                                        <div class="form-grid">
-                                            <div class="unit w-2-3">
-                                                <div for="tbCode" class="label ng-binding">
-                                                    Title:
-                                                </div>
-                                                <input id="Title" type="text" value="" class="name border-edit rounded ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="data.Title" ng-class="{&#39;border_red&#39;: !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" maxlength="256" placeholder="...">
-                                            </div>
-                                            <div class="unit w-1-3">
-                                                <span class="isActiveCheckbox afterInput rounded inline-block" type="">
-                                                    <input type="checkbox" id="IsActive" class="ng-pristine ng-untouched ng-valid" ng-model="data.IsActive">
-                                                    <label for="IsActive" class="ng-binding">
-                                                        active form
-                                                    </label>
-                                                </span>
-                                                <span class="isActiveCheckbox afterInput rounded inline-block" type="">
-                                                    <input type="checkbox" id="KoristiPredupis" class="ng-pristine ng-untouched ng-valid" ng-model="data.KoristiPredupis">
-                                                    <label for="KoristiPredupis" class="ng-binding">
-                                                        Auto-fill on open
-                                                    </label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="form-grid">
-                                            <div class="unit w-1-1">
-                                                <div for="tbCode" class="label ng-binding">
-                                                    Description:
-                                                </div>
-                                                <textarea ng-model="data.Description" rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Description" placeholder="..."></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="right_bar flat save-discard" ng-style="showSaveDiscardButtons ?  { &#39;visibility&#39;:&#39;visible&#39; } : { &#39;visibility&#39;:&#39;visible&#39; }" style="visibility: visible;">
+                            <div class="clearfix save-discard-inner ng-isolate-scope" sticky="" offset="30" style="display: block; z-index: 10; width: 245px; position: static; left: auto; top: auto; margin-top: 0px; height: 61px;">
+                                <div class="actions clearfix">
+                                    <input type="button" id="btnSave" ng-click="addcustomformCtrl.saveFormTrigger()" value="Save" class="button_save rounded">
+                                    <span ng-click="discardChanges()" id="Reload" class="lnkCancel ng-binding">
+                                        Discard
+                                    </span>
                                 </div>
                             </div>
-                            <div class="right_bar flat save-discard" ng-style="showSaveDiscardButtons ?  { &#39;visibility&#39;:&#39;visible&#39; } : { &#39;visibility&#39;:&#39;hidden&#39; }" style="visibility: visible;">
-                                <div class="clearfix save-discard-inner ng-isolate-scope" sticky="" offset="30" style="display: block; z-index: 10; width: 245px; position: static; left: auto; top: auto; margin-top: 0px; height: 61px;">
-                                    <div class="actions clearfix">
-                                        <input type="button" id="btnSave" ng-click="saveFormTrigger()" value="Save" class="button_save rounded">
-                                        <span ng-click="discardChanges()" id="Reload" class="lnkCancel ng-binding">
-                                            Discard
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="left_bar obrazac-extended flat">
-                                <div class="form_container clearleft relatived ">
-                                    <div class="form-editor__title ng-binding">Set form accessibility</div>
-                                    <div class="form-text ng-binding">Connected to places with any of these tags:</div>
-                                    <div class="clientTags rounded border">
-                                        <ul class="clientTag-list">
-                                            <!-- ngIf: placeTags.length == 0 -->
-                                            <li ng-if="true" class="all-clientTags ng-binding ng-scope" tabindex="0">
-                                                All places
-                                            </li><!-- end ngIf: placeTags.length == 0 -->
-                                            <!-- ngRepeat: item in placeTags -->
+                        </div>
+                        <div class="left_bar obrazac-extended flat">
+                            <div class="form_container clearleft relatived ">
+                                <!--<div class="form-editor__title ng-binding">Set form accessibility</div>
+                                <div class="form-text ng-binding">Connected to places with any of these tags:</div>
+                                <div class="clientTags rounded border">
+                                    <ul class="clientTag-list">
+                                       
+                                        <li ng-if="true" class="all-clientTags ng-binding ng-scope" tabindex="0">
+                                            All places
+                                        </li>
+                                       
+                                        <li class="input-holder">
+                                            <angucomplete localdata="placeTagsAutocompleteList" searchfields="value" titlefield="value" pause="10" minlength="1" add-item="addPlaceTag(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeClientName" class="ng-isolate-scope">
+                                                <div class="angucomplete-holder">
+                                                    <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{&#39;border_red&#39;: inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing a place tag" size="24">
+                                                    <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
+
+                                                </div>
+                                            </angucomplete>
+                                        </li>
+                                    </ul>
+                                </div>-->
+
+                                <div>
+                                    <div class="form-text ng-binding">Visible to these reps:</div>
+                                    <div class="reps rounded border">
+
+                                        <ul class="rep-list">
+                                          
+                                            <li class="icon-distribution-item ng-isolate-scope" ng-repeat="item in addcustomformCtrl.FormsVisibleOnTheseRepsDetail track by $index" item="item" remove-distribution-item="removeRep(item)">
+                                                <i class="icon-representative icon-active"></i>
+                                                <span class="label ng-binding">{{item.FirstName}}</span>
+                                                <span class="remove-tag remove-rep-clientTag" ng-click="addcustomformCtrl.removeDistributionItem($index)"></span>
+                                            </li>
                                             <li class="input-holder">
-                                                <!--<angucomplete localdata="placeTagsAutocompleteList" searchfields="value" titlefield="value" pause="10" minlength="1" add-item="addPlaceTag(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeClientName" class="ng-isolate-scope">
-                                                    <div class="angucomplete-holder">
-                                                        <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{&#39;border_red&#39;: inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing a place tag" size="24">
-                                                        <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
-                                                      
-                                                    </div>
-                                                </angucomplete>-->
+                                                <angucomplete localdata="addcustomformCtrl.repsAutocompleteList" selectedobject="addcustomformCtrl.repsAutocompleteListSelected"  searchfields="FirstName" titlefield="FirstName" pause="10" minlength="1" no-results-found-message="No result Found" placeholder="Type Rep Name" class="ng-isolate-scope">
+                                                   
+                                                </angucomplete>
                                             </li>
                                         </ul>
                                     </div>
-
-                                    <!-- ngIf: !isPersonalEdition --><div ng-if="true" class="ng-scope">
-                                        <div class="form-text ng-binding">Visible to these reps:</div>
-                                        <div class="reps rounded border">
-                                            <ul class="rep-list">
-                                                <!-- ngIf: reps.length == 0 -->
-                                                <li ng-if="true" class="all-reps ng-binding ng-scope" tabindex="0">
-                                                    All reps
-                                                </li><!-- end ngIf: reps.length == 0 -->
-                                                <!-- ngRepeat: item in reps -->
-                                                <li class="input-holder">
-                                                    <angucomplete localdata="repsAutocompleteList" searchfields="Naziv" titlefield="Naziv" pause="10" minlength="1" add-item="addRep(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeRepName" class="ng-isolate-scope">
-                                                        <div class="angucomplete-holder">
-                                                            <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{&#39;border_red&#39;: inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing rep&#39;s name" size="23">
-                                                            <span class="angucomplete-hint ng-binding ng-hide" ng-show="true"></span>
-                                                            <!-- ngIf: showDropdown -->
-                                                        </div>
-                                                    </angucomplete>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- end ngIf: !isPersonalEdition -->
-                                    <div class="clear-fix"></div>
-                                </div>
-                                <div id="custFieldEditor" class="form_container clearleft relatived">
-                                    <div class="form-editor__title ng-binding">
-                                        Questions &amp; input fields
-                                    </div>
-                                    <ul id="input-questions" ui-sortable="sortableOptions" ng-model="[0]" class="obrazac-container ui-sortable ng-pristine ng-untouched ng-valid ng-isolate-scope">
-                                        <!-- ngRepeat: item in [0] -->
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{&#39;group-question&#39;:isInGroup}" id="question-0ede6996-70e8-4a46-aa8e-52db61d8fec1" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-                                            <div class="form-row form-grid">
-                                                <span class="mover form-control"></span>
-                                                <span class="type  icon-text" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-                                                <span class="input">
-                                                    <input type="text" ng-class="{&#39;border_red&#39;: !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-                                                    </label>
-                                                </span>
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-                                            </div>
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-16a55374-469e-4681-a765-ce1bb7806728" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-longtext" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-45b9376f-4649-4524-b7a5-dc1a30ec5206" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-numeric" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-17e949ea-2892-40f3-b75f-5161345180ca" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-boolean" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' --><div ng-if="true" class="grid multiples selection ng-scope">
-
-                                                <ul class="yes-no">
-
-                                                    <!-- ngRepeat: option in item.yesNoOptions -->
-                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in [0]" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
-                                                        <!-- ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 2 --><span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="true">
-                                                            Yes
-                                                        </span><!-- end ngIf: datatype == 2 -->
-                                                    </li><!-- end ngRepeat: option in item.yesNoOptions -->
-                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in [0]" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
-                                                        <!-- ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 2 --><span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="true">
-                                                            No
-                                                        </span><!-- end ngIf: datatype == 2 -->
-
-                                                        <span class="remove ng-hide" ng-click="removeSelectionOption({index: index})" ng-show="true"></span>
-                                                    </li><!-- end ngRepeat: option in item.yesNoOptions -->
-
-                                                </ul>
-
-                                            </div><!-- end ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-040826b4-2799-44dc-8d9e-6d00e33bfa65" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-selection" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 --><div ng-if="true" class="grid multiples selection ng-scope">
-
-                                                <ul ui-sortable="sortableOptions" ng-model="item.selectionOptions" class="dropDownData ng-pristine ng-untouched ng-valid ng-isolate-scope ui-sortable">
-
-                                                    <!-- ngRepeat: option in item.selectionOptions -->
-                                                    <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in [0]" option="option" index="$index" datatype="3" add-empty-selection-option="addEmptySelectionOption()" remove-selection-option="removeOptionTrigger(index)" paste-selection-options="pasteSelectionOptions(options)" question-groups="questionGroups" question-id="entity == 'form' ? item.id : null">
-                                                        <!-- ngIf: datatype == 3 --><span class="selection-option__sortable ng-scope" ng-if="true"></span><!-- end ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 3 --><input class="rounded border ng-pristine ng-valid ng-scope ng-touched" ng-class="{'border_red': !option.isOptionValid}" data-edit="true" ng-if="datatype == 3" ng-model="option.title" focus-input="option.focusInput" ng-paste="pasteTextTrigger($event)" on-enter="addEmptySelectionOption()" ng-blur="selectionOptionInputOnBlur()"><!-- end ngIf: datatype == 3 -->
-                                                        <!-- ngIf: datatype == 2 -->
-
-                                                        <span class="selection-option__choose-action-link ng-binding" ng-click="actionsDropdownToggle()" ng-show="true">
-                                                            Conditional action
-                                                        </span>
-
-                                                        <span class="selection-option__branching-option ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="true">
-                                                            Conditional action
-                                                        </span>
-
-                                                        <span class="selection-option__choose-action-arrow" ng-click="actionsDropdownToggle($event)" ng-show="true"></span>
-
-                                                        <span class="remove" ng-click="removeSelectionOption({index: index})" ng-show="true"></span>
-                                                    </li><!-- end ngRepeat: option in item.selectionOptions -->
-
-                                                    <li class="new-item">
-
-                                                        <a href="javascript:void(0)" ng-click="addEmptySelectionOption()" class="ng-binding">
-                                                            <span>+</span>
-                                                            Add answer
-                                                        </a>
-
-                                                    </li>
-
-                                                </ul>
-
-                                            </div><!-- end ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d2a55c25-18a6-43b1-b166-229bd77b1765" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-form-photo" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-c8c42dfa-9683-40f0-8fb9-53d1a803adba" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-date" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-3843102c-2bbd-482f-bd5c-48caa45444f7" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts" style="display: list-item;">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-header" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch ng-hide">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d72c3201-01b0-4f69-82ac-45825ed19447" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon-form-barcode" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-
-                                        <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-d0711570-97c6-4902-8a7b-09ae6894f465" ng-show="true" ng-repeat="item in [0]" item="item" all-form-questions="[0]" index="$index" remove-field="removeFieldTrigger(index)" question-groups="questionGroups" entity="form" form-photo-max-number="data.FormPhotoMaxNumber" alert-questions="alertQuestions" form-alerts="formAlerts">
-
-                                            <div class="form-row form-grid">
-
-                                                <span class="mover form-control"></span>
-
-                                                <span class="type  icon icon-product" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)"></span>
-
-                                                <span class="input">
-
-                                                    <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field">
-
-                                                </span>
-
-                                                <span ng-show="true" class="switch row-switch">
-
-                                                    <label class="ng-binding">
-
-                                                        Mandatory
-
-                                                        <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
-
-                                                    </label>
-
-                                                </span>
-
-                                                <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
-
-                                            </div>
-
-                                            <!-- ngIf: item.datatype == 2 && entity == 'form' -->
-                                            <!-- ngIf: item.datatype == 3 -->
-
-                                        </li>
-                                        <!-- end ngRepeat: item in [0] -->
-                                    </ul>
-                                    <span class="addField secondary-button rounded add ng-binding" ng-click="addNewField()" title="Add new field to this form">
-                                        Add question
-                                    </span>
-                                    <!-- ngRepeat: item in questionGroups -->
-                                    <div class="clearfix"></div>
-                                </div>
-
+                                </div><!-- end ngIf: !isPersonalEdition -->
+                                <div class="clear-fix"></div>
                             </div>
-                        </div><!-- end ngIf: pageLoaded -->
-                    </div>
+                            <div id="custFieldEditor" class="form_container clearleft relatived">
+                                <div class="form-editor__title ng-binding">
+                                    Questions &amp; input fields
+                                </div>
+                                <ul id="input-questions" class="obrazac-container ui-sortable ng-pristine ng-untouched ng-valid ng-isolate-scope">
+                                  
+                                    <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" ng-repeat="item in addcustomformCtrl.FormsQuestionFieldDetail">
+                                       
+                                        <div class="form-row form-grid">
 
+                                            <span class="mover form-control"></span>
+
+                                            <span class="type {{item.showInputTypeClass}}" content="#question-options" position="left" ng-click="addcustomformCtrl.changeTypeOfInputIcon($event,$index)"></span>
+
+                                            <span class="input">
+
+                                                <input type="text" ng-class="{'border_red': addcustomformCtrl.isSubmit&&!item.Question}" ng-model="item.Question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" placeholder="Field">
+
+                                            </span>
+
+                                            <span class="switch row-switch">
+
+                                                <label class="ng-binding">
+
+                                                    Mandatory
+
+                                                    <input type="checkbox" name="isRequired" ng-model="item.IsMandatory" class="ng-pristine ng-untouched ng-valid">
+
+                                                </label>
+
+                                            </span>
+
+                                            <span class="remove form-control row-delete" ng-click="addcustomformCtrl.removeField($index)"></span>
+
+                                        </div>
+
+                                        <div ng-if="true" class="grid multiples selection ng-scope">
+
+                                            <ul class="yes-no" ng-if="item.InputFieldsId==addcustomformCtrl.TypesOfInputs.checkbox">
+
+                                        
+                                                <li id="question-option-" class="selection-option ng-isolate-scope" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
+                                            <span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="true">
+                                                        Yes
+                                                    </span>
+                                                </li>
+                                                <li id="question-option-" class="selection-option ng-isolate-scope" option="option" index="$index" datatype="2" question-groups="questionGroups" question-id="item.id">
+                                                    
+                                                    
+                                                    <span class="selection-option__checkbox-option ng-binding ng-scope" ng-if="true">
+                                                        No
+                                                    </span>
+
+                                                    <span class="remove ng-hide" ng-click="removeSelectionOption({index: index})" ng-show="true"></span>
+                                                </li><!-- end ngRepeat: option in item.yesNoOptions -->
+
+                                            </ul>
+                                        
+                                            <ul ng-if="item.InputFieldsId==addcustomformCtrl.TypesOfInputs.list" class="dropDownData">
+
+                                                
+                                                <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in item.ListOptions track by $index">
+                                                    <span class="selection-option__sortable"></span>
+                                                    <input class="rounded border" ng-model="option.value" ng-class="{'border_red':addcustomformCtrl.isSubmit&& !option.value}">
+                                                   
+                                                    <!--<span class="selection-option__choose-action-link ng-binding" ng-click="actionsDropdownToggle()" ng-show="true">
+                                                        Conditional action
+                                                    </span>
+                                                    <span class="selection-option__branching-option ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="true">
+                                                        Conditional action
+                                                    </span>-->
+                                                    <!-- <span class="selection-option__choose-action-arrow" ng-click="actionsDropdownToggle($event)" ng-show="true"></span>-->
+
+                                                    <span class="remove" ng-click="addcustomformCtrl.removeSelectionOption($parent.$index,$index)"></span>
+                                                </li><!-- end ngRepeat: option in item.selectionOptions -->
+
+                                                <li class="new-item">
+
+                                                    <a ng-click="addcustomformCtrl.addEmptySelectionOption($parent.$index)" class="ng-binding">
+                                                        <span>+</span>
+                                                        Add answer
+                                                    </a>
+
+                                                </li>
+
+                                            </ul>
+
+
+                                        </div><!-- end ngIf: item.datatype == 2 && entity == 'form' -->
+                                        <!-- ngIf: item.datatype == 3 -->
+
+                                    </li>
+                                </ul>
+                                <span class="addField secondary-button rounded add ng-binding" ng-click="addcustomformCtrl.addNewField()" title="Add new field to this form">
+                                    Add question
+                                </span>
+                                <!-- ngRepeat: item in questionGroups -->
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div><!-- end ngIf: pageLoaded -->
                 </div>
+
             </div>
-            <footer></footer>
-            <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
         </div>
-        <div class="tool-container gradient tool-left tool-rounded" style="opacity: 1; display: block; left: -87px; top: 559px; right: auto; position: absolute; z-index: 120;">
-            <div class="tool-items">
-                <a href="#" data-type="0" class="ng-binding tool-item gradient">
-                    <i class="icon-text"></i>
-                    Short text
-                </a><a href="#" data-type="1" class="ng-binding tool-item gradient">
-                    <i class="icon-longtext"></i>
-                    Long text
-                </a><a href="#" data-type="4" class="ng-binding tool-item gradient">
-                    <i class="icon-numeric"></i>
-                    Numeric
-                </a><a href="#" data-type="2" class="ng-binding tool-item gradient">
-                    <i class="icon-boolean"></i>
-                    Yes/No
-                </a><a href="#" data-type="3" class="ng-binding tool-item gradient">
-                    <i class="icon-selection"></i>
-                    Selection
-                </a><a href="#" data-type="6" ng-if="true" class="ng-binding ng-scope tool-item gradient">
-                    <i class="icon-form-photo"></i>
-                    Photo
-                </a><a href="#" data-type="7" class="ng-binding tool-item gradient">
-                    <i class="icon-date"></i>
-                    Date
-                </a><a href="#" data-type="8" class="ng-binding tool-item gradient">
-                    <i class="icon-header"></i>
-                    Section header
-                </a><a href="#" data-type="9" class="ng-binding tool-item gradient">
-                    <i class="icon-form-barcode"></i>
-                    Barcode
-                </a><a href="#" data-type="10" ng-if="true" class="ng-binding ng-scope tool-item gradient">
-                    <i class="icon icon-product"></i>
-                    Product
-                </a>
-            </div><div class="arrow"></div>
-        </div>
+        <footer></footer>
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
     </div>
+    <div class="tool-container gradient tool-left tool-rounded" style="opacity: 1; display: none; right: auto; position: absolute; z-index: 120;" ng-style="addcustomformCtrl.positionOfSideInputToolbar">
+        <div class="tool-items">
+            <a ng-click="addcustomformCtrl.setInputType(1)" class="ng-binding tool-item gradient">
+                <i class="icon-text"></i>
+                Short text
+            </a><a ng-click="addcustomformCtrl.setInputType(2)" class="ng-binding tool-item gradient">
+                <i class="icon-longtext"></i>
+                Long text
+            </a><a ng-click="addcustomformCtrl.setInputType(9)" class="ng-binding tool-item gradient">
+                <i class="icon-numeric"></i>
+                Numeric
+            </a><a ng-click="addcustomformCtrl.setInputType(5)" class="ng-binding tool-item gradient">
+                <i class="icon-boolean"></i>
+                Yes/No
+            </a><a ng-click="addcustomformCtrl.setInputType(6)" class="ng-binding tool-item gradient">
+                <i class="icon-selection"></i>
+                Selection
+            </a><a ng-click="addcustomformCtrl.setInputType(4)" class="ng-binding ng-scope tool-item gradient">
+                <i class="icon-form-photo"></i>
+                Photo
+            </a><a ng-click="addcustomformCtrl.setInputType(3)" class="ng-binding tool-item gradient">
+                <i class="icon-date"></i>
+                Date
+            </a><a ng-click="addcustomformCtrl.setInputType(7)" class="ng-binding tool-item gradient">
+                <i class="icon-header"></i>
+                Section header
+            </a><a ng-click="addcustomformCtrl.setInputType(10)" class="ng-binding tool-item gradient">
+                <i class="icon-form-barcode"></i>
+                Barcode
+            </a><a data-type="10" ng-click="addcustomformCtrl.setInputType(8)" class="ng-binding ng-scope tool-item gradient">
+                <i class="icon icon-product"></i>
+                Product
+            </a>
+        </div><div class="arrow"></div>
+    </div>
+</div>

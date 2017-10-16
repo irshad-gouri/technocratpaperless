@@ -1,6 +1,6 @@
-angular.module('product.controllers', [])
+angular.module('placedashboard.controllers', [])
 
-.controller('ProductCtrl', function ($scope, APIService, $state, $uibModal,$rootScope) {
+.controller('placedashboardCtrl', function ($scope, APIService, $state, $uibModal,$rootScope) {
   
     // var myLat;
     // var myLng;

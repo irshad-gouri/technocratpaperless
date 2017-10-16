@@ -1,0 +1,20 @@
+{
+  "name": "TechnocratWeb",
+  "homepage": "https://github.com/irshad-gouri/technocratpaperless",
+  "authors": [
+    "sachin <sachin.patidar4@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angucomplete": "*"
+  }
+}

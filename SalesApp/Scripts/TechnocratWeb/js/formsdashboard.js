@@ -1,6 +1,6 @@
-angular.module('feedback.controllers', [])
+angular.module('formsdashboard.controllers', [])
 
-.controller('FeedbackCtrl', function($scope, APIService, $state) {
+    .controller('formsdashboardCtrl', function($scope, APIService, $state) {
 
 
     $scope.open = function () {
