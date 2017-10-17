@@ -1,8 +1,11 @@
 
-var url_prifix = "http://192.168.0.12:80/SalesApp/api/";
+var url_prifix = "http://192.168.0.13:80/SalesApp/api/";
+var PhotoStorage = "http://192.168.0.13:80/SalesApp/";
 // var url_prifix = 'http://localhost:8000/';
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
-    'login.controllers', 'APIModule', 'placedashboard.controllers','angucomplete', 'form.addcustomform','formsdashboard.controllers'])
+    'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
+    'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
+    'representativeDashboard.controllers','activitiesDashboard.controllers'])
 
 .run(function($rootScope, $state, AuthService){
     if(localStorage.getItem('isLoggedIn') === 'success'){
@@ -85,13 +88,13 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
   })
 
 
-  .state('app.orders', {
-    url: '/users',
+      .state('app.activitiesDashboard', {
+          url: '/activitiesDashboard',
     authenticate: true,
     views: {
       'container': {
-        templateUrl: 'partials/orders.html',
-        controller: 'OrdersCtrl'
+          templateUrl: './PartialViews/partials/activitiesDashboard.html',
+          controller: 'activitiesDashboardCtrl'
       }
     }
       })
@@ -106,13 +109,13 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
           }
       })
 
-  .state('app.userinvestment', {
-    url: '/userinvestment',
+  .state('app.representativeDashboard', {
+      url: '/representativeDashboard',
     authenticate: true,
     views: {
       'container': {
-        templateUrl: 'partials/userinvestment.html',
-        controller: 'UserinvestmentCtrl'
+          templateUrl: './PartialViews/partials/representativeDashboard.html',
+          controller: 'representativeDashboardCtrl'
       }
     }
   })
@@ -126,7 +129,16 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
         controller: 'AddProductCtrl'
       }
     }
-  })
+      }).state('app.addRepresentative', {
+          url: '/addRepresentative',
+          authenticate: true,
+          views: {
+              'container': {
+                  templateUrl: './PartialViews/partials/AddRepresentatives.html',
+                  controller: 'addRepresentativeController'
+              }
+          }
+      })
 
 
       .state('app.placedashboard', {

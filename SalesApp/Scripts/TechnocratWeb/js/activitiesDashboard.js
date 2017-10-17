@@ -1,6 +1,6 @@
-angular.module('orders.controllers', [])
+angular.module('activitiesDashboard.controllers', [])
 
-.controller('OrdersCtrl', function ($scope) {
+    .controller('activitiesDashboardCtrl', function ($scope) {
 
 })
 

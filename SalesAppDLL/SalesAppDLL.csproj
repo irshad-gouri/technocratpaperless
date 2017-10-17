@@ -65,6 +65,7 @@
     <Compile Include="CustomModels\CustomFormsDetails.cs" />
     <Compile Include="CustomModels\PlaceDetail.cs" />
     <Compile Include="CustomModels\UserActivityDashBoardList.cs" />
+    <Compile Include="CustomModels\UserDetails.cs" />
     <Compile Include="FormsAnswer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

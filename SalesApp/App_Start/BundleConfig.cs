@@ -50,7 +50,8 @@ namespace SalesApp
                      "~/Scripts/TechnocratWeb/js/placedashboard.js",
                      "~/Scripts/TechnocratWeb/js/productDetail.js",
                      "~/Scripts/TechnocratWeb/js/requestService.js",
-                     "~/Scripts/TechnocratWeb/js/updateProduct.js"
+                     "~/Scripts/TechnocratWeb/js/updateProduct.js",
+                     "~/Scripts/TechnocratWeb/js/representativeDashboard.js"
                      ));
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                     "~/Scripts/TechnocratWeb/lib/ng-file-upload.min.js",
