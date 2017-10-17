@@ -169,16 +169,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr elementid="117070" class="list-item-container">
+                        <tr elementid="117070" class="list-item-container" ng-repeat ="form in formsdashboardCtrl">
                             <td class="action-cell">
                                 <a class="action-detail action icon icon-details" href="/form/view/117070"></a>
                             </td>
-                            <td class="name"> <a class="table-link" href="/form/view/117070">Job Estimate</a> <span class="subtext">This form is used to describe the work that will be done in general terms, and present the customer with an estimate for that work.
-
-This is a sample form that we have prepared for you.  Your account administrator can can customize this form to meet your specific needs using Repsly's form editor.</span> </td>
-                            <td class="active"> <span class="active-icon true">          </span> </td>
+                            <td class="name"> <a class="table-link" href="/form/view/117070">{{form.Title}}</a> <span class="subtext">{{form.Description}}.</span> </td>
+                            <td class="active"> <span class="active-icon true"></span> </td>
                         </tr>
-                        <tr elementid="117063" class="list-item-container">
+                        <!--<tr elementid="117063" class="list-item-container">
                             <td class="action-cell">
                                 <a class="action-detail action icon icon-details" href="/form/view/117063"></a>
                             </td>
@@ -218,7 +216,7 @@ This is a sample form that we have prepared for you.  Your account administrator
                             </td>
                             <td class="name"> <a class="table-link" href="/form/view/117647">visit place</a> <span class="subtext">gather information regarding place</span> </td>
                             <td class="active"> <span class="active-icon true">          </span> </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
