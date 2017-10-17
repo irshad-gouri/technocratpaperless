@@ -23,7 +23,7 @@
                 <ul>
                     <li class="relatived filter-item">
                         <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
-                        <input type="text" id="search" class="filter-data grid_filter search list border rounded" datatype="search" placeholder="Search reps">
+                        <input type="text" id="search" ng-model="test" class="filter-data grid_filter search list border rounded" datatype="search" placeholder="Search reps">
                         <input type="hidden" id="Filename" value="Representatives" class="filter-data rounded border">
                         <input type="hidden" id="FilenameRankings" value="Representatives Rankings" class="filter-data rounded border">
                         <input type="hidden" id="PutnikID" class="filter-data rounded border" value="">
@@ -117,7 +117,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr elementid="67586" class="list-item-container" ng-repeat="val in representativeDashboardCtrl.representativeList track by $index">
+                        <tr elementid="67586" class="list-item-container" ng-repeat="val in representativeDashboardCtrl.representativeList | filter:test">
                             <td class="action-cell">
                                 <a class="action-detail action icon" > <img class="representative-list-avatar" ng-src="{{representativeDashboardCtrl.startImagePath + val.PhotoUrl}}"> </a>
                             </td>

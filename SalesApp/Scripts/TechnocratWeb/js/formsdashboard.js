@@ -16,8 +16,11 @@ angular.module('formsdashboard.controllers', [])
         }, function (resp) {
            
         });
-    }
-    $scope.formsdashboardCtrl.getallcustomformsbyid();
+        }
+  
+   
+
+     $scope.formsdashboardCtrl.getallcustomformsbyid();
 
 
 
