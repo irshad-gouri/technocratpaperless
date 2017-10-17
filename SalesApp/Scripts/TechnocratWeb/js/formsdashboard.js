@@ -2,18 +2,52 @@ angular.module('formsdashboard.controllers', [])
 
     .controller('formsdashboardCtrl', function($scope, APIService, $state) {
 
+        $scope.formsdashboardCtrl = {};
 
-    $scope.open = function () {
-        alert();
-    console.log('opening pop up');
-    var modalInstance = $modal.open({
-    templateUrl: 'partials/popover/popup.html'
-    });
-    }
+    $scope.formsdashboardCtrl.getallcustomformsbyid = function () {
+        APIService.getData({
+            req_url: url_prifix + 'customforms/getallcustomformsbyid?userId=' + localStorage.getItem("UserId")
 
-    $scope.close = function () {
-    $modalInstance.dismiss('cancel');
-    };
+        }).then(function (res) {
+            if (res.data.Status == 'SUCCESS') {
+                $scope.formsdashboardCtrl= res.data.Data;
+                console.log(res.data.Data);
+            }
+        }, function (resp) {
+           
+        });
+        }
+  
+   
+
+     $scope.formsdashboardCtrl.getallcustomformsbyid();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // $scope.feedbackList = [];
     // $scope.getFeedback = function() {
@@ -55,20 +89,3 @@ angular.module('formsdashboard.controllers', [])
     //   });
     // };
 })
-
-.controller('DeleteConfirmationCtrl', function ($scope, $rootScope, $uibModalInstance, APIService, id, url){
-    // $scope.delete = function () {
-    //     APIService.removeData({
-    //         req_url: url,
-    //         data: {id: id}
-    //     }).then(function(resp) {
-    //         $uibModalInstance.close(resp.data);
-            
-    //        },function(resp) {
-    //           // This block execute in case of error.
-    //     });
-    // }
-    // $scope.cancel = function () {
-    //     $uibModalInstance.dismiss('cancel');
-    // };
-});
