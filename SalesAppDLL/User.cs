@@ -20,9 +20,9 @@ namespace SalesAppDLL
             this.UserAssignedPlaces = new HashSet<UserAssignedPlace>();
             this.UsersActivities = new HashSet<UsersActivity>();
             this.NotesActivities = new HashSet<NotesActivity>();
-            this.PhotoActivities = new HashSet<PhotoActivity>();
             this.FormsVisibleOnTheseReps = new HashSet<FormsVisibleOnTheseRep>();
             this.UseActivitiesComments = new HashSet<UseActivitiesComment>();
+            this.PhotoActivities = new HashSet<PhotoActivity>();
         }
     
         public int Id { get; set; }
@@ -54,10 +54,10 @@ namespace SalesAppDLL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotesActivity> NotesActivities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhotoActivity> PhotoActivities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UseActivitiesComment> UseActivitiesComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhotoActivity> PhotoActivities { get; set; }
     }
 }
