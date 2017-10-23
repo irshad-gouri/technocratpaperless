@@ -1,6 +1,8 @@
 
-var url_prifix = "http://192.168.0.13:80/SalesApp/api/";
-var PhotoStorage = "http://192.168.0.13:80/SalesApp/";
+//var url_prifix = "http://localhost/SalesApp/api/";
+//var PhotoStorage = "http://localhost/SalesApp/";
+var url_prifix = "http://technocrat92-001-site1.gtempurl.com/api/";
+var PhotoStorage = "http://technocrat92-001-site1.gtempurl.com/";
 // var url_prifix = 'http://localhost:8000/';
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
     'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',

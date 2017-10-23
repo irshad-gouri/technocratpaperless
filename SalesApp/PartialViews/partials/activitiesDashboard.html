@@ -420,44 +420,16 @@
         </div>
 
         <!-- FEED -->
-        <div class="feed-container ng-scope" data-ng-controller="FeedController" id="feed-controller">
-                <div ng-show="isDeletableTrial" class="item-container fill postit delete-data-container hidden ng-hide">
-                    <ul>
-                        <li class="sample_data_note">
-                            <div class="sample_data_action">
-                                While you are in a trial, you can delete your test data.
-                                <a href="#">Delete activities...</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
 
-            <ul class="stream stream-list " style="background-color: rgb(255, 255, 255);"></ul>
-
-                <div>
-                    <div cg-busy="feedPromise" class="cg-busy-loader"><div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()"></div><div class="cg-busy cg-busy-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()"><div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div></div></div>
-                    <div id="nodatafeed-container" class="nodatafound" style="display: none;">
-                        <span class="coach-sprite no-data"></span>
-                        <div id="device-connected">
-                            No <label id="chosenActivity">activities</label>  found in this time frame.
-                            <div class="device-not-connected-image rounded"></div>
-                            Field activities are created through the mobile app on smartphone or tablet
-                        </div>
-                        <div id="device-not-connected">
-                            <p>Use Repsly mobile app to create field actitivites.</p><p><span class="connect-mobile-device link-like">Connect</span> your first mobile device.</p>
-                            <div class="device-not-connected-image rounded"></div>
-                            Field activities are created through the mobile app on smartphone or tablet
-                        </div>
-                    </div>
                     <div id="feedWrap" class="feed-wrap">
-                        <!-- ngRepeat: item in feed.items --><feed-item ng-repeat="item in feed.items" content="item" ispersonaledition="isPersonalEdition" index="$index" feed-items-count="feed.items.length" class="ng-scope ng-isolate-scope"><div ng-switch="content.FeedItemTypeID" class="feed-item-container" data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237">
+                      <feed-item ng-repeat="act in Activities" content="item"  ><div>
 
     <!-- --------------------------------------------visit section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 1 --><div ng-switch-when="1" class="ng-scope">
+    <div ng-if="act.ActivityId == 1">
 
         <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
             <div class="item-header visit">
-                <span class="time-line ng-binding">
+                <span class="time-line ">
                     9/23/2017<br>11:37 AM
                     <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
                         - 12:49 PM
@@ -465,1745 +437,177 @@
                 </span>
                 <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
                 <!-- ngIf: content.EmployeeAvatar == '' -->
-                <span class="person-line" ng-show="content.PutnikID != '' &amp;&amp; !ispersonaledition">
-                    <a href="https://user.repsly.com/Representative/View/?rowid=0ff06341-20a6-455c-8ce6-1601383b46c1" class="ng-binding">
-                        Glen- Sales Representative
+                <span >
+                    <a href="" >
+                        {{act.AcivityAdded_UserDetails.FirstName}}
                     </a><br>
                 </span>
-                <span class="person-line ng-hide" ng-show="content.ReferentID != '' &amp;&amp; !ispersonaledition">
-                    <a href="https://user.repsly.com/BackofficeUser/View/?rowid=" class="ng-binding">
-                        Glen- Sales Representative
+                <span>
+                    <a href="">
+                        {{act.Place_Details.Name}}
                     </a><br>
                 </span>
-                <span class="person-line ng-hide" ng-show="ispersonaledition">
-                    <a href="https://user.repsly.com/PersonalEdition/MyProfile" class="ng-binding">
-                        Glen- Sales Representative
+                <span>
+                    <a href="">
+                        {{act.Place_Details.Address}}
                     </a><br>
                 </span>
-                <!-- ngIf: isNewClient -->
-                <span class="client-line ng-binding" ng-show="content.KupacLokacijaID != 0">
-                    <a href="https://user.repsly.com/Client/View/?rowid=db6264e5-e933-4c69-af1e-e4eac68c0ede" class="ng-binding">
-                        the cafe hut</a><!-- ngIf: content.ClientAddress !='' --><span ng-if="content.ClientAddress !=''" class="ng-scope">, </span><!-- end ngIf: content.ClientAddress !='' -->Indore 452018, India
-                </span> 
             </div>
-            <!-- ngIf: content.Activities == undefined || content.Activities.length == 0 || (content.Activities.length == 1 && content.Activities[0].DogadjajVrstaID == 18) --><div ng-if="content.Activities == undefined || content.Activities.length == 0 || (content.Activities.length == 1 &amp;&amp; content.Activities[0].DogadjajVrstaID == 18)" class="no-activities ng-binding ng-scope">
-                No activities
-            </div><!-- end ngIf: content.Activities == undefined || content.Activities.length == 0 || (content.Activities.length == 1 && content.Activities[0].DogadjajVrstaID == 18) -->
-            <div ng-hide="content.Activities.length === 0 || (content.Activities.length === 1 &amp;&amp; content.Activities[0].DogadjajVrstaID === 18)" ng-nicescroll="" nice-option="{touchbehavior: false, enablemousewheel: false, sensitiverail: true, cursorcolor: '#00a59c', cursoropacitymax: 1, cursorwidth: 8, autohidemode: false}" ng-class="ispersonaledition ? 'activities-container-personal' : 'activities-container'" tabindex="1" style="overflow: hidden; outline: none;" class="ng-hide activities-container">
-                <!-- ngIf: content.Activities.length == 0 --><div class="no-activities ng-scope" ng-if="content.Activities.length == 0">No activities</div><!-- end ngIf: content.Activities.length == 0 -->
-                <ul class="activities" ng-class="ispersonaledition ? 'activities-personal' : 'activities'">
-                    <!-- ngRepeat: activity in content.Activities | orderBy:'DateTimeLocal' | unique:'DogadjajID' -->
-                    <!-- ngIf: !allActivitiesVisible -->
-                </ul>
+          <div class="no-activities ng-binding ng-scope">
+              {{act.Activity_Type.Description}}
             </div>
         </div>
-    </div><!-- end ngSwitchWhen: -->
+    </div>
+ <div ng-if="act.ActivityId == 2">
 
-    <!-- --------------------------------------------out of store activity--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 7 -->
-
-    <!-- --------------------------------------------Simple post section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 3 -->
-    <!-- --------------------------------------------device connected section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 4 -->
-    <!-- --------------------------------------------working time start--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 2 --> 
-
-    <div ng-show="index == (feedItemsCount -1) &amp;&amp; content.noMoreData == 0" class="feed-spinner ng-hide"></div>
-
-</div>
-</feed-item><!-- end ngRepeat: item in feed.items --><feed-item ng-repeat="item in feed.items" content="item" ispersonaledition="isPersonalEdition" index="$index" feed-items-count="feed.items.length" class="ng-scope ng-isolate-scope"><div ng-switch="content.FeedItemTypeID" class="feed-item-container" data-feeditemrowid="cf6d50a2-da6d-4525-8f59-132782bbc9a0">
-
-    <!-- --------------------------------------------visit section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 1 --><div ng-switch-when="1" class="ng-scope">
-
-        <div data-feeditemrowid="cf6d50a2-da6d-4525-8f59-132782bbc9a0" class="item-container nofill separate">
+        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
             <div class="item-header visit">
-                <span class="time-line ng-binding">
-                    9/23/2017<br>5:46 AM
+                <span class="time-line ">
+                    9/23/2017<br>11:37 AM
                     <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
-                        - 8:11 AM
+                        - 12:49 PM
                     </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
                 </span>
                 <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
                 <!-- ngIf: content.EmployeeAvatar == '' -->
-                <span class="person-line" ng-show="content.PutnikID != '' &amp;&amp; !ispersonaledition">
-                    <a href="https://user.repsly.com/Representative/View/?rowid=0ff06341-20a6-455c-8ce6-1601383b46c1" class="ng-binding">
-                        Glen- Sales Representative
+                <span >
+                    <a href="" >
+                        {{act.AcivityAdded_UserDetails.FirstName}}
                     </a><br>
                 </span>
-                <span class="person-line ng-hide" ng-show="content.ReferentID != '' &amp;&amp; !ispersonaledition">
-                    <a href="https://user.repsly.com/BackofficeUser/View/?rowid=" class="ng-binding">
-                        Glen- Sales Representative
+                <span>
+                    <a href="">
+                        {{act.Place_Details.Name}}
                     </a><br>
                 </span>
-                <span class="person-line ng-hide" ng-show="ispersonaledition">
-                    <a href="https://user.repsly.com/PersonalEdition/MyProfile" class="ng-binding">
-                        Glen- Sales Representative
-                    </a><br>
-                </span>
-                <!-- ngIf: isNewClient -->
-                <span class="client-line ng-binding" ng-show="content.KupacLokacijaID != 0">
-                    <a href="https://user.repsly.com/Client/View/?rowid=db6264e5-e933-4c69-af1e-e4eac68c0ede" class="ng-binding">
-                        the cafe hut</a><!-- ngIf: content.ClientAddress !='' --><span ng-if="content.ClientAddress !=''" class="ng-scope">, </span><!-- end ngIf: content.ClientAddress !='' -->Indore 452018, India
-                </span> 
-            </div>
-            <!-- ngIf: content.Activities == undefined || content.Activities.length == 0 || (content.Activities.length == 1 && content.Activities[0].DogadjajVrstaID == 18) --><div ng-if="content.Activities == undefined || content.Activities.length == 0 || (content.Activities.length == 1 &amp;&amp; content.Activities[0].DogadjajVrstaID == 18)" class="no-activities ng-binding ng-scope">
-                No activities
-            </div><!-- end ngIf: content.Activities == undefined || content.Activities.length == 0 || (content.Activities.length == 1 && content.Activities[0].DogadjajVrstaID == 18) -->
-            <div ng-hide="content.Activities.length === 0 || (content.Activities.length === 1 &amp;&amp; content.Activities[0].DogadjajVrstaID === 18)" ng-nicescroll="" nice-option="{touchbehavior: false, enablemousewheel: false, sensitiverail: true, cursorcolor: '#00a59c', cursoropacitymax: 1, cursorwidth: 8, autohidemode: false}" ng-class="ispersonaledition ? 'activities-container-personal' : 'activities-container'" tabindex="2" style="overflow: hidden; outline: none;" class="ng-hide activities-container">
-                <!-- ngIf: content.Activities.length == 0 --><div class="no-activities ng-scope" ng-if="content.Activities.length == 0">No activities</div><!-- end ngIf: content.Activities.length == 0 -->
-                <ul class="activities" ng-class="ispersonaledition ? 'activities-personal' : 'activities'">
-                    <!-- ngRepeat: activity in content.Activities | orderBy:'DateTimeLocal' | unique:'DogadjajID' -->
-                    <!-- ngIf: !allActivitiesVisible -->
-                </ul>
-            </div>
-        </div>
-    </div><!-- end ngSwitchWhen: -->
-
-    <!-- --------------------------------------------out of store activity--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 7 -->
-
-    <!-- --------------------------------------------Simple post section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 3 -->
-    <!-- --------------------------------------------device connected section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 4 -->
-    <!-- --------------------------------------------working time start--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 2 --> 
-
-    <div ng-show="index == (feedItemsCount -1) &amp;&amp; content.noMoreData == 0" class="feed-spinner ng-hide"></div>
-
-</div>
-</feed-item><!-- end ngRepeat: item in feed.items --><feed-item ng-repeat="item in feed.items" content="item" ispersonaledition="isPersonalEdition" index="$index" feed-items-count="feed.items.length" class="ng-scope ng-isolate-scope"><div ng-switch="content.FeedItemTypeID" class="feed-item-container" data-feeditemrowid="2e5987ec-946c-4bc4-9b83-4506d71eea4c">
-
-    <!-- --------------------------------------------visit section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 1 -->
-
-    <!-- --------------------------------------------out of store activity--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 7 -->
-
-    <!-- --------------------------------------------Simple post section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 3 -->
-    <!-- --------------------------------------------device connected section--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 4 -->
-    <!-- --------------------------------------------working time start--------------------------------------------------------- -->
-    <!-- ngSwitchWhen: 2 --><div ng-switch-when="2" class="ng-scope">
-        <!-- Simple event section -->
-        <div data-feeditemrowid="2e5987ec-946c-4bc4-9b83-4506d71eea4c" class="item-container nofill separate">
-            <div class="item-header working-time">
-                <span class="time-line ng-binding">
-                    
-                    <span class="workday-start-end ng-binding">
-                        5:46 AM - 8:11 AM
-                        <!-- ngIf: content.FeedItemTypeID == 2 && !content.IsForcedWorkdayEnd && !content.TimeEndLocal -->
-                        <!-- ngIf: content.FeedItemTypeID == 2 && content.IsForcedWorkdayEnd -->
-                    </span>
-                </span>
-                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
-                <!-- ngIf: content.EmployeeAvatar == '' -->
-                <span class="person-line" ng-show="content.PutnikID != '' &amp;&amp; !ispersonaledition">
-                    <a href="https://user.repsly.com/Representative/View/?rowid=0ff06341-20a6-455c-8ce6-1601383b46c1" class="ng-binding">
-                        Glen- Sales Representative
-                    </a><br>
-                </span>
-                <span class="person-line ng-hide" ng-show="content.ReferentID != '' &amp;&amp; !ispersonaledition">
-                    <a href="https://user.repsly.com/BackofficeUser/View/?rowid=" class="ng-binding">
-                        Glen- Sales Representative
-                    </a><br>
-                </span>
-                <span class="person-line ng-hide" ng-show="ispersonaledition">
-                    <a href="PersonalEdition/MyProfile" class="ng-binding">
-                        Glen- Sales Representative
+                <span>
+                    <a href="">
+                        {{act.Place_Details.Address}}
                     </a><br>
                 </span>
             </div>
-            <div class="item-body">
-                <span ng-click="viewMap()">
-                    <span class="workday-route ng-binding">Route</span>
-                    <span title="Map view" class="feed-item-location icon icon-viewonmap"></span>
-                </span>
-                <span class="activity">
-                    <i class="icon-feed icon-timemileage"></i>
-                    <span class="workday ng-binding">Work duration: 2:25 h  | Pause: 0 min</span>
-                    <span class="mileage ng-binding">Mileage : 0.1 km</span>
-                </span>
-                <span class="time-stamp right nospaces"></span>
+          <div class="no-activities ">
+              <i class="icon icon-orders"></i>
+              {{act.OrderCost}}
             </div>
         </div>
-
-        <!-- ngIf: content.Comments.length > 2 -->
-
-        <!-- ngRepeat: comment in content.Comments -->
-
-        <div class="comment-line input-line" ng-show="!ispersonaledition">
-            <resize-input>
-                <textarea type="text" ng-model="commentInput" ng-attr-placeholder="{{content.CommentPlaceholder}}..." class="comment msgSelector ng-pristine ng-untouched ng-valid" placeholder="Write a comment..."></textarea>
-            </resize-input>
-            <input post-comment="" type="button" ng-click="postCommentTrigger()" class="button post-comment" comments="content.Comments" value="post">
-            <div class="spinner ng-hide" ng-show="loading"></div>
-        </div>
-
-    </div><!-- end ngSwitchWhen: --> 
-
-    <div ng-show="index == (feedItemsCount -1) &amp;&amp; content.noMoreData == 0" class="feed-spinner ng-hide"></div>
-
-</div>
-</feed-item><!-- end ngRepeat: item in feed.items -->
-                    </div>
-                </div>
-
-        </div>
-
-        <div id="comment-holder" class="hidden">
-            
-        <input id="comment-input" class="rounded border"></div>
     </div>
+                          
+                          <div ng-if="act.ActivityId == 3">
 
-    <div id="event-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            
-            <h2>All events</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-
-            <span class="subfilter">Filtering  <strong class="territories_filter">-All territories-</strong>  within <strong class="time_range">Today</strong></span>
+    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+        <div class="item-header visit">
+            <span class="time-line ">
+                9/23/2017<br>11:37 AM
+                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                    - 12:49 PM
+                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+            </span>
+            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+            <!-- ngIf: content.EmployeeAvatar == '' -->
+            <span>
+                <a href="">
+                    {{act.AcivityAdded_UserDetails.FirstName}}
+                </a><br>
+            </span>
+            <span>
+                <a href="">
+                    {{act.Place_Details.Name}}
+                </a><br>
+            </span>
+            <span>
+                <a href="">
+                    {{act.Place_Details.Address}}
+                </a><br>
+            </span>
         </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td sorttype="code">ID</td>
-                        <td sorttype="name">Name</td>
-                        <td sorttype="active">Active</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="timemileage-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            
-            <h2>Time &amp; Mileage tracking</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td sorttype="code">Representative</td>
-                        <td sorttype="name">Date</td>
-                        <td sorttype="active">Workday start</td>
-                        <td sorttype="active">Workday end</td>
-                        <td sorttype="active">Mileage start (km)</td>
-                        <td sorttype="active">Mileage end (km)</td>
-                        <td sorttype="active">First Visit</td>
-                        <td sorttype="active">Last Visit</td>
-                        <td sorttype="active">Mileage total (km)</td>
-                        <td sorttype="active">Time in travel</td>
-                        <td sorttype="active">Visit count</td>
-                        <td sorttype="active">Time at place</td>
-                        <td sorttype="active">Pause total</td>
-                        <td sorttype="active">Working time total</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="clientnote-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            
-            <h2>Place notes</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                            <td sorttype="">Representative</td>
-                        <td sorttype="">Date and time</td>
-                        <td sorttype="active">Place</td>
-                        <td class="clientnote" sorttype="active">Note</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="visit-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            
-            <h2>Place Visits</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td sorttype="code">Date</td>
-                            <td sorttype="active">Representative</td>
-                        <td sorttype="active">Place</td>
-                        <td sorttype="active">Start time</td>
-                        <td sorttype="active">End time</td>
-                        <td sorttype="active">Time at place</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="document-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            
-            <h2>Orders</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td sorttype="">Transaction type</td>
-                        <td sorttype="">Document No</td>
-                        <td sorttype="">Place</td>
-                        <td sorttype="code">Representative</td>
-                        <td sorttype="">Document date</td>
-                        <td sorttype="">Due date</td>
-                        <td sorttype="" align="right">Quantity</td>
-                        <td sorttype="" align="right">Discount</td>
-                            <td sorttype="" align="right">Taxable subtotal</td>
-                        <td sorttype="">Tags</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="pricescan-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container action-heading-container">
-            
-            <h2>Retail audits</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-            <div class="pricescan-actions">
-                <div class="submenu-holder">
-                    <span class="submenu-trigger">More<span class="icon"></span></span>
-                    <div class="submenu rounded" style="display: none;">
-                        <span class="menu_pointer"></span>
-                        <ul>
-                            <li class="rawview-link menu_item rounded">View merged retail audit entries</li>
-                            <li class="menu_separator"></li>
-                            <li class="tabularview-link menu_item rounded">Display retail audits in tabular view</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td sorttype="">Name</td>
-                        <td sorttype="">Place</td>
-                        <td sorttype="">Representative</td>
-                        <td sorttype="">Date</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="form-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container action-heading-container">
-            
-            <h2 id="formsTableHeadingTitle"></h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-
-                <label for="ShowClientExtraInfoToggle" class="client-extra-info-toggle">Show place's additional attributes</label>
-                <input type="checkbox" id="ShowClientExtraInfoToggle" class="client-extra-info-toggle">
-                            <a class="print-link action-link rounded" title="Show in print friendly format" target="_blank"></a>
-                <a class="public-link action-link rounded" title="Copy print friendly link"></a>
-        </div>
-        <div class="tabular_content">
+        <div class="no-activities ">
+            <span ng-if="act.PhotoUrl"><img src="{{photostorage+act.PhotoUrl}}" class="wid-100" style="height: 125px;"></span>
 
         </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="newclient-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            <h2>New places</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td sorttype="">Date and time</td>
-                        <td sorttype="">Place</td>
-                            <td sorttype="">Representative</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="clientstatuschange-list-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container">
-            <h2>Status changes</h2>
-            <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-        </div>
-        <div class="table_content">
-            <table class="datatable grid" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td sorttype="">Date and time</td>
-                        <td sorttype="">Place</td>
-                        <td sorttype="">New status</td>
-                            <td sorttype="">Representative</td>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="pager-holder"></div>
-    </div>
-
-    <div id="photo-gallery-container" class="display-sheet" style="display: none;">
-        <div class="home-heading-container action-heading-container">
-            
-            <h2>Photo gallery</h2>
-            <span class="subfilter">
-                Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong>
-        </span>
-            <a class="print-link action-link rounded" title="Show in print friendly format" target="_blank"></a>
-                <a class="public-link action-link rounded" title="Copy print friendly link"></a>
-        <a class="download-link action-link rounded hidden" title="Open page for downloading these images" target="_blank"></a>
-    </div>
-    <ul id="pics"></ul>
-    <div class="table_footer">
-        <span class="show_more_pics hidden">Show more</span>
     </div>
 </div>
+                          <div ng-if="act.ActivityId == 4">
 
-<div data-ng-controller="GalleryController" id="gallery-controller" class="display-sheet ng-scope" style="display: none;">
-
-    <div class="home-heading-container action-heading-container">
-        <h2>Photo gallery</h2>
-        <span class="gallery-filter-info ng-binding">Showing 0 photos</span>
-        
-        <div ng-show="gallery.totalPhotosSelected" class="dropdown place_right ng-hide">
-            <div class="drop view-as-drop">
-                <a href="#" id="gallery-viewas-dropdown" class="megadrop megadrop-bulk" title="Bulk actions">
-                    Bulk actions
-                    <span class="megadrop-bulk-arrow"></span>
-                </a>
-                <div id="ViewAsMegaDrop" class="mega_content mega_viewas align_right" style="display: none;">
-                    <ul class="drop_content">
-                        <li class="ddl-item">
-                                <a class="bulk-action-link ng-binding" ng-click="deleteSelectedPhotos()" href="javascript:void(0)">Delete photos (0)</a>
-                        </li>
-                        <li>
-                            <a class="bulk-action-link ng-binding" ng-click="downloadSelectedPhotos()" href="javascript:void(0)">Download photos (0)</a>
-                        </li>
-                        <li>
-                            <a class="bulk-action-link ng-binding" ng-click="openTriStateTagEditor()" href="javascript:void(0)">Edit photo tags (0)</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+        <div class="item-header visit">
+            <span class="time-line ">
+                9/23/2017<br>11:37 AM
+                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                    - 12:49 PM
+                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+            </span>
+            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+            <!-- ngIf: content.EmployeeAvatar == '' -->
+            <span>
+                <a href="">
+                    {{act.AcivityAdded_UserDetails.FirstName}}
+                </a><br>
+            </span>
+            <span>
+                <a href="">
+                    {{act.Place_Details.Name}}
+                </a><br>
+            </span>
+            <span>
+                <a href="">
+                    {{act.Place_Details.Address}}
+                </a><br>
+            </span>
         </div>
-            <div ng-hide="gallery.totalPhotosSelected" class="gallery-public-links">
-                <a class="print-link action-link rounded" href="" title="Show in print friendly format" target="_blank"></a>
-                <a class="public-link action-link rounded" href="" title="Copy print friendly link"></a>
-            </div>
-        <label ng-show="gallery.items.length" for="select-all-photos" class="select-all-photos-label ng-hide" title="Select all photos">
-            Select all
-            <input type="checkbox" ng-model="isSelectAllChecked" ng-change="selectUnselectAllPhotos()" ng-click="checkUncheckSelectAll()" name="select-all-photos-checkbox" class="select-all-photos-checkbox ng-pristine ng-untouched ng-valid">
-        </label>
+        <div class="no-activities ">
+            <i class="icon icon-forms" style="color:black"></i>
+            {{act.Note}}
+        </div>
     </div>
+</div>
+                          <div ng-if="act.ActivityId == 5">
 
-    <div cg-busy="galleryPromise" class="cg-busy-loader"><div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()"><div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div></div></div>
-
-    <div ng-show="gallery.showGallery" id="gallery-container" class="ng-hide">
-        <div ng-show="gallery.items.length == 0">
-            <div class="nodatafound">
-                <span class="coach-sprite no-data"></span>
-                <div id="device-connected">
-                    No <label id="entities">Photos</label> found in this time frame.
-                </div>
-                <div id="device-not-connected">
-                    
-                    <div class="device-not-connected-image rounded"></div>
-                    Field activities are created through the mobile app on smartphone or tablet
-                </div>
-            </div>
+    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+        <div class="item-header visit">
+            <span class="time-line ">
+                9/23/2017<br>11:37 AM
+                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                    - 12:49 PM
+                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+            </span>
+            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+            <!-- ngIf: content.EmployeeAvatar == '' -->
+            <span>
+                <a href="">
+                    {{act.AcivityAdded_UserDetails.FirstName}}
+                </a><br>
+            </span>
+            <span>
+                <a href="">
+                    {{act.Place_Details.Name}}
+                </a><br>
+            </span>
+            <span>
+                <a href="">
+                    {{act.Place_Details.Address}}
+                </a><br>
+            </span>
         </div>
-
-        <div class="gallery-thumbnail-container ng-isolate-scope ng-hide" ng-show="gallery.items.length > 0" lazy-load="" action="loadMore()">
-            <ul id="pics">
-                <!-- ngRepeat: item in gallery.items -->
-            </ul>
-            <div ng-show="gallery.hasMore" class="gallery-spinner"></div>
+        <div class="no-activities ">
+            <i class="icon icon-forms " style="color:blue"></i>
+            {{act.FormName}}
         </div>
     </div>
 </div>
 
-<div id="home-summary-container" class="display-sheet" style="display: none;">
-    <div class="summary-content details_content"></div>
-</div>
+   
+  
+   
 
-<div data-ng-controller="FormReportingController" class="ng-scope">
-    <style type="text/css" class="ng-binding">
-        @import url("/frontend-app/dist/css/home.min.css?402");
-    </style>
-    <div cg-busy="promise" class="cg-busy-loader"><div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()"></div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()"><div class="loader-box ng-binding" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">Please wait...</div></div></div>
-    <div id="form-report-container" class="form-report-container display-sheet" style="display: none;">
-        <!-- ngIf: formReport.length == 0 -->
-        <div ng-hide="formReport.length == 0">
-            <div ng-show="formReport.length > 0" class="form-report-container__header ng-hide">
-                <span class="icon icon-forms form-report-container__form-icon"></span>
-                <div class="form-report-container__title ng-binding" title="">
-                    
-                </div>
-                <div class="form-report-container__description ng-binding" title="">
-                    
-                </div>
-                <ul class="report-view-type-switcher report-view-type-switcher--explore" get-report-data="getReportData(filter)" view="explore">
-    <li class="report-view-type-switcher__controls_menu-item ng-binding active" ng-class="{'active': snapshot.isActive}" ng-click="renderSnapshot()">
-        Snapshot
-    </li>
-    <li class="report-view-type-switcher__controls_menu-item report-view-type-switcher__controls_menu-item--trend ng-binding" ng-class="{'active': trend.isActive}" ng-click="trendMenuToggle($event)">
-        Trend by
-        <span ng-show="showTrendMenu" class="report-view-type-switcher__menu-pointer ng-hide"></span>
-        <ul class="report-view-type-switcher__trend-menu ng-hide" ng-show="showTrendMenu" click-outside="trendMenuToggle($event)">
-            <!-- ngRepeat: view in trend.views --><li class="report-view-type-switcher__trend-menu-item ng-binding ng-scope ng-isolate-scope" ng-click="renderTrend({viewId: view.id})" ng-repeat="view in trend.views" view="view" render-trend="renderTrend(viewId)" index="$index">
-    day
-</li><!-- end ngRepeat: view in trend.views --><li class="report-view-type-switcher__trend-menu-item ng-binding ng-scope ng-isolate-scope" ng-click="renderTrend({viewId: view.id})" ng-repeat="view in trend.views" view="view" render-trend="renderTrend(viewId)" index="$index">
-    week
-</li><!-- end ngRepeat: view in trend.views --><li class="report-view-type-switcher__trend-menu-item ng-binding ng-scope ng-isolate-scope" ng-click="renderTrend({viewId: view.id})" ng-repeat="view in trend.views" view="view" render-trend="renderTrend(viewId)" index="$index">
-    month
-</li><!-- end ngRepeat: view in trend.views -->
-        </ul>
-    </li>
-</ul>
-            </div>
-            <div ng-show="showAlert &amp;&amp; filter.ReportType == 0" class="form-report-container__alert ng-binding ng-hide">
-                Report is filtered by: 
-                <span class="form-report-container__question-name ng-binding" title="">
-                    
-                </span>
-                is
-                <span class="form-report-container__question-answer ng-binding" title="">
-                    ""
-                </span>
-                <span class="form-report-container__remove-filtering ng-binding" ng-click="removeDrillIntoQuestionFilter()">
-                    Remove filtering
-                    <span class="form-report-container__close-wrapper form-report-container_close-wrapper--alert">
-                        <span class="form-report-container__close-button form-report-container__close-button--alert"></span>
-                    </span>
-                </span>
-            </div>
-            <!-- ngRepeat: report in formReport -->
-        </div>
-    </div>
-</div>
+    
 
-<div id="pricescan-analysis-container" class="display-sheet" style="display: none;">
-    <div class="home-heading-container actions_header a">
-        <h2>Retail audit Analysis</h2>
-        <div class="place_right">
-            <select id="DisplayField" class="inline rounded border">
-                <option value="Cijena">Price</option>
-                <option value="Prisutan">Available</option>
-                <option value="Zaliha">Stock level</option>
-            </select>
-            <div id="pricescan-dropcontainer" class="drop inline">
-                View as:  <a href="#" class="megadrop" title="" analysistype="tableView">Plain list</a>
-                <div id="" class="mega_content mega_viewas align_right" style="display: none;">
-                    <ul class="drop_content">
-                        <li class="ddl-item"><a href="#" showdisplayfield="true" id="tableView" value="table" class="option viewas_table">Tabular view</a></li>
-                        <li class="ddl-item"><a href="#" showdisplayfield="false" id="averagePrice" value="averagePrice" class="option">Average price</a></li>
-                        <li class="ddl-item"><a href="#" showdisplayfield="false" id="extraInfo" value="extraInfo" class="option">Extra information</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="analysis-content">
-
-    </div>
-
-</div>
-
-<div id="nodata-container" class="test display-sheet" style="display: none;">
-    <div class="home-heading-container">
-        
-        <h2>No activities in selected time period</h2>
-        <span class="subfilter">Filtering  <strong class="reps_filter">All reps</strong>  within <strong class="time_range">Today</strong></span>
-    </div>
-    <div class="nodatafound">
-        <span class="coach-sprite no-data"></span>
-        <div id="device-connected">
-            No <label id="entities"></label>  found in this time frame.
-        </div>
-        <div id="device-not-connected">
-            
-            <div class="device-not-connected-image rounded"></div>
-            Field activities are created through the mobile app on smartphone or tablet
-        </div>
-    </div>
-
-</div>
-
-<div id="breadcrumb-list-container" class="display-sheet" style="display: none;">
-    <div class="map_area">
-        <div id="BreadcrumbMap"></div>
-        <ul class="scoreboard" style="display: block;">
-            <li class="heading" title="This Scoreboard presents you a quick view at the most important activity metrics in a selected period."><span class="title">Today</span></li>
-            <li title="Total number of active representatives in a selected period."><span class="label">Active reps</span><span class="value reps">1</span></li>
-        </ul>
-    </div>
-    <ul class="rep-list"></ul>
-</div>
-
-<div style="clear:left;"></div>
-
-
-
-
-
-
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-default-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" referentID="${PutnikID}">
-
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-
-        {{if PutnikID!= null}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        {{/if}}
-        {{if ReferentID!= null}}
-        <span class="rep_name">${DjelatnikNaziv}</span>
-        {{/if}}
-        <span class="activity">
-            <span class="general_activity">${DogadjajNaziv}</span>
-            {{if KupacLokacijaID!=null}} <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>{{/if}}
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-message-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            {{if KupacLokacijaID==null}}
-            {{if Text!=null && Text!="" && Text.length>350}}
-            <span class="incoming-message activity-name trigger-note-popup" dogadjajID="${TriggerDogadjajID}"><i class="icon icon-msgincoming"></i> Incoming message</span>
-            {{else}}
-            <span class="incoming-message activity-name" dogadjajID="${TriggerDogadjajID}"><i class="icon icon-msgincoming"></i> Incoming message</span>
-            {{/if}}
-            {{/if}}
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!="" && Text.length>350}}
-        <div class="note">${Text.substring(0,350)} ...</div>
-        <div class="hidden client-note-holder">${Text}</div>
-        {{/if}}
-        {{if Text!=null && Text!="" && Text.length<=350}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-client-note-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            {{if KupacLokacijaID!=null}}
-            {{if Text!=null && Text!="" && Text.length>350}}
-            <span class="clientnote activity-name trigger-note-popup"><i class="icon icon-clientnotes"></i> Note</span> <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-            {{else}}
-            <span class="clientnote activity-name"><i class="icon icon-clientnotes"></i> Note</span> <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-            {{/if}}
-            {{/if}}
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <div class="hidden client-note-holder">${Text}</div>
-        <div class="note">${Text}</div>
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-office-message-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" referentID="${ReferentID}">
-        {{if !HasAvatar }}
- <a class="rep_name" href="/BackofficeUser/View/${ReferentID}"><i class="icon icon-profile rounded no-avatar"></i></a>                 {{else}}
- <a class="rep_name" href="/BackofficeUser/View/${ReferentID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>                 {{/if}}
- <a class="rep_name" href="/BackofficeUser/View/${ReferentID}">${DjelatnikNaziv}</a>                 <span class="activity">
-            {{if Text!=null && Text!="" && Text.length>350}}
-            <span class="office-message activity-name trigger-note-popup" dogadjajID="${TriggerDogadjajID}"><i class="icon icon-msgoutgoing"></i> Message to</span>
-            {{else}}
-            <span class="office-message activity-name" dogadjajID="${TriggerDogadjajID}"><i class="icon icon-msgoutgoing"></i> Message to</span>  <span id="sp${IDStreamItem}"></span> <div style="display:none;"><span class="interaction"></span></div>
-            {{/if}}
-        </span>
-        <span class="item_actions">
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!="" && Text.length>350}}
-        <div class="note">${Text.substring(0,350)} ...</div>
-        <div class="hidden client-note-holder">${Text}</div>
-        {{/if}}
-        {{if Text!=null && Text!="" && Text.length<=350}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-billboard-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" referentID="${ReferentID}">
-        {{if !HasAvatar }}
- <a class="rep_name" href="/BackofficeUser/View/${ReferentID}"><i class="icon icon-profile rounded no-avatar"></i></a>                 {{else}}
- <a class="rep_name" href="/BackofficeUser/View/${ReferentID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>                 {{/if}}
- <a class="rep_name" href="/BackofficeUser/View/${ReferentID}">${DjelatnikNaziv}</a>                 <span class="activity">
-            {{if Text!=null}}
-            <span class="billboard">"${Text}"</span>
-            {{/if}}
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-form-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <a href="${Link}" title="" class="modal form" dogadjajID="${TriggerDogadjajID}" formid="${VezniDokumentID}"><i class="icon icon-forms"></i> ${NazivAnkete}</a> <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-visit-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <span class="activity-name visit"><i class="icon icon-visit"></i> Visit</span> <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv} , ${KupacAdresa}</a>
-        </span>
-
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}{{if HasLength }} - ${VrijemeKraj}{{/if}}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}{{if HasLength }} - ${VrijemeKraj}{{/if}}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-client-insert-update-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            {{if DogadjajVrstaID== 18 }}
-            <span href="${Link}" title="" class="client-new activity-name"><i class="icon icon-newclient"></i> New place created</span> <span class="at-client">at</span>
-            {{/if}}
-            {{if DogadjajVrstaID==19}}
-            <span href="${Link}" title="" class="client-updated activity-name"><i class="icon icon-editclient"></i> Place updated</span> <span class="at-client">at</span>
-            {{/if}}
-            {{if KupacLokacijaID != null }}<a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-            {{/if}}
-        </span>
-        <span class="money_data">${OsnovicaUkupno}</span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-pricescan-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-
-            <a href="" title="" dogadjajID="${TriggerDogadjajID}" class="price_scan pricescan modal"><i class="icon icon-pricescan"></i> ${Detail1}</a> <span class="at-client">at</span>
-            {{if KupacLokacijaID != null }}<a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-            {{/if}}
-        </span>
-        <span class="money_data">${OsnovicaUkupno}</span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-client-status-changed">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <span href="${Link}" title="" class="client-status-changed activity-name"><i class="icon icon-salespipeline"></i> Place status changed</span> <span class="at-client">at</span>
-            {{if KupacLokacijaID != null }}<a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-            {{/if}}
-        </span>
-        <span class="money_data">${OsnovicaUkupno}</span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-mobile-device-connected">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <span title="" class="mobile-device-connected activity-name"><i class="icon icon-deviceconnected"></i> Mobile device connected</span>
-        </span>
-        <span class="money_data">${OsnovicaUkupno}</span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-
-
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-photo-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" referentID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            
-            <a href="${S3URL}" rel="prettyPhoto[gallery]" dogadjajID="${TriggerDogadjajID}" title="${Datum} ${Vrijeme}|${DjelatnikNaziv}|${KupacNaziv}|${Text}" type="image/jpeg" class="photo"><i class="icon icon-photos"></i> Photo</a> <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-photo-gallery">
-    <div class="gallery_photo_container" dogadjajid=${DogadjajID} photourl="${ImageUrl}" employeename="${PutnikNaziv}" clientname="${KupacLokacijaNaziv}" clientaddress="${KupacLokacijaAdresa1}, ${KupacLokacijaAdresa2}" latitude="${Latitude}" longitude="${Longitude}" downloadlink="?aURL=${EncodedUrl}&t=${Vrijeme}&client=${KupacLokacijaNaziv}&d=${Datum}" idfeeditemactivity="${IDFeedItemActivity}" style="background: url('/Public/NoPhotoRedirect');background-repeat: no-repeat;background-position: center center;">
-        {{if isFeed == "yes" }}
-        <a title="${Datum} ${Vrijeme}|${PutnikNaziv}|${KupacNaziv}|${Text}" type="image/jpeg">
-            {{else}}
-            <a href="${ImageUrl}" rel="prettyPhoto[gallery]" title="${Datum} ${Vrijeme}|${PutnikNaziv}|${KupacNaziv}|${Text}" dogadjajid=${DogadjajID} type="image/jpeg">
-                {{/if}}
-
-                <div class="photo_container" style="background: url('${ImageUrl}'); background-position: center center; background-size: cover; background-repeat: no-repeat;">
-
-                </div>
-            </a>
-            <span class="timestamp">${Datum} ${Vrijeme}</span>
-            <span class="client">${KupacLokacijaNaziv}</span>
-            <div class="photo-details-wrapper">
-                <span class="action show-more ui-icon ui-icon-info">more...</span>
-                <ul class="photo-details hidden">
-                    <li class="close-wrap"><span class="close ui-icon ui-icon-closethick">close</span></li>
-                        <li class="rep"><i class="icon icon-representative"></i> <a class="post-link" href="/representative/view/${PutnikID}">${PutnikNaziv}</a></li>
-                    <li class="client"><i class="icon icon-client"></i> <a class="post-link" href="/client/view/${KupacLokacijaID}">${KupacLokacijaNaziv}</a></li>
-                    {{if KupacLokacijaAdresa !=null && KupacLokacijaAdresa != "" }}
-                    <li class="address">${KupacLokacijaAdresa}{{if KupacLokacijaAdresa2 !=null && KupacLokacijaAdresa2 != "" }}, ${KupacLokacijaAdresa2}{{/if}}</li>
-                    {{/if}}
-                    {{if Note !=null && Note != "" }}
-                    <li class="note">${Note}</li>
-                    {{/if}}
-                    <li class="note">
-                        {{each Tags}}
-                        #${TagNaziv}
-                        {{/each}}
-                    </li>
-                    {{if ImaGps }}
-                    {{/if}}
-                </ul>
-            </div>
-    </div>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-attachment-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" PutnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <a href="${Link}" target=${Target} class="attachment">${AttachmentTitle}</a> <span class="at-client">at</span> <a href="${EntityUrl}/${EntityID}" title="" class="client post-link">${KupacNaziv}</a>
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-document-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <a href="${Link}" title="" dogadjajID="${TriggerDogadjajID}" dokumentid="${VezniDokumentID}" class="invoice dokument ${Detail1} modal">
-                
-                {{if IsOrderCanceled }}
-                <i class="icon icon-ordercancel"></i>
-                {{else}}
-                {{if VrstaTransakcijeSifra == "Quote" }}
-                <i class="icon icon-pricequote"></i>
-
-                {{else VrstaTransakcijeSifra == "Retail order" || VrstaTransakcijeSifra == "Purchase order" }}
-                <i class="icon icon-purchaseorder"></i>
-
-                {{else VrstaTransakcijeSifra == "Receipt" || VrstaTransakcijeSifra == "Invoice" }}
-                <i class="icon icon-invoice"></i>
-
-                {{else VrstaTransakcijeSifra == "Transfer order" }}
-                <i class="icon icon-ordertransfer"></i>
-
-                {{else VrstaTransakcijeSifra == "Discount" }}
-                <i class="icon icon-discount"></i>
-
-                {{else VrstaTransakcijeSifra == "Gratis" }}
-                <i class="icon icon-gratis"></i>
-
-                {{else}}
-                <i class="icon icon-orders"></i>
-                {{/if}}
-
-                {{/if}}
-
-                ${VrstaTransakcijeSifra}
-            </a> <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-        </span>
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="money hidden">${OsnovicaUkupno}</span>
-
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-work-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            {{if DogadjajVrstaID== 5 }}
-            <span href="${Link}" title="" class="workday start activity-name"><i class="icon icon-workingtimestart"></i> Workday start</span>:
-            {{/if}}
-            {{if DogadjajVrstaID==6}}
-            <span href="${Link}" title="" class="workday stop activity-name"><i class="icon icon-workingtimeend"></i> Workday end</span>:
-            {{/if}}
-            {{if KupacLokacijaID != null }}
-            <span class="at-client">at</span> <a href="/Client/View/${KupacLokacijaID}" title="" class="client post-link">${KupacNaziv}</a>
-            {{/if}}
-        </span>
-        <span class="vijeme_unosa">${DVU}</span>
-        {{if Km!=null && Km != "0" }}
-        <span class="mileage">, Mileage ${Km}</span>
-        {{/if}}
-        <span class="item_actions">
-            {{if PutnikID!= null}}
-            <span title="Comment" class="add-comment action icon icon-comment"></span>
-            {{/if}}
-            {{if DisplayGps}}
-            <span title="Map view" class="view-map action icon icon-viewonmap"></span>
-            {{/if}}
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        {{if Text!=null && Text!=""}}
-        <div class="note">${Text}</div>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-client-new-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <a href="/Client/View/${KupacLokacijaID}" title="" class="client-new client post-link">${KupacNaziv}</a><i class="icon icon-newclient"></i> (new place in Repsly)
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-client-updated-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a>
-        <span class="activity">
-            <a href="/Client/View/${KupacLokacijaID}" title="" class="client-updated client post-link">${KupacNaziv}</a><i class="icon icon-editclient"></i> (info changed)
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-mobile-connected-stream">
-    <li class="stream_item" IDStreamItem="${IDStreamItem}" putnikID="${PutnikID}" dogadjajID="${TriggerDogadjajID}">
-        {{if !HasAvatar }}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><i class="icon icon-profile rounded no-avatar"></i></a>
-        {{else}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}"><img src="${Avatar}" class="rounded avatar" alt="${DjelatnikNaziv}"></a>
-        {{/if}}
-        <a class="rep_name post-link" href="/Representative/View/${PutnikID}">${DjelatnikNaziv}</a> joined Repsly!
-        <span class="activity mobile-connected">
-
-        </span>
-        {{if IsToday }}
-        <span class="timestamp today">${Vrijeme}</span>
-        {{else}}
-        <span class="timestamp other">${Datum} ${Vrijeme}</span>
-        {{/if}}
-        <span class="interaction"></span>
-    </li>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-rep-reply-stream">
-    <span class="reply_mob {{if Tekst==null || Tekst==""}}message-read-type{{/if}} rounded comment" idstreamitemevent="${IDStreamItemEvent}">
-        <span class="msg_info{{if Tekst==null || Tekst==""}} message-read{{/if}}"><a class="post-link" href="/Representative/View/${PutnikID}"><strong>${DjelatnikNaziv}</strong></a> at ${Datum} ${Vrijeme}</span>
-        {{if Tekst!=null && Tekst!="" && Tekst.length>350}}
-        <p class="trim-message">"${Tekst.substring(0,350)} ..."</p>
-        <div class="hidden client-note-holder">${Tekst}</div>
-        <span class="trigger-note-popup">Show whole message</span>
-        {{else}}
-        {{if Tekst!=null && Tekst!=""}}
-        <p>"${Tekst}"</p>
-        {{/if}}
-        {{/if}}
-    </span>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-message-read-container">
-    <ul class="message-red" idstreamitemevent=""></ul>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-message-read-item">
-    <span class="rep" title="seen at  ${DatumVrijeme}">${DjelatnikNaziv}</span>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-office-reply-stream">
-    <span class="reply_web rounded comment" idstreamitemevent="${IDStreamItemEvent}">
-        <span class="msg_info"><strong>${DjelatnikNaziv}</strong> at ${Datum} ${Vrijeme}</span>
-
-        {{if Tekst!=null && Tekst!="" && Tekst.length>350}}
-        <p class="trim-message">"${Tekst.substring(0,350)} ..."</p>
-        <div class="hidden client-note-holder">${Tekst}</div>
-        <span class="trigger-note-popup">Show whole message</span>
-        {{else}}
-        {{if Tekst!=null && Tekst!=""}}
-        <p>"${Tekst}"</p>
-        {{else}}
-        <span class="message-read">Message Read</span>
-        {{/if}}
-        {{/if}}
-    </span>
-</script>
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-timemileage-row">
-    <tr class="list-item-container workday-edit-row" onmouseenter="timeAndMileage.showEditWorkdayTool(this)">
-        <td class="action-cell">
-            <span onclick="timeAndMileage.viewTimeMileage(this)" title="Map view" class="action-detail icon icon-viewonmap"
-                  data-begin="${Datum__Date}"
-                  data-putnik="${PutnikID}"
-                  data-name="${PutnikNaziv}"
-                  data-workdaystart="${DatumVrijemePocetka__Date}"
-                  data-workdayend="${DatumVrijemeKraja__Date}"></span>
-        </td>
-        <td><a class="table-link" href="https://user.repsly.com/representative/view/${PutnikID}">${PutnikNaziv}</a></td>
-        <td>${Datum__Date}</td>
-        <td class="workday-edit-cell editable" iddnevnikrada="${IDDnevnikRada}" field="datumVrijemePocetka">
-            <div class="workday-original-value workday-start">${DatumVrijemePocetka__Time}</div>
-            <div class="workday-edit-section hidden">
-                <input type="text" class="rounded border workday-edit-input timepicker start-time" value="${DatumVrijemePocetka__Time}" isoformat="${DatumVrijemePocetka}" />
-                <div class="edit-workday-tools-container hidden">
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-confirm.png" onclick="timeAndMileage.saveWorkdayValue(this)" />
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-discard.png" onclick="timeAndMileage.discardWorkdayEdit(this)" />
-                </div>
-            </div>
-        </td>
-        <td class="workday-edit-cell editable" iddnevnikrada="${IDDnevnikRada}" field="datumVrijemeKraja">
-            <div class="workday-original-value workday-end">${DatumVrijemeKraja__Time}</div>
-            <div class="workday-edit-section hidden">
-                <input type="text" class="rounded border workday-edit-input timepicker end-time" value="${DatumVrijemeKraja__Time}" isoformat="${DatumVrijemeKraja}" />
-                <div class="edit-workday-tools-container hidden">
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-confirm.png" onclick="timeAndMileage.saveWorkdayValue(this)" />
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-discard.png" onclick="timeAndMileage.discardWorkdayEdit(this)" />
-                </div>
-            </div>
-        </td>
-        <td class="workday-edit-cell editable" iddnevnikrada="${IDDnevnikRada}" field="kilometriPocetak">
-            <div class="workday-original-value mileage-start">${KilometriPocetak}</div>
-            <div class="workday-edit-section hidden">
-                <input type="text" class="rounded border workday-edit-input mileage" value="${KilometriPocetak}"
-                       onkeyup="API.Functions.validateInputNumber(this)" onpaste=" API.Functions.validateInputNumber(this)" onblur="this.value = parseFloat(this.value);" />
-                <div class="edit-workday-tools-container hidden">
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-confirm.png" onclick="timeAndMileage.saveWorkdayValue(this)" />
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-discard.png" onclick="timeAndMileage.discardWorkdayEdit(this)" />
-                </div>
-            </div>
-        </td>
-        <td class="workday-edit-cell editable" iddnevnikrada="${IDDnevnikRada}" field="kilometriKraj">
-            <div class="workday-original-value mileage-end">${KilometriKraj}</div>
-            <div class="workday-edit-section hidden">
-                <input type="text" class="rounded border workday-edit-input mileage" value="${KilometriKraj}" onkeyup="API.Functions.validateInputNumber(this)" onblur="this.value = parseFloat(this.value);" />
-                <div class="edit-workday-tools-container hidden">
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-confirm.png" onclick="timeAndMileage.saveWorkdayValue(this)" />
-                    <img width="16" height="16" class="right" src="/frontend-app/dist/img/icon-discard.png" onclick="timeAndMileage.discardWorkdayEdit(this)" />
-                </div>
-            </div>
-        </td>
-        <td>${MinPosjeta__Time}</td>
-        <td>${MaxPosjeta__Time}</td>
-        <td>${KilometriUkupno}</td>
-        <td>${VrijemePutUkupno_HHMM}</td>
-        <td>${BrPosjeta}</td>
-        <td>${VrijemeKodKupcaUkupno_HHMM}</td>
-        <td>${PauseTotal}</td>
-        <td>${RadnoVrijemeUkupno_HHMM}</td>
-    </tr>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-clientnote-row">
-    <tr class="list-item-container">
-        <td class="action-cell"><a class="action-detail action icon icon-details modal clientnote" dogadjajid="${IDDogadjaj}" putnikid="${PutnikID}"></a></td>
-            <td><a class="table-link" href="/Representative/View/${PutnikID}">${PutnikNaziv}</a></td>
-        <td>${DatumVrijeme__Date} ${DatumVrijeme__Time}</td>
-        <td><a class="table-link client" href="/Client/View/${KupacLokacijaID}">${KupacLokacijaNaziv}</a><span class="subtext">${KupacLokacijaAdresa}</span></td>
-        {{if Note!=null && Note!="" && Note.length>350}}
-        <td class="clientnote">
-            <p>"${Note.substring(0,350)} ..."</p>
-            <div class="hidden client-note-holder">${Note}</div>
-            <span class="trigger-note-popup">Show whole message</span>
-        </td>
-        {{else}}
-        <td class="clientnote"><p>"${Note}"</p></td>
-        {{/if}}
-
-    </tr>
-</script>
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-visit-row">
-    <tr class="list-item-container">
-
-        <td>${DatumVrijemePoc__Date}</td>
-            <td><a class="table-link" href="/Representative/View/${PutnikID}">${PutnikNaziv}</a></td>
-        <td><a class="table-link client" href="/Client/View/${KupacLokacijaID}">${KupacLokacijaNaziv}</a><span class="subtext">${Adresa1} ${Adresa2}</span></td>
-        <td>${DatumVrijemePoc__Time}</td>
-        <td>${DatumVrijemeKraj__Time}</td>
-        <td>${VrijemeKodKupca}</td>
-
-    </tr>
-</script>
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-timemileage-sum">
-    <tr class="list-summary-container">
-        <td class="action-cell"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>${SumKilometri}</td>
-        <td>${SumVrijemePut}</td>
-        <td>${SumBrPosjeta}</td>
-        <td>${SumVrijemeKodKupcaMinuta}</td>
-        <td>${PauseTotalSum}</td>
-        <td>${SumVrijemeUkupno}</td>
-    </tr>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-form-row">
-    <tr class="list-summary-container">
-        <td class="action-cell"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>${SumBrPosjeta}</td>
-    </tr>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-document-row">
-    <tr class="list-item-container">
-        <td class="action-cell"><a class="action-detail action icon icon-details modal dokument" dogadjajid="${DogadjajID}" dokumentid="${DokumentID}" title="View this document in details"></a></td>
-        <td>${VrstaTransakcijeNaziv}</td>
-        <td>${URBrojPrikaz}</td>
-        <td><a class="table-link" href="https://user.repsly.com/client/view/${KupacLokacijaID}">${KupacNaziv}</a></td>
-        <td><a class="table-link" href="https://user.repsly.com/representative/view/${PutnikID}">${PutnikNaziv}</a></td>
-        <td>${DatumDVO}</td>
-        <td>${DatumValute}</td>
-        <td align="right">${Kolicina}</td>
-        <td align="right">${RabatDodatniPostotak}</td>
-        <td align="right">${OsnovicaIznos}</td>
-        <td>${Tags}</td>
-    </tr>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-pricescan-raw-row">
-    <tr class="list-item-container">
-        <td class="action-cell"><a href="home/viewpricescan?DogadjajID=${DogadjajID}" class="action-detail action icon icon-details modal pricescan" dogadjajid="${DogadjajID}" title="View this retail audit in details"></a></td>
-        <td>${AsortimanObrazacNaziv}</td>
-        <td>${KupacLokacijaNaziv}<span class="subtext">${KupacLokacijaAdresa}, ${KupacLokacijaGrad}</span></td>
-        <td>${PutnikNaziv}</td>
-        <td>${ProizvodNaziv}<span class="subtext">ID: ${ProizvodSifra} Group: ${ProizvodGrupaNaziv}</span></td>
-        <td class="middle"><span class="active-icon ${Prisutan}"></span></td>
-        <td class="numeric">${Cijena}</td>
-        <td class="numeric">${Zaliha}</td>
-        <td class="middle"><span class="active-icon ${Promocija}"></span></td>
-        <td>${Napomena}</td>
-    </tr>
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-pricescan-row">
-    <tr class="list-item-container">
-        <td class="action-cell"><a href="home/viewpricescan?DogadjajID=${DogadjajID}" class="action-detail action icon icon-details modal pricescan" dogadjajid="${DogadjajID}" title="View this retail audit in details"></a></td>
-        <td>${AsortimanObrazacNaziv}</td>
-        <td>
-            <a class="table-link" href="https://user.repsly.com/client/view/${KupacLokacijaID}">${KupacLokacijaNaziv}</a>
-            <span class="subtext">${KupacLokacijaAdresa}, ${KupacLokacijaGrad}</span>
-        </td>
-        <td>
-            <a class="table-link" href="https://user.repsly.com/representative/view/${PutnikID}">${PutnikNaziv}</a>
-        </td>
-        <td>${DatumVrijeme__Date}</td>
-    </tr>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-summary-ver2-all">
-    <div class="print-header">
-        <h1 class="summary-logo"></h1>
-        <div class="header-info">
-            <h2>${Naziv} </h2>
-            <h3>Summary Report for period <span id="label-datebegin"></span> - <span id="label-dateend"></span></h3>
-        </div>
-        <h4 id="filter-print"><span class="print-filter-label">Filtered by:</span> <span id="summary-filter-rep" class="rep"></span> <span id="summary-filter-client" class="client"></span></h4>
-    </div>
-    <hr class="print-separator" />
-    <div class="trinity-box one raised">
-            <h2 class="">Reps</h2>
-                            <span class="value">${UkPutnika}</span>
-                            <span class="average">Avg. active reps/day: ${ProsjekPutnikaPoDanu}</span>
-    </div>
-    <div class="trinity-box two">
-        <h2 class="">Place visits</h2>
-        <span class="value">${UkObilazaka}</span>
-        <span class="average">Avg. visits/day: ${ProsObilazakaDnevno}</span>
-    </div>
-    <div class="trinity-box three">
-        <h2 class="">Activities</h2>
-        <span class="value">${UkupnoAktivnosti}</span>
-        <span class="average">Avg. field activities/day: ${ProsjekAktivnostiPoDanu}</span>
-    </div>
-    <div class="chart-header">
-        <ul class="chart-buttons">
-            <li><a id="rn-period-hour" class="period-hour">Hourly</a></li>
-            <li><a id="rn-period-day" class="period-day">day</a></li>
-            <li><a id="rn-period-week" class="period-week">week</a></li>
-            <li><a id="rn-period-month" class="period-month">month</a></li>
-        </ul>
-    </div>
-    <div id="main-chart" class="chart" data-highcharts-chart="0"></div>
-    <div class="summary_segment team_effort">
-
-        <h3> Team Effort </h3>
-        <ul class="activities">
-            <li>
-                <span class="activity">Days active</span>
-                <div class="value" id="UkLokacija"><span>${UkRadnihDana}</span></div>
-
-                <text>{{if UkCovjekDana == 0}}</text>
-                <span class="description">Total number of days with activities</span>
-                <text>{{/if}}</text>
-
-                <text>{{if UkCovjekDana > 0}}</text>
-                <span class="description">${UkCovjekDana} man days</span>
-                <text>{{/if}}</text>
-
-            </li>
-                <li>
-                    <span class="activity">Working time</span>
-                    <div class="value" id="UkLokacija"><span>${UkRadnoVrijemeSati}h ${UkRadnoVrijemeMinuta}m</span></div>
-                    <span class="description">${_RadnoVrijemeDescription}</span>
-                </li>
-                                    <li>
-                                        <span class="activity">Total mileage (km)</span>
-                                        <div class="value" id="UkLokacija"><span>${UkKilometri}</span></div>
-                                        <span class="description">${_KilometriDescription}</span>
-                                    </li>
-            <li>
-                <span class="activity">Visited places</span>
-                <div class="value" id="UkLokacija"><span>${UkLokacija}</span></div>
-                <span class="description">${_VisitedClientsDescription}</span>
-            </li>
-        </ul>
-    </div>
-    <div class="summary_segment" style="vertical-align:middle">
-        <h3>Activities by Type</h3>
-        <div class="left-bar">
-            <ul class="activities list">
-                    <li class="hasicon"><span class="activity"><i class="icon icon-forms"></i> Forms</span><span id="rn-sum-link-forms" activity="form" class="value filter-link" id="UkLokacija">${UkAnketa}</span></li>
-                                    <li class="hasicon"><span class="activity"><i class="icon icon-pricescan"></i> Retail audits</span><span id="rn-sum-link-audits" activity="pricescan" class="value filter-link" id="UkLokacija">${UkAsortimanInfo}</span></li>
-                                    <li class="hasicon"><span class="activity"><i class="icon icon-photos"></i> Photos</span><span id="rn-sum-link-photos" activity="photo" class="value filter-link" id="UkLokacija">${UkDatoteka}</span></li>
-                <li class="hasicon"><span class="activity"><i class="icon icon-clientnotes"></i> Notes</span><span id="rn-sum-link-client-notes" activity="clientnote" class="value filter-link" id="UkLokacija">${UkPorukaKupac}</span></li>
-                <li class="hasicon"><span class="activity"><i class="icon icon-newclient"></i> New places</span><span id="rn-sum-link-new-clients" activity="newclient" class="value filter-link" id="UkLokacija">${UkNovihKupaca}</span></li>
-                    <li class="hasicon"><span class="activity"><i class="icon icon-salespipeline"></i> Status changes</span><span id="rn-sum-link-client-status" activity="clientstatuschange" class="value filter-link" id="UkLokacija">${UkKupacPromjenaStatusa}</span></li>
-                                    <li class="hasicon"><span class="activity"><i class="icon icon-purchaseorder"></i> Orders</span><span id="rn-sum-link-orders" activity="document" class="value filter-link" id="UkLokacija">${UkDokumenata}</span></li>
-            </ul>
-        </div>
-        <div class="right_bar">
-            <div id="activities-pie" data-highcharts-chart="1" style="text-align:center; color:#818182"></div>
-        </div>
-    </div>
-
-    <div class="summary_segment" style="vertical-align:middle">
-        <h3>Schedule planning</h3>
-        <div class="left-bar">
-            <ul class="activities list">
-                <li class="hasicon"><span class="activity"><i class="icon icon-visit total"></i> Total visits done</span><a id="rn-sum-link-total-visits" class="summary-link" href="javascript:;"><span activity="pricescan" class="value" id="UkLokacija">${UkPosjetaTotal}</span></a></li>
-                <li class="hasicon"><span class="activity"><i class="icon icon-visit planned"></i> Scheduled</span><a id="rn-sum-link-visits-planned" class="summary-link" href="javascript:;"><span activity="form" class="value" id="UkLokacija">${UkPosjetaPlanirano}</span></a></li>
-                <li class="hasicon"><span class="activity"><i class="icon icon-visit according-to-plan"></i> Visited as scheduled</span><a id="rn-sum-link-scheduled-visits" class="summary-link" href="javascript:;"><span activity="photo" class="value" id="UkLokacija">${UkPosjetaPoPlanu}</span></a></li>
-                <li class="hasicon"><span class="activity"><i class="icon icon-visit unplanned"></i> Unscheduled visits</span><a id="rn-sum-link-unscheduled-visits" class="summary-link" href="javascript:;"><span activity="clientnote" class="value" id="UkLokacija">${UkPosjetaNeplanirano}</span></a></li>
-                <li class="hasicon"><span class="activity"><i class="icon icon-visit missed"></i> Missed schedule</span><a id="rn-sum-link-missed-visits" class="summary-link" href="javascript:;"><span activity="newclient" class="value" id="UkLokacija">${UkPosjetaNeobavljeno}</span></a></li>
-            </ul>
-        </div>
-        <div class="right_bar">
-            <div id="visit-planning-pie" data-highcharts-chart="1" style="text-align:center; color:#818182"></div>
-        </div>
-    </div>
-
-        {{if KarticaAnketa.length > 0}}
-        <div class="summary_segment">
-            <h3>Forms</h3>
-            <div class="left-bar">
-                <ul class="activities list">
-                    {{each KarticaAnketa}}
-                    <li class="hasicon">
-                        <i class="icon icon-forms icon-specific"></i>
-                        <span class="form activity">
-                            ${Naziv}
-                        </span>
-                        <a class="option viewas_summary" id="rn-viewas-summary" value="summary" use="summary" title="Summary report"><i class="icon icon-summary form-explore filter-link" activity="form" unidoczagid="${UniDocZagID}" view="summary"></i></a>
-                        <a class="option viewas_stream" title="Plain list"><i class="icon icon-plainlist form-feed filter-link" unidoczagid="${UniDocZagID}" activity="form" view="stream"></i></a>
-                        <span class="form value">${UkAnketa}</span>
-
-
-                        
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="right_bar">
-                <div id="forms-pie" data-highcharts-chart="2" style="min-height:250px;"></div>
-            </div>
-        </div>
-                        {{/if}}
-            {{if Pricescans.length > 0}}
-        <div class="summary_segment">
-            <h3>Retail audits</h3>
-            <div class="left-bar">
-                <ul class="activities list">
-                    {{each Pricescans}}
-                    <li class="hasicon"><span class="activity"><i class="icon icon-pricescan"></i> ${Naziv}</span><span activity="pricescan" formid="${ID}" class="value filter-link">${Count}</span></li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="right_bar">
-                <div id="pricescans-pie" data-highcharts-chart="2" style="min-height:250px;"></div>
-            </div>
-        </div>
-                    {{/if}}
-            <div class="summary_segment">
-            <h3>Sales and Merchandising</h3>
-            <div class="left-bar">
-                <ul class="activities list">
-                    <li class="hasicon"><span class="activity"><i class="icon icon-purchaseorder"></i> Orders</span><span id="rn-sum-link-po" activity="document" class="value filter-link" style="text-align:right; margin-left:-20px" id="UkLokacija">${UkDokumenata}</span></li>
-                </ul>
-            </div>
-            <div class="right_bar_snm">
-                <div class="sales-total">
-                    <span class="activity">Total:</span><span activity="document" class="value filter-link money" id="UkLokacija">${_UkOsnovicaFormatted}</span>
-                </div>
-            </div>
-        </div>
-</script>
-
-
-<script type="text/x-jquery-tmpl" id="tmpl-form-list">
-    <ul class="activities">
-        {{each KarticaAnketa}}
-        <li><span class="activity">${Naziv}</span><span id="UkAnketa" class="value filter-link" unidoczagid="${UniDocZagID}" activity="form">${UkAnketa}</span><span class="description filter-link-prev">${Description}</span></li>{{/each}}
-    </ul>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-nodata-all">
-    <br />
-    <div class="nodatafound">
-        <span class="coach-sprite no-data"></span>
-        No ${entities}  found in this time frame.
-    </div>
-
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-device-not-connected-all">
-    <br />
-    <div class="nodatafound">
-        <span class="coach-sprite no-data"></span>
-        <div id="device-not-connected">
-            <div class="device-not-connected-image rounded">
-            </div>
-        </div>
-    </div>
-
-</script>
-<script type="text/x-jquery-tmpl" id="tmpl-stream-deleteSampleData">
-    <li class="sample_data_note">
-        <div class="sample_data_action">
-            While you are in a trial, you can delete your test data.
-        <a href="#" style="margin-left:2px">Delete activities...</a>
-    </div>
-</li>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-newclient-row">
-    <tr class="list-item-container">
-        <td class="action-cell"><a class="action-detail action icon icon-details modal newclient" dogadjajid="${IDDogadjaj}" kupaclokacijaid="${KupacLokacijaID}"></a></td>
-        <td>${DatumVrijeme__Date} ${DatumVrijeme__Time}</td>
-        <td><a class="table-link" href="https://user.repsly.com/client/view/${KupacLokacijaID}">${KupacLokacijaNaziv}</a><span class="subtext">${KupacLokacijaAdresa}, ${KupacLokacijaGrad}</span></td>
-            <td><a class="table-link" href="https://user.repsly.com/representative/view/${PutnikID}">${PutnikNaziv}</a></td>
-    </tr>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-clientstatuschange-row">
-    <tr class="list-item-container">
-        <td class="action-cell"><a class="action-detail action icon icon-details modal clientstatus" dogadjajid="${IDDogadjaj}" kupaclokacijaid="${KupacLokacijaID}"></a></td>
-        <td>${DatumVrijeme__Date} ${DatumVrijeme__Time}</td>
-        <td><a class="table-link" href="https://user.repsly.com/client/view/${KupacLokacijaID}">${KupacLokacijaNaziv}</a><span class="subtext">${KupacLokacijaAdresa}, ${KupacLokacijaGrad}</span></td>
-        <td>${Opis}</td>
-            <td><a class="table-link" href="https://user.repsly.com/representative/view/${PutnikID}">${PutnikNaziv}</a></td>
-    </tr>
-</script>
-
-<script type="text/x-jquery-tmpl" id="tmpl-map-timeline-list-item">
-    {{each TimelineList}}
-    <li class="map-timeline-item map-timeline-item--${itemType}">
-
-        <div class="map-timeline-item__inner map-timeline-item__inner--time">
-            {{if eventTime__Time}}
-                ${itemType == 'last' ? '' : eventTime__Time}
-            {{/if}}
-        </div>
-        
-        <div class="map-timeline-item__inner map-timeline-item__inner--timeline ${$index == (TimelineList.length -1) ? 'map-timeline-item__inner--last' : ''}">
-            <div class="map-timeline-item__timeline-icon ${(itemType == 'visit' || itemType == 'last') && $index == (TimelineList.length -1) ? 'map-timeline-item__timeline-icon--current-position blink' : 'map-timeline-item__timeline-icon--' + itemType}"></div>
-        </div>
-        <div class="map-timeline-item__inner map-timeline-item__inner--event">
-            <div class="map-timeline-item__event-box map-timeline-item__event-box--${itemType}" data-index="${$index}" feed-item-id="${feedItemId}">
-                {{if itemType == 'visit'}}
-                <div class="map-timeline-item__event-box-distance">${distance != 0 ? distance : ''}</div>
-                <div class="map-timeline-item__event-box-duration map-timeline-item__event-box-duration--visit">
-                    ${duration} <span class="map-timeline-item__event-box-duration-pinclock"></span>
-                </div>
-                <div class="${isScheduledVisit ? 'map-timeline-item__event-box-place-name' : 'map-timeline-item__event-box-place-name map-timeline-item__event-box-place-name--no-icon'}" title="${placeName}">${placeName.length > 20 ? placeName.substr(0,20) + '...' : placeName}</div>
-                {{if isScheduledVisit}}
-                <div class="map-timeline-item__event-box-scheduled-visit-icon"></div>
-                {{/if}}
-                <div class="${isScheduledVisit ? 'map-timeline-item__event-box-place-address' : 'map-timeline-item__event-box-place-address map-timeline-item__event-box-place-address--no-icon'}" title="${placeAddress}">${placeAddress.length > 65 ? placeAddress.substr(0,65) + '...' : placeAddress}</div>
-                {{else}}
-                <div class="map-timeline-item__event-box-duration">${duration}</div>
-                <div class="map-timeline-item__event-box-label">
-                    {{if itemType == 'start'}}
-                    Start day
-                    {{else itemType == 'pause'}}
-                    Pause day
-                    {{else itemType == 'end' || itemType == 'end-nogeolocation' }}
-                    End day
-                    {{else itemType == 'last'}}
-                    
-                    {{/if}}
-                </div>
-                {{/if}}
-            </div>
-        </div>
-    </li>
-    {{/each}}
-</script>
 
 
 
             </div>
+                        </div>
+
             <footer></footer>
 
         <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div></div>

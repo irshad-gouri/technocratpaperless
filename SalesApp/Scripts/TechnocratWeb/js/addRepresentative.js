@@ -35,6 +35,7 @@
 
             }).then(function (res) {
                 if (res.data.Status == 'SUCCESS') {
+                    $scope.adminDetail = res.data.Data;
                     $scope.addRepresentativeController.adminDetails = res.data.Data;
                     console.log(res.data.Data);
                 }
@@ -59,6 +60,7 @@
                 if (res.data.Status != "SUCCESS") {
                     alert(res.data.Data);
                     $scope.addRepresentativeController = {};
+                    $scope.addRepresentativeController.adminDetails = $scope.adminDetail;
                 } else {
                     alert(res.data.Data);
                 }

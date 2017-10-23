@@ -235,6 +235,19 @@ namespace SalesAppBLL.Repository
                         objResp.Message = "Thanks for submit your answer!";
                     }
                 }
+                UsersActivity objUAct = new UsersActivity();
+                FormsAnswer form = new FormsAnswer();
+                form = ansList.ElementAtOrDefault(0);
+                CustomForm formDetails = new CustomForm();
+                var id =Convert.ToInt32( form.FormId);
+                formDetails =DbContext.CustomForms.Where(i => i.Id.Equals(id)).FirstOrDefault();
+                objUAct.ActivityId = 5;
+                objUAct.UserId = (int)ansList.First().UserId;
+                objUAct.PhotoUrl = string.Empty;
+                objUAct.Note = string.Empty;
+                objUAct.PlaceId = ansList.First().PlaceId;
+                objUAct.FormName = formDetails.Title;
+                AddUsersActivities(objUAct);
             }
             catch (Exception ex)
             {
@@ -785,7 +798,7 @@ namespace SalesAppBLL.Repository
                     objACTComm.Note = photoAct.Note;
                     objACTComm.CreatedDate = System.DateTime.Now;
                     objACTComm.ModifiedDate = System.DateTime.Now;
-
+                    
                     // TODO: Perform on db...
                     DbContext.PhotoActivities.Add(objACTComm);
                     DbContext.SaveChanges();
@@ -799,6 +812,7 @@ namespace SalesAppBLL.Repository
                     objUAct.Note = objACTComm.Note;
                     //objUAct.Tags = objACTComm.Tags;
                     objUAct.PlaceId = objACTComm.PlaceId;
+                    objUAct.ActivityId = 3;
                     AddUsersActivities(objUAct);
 
                     objResp.Status = "Success";

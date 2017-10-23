@@ -1,7 +1,24 @@
 angular.module('activitiesDashboard.controllers', [])
 
-    .controller('activitiesDashboardCtrl', function ($scope) {
+    .controller('activitiesDashboardCtrl', function ($scope, APIService, $state) {
 
+        $scope.Activities = {};
+        $scope.photostorage = PhotoStorage;
+            $scope.GetActivities = function () {
+
+                APIService.getData({
+                    req_url: url_prifix + 'place/getusersactivitiesfordashboard?userId=' + localStorage.getItem("UserId")
+
+                }).then(function (res) {
+                    $scope.Activities = res.data.Data;
+                    console.log($scope.Activities)
+                })
+
+
+            }
+            $scope.GetActivities();
+
+           
 })
 
     // , APIService, $state, $rootScope, ngDialog
