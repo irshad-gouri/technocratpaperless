@@ -2,11 +2,11 @@ angular.module('formsdashboard.controllers', [])
 
     .controller('formsdashboardCtrl', function($scope, APIService, $state) {
 
-        $scope.formsdashboardCtrl = {};
+        $scope.formsdashboardCtrl = [];
 
     $scope.formsdashboardCtrl.getallcustomformsbyid = function () {
         APIService.getData({
-            req_url: url_prifix + 'customforms/getallcustomformsbyid?userId=' + localStorage.getItem("UserId")
+            req_url: url_prifix + 'customforms/getallcustomformsbyadmindashbordid?userId=' + localStorage.getItem("UserId")
 
         }).then(function (res) {
             if (res.data.Status == 'SUCCESS') {

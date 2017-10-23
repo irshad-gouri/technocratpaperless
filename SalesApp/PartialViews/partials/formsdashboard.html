@@ -109,16 +109,7 @@
     <span id="menu_pointer" class="hidden menu_pointer"></span>
     <div id="main">
 
-        <link href="/frontend-app/dist/css/forms.min.css?402" async="" type="text/css" rel="stylesheet" media="screen">
-        <script>
-            if (API.Settings.isTestOrDemoUser == "false") {
-                var formsScript = document.createElement('script');
-                formsScript.type = 'text/javascript';
-                formsScript.src = '/frontend-app/dist/js/forms.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
-                document.write(formsScript.outerHTML);
-            }
-        </script>
-        <script type="text/javascript" src="/frontend-app/dist/js/forms.min.js?402"></script>
+      
 
         <div  class="ng-scope">
             <h1 class="page-head forms">
@@ -171,7 +162,7 @@
                     <tbody>
                         <tr elementid="117070" class="list-item-container" ng-repeat ="form in formsdashboardCtrl | filter:test">
                             <td class="action-cell">
-                                <a class="action-detail action icon icon-details" href="/form/view/117070"></a>
+                                <a class="action-detail action icon icon-details" ></a>
                             </td>
                             <td class="name"> <a class="table-link" href="/form/view/117070">{{form.Title}}</a> <span class="subtext">{{form.Description}}.</span> </td>
                             <td class="active" ng-if="form.IsActive == true">Active<span class="active-icon true"></span> </td>

@@ -28,5 +28,20 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+        public object GetAllCustomFormsByIdAdminDashboard(int userId)
+        {
+            try
+            {
+                var getFormsList = (from i in DbContext.CustomForms 
+                                    where i.UserId == userId
+                                    select i).ToList();
+
+                return getFormsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
