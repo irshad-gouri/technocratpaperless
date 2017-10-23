@@ -91,7 +91,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PhotoUrl" Type="varchar" MaxLength="150" />
           <Property Name="Tags" Type="varchar" MaxLength="150" />
           <Property Name="PlaceId" Type="int" />
@@ -152,8 +152,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="PlaceId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
@@ -484,7 +484,6 @@
           <EntitySet Name="FormsQuestionFields" EntityType="SalesAppModel.FormsQuestionField" />
           <EntitySet Name="InputFields" EntityType="SalesAppModel.InputField" />
           <EntitySet Name="NotesActivities" EntityType="SalesAppModel.NotesActivity" />
-          <EntitySet Name="PhotoActivities" EntityType="SalesAppModel.PhotoActivity" />
           <AssociationSet Name="FK_Notes_PlacesDetails" Association="SalesAppModel.FK_Notes_PlacesDetails">
             <End Role="PlacesDetail" EntitySet="PlacesDetails" />
             <End Role="NotesActivity" EntitySet="NotesActivities" />
@@ -492,14 +491,6 @@
           <AssociationSet Name="FK_Notes_Users" Association="SalesAppModel.FK_Notes_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="NotesActivity" EntitySet="NotesActivities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhotoActivities_PlacesDetails" Association="SalesAppModel.FK_PhotoActivities_PlacesDetails">
-            <End Role="PlacesDetail" EntitySet="PlacesDetails" />
-            <End Role="PhotoActivity" EntitySet="PhotoActivities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PhotoActivities_Users" Association="SalesAppModel.FK_PhotoActivities_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="PhotoActivity" EntitySet="PhotoActivities" />
           </AssociationSet>
           <EntitySet Name="FormsVisibleOnTheseReps" EntityType="SalesAppModel.FormsVisibleOnTheseRep" />
           <AssociationSet Name="FK_FormsVisibleOnTheseReps_CustomForms" Association="SalesAppModel.FK_FormsVisibleOnTheseReps_CustomForms">
@@ -518,6 +509,15 @@
           <AssociationSet Name="FK_UseActivitiesComments_Users" Association="SalesAppModel.FK_UseActivitiesComments_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="UseActivitiesComment" EntitySet="UseActivitiesComments" />
+          </AssociationSet>
+          <EntitySet Name="PhotoActivities" EntityType="SalesAppModel.PhotoActivity" />
+          <AssociationSet Name="FK_PhotoActivities_PlacesDetails" Association="SalesAppModel.FK_PhotoActivities_PlacesDetails">
+            <End Role="PlacesDetail" EntitySet="PlacesDetails" />
+            <End Role="PhotoActivity" EntitySet="PhotoActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhotoActivities_Users" Association="SalesAppModel.FK_PhotoActivities_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="PhotoActivity" EntitySet="PhotoActivities" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ActivitiesType">
@@ -618,9 +618,9 @@
           <NavigationProperty Name="UserAssignedPlaces" Relationship="SalesAppModel.FK_UserAssignedPlaces_Users" FromRole="User" ToRole="UserAssignedPlace" />
           <NavigationProperty Name="UsersActivities" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="User" ToRole="UsersActivity" />
           <NavigationProperty Name="NotesActivities" Relationship="SalesAppModel.FK_Notes_Users" FromRole="User" ToRole="NotesActivity" />
-          <NavigationProperty Name="PhotoActivities" Relationship="SalesAppModel.FK_PhotoActivities_Users" FromRole="User" ToRole="PhotoActivity" />
           <NavigationProperty Name="FormsVisibleOnTheseReps" Relationship="SalesAppModel.FK_FormsVisibleOnTheseReps_Users" FromRole="User" ToRole="FormsVisibleOnTheseRep" />
           <NavigationProperty Name="UseActivitiesComments" Relationship="SalesAppModel.FK_UseActivitiesComments_Users" FromRole="User" ToRole="UseActivitiesComment" />
+          <NavigationProperty Name="PhotoActivities" Relationship="SalesAppModel.FK_PhotoActivities_Users" FromRole="User" ToRole="PhotoActivity" />
         </EntityType>
         <Association Name="FK_Users_CompanyDetails">
           <End Type="SalesAppModel.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
@@ -786,21 +786,6 @@
           <NavigationProperty Name="PlacesDetail" Relationship="SalesAppModel.FK_Notes_PlacesDetails" FromRole="NotesActivity" ToRole="PlacesDetail" />
           <NavigationProperty Name="User" Relationship="SalesAppModel.FK_Notes_Users" FromRole="NotesActivity" ToRole="User" />
         </EntityType>
-        <EntityType Name="PhotoActivity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="PhotoUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Tags" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="PlaceId" Type="Int32" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="PlacesDetail" Relationship="SalesAppModel.FK_PhotoActivities_PlacesDetails" FromRole="PhotoActivity" ToRole="PlacesDetail" />
-          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_PhotoActivities_Users" FromRole="PhotoActivity" ToRole="User" />
-        </EntityType>
         <Association Name="FK_Notes_PlacesDetails">
           <End Type="SalesAppModel.PlacesDetail" Role="PlacesDetail" Multiplicity="0..1" />
           <End Type="SalesAppModel.NotesActivity" Role="NotesActivity" Multiplicity="*" />
@@ -821,30 +806,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="NotesActivity">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PhotoActivities_PlacesDetails">
-          <End Type="SalesAppModel.PlacesDetail" Role="PlacesDetail" Multiplicity="0..1" />
-          <End Type="SalesAppModel.PhotoActivity" Role="PhotoActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlacesDetail">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PhotoActivity">
-              <PropertyRef Name="PlaceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PhotoActivities_Users">
-          <End Type="SalesAppModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="SalesAppModel.PhotoActivity" Role="PhotoActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PhotoActivity">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -917,6 +878,45 @@
             </Principal>
             <Dependent Role="UseActivitiesComment">
               <PropertyRef Name="CommentByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PhotoActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Tags" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PlacesDetail" Relationship="SalesAppModel.FK_PhotoActivities_PlacesDetails" FromRole="PhotoActivity" ToRole="PlacesDetail" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_PhotoActivities_Users" FromRole="PhotoActivity" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_PhotoActivities_PlacesDetails">
+          <End Type="SalesAppModel.PlacesDetail" Role="PlacesDetail" Multiplicity="0..1" />
+          <End Type="SalesAppModel.PhotoActivity" Role="PhotoActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacesDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoActivity">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhotoActivities_Users">
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SalesAppModel.PhotoActivity" Role="PhotoActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoActivity">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1115,20 +1115,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PhotoActivities">
-            <EntityTypeMapping TypeName="SalesAppModel.PhotoActivity">
-              <MappingFragment StoreEntitySet="PhotoActivities">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
-                <ScalarProperty Name="Tags" ColumnName="Tags" />
-                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FormsVisibleOnTheseReps">
             <EntityTypeMapping TypeName="SalesAppModel.FormsVisibleOnTheseRep">
               <MappingFragment StoreEntitySet="FormsVisibleOnTheseReps">
@@ -1147,6 +1133,20 @@
                 <ScalarProperty Name="UserComment" ColumnName="UserComment" />
                 <ScalarProperty Name="UsersActivitiesId" ColumnName="UsersActivitiesId" />
                 <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoActivities">
+            <EntityTypeMapping TypeName="SalesAppModel.PhotoActivity">
+              <MappingFragment StoreEntitySet="PhotoActivities">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

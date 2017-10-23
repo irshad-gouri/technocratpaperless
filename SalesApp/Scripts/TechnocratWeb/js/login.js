@@ -1,17 +1,21 @@
 angular.module('login.controllers', [])
 
     .controller('LoginController', function ($scope, $state, APIService) {
-  $scope.loginData = {};
-  $scope.doLogin = function(loginData) {
+        $scope.LoginController = {};
+        $scope.LoginController.doLogin = function (loginData) {
+            loginData.RoleId = 1;
       APIService.setData({
-          req_url: url_prifix + 'adminLogin',
+          req_url: url_prifix + 'account/login',
           data: loginData
-      }).then(function(resp) {
-          $scope.message = resp.data.message;
-          if($scope.message === 'success') {
-              localStorage.setItem('isLoggedIn', 'success');
-              localStorage.setItem('token', resp.data.token);
-            $state.go('app.product');
+      }).then(function(res) {
+          $scope.message = res.data.message;
+          if (res.data.Status != "SUCCESS") {
+              alert(res.data.Data);
+          } else {
+              console.log(res.data);
+              localStorage.setItem("UserId", res.data.Data.Id);
+              localStorage.setItem("UserDetails", JSON.stringify(res.data.Data));
+              $state.go('app.placedashboard');
           }
          },function(resp) {
             // This block execute in case of error.

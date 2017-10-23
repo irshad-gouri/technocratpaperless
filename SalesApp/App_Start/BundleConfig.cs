@@ -37,19 +37,21 @@ namespace SalesApp
                       "~/Content/ngDialog.min.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/ui-bootstrap-csp.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/TechnocratWeb").Include(
                      "~/Scripts/TechnocratWeb/js/app.js",
                       "~/Scripts/TechnocratWeb/js/service.js",
                      "~/Scripts/TechnocratWeb/js/authService.js",
                      "~/Scripts/TechnocratWeb/js/controllers.js",
-                     "~/Scripts/TechnocratWeb/js/feedback.js",
+                     "~/Scripts/TechnocratWeb/js/formsdashboard.js",
                      "~/Scripts/TechnocratWeb/js/filter.js",
                      "~/Scripts/TechnocratWeb/js/login.js",
                      "~/Scripts/TechnocratWeb/js/orders.js",
-                     "~/Scripts/TechnocratWeb/js/product.js",
+                     "~/Scripts/TechnocratWeb/js/placedashboard.js",
                      "~/Scripts/TechnocratWeb/js/productDetail.js",
                      "~/Scripts/TechnocratWeb/js/requestService.js",
-                     "~/Scripts/TechnocratWeb/js/updateProduct.js"
+                     "~/Scripts/TechnocratWeb/js/updateProduct.js",
+                     "~/Scripts/TechnocratWeb/js/representativeDashboard.js"
                      ));
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                     "~/Scripts/TechnocratWeb/lib/ng-file-upload.min.js",

@@ -1,9 +1,6 @@
 ﻿
 <meta charset="utf-8" />
 <title></title>
-<link href="../../Content/forms.min.css" rel="stylesheet" />
-<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
-
 <div class="wrapper">
     <div class="content">
         <span id="menu_pointer" class="hidden menu_pointer"></span>
@@ -41,10 +38,12 @@
                             <div class="form_container clearleft basic-info putnik">
                                 <div class="avatar_float">
                                     <div class="avatar-container mini_rep">
-                                        <img id="AvatarPreview" class="avatar-image rounded" type="putnik" width="160" height="160" src="../../images/no_avatar_putnik.png">
-                                        <form id="AvatarForm" method="post" class="avatar-upload-form ng-pristine ng-valid" enctype="multipart/form-data" action="https://user.repsly.com/Files/AvatarTempUpload">
-                                            <span class="change">Change picture<input type="file" id="AvatarFile" name="AvatarFile" accept="image/*" class="rounded border"></span>
-                                        </form>
+                                        <img id="AvatarPreview" class="avatar-image rounded" width="160" height="160" ng-src="{{addRepresentativeController.startImagePath + addRepresentativeController.PhotoUrl}}">
+                                        <div id="AvatarForm" method="post" class="avatar-upload-form ng-pristine ng-valid" >
+                                            <span class="change">Change picture<input type="file" ngf-select="addRepresentativeController.uploadFiles($file, $invalidFiles)"
+                                                    accept="image/*"id="AvatarFile" name="AvatarFile" class="rounded border"></span>
+                                       
+                                        </div>
                                         <div class="avatar-image-loader" style="display: none;">
                                         </div>
                                         <input type="hidden" id="IsInitialAvatar" class="rounded border" value="true">
@@ -54,23 +53,23 @@
                                     <div class="form-grid">
                                         <div class="unit w-3-5">
                                             <div for="Name" class="label first">Name:</div>
-                                            <input type="text" id="NazivEdit" class="name border-edit rounded required_field" placeholder="">
+                                            <input type="text" ng-model="addRepresentativeController.FirstName" id="NazivEdit" class="name border-edit rounded required_field" placeholder="">
                                             <input type="hidden" id="NazivOld" class="rounded border">
                                         </div>
-                                        <div class="unit w-2-5">
+                                        <!--<div class="unit w-2-5">
                                             <div for="Code" class="label">ID:</div>
-                                            <input type="text" id="Sifra" class="code border-edit rounded required_field" placeholder="...">
-                                        </div>
+                                            <input type="text" ng-model="addRepresentativeController.Id" readonly="readonly" id="Sifra" class="code border-edit rounded required_field" placeholder="...">
+                                        </div>-->
 
                                     </div>
                                     <div class="form-grid">
                                         <div class="unit w-1-2">
                                             <div for="Phone" class="label">Phone:</div>
-                                            <input type="text" id="Telefon" class="phone border-edit rounded">
+                                            <input type="text" id="Telefon" class="phone border-edit rounded" ng-model="addRepresentativeController.Phone">
                                         </div>
                                         <div class="unit w-1-2">
                                             <div for="EMail" class="label">Email:</div>
-                                            <input type="text" id="EMail" class="email border-edit rounded">
+                                            <input type="text" id="EMail" class="email border-edit rounded" ng-model="addRepresentativeController.Email">
                                         </div>
                                     </div>
                                     <div class="form-grid">
@@ -80,7 +79,7 @@
 
                                         <div class="unit w-2-5">
                                             <div for="Jezik" class="label">Language:</div>
-                                            <select id="Jezik" class="code border-edit rounded">
+                                            <select id="Jezik" class="code border-edit rounded" ng-model="addRepresentativeController.Language">
                                                 <option value="en">English</option>
                                                 <option value="es">Español</option>
                                                 <option value="ru">Pусский</option>
@@ -105,13 +104,13 @@
 
                                         <div class="unit w-2-5">
                                             <div for="PoslovnaJedinicaID" class="label">Territory:</div>
-                                            <select id="PoslovnaJedinicaID" class="territory border-edit rounded"><option value="">-</option></select>
+                                          <input type="text" ng-model="addRepresentativeController.Teritory"/>
                                         </div>
 
 
                                         <div class="unit w-1-5">
                                             <span class="isActiveCheckbox afterInput rounded" type="">
-                                                <input type="checkbox" id="Aktivan" class="" checked="checked">
+                                                <input type="checkbox" id="Aktivan" class="" checked="checked" ng-model="addRepresentativeController.IsActive">
                                                 <label for="Aktivan">active rep</label>
                                             </span>
                                         </div>
@@ -125,31 +124,31 @@
                                     <label for="tbPerson" class="inline">
                                         Company ID:
                                     </label>
-                                    <input type="text" readonly="readonly" class="medium border-edit rounded" value="coronatech">
+                                    <input type="text" readonly="readonly" ng-model="addRepresentativeController.adminDetails.CompanyName" class="medium border-edit rounded" value="coronatech">
                                 </div>
                                 <div class="form_row">
                                     <label for="tbPerson" class="inline">
                                         User ID:
                                     </label>
-                                    <input type="text" id="Username" class="medium border-edit rounded required_field border_red">
+                                    <input type="text" ng-model="addRepresentativeController.UserName" id="Username" class="medium border-edit rounded required_field ">
                                 </div>
                                 <div class="form_row">
-                                    <label for="tbEmail" class="inline">
+                                    <label for="tbEmail" class="inline" >
                                         Password:
                                     </label>
-                                    <input type="text" id="Password" class="medium border-edit rounded required_field" value="230113">
+                                    <input type="text" id="Password" ng-model="addRepresentativeController.Password" class="medium border-edit rounded required_field" >
                                 </div>
-                                <a href="https://user.repsly.com/representative/view#" id="GetApp" class="getapp_link" onclick="API.Design.downloadApp.show()" style="display: none;">Connect mobile app</a>
+                               
                             </div>
                             <div class="form_container second">
                                 <div class="title">Note</div>
-                                <textarea id="Napomena" class="note border-edit rounded" rows="5" cols=""></textarea>
+                                <textarea id="Napomena" class="note border-edit rounded" ng-model="addRepresentativeController.Note" rows="5" cols=""></textarea>
                             </div>
                         </div>
                         <div class="right_bar flat">
                             <div class="clearfix">
                                 <div class="actions clearfix">
-                                    <input type="button" id="btnSave" value="Save" class="button_save rounded">
+                                    <input type="button" id="btnSave" value="Save" class="button_save rounded" ng-click="addRepresentativeController.submitNewRepresentative()">
                                     <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
                                 </div>
                             </div>
@@ -233,82 +232,6 @@
 
                     </div>
                     <div id="representative-calendar-container" type="calendar-container" class="fullcalendar clearfix display-sheet" style="display: none;">
-
-
-
-
-
-                        <script type="text/javascript">
-
-                            var UseScheduling = true;
-                            var VisitScheduleCalendarEntity = '';
-                            var urlPutnikNoAvatar = 'Content/img/no_avatar_putnik.png';
-                            var hasScheduleRole = 'True' == 'True' ? true : false;
-                            var quickSearchUri = '/home/quicksearchvp';
-
-                            var dayIDs = [
-                                'sun',
-                                'mon',
-                                'tue',
-                                'wed',
-                                'thu',
-                                'fri',
-                                'sat'
-                            ];
-
-                            var dayName = {
-                                Monday: 'monday',
-                                Tuesday: 'tuesday',
-                                Wednesday: 'wednesday',
-                                Thursday: 'thursday',
-                                Friday: 'friday',
-                                Saturday: 'saturday',
-                                Sunday: 'sunday'
-                            };
-
-                            var monthIDs = [
-                                API.Functions.capitalizeFirstLetter('january'),
-                                API.Functions.capitalizeFirstLetter('february'),
-                                API.Functions.capitalizeFirstLetter('march'),
-                                API.Functions.capitalizeFirstLetter('april'),
-                                API.Functions.capitalizeFirstLetter('may'),
-                                API.Functions.capitalizeFirstLetter('june'),
-                                API.Functions.capitalizeFirstLetter('july'),
-                                API.Functions.capitalizeFirstLetter('august'),
-                                API.Functions.capitalizeFirstLetter('september'),
-                                API.Functions.capitalizeFirstLetter('october'),
-                                API.Functions.capitalizeFirstLetter('november'),
-                                API.Functions.capitalizeFirstLetter('december')
-                            ];
-
-
-                            var dictionaryMonth = 'month';
-                            var dictionaryWeek = 'week';
-                            var dictionaryDay = 'day';
-                            var dictionarySummary = 'agenda';
-                            var dictionaryToday = 'Today';
-
-                            var dictionaryDate = 'Date';
-                            var dictionaryVisitsDone = 'Total visits done';
-                            var dictionaryPlanned = 'Scheduled';
-                            var dictionaryVisitsByPlan = 'Visits as scheduled';
-                            var dictionaryUnplanned = 'Unscheduled visits';
-                            var dictionaryMissed = 'Missed schedule';
-
-                            var dictionaryAnyTime = 'Any time';
-                            var dictionaryMoveAllEvents = 'Move All Events?';
-                            var dictionaryMoveOne = 'Move only this visit';
-                            var dictionaryMoveAll = 'Move all future visits';
-                            var dictionarySaveSchedule = 'Save Schedule';
-                            var dictionaryRemoveFromSchedule = 'Remove from schedule';
-                            var dictionaryCancel = 'Cancel';
-                            var dictionaryAddToSchedule = 'Add to Schedule';
-                            var dictionaryMaximumOccurance = 'Maximum allowed recurring interval is 99!';
-                            var dictionaryAjaxErrorOcccured = 'An error occurred. Please try again.';
-                            var dictionaryAddToScheduleFor = 'Schedule new visit for ';
-                            var dictionaryRepresentatives = 'Representatives';
-
-                        </script>
 
                         <div style="display:none;" class="preloader"></div>
 

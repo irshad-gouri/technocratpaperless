@@ -29,7 +29,7 @@
 
  <div id="main">
 
-    <form action="/Account/Logon" method="post">
+    <form ng-submit="LoginController.doLogin(user)">
         <input data-val="true" data-val-number="The field Timeoffset must be a number." data-val-required="The Timeoffset field is required." id="Timeoffset" name="Timeoffset" type="hidden" value="-330">
         <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="/">
         <div id="dialog-box" class="hidden"></div>
@@ -70,12 +70,12 @@
                         </div>
                     </div>
 
-                    <div class="login_bg">
+                    <div class="login_bg" style="    width: 100% !important;">
                         <div class="login_left">
                             <div class="row_container">
                                <div class="form-group">
                                   <label for="username" class="control-label">Username</label>
-                                  <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                                  <input type="text" class="form-control" id="username" ng-model="user.UserName" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
                                   <span class="help-block"></span>
                               </div>
                               
@@ -84,13 +84,13 @@
                             <div class="row_container">
                                 <div class="form-group">
                                   <label for="password" class="control-label">Password</label>
-                                  <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                  <input type="password" class="form-control" ng-model="user.Password" id="password" name="password" value="" required="" title="Please enter your password">
                                   <span class="help-block"></span>
                                </div>
                             </div>
 
                             <div class="row_container action_container">
-                                <input id="loginButton" type="submit" value="Log in" class="login_btn rounded" ui-sref="app.product" >
+                                <input id="loginButton" type="submit" value="Log in" class="login_btn rounded" >
                                 <a id="forgotPassword" >Forgot your password?</a>
                             </div>
                         </div>
@@ -109,12 +109,12 @@
                         </span>
                         </div>
                     </div>
-                    <div class="logos clearfix">
+                    <!--<div class="logos clearfix">
 
                         <div class="comodoSeal black">
                             <img src="./images/RapidSSL_SEAL-90x50.gif" />
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="menu_pointer">
                         <!-- page menu pointer -->

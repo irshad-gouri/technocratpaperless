@@ -9244,7 +9244,7 @@ h1.welcome {
         width: 157px;
         height: 200px;
         display: block;
-        background: url(../img/login_vertical_separator.png) left top no-repeat;
+        /*background: url(../img/login_vertical_separator.png) left top no-repeat;*/
         margin-bottom: 20px;
         position: relative
     }
@@ -9252,17 +9252,17 @@ h1.welcome {
         .login_bg .login_right .or {
             position: absolute;
             display: block;
-            width: 20px;
+            width: 28px;
             text-align: center;
             top: 43%;
-            margin-top: -15px;
-            left: -15px;
+            margin-top: -16px;
+            left: -13px;
             background-color: #e5e5e5;
             font-size: 15px;
             border-radius: 50%;
             padding: 6px;
-            height: 20px;
-            color: #fff
+            height: 30px;
+            color: #fff;
         }
 
         .login_bg .login_right .intuit-sign-in {
@@ -16070,7 +16070,7 @@ ul.stream .gm-style {
 .form_container .remove-rep-clientTag, .form_container .remove-rep-clientTag.disabled {
     width: 16px;
     height: 16px;
-    background: url(/frontend-app/dist/img/jq_icon_sprites/ui-icons_454545_256x240.png) -80px -128px no-repeat;
+    background: url(../images/ui-icons_454545_256x240.png) -80px -128px no-repeat;
     position: absolute;
     cursor: pointer;
     display: inline-block

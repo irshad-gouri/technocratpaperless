@@ -1,11 +1,17 @@
-//var url_prifix = 'http://192.168.0.9:8000/';
+
+//var url_prifix = "http://localhost/SalesApp/api/";
+//var PhotoStorage = "http://localhost/SalesApp/";
+var url_prifix = "http://technocrat92-001-site1.gtempurl.com/api/";
+var PhotoStorage = "http://technocrat92-001-site1.gtempurl.com/";
 // var url_prifix = 'http://localhost:8000/';
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
-    'login.controllers', 'APIModule', 'product.controllers', 'form.addcustomform','feedback.controllers'])
+    'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
+    'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
+    'representativeDashboard.controllers','activitiesDashboard.controllers'])
 
 .run(function($rootScope, $state, AuthService){
     if(localStorage.getItem('isLoggedIn') === 'success'){
-        $state.go('app.product');
+        $state.go('app.placedashboard');
     }
     else {
         $state.transitionTo('login');
@@ -55,7 +61,22 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
         }
     };
     return interceptor;
-})
+    }).constant("TypesOfInputs",
+    {
+        TypesOfInputs: {
+            textbox: 1,
+            textarea: 2,
+            datepicker: 3,
+            photo: 4,
+            checkbox: 5,
+            list: 6,
+            header: 7,
+            product: 8,
+            numeric: 9,
+            barcode:10
+        }
+    }
+)
 
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -69,13 +90,13 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
   })
 
 
-  .state('app.orders', {
-    url: '/users',
+      .state('app.activitiesDashboard', {
+          url: '/activitiesDashboard',
     authenticate: true,
     views: {
       'container': {
-        templateUrl: 'partials/orders.html',
-        controller: 'OrdersCtrl'
+          templateUrl: './PartialViews/partials/activitiesDashboard.html',
+          controller: 'activitiesDashboardCtrl'
       }
     }
       })
@@ -90,13 +111,13 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
           }
       })
 
-  .state('app.userinvestment', {
-    url: '/userinvestment',
+  .state('app.representativeDashboard', {
+      url: '/representativeDashboard',
     authenticate: true,
     views: {
       'container': {
-        templateUrl: 'partials/userinvestment.html',
-        controller: 'UserinvestmentCtrl'
+          templateUrl: './PartialViews/partials/representativeDashboard.html',
+          controller: 'representativeDashboardCtrl'
       }
     }
   })
@@ -110,27 +131,36 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
         controller: 'AddProductCtrl'
       }
     }
-  })
+      }).state('app.addRepresentative', {
+          url: '/addRepresentative',
+          authenticate: true,
+          views: {
+              'container': {
+                  templateUrl: './PartialViews/partials/AddRepresentatives.html',
+                  controller: 'addRepresentativeController'
+              }
+          }
+      })
 
 
-  .state('app.product', {
-    url: '/properties',
+      .state('app.placedashboard', {
+          url: '/placedashboard',
     authenticate: true,
     views: {
       'container': {
-          templateUrl: './PartialViews/partials/product.html',
-        controller: 'ProductCtrl'
+          templateUrl: './PartialViews/partials/placedashboard.html',
+          controller: 'placedashboardCtrl'
       }
     }
   })
 
-  .state('app.feedback', {
-    url: '/feedback',
+      .state('app.formsdashboard', {
+          url: '/formsdashboard',
     authenticate: true,
     views: {
       'container': {
-          templateUrl: './PartialViews/partials/feedback.html',
-        controller: 'FeedbackCtrl'
+          templateUrl: './PartialViews/partials/formsdashboard.html',
+          controller: 'formsdashboardCtrl'
       }
     }
   })

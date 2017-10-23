@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SalesAppDLL;
-
+using SalesAppDLL.CustomModels;
 
 namespace SalesAppBLL.Repository
 {
@@ -14,7 +14,7 @@ namespace SalesAppBLL.Repository
         {
             try
             {
-                var lst = Query(i => i.Password == log.Password && i.UserName == log.UserName).FirstOrDefault();
+                var lst = Query(i => i.Password == log.Password && (i.UserName == log.UserName||i.Email==log.UserName) && i.RoleId==log.RoleId).FirstOrDefault();
                
                 return lst;
             }
@@ -65,14 +65,19 @@ namespace SalesAppBLL.Repository
         {
             try
             {
-                reg.UserName = reg.Email;
+                if (reg.UserName == null)
+                {
+                    reg.UserName = reg.Email;
+                }
+                
                 var lst=Get(i => (i.Email == reg.Email || i.UserName == reg.UserName) && i.Password == reg.Password).ToList();
                 if (lst.Any())
                 {
                     return "User already registered with this mail id";
                 }
-                Add(reg);
-                return "User successfully registered";
+                var user=DbContext.Users.Add(reg);
+                DbContext.SaveChanges();
+                return "User successfully registered with id :"+user.Id;
             }
             catch(Exception ex)
             {
@@ -97,11 +102,36 @@ namespace SalesAppBLL.Repository
             }
         }
 
-        public User GetUserDetail(int userId)
+        public UserDetails GetUserDetail(int userId)
         {
             try
             {
-              var detail=  Get(i => i.Id.Equals(userId)).FirstOrDefault();
+                //var detail=  Get(i => i.Id.Equals(userId)).FirstOrDefault();
+                var detail = DbContext.Users.Where(i => i.Id.Equals(userId)).Join(DbContext.CompanyDetails, usr => usr.CompanyId,
+                    compDet => compDet.Id, (usr, comp) => new UserDetails
+                    {
+                        Address = usr.Address,
+                        City = usr.City,
+                        CompanyAddress = comp.Address,
+                        CompanyId = comp.Id,
+                        CompanyName = comp.CompanyName,
+                        Country = usr.Country,
+                        CreatedById = usr.CreatedById,
+                        Email = usr.Email,
+                        FirstName = usr.FirstName,
+                        IsActive = usr.IsActive,
+                        Language = usr.Language,
+                        LastName = usr.LastName,
+                        Note = usr.Note,
+                        Phone = usr.Phone,
+                        PhotoUrl = usr.PhotoUrl,
+                        PostalCode = usr.PostalCode,
+                        RegistrationNo = comp.RegistrationNo,
+                        RoleId = usr.RoleId,
+                        Teritory = usr.Teritory,
+                        UserId = usr.Id,
+                        UserName = usr.UserName,
+                    }).FirstOrDefault();
                 return detail;
             }
             catch (Exception ex)

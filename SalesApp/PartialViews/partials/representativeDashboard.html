@@ -1,0 +1,253 @@
+
+<div class="content animate" >
+    <span id="menu_pointer" class="hidden menu_pointer"></span>
+    <div id="main">
+
+        <h1 class="page-head reps">
+    <i class="icon icon-representative"></i>
+    <span id="rn-reps-header" class="header-main">Representatives</span>
+    <span class="header-sub">Manage your team of field representatives</span>
+</h1>
+        <div class="actions">
+
+            <a id="btnCreateRep" ui-sref="app.addRepresentative" target="_self" class="button_create master-action rounded">
+                <i class="icon icon-plus"></i> New representative</a><!-- href="/representative/view" -->
+
+        </div>
+
+        <div class="actions_header filter_padding filter">
+            <input type="hidden" id="sortBy" class="filter-data rounded border" value="">
+            <input type="hidden" id="ascending" class="filter-data rounded border">
+            <a href="#" class="back-link" title="Go back" style="display: none;">&lt;</a>
+            <div class="place_left">
+                <ul>
+                    <li class="relatived filter-item">
+                        <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
+                        <input type="text" id="search" ng-model="test" class="filter-data grid_filter search list border rounded" datatype="search" placeholder="Search reps">
+                        <input type="hidden" id="Filename" value="Representatives" class="filter-data rounded border">
+                        <input type="hidden" id="FilenameRankings" value="Representatives Rankings" class="filter-data rounded border">
+                        <input type="hidden" id="PutnikID" class="filter-data rounded border" value="">
+                        <input type="hidden" id="VisitDate" class="filter-data rounded border">
+                        <input type="hidden" id="details" class="filter-data rounded border">
+                        <span class="input-loader" style="display: none;"></span>
+                    </li>
+                    <li id="dateFilter" class="range-wrapper filter-item" style="display: none;">
+
+                        <input id="DateBegin" type="text" class="date_picker datebegin rounded border filter-data hasDatepicker" value="9/25/2017"> -
+                        <input id="DateEnd" type="text" class="date_picker dateend rounded border filter-data hasDatepicker" value="9/25/2017">
+                        <span class="range-picker ui-corner-all">
+<span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
+                        <div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
+                            <ul class="">
+                                <li id="rn-range-picker-today" class="range rounded" db="9/25/2017" de="9/25/2017">Today</li>
+                                <li id="rn-range-picker-yesterday" class="range rounded" db="9/24/2017" de="9/24/2017">Yesterday</li>
+                                <li class="delimiter"></li>
+                                <li id="rn-range-picker-this-week" class="range rounded" db="9/25/2017" de="9/25/2017">This week</li>
+                                <li id="rn-range-picker-last-week" class="range rounded" db="9/18/2017" de="9/24/2017">Last week</li>
+                                <li class="delimiter"></li>
+                                <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/25/2017">This month</li>
+                                <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
+                                <li class="delimiter"></li>
+                                <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/25/2017">This year</li>
+                                <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
+                            </ul>
+                            <span class="clip"></span>
+                        </div>
+                        </span>
+
+                    </li>
+
+                    <li id="AdditionalFiltersWrapper" class="filter-item drop" style="margin-left: 5px; margin-right: 5px;">
+                        <a id="rn-rep-addMoreFilters-trigger" href="#" class="megadrop more-filters" tipsy="true" title="">Add more filters</a>
+                        <div id="AdditionalFilters" class="mega_content mega_home align_right" style="display: none;">
+                            <ul class="drop_content">
+                                <li class="in-megadrop">
+                                    <h3 class="">Filter representatives by territory</h3>
+                                    <select class="filter-data border rounded" datatype="PoslovnaJedinicaID" id="PoslovnaJedinicaID">
+                                        <option value="">-</option>
+                                    </select>
+                                </li>
+                                <li class="in-megadrop">
+                                    <h3 class="">Filter representatives by current status</h3>
+                                    <select class="filter-data border rounded" datatype="WorkingStatus" id="WorkingStatus">
+                                        <option value="-">-</option>
+                                        <option value="0">Not working</option>
+                                        <option value="1">Started workday</option>
+                                        <option value="2">Visiting place/s</option>
+                                        <option value="3">Ended workday</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li id="TriggerWrapper" class="filter-item">
+                        <span id="rn-repapply-button" class="filter-trigger standalone rounded" title="Refresh screen according to filter selection.">Apply</span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="drop place_right">
+                <input id="ViewSelection" type="hidden" class="filter-data rounded border" value="plainlist"> View as: <a id="rn-reps-viewas-dropdown" href="#" class="megadrop" title="">Plain list</a>
+                <div id="megadrop_container" class="mega_content mega_viewas align_right" style="display: none;">
+                    <ul class="drop_content">
+                        <li><a href="#" id="plainlist" value="plainlist" class="option viewas_table selected">Plain list</a></li>
+                        <li><a href="#" id="rankings" value="rankings" class="option viewas_table">Rankings</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="representative-list-container" class="display-sheet" style="    margin: 20px !important;">
+
+            <div class="table_content" style="width: 100%;margin: auto;">
+                <table class="datatable grid" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td sorttype="name">Name</td>
+                            <td sorttype="territory">Territory
+                            </td>
+                            <td sorttype="lastEvent">Latest activity</td>
+                            <td sorttype="workingstatus">Current status (now)</td>
+                            <td sorttype="active" class="active">Active</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr elementid="67586" class="list-item-container" ng-repeat="val in representativeDashboardCtrl.representativeList | filter:test">
+                            <td class="action-cell">
+                                <a class="action-detail action icon" > <img class="representative-list-avatar" ng-src="{{representativeDashboardCtrl.startImagePath + val.PhotoUrl}}"> </a>
+                            </td>
+                            <td class="name"> <a class="table-link" {{val.FirstName}}</a><span class="subtext">{{val.Email}}</span> </td>
+                            <td class="territory"></td>
+                            <td class="last_activity type_1">
+                                <div class="relatived"> <a href="javascript:;" dogadjajid="66b66e1a-bcc4-45ed-a69b-a14d017ac800" class="last-event modal form rounded" title="View this form in details"><i class="icon icon-forms"></i></a> 9/24/2017 8:27 AM at <a href="Client/View/8229767">Isha Medical</a>, Anand Bazar Road 57 , Indore, Madhya Pradesh 452018, India </div>
+                                <div class="absolute-holder"> <span class="item_actions">                           </span> </div>
+                            </td>
+                            <td> Not working </td>
+                            <td class="active"><span class="active-icon true"></span></td>
+                        </tr>
+                     
+                    </tbody>
+                </table>
+            </div>
+            <div class="pager-holder"><a href="https://user.repsly.com/representative/exportall" class="export post-link pager rounded" id="rn-reps-export-plainlist">Export</a></div>
+        </div>
+
+        <div id="representative-ranking-container" class="display-sheet" style="display: none;">
+
+            <div class="table_content">
+                <table class="datatable grid" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td class="sortable" sortby="Naziv">Representative<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="VrijemeRadaMinute">Working time<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="UkObilazaka">Visits<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="UkProdajnihLokacija">Places visited<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="UkAnketa">Forms<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="UkDatoteka">Photos<span class="arrow"></span></td>
+
+                            <td class="sortable numeric" sortby="UkDokumenata">Sales documents<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="UkAsortimanInfo">Retail audits<span class="arrow"></span></td>
+                            <td class="sortable numeric" sortby="UkOsnovica">Total<span class="arrow"></span></td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="pager-holder"><a href="https://user.repsly.com/representative/exportall" class="export post-link pager rounded" id="rn-reps-export-plainlist">Export</a></div>
+        </div>
+
+        <div id="nodata-container" class="display-sheet" style="display: none;">
+
+            <div class="nodatafound entity">
+                <span class="coach-sprite icon  no-data"></span> No representatives found..
+            </div>
+
+        </div>
+
+        <script type="text/x-jquery-tmpl" id="tmpl-representative-row">
+            <tr elementid="${IDPutnik}" class="list-item-container">
+                <td class="action-cell">
+                    <a class="action-detail action icon" href="/Representative/View/${IDPutnik}">
+            {{if S3Avatar == null}}
+                <i class="icon icon-profile rounded no-avatar"></i> 
+            {{else}}
+                <img class="representative-list-avatar" src="${S3Avatar}" />
+            {{/if}}
+        </a>
+                </td>
+                <td class="name">
+                    <a class="table-link" href="/Representative/View/${IDPutnik}">${Naziv}</a><span class="subtext">${EMail}</span>
+                </td>
+                <td class="territory">${PoslovnaJedinicaNaziv}</td>
+                <td class="last_activity type_${LastDogadjajVrstaID}">
+
+                    <div class="relatived">
+
+                        {{if (LastDogadjajVrstaID == 9) }}
+                        <i class="icon icon-visit cellicon"></i> {{/if}} {{if (LastDogadjajVrstaID == 14 || LastDogadjajVrstaID == 7) }}
+                        <i class="icon icon-messages cellicon"></i> {{/if}} {{if (LastDogadjajVrstaID == 17) }}
+                        <i class="icon icon-deviceconnected cellicon"></i> {{/if}} {{if (LastDogadjajVrstaID == 18) }}
+                        <a dogadjajid="${LastDogadjajID}" lastfeeditemactivityid="${LastFeedItemActivityID}" class="last-event modal newclient rounded"><i class="icon icon-newclient"></i></a> {{/if}} {{if (LastDogadjajVrstaID == 21) }}
+                        <i class="icon icon-clientnotes cellicon"></i> {{/if}} {{if LastDogadjajDatumVrijeme != null }} {{if (LastDogadjajVrstaID == 2) }}
+                        <a href="javascript:;" dogadjajid="${LastDogadjajID}" class="last-event modal dokument rounded" title="View this document in details"><i class="icon icon-invoice"></i></a> {{/if}} {{if (LastDogadjajVrstaID == 1) }}
+                        <a href="javascript:;" dogadjajid="${LastDogadjajID}" class="last-event modal form rounded" title="View this form in details"><i class="icon icon-forms"></i></a> {{/if}} {{if (LastDogadjajVrstaID == 5) }}
+                        <i class="icon icon-workingtimestart cellicon"></i> {{/if}} {{if (LastDogadjajVrstaID == 6) }}
+                        <i class="icon icon-workingtimeend cellicon"></i> {{/if}} {{if (LastDogadjajVrstaID == 16) }}
+                        <a href="javascript:;" dogadjajid="${LastDogadjajID}" class="last-event modal pricescan rounded" title="View this retail audit in details"><i class="icon icon-pricescan"></i></a> {{/if}} {{if (LastDogadjajVrstaID == 11) }}
+                        <a href="javascript:;" dogadjajid="${LastDogadjajID}" class="last-event modal photo rounded" title="View photo"><i class="icon icon-photos"></i></a> {{/if}} {{if (LastDogadjajVrstaID == 20) }}
+                        <a href="javascript:;" dogadjajid="${LastDogadjajID}" class="last-event modal salespipeline rounded" title="View details"><i class="icon icon-salespipeline"></i></a> {{/if}} {{if (LastDogadjajVrstaID == 21) }}
+                        <a href="javascript:;" dogadjajid="${LastDogadjajID}" class="last-event modal clientnote rounded" title="View details"></a>
+                        {{/if}} ${LastDogadjajDatumVrijeme_LocalDate} ${LastDogadjajDatumVrijeme_LocalTime} {{if LastKupacLokacijaID != null}} at <a href="Client/View/${LastKupacLokacijaID}">${LastKupacLokacijaNaziv}</a>, ${LastKupacLokacijaAdresa1} {{if LastKupacLokacijaAdresa2 != null}} , ${LastKupacLokacijaAdresa2} {{/if}} {{/if}} {{else}} - {{/if}}
+                    </div>
+                    <div class="absolute-holder">
+                        <span class="item_actions">
+        {{if DisplayGps }}
+        {{/if}}
+        </span>
+                    </div>
+                </td>
+                <td>
+                    {{if (WorkingStatus == 0) }} Not working {{/if}} {{if (WorkingStatus == 1) }} Started workday {{/if}} {{if (WorkingStatus == 2) }} Visiting place/s {{/if}} {{if (WorkingStatus == 3) }} Ended workday {{/if}}
+                </td>
+                <td class="active"><span class="active-icon ${DatumVrijemeDeaktivacije == null}"></span></td>
+            </tr>
+        </script>
+
+        <script type="text/x-jquery-tmpl" id="tmpl-representative-ranking">
+            <tr>
+                <td class="action-cell">
+                    <a class="action-detail action icon icon-details post-link" href="/Representative/View/${IDPutnik}"></a>
+                </td>
+                <td><a class="table-link" href="/Representative/View/${IDPutnik}">${Naziv}</a></td>
+                <td class="numeric">${RadSati}h ${API.Functions.leadingZeros(RadMinute,2)}'</td>
+                <td class="numeric">${UkObilazaka}</td>
+                <td class="numeric">${UkLokacija}</td>
+                <td class="numeric">${UkAnketa}</td>
+                <td class="numeric">${UkDatoteka}</td>
+
+                <td class="numeric">${UkDokumenata}</td>
+                <td class="numeric">${UkAsortimanInfo}</td>
+                <td class="numeric">${_UkOsnovicaFormatted}</td>
+
+            </tr>
+        </script>
+
+    </div>
+    <footer></footer>
+
+    <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+</div>
+
+
+
+
+

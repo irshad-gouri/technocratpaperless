@@ -30,6 +30,6 @@ angular.module('filter.controllers', [])
             localStorage.setItem("productId",filter.product_id);
         else
             localStorage.setItem("productId",'');
-        $state.go('app.product');
+        $state.go('app.placedashboard');
     };
 })
