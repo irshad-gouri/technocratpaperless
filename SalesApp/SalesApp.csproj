@@ -241,6 +241,7 @@
     <Content Include="PartialViews\partials\addcustomforms.html" />
     <Content Include="Content\angucomplete-alt.css" />
     <Content Include="Content\forms.min.css" />
+    <Content Include="PartialViews\partials\AddPlace.html" />
     <Content Include="PartialViews\partials\AddRepresentatives.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
