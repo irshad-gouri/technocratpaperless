@@ -19,5 +19,6 @@ namespace SalesAppDLL
         public string KeyDescription { get; set; }
         public string Description { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     }
 }

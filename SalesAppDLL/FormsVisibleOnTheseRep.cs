@@ -17,6 +17,8 @@ namespace SalesAppDLL
         public int Id { get; set; }
         public Nullable<int> CustomFormsId { get; set; }
         public Nullable<int> UserId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
     
         public virtual CustomForm CustomForm { get; set; }
         public virtual User User { get; set; }

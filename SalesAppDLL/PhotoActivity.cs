@@ -22,6 +22,7 @@ namespace SalesAppDLL
         public string Note { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
         public virtual PlacesDetail PlacesDetail { get; set; }
         public virtual User User { get; set; }

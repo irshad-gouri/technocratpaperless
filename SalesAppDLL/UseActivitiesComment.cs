@@ -17,11 +17,12 @@ namespace SalesAppDLL
         public int CommentId { get; set; }
         public Nullable<int> UsersActivitiesId { get; set; }
         public string UserComment { get; set; }
+        public Nullable<int> CommentByUserId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public Nullable<int> CommentByUserId { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
-        public virtual UsersActivity UsersActivity { get; set; }
         public virtual User User { get; set; }
+        public virtual UsersActivity UsersActivity { get; set; }
     }
 }

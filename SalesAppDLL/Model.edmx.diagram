@@ -5,36 +5,36 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6ec7b95a5f1446358845f3b4ce21bbe1" Name="Diagram1">
-        <EntityTypeShape EntityType="SalesAppModel.ActivitiesType" Width="1.5" PointX="3" PointY="8.625" />
-        <EntityTypeShape EntityType="SalesAppModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="3.5" />
-        <EntityTypeShape EntityType="SalesAppModel.PlacesDetail" Width="1.5" PointX="6" PointY="7.5" />
-        <EntityTypeShape EntityType="SalesAppModel.Role" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SalesAppModel.SalesAppLogInfo" Width="1.5" PointX="8.75" PointY="6.375" />
-        <EntityTypeShape EntityType="SalesAppModel.UserAssignedPlace" Width="2.125" PointX="7.75" PointY="3.625" />
-        <EntityTypeShape EntityType="SalesAppModel.User" Width="1.5" PointX="3" PointY="1.875" />
-        <AssociationConnector Association="SalesAppModel.FK_Users_CompanyDetails" />
-        <AssociationConnector Association="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails" />
-        <AssociationConnector Association="SalesAppModel.FK_Users_Roles" />
-        <AssociationConnector Association="SalesAppModel.FK_UserAssignedPlaces_Users" />
-        <EntityTypeShape EntityType="SalesAppModel.UsersActivity" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="SalesAppModel.ActivitiesType" Width="1.5" PointX="6" PointY="19.25" />
+        <EntityTypeShape EntityType="SalesAppModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="SalesAppModel.CustomForm" Width="1.5" PointX="6" PointY="2.75" />
+        <EntityTypeShape EntityType="SalesAppModel.FormsAnswer" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesAppModel.FormsQuestionField" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesAppModel.FormsVisibleOnTheseRep" Width="1.5" PointX="8.25" PointY="7.125" />
+        <EntityTypeShape EntityType="SalesAppModel.InputField" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SalesAppModel.NotesActivity" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="SalesAppModel.PhotoActivity" Width="1.5" PointX="5.25" PointY="14.75" />
+        <EntityTypeShape EntityType="SalesAppModel.PlacesDetail" Width="1.5" PointX="3" PointY="2.875" />
+        <EntityTypeShape EntityType="SalesAppModel.Role" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="SalesAppModel.SalesAppLogInfo" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SalesAppModel.UseActivitiesComment" Width="1.5" PointX="10.5" PointY="10.875" />
+        <EntityTypeShape EntityType="SalesAppModel.UserAssignedPlace" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="SalesAppModel.User" Width="1.5" PointX="3" PointY="9.125" />
+        <EntityTypeShape EntityType="SalesAppModel.UsersActivity" Width="1.5" PointX="8.25" PointY="10.375" />
         <AssociationConnector Association="SalesAppModel.FK_UsersActivities_ActivitiesType" />
-        <AssociationConnector Association="SalesAppModel.FK_UsersActivities_Users" />
-        <EntityTypeShape EntityType="SalesAppModel.CustomForm" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SalesAppModel.FormsAnswer" Width="1.5" PointX="10.75" PointY="9.75" />
-        <EntityTypeShape EntityType="SalesAppModel.FormsQuestionField" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SalesAppModel.InputField" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SalesAppModel.NotesActivity" Width="1.5" PointX="11.625" PointY="5.625" />
-        <AssociationConnector Association="SalesAppModel.FK_Notes_PlacesDetails" />
-        <AssociationConnector Association="SalesAppModel.FK_Notes_Users" />
-        <EntityTypeShape EntityType="SalesAppModel.FormsVisibleOnTheseRep" Width="1.5" PointX="13" PointY="2.375" />
+        <AssociationConnector Association="SalesAppModel.FK_Users_CompanyDetails" />
         <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_CustomForms" />
         <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_Users" />
-        <EntityTypeShape EntityType="SalesAppModel.UseActivitiesComment" Width="2.875" PointX="9.25" PointY="13.375" />
-        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities" />
-        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_Users" />
-        <EntityTypeShape EntityType="SalesAppModel.PhotoActivity" Width="1.5" PointX="8.25" PointY="9.5" />
+        <AssociationConnector Association="SalesAppModel.FK_Notes_PlacesDetails" />
+        <AssociationConnector Association="SalesAppModel.FK_Notes_Users" />
         <AssociationConnector Association="SalesAppModel.FK_PhotoActivities_PlacesDetails" />
         <AssociationConnector Association="SalesAppModel.FK_PhotoActivities_Users" />
+        <AssociationConnector Association="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails" />
+        <AssociationConnector Association="SalesAppModel.FK_Users_Roles" />
+        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_Users" />
+        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities" />
+        <AssociationConnector Association="SalesAppModel.FK_UserAssignedPlaces_Users" />
+        <AssociationConnector Association="SalesAppModel.FK_UsersActivities_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

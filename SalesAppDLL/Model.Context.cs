@@ -29,20 +29,20 @@ namespace SalesAppDLL
     
         public virtual DbSet<ActivitiesType> ActivitiesTypes { get; set; }
         public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
-        public virtual DbSet<PlacesDetail> PlacesDetails { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<SalesAppLogInfo> SalesAppLogInfoes { get; set; }
-        public virtual DbSet<UserAssignedPlace> UserAssignedPlaces { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UsersActivity> UsersActivities { get; set; }
         public virtual DbSet<CustomForm> CustomForms { get; set; }
         public virtual DbSet<FormsAnswer> FormsAnswers { get; set; }
         public virtual DbSet<FormsQuestionField> FormsQuestionFields { get; set; }
+        public virtual DbSet<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }
         public virtual DbSet<InputField> InputFields { get; set; }
         public virtual DbSet<NotesActivity> NotesActivities { get; set; }
-        public virtual DbSet<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }
-        public virtual DbSet<UseActivitiesComment> UseActivitiesComments { get; set; }
         public virtual DbSet<PhotoActivity> PhotoActivities { get; set; }
+        public virtual DbSet<PlacesDetail> PlacesDetails { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<SalesAppLogInfo> SalesAppLogInfoes { get; set; }
+        public virtual DbSet<UseActivitiesComment> UseActivitiesComments { get; set; }
+        public virtual DbSet<UserAssignedPlace> UserAssignedPlaces { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UsersActivity> UsersActivities { get; set; }
     
         public virtual ObjectResult<GetAllPlacesInfo_Result> GetAllPlacesInfo(Nullable<int> userId)
         {

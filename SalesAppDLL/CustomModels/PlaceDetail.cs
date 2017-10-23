@@ -23,7 +23,7 @@ namespace SalesAppDLL.CustomModels
         public Nullable<decimal> Latitude { get; set; }
         public Nullable<decimal> Longitude { get; set; }
         public string Tags { get; set; }
-
+        public DateTime? CreatedDate { get; set; }
     }
 
     public class PlaceDetail_WithUserModel

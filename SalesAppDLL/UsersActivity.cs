@@ -29,10 +29,12 @@ namespace SalesAppDLL
         public Nullable<decimal> OrderCost { get; set; }
         public Nullable<int> AuditItems { get; set; }
         public Nullable<int> PlaceId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
         public virtual ActivitiesType ActivitiesType { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UseActivitiesComment> UseActivitiesComments { get; set; }
+        public virtual User User { get; set; }
     }
 }

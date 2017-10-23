@@ -14,9 +14,11 @@ namespace SalesAppDLL
     
     public partial class UserAssignedPlace
     {
-        public int UserId { get; set; }
         public int Id { get; set; }
+        public int UserId { get; set; }
         public int PlaceId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
         public virtual PlacesDetail PlacesDetail { get; set; }
         public virtual User User { get; set; }

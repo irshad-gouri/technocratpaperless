@@ -430,7 +430,7 @@
         <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
             <div class="item-header visit">
                 <span class="time-line ">
-                    9/23/2017<br>11:37 AM
+                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
                     <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
                         - 12:49 PM
                     </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
@@ -463,7 +463,7 @@
         <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
             <div class="item-header visit">
                 <span class="time-line ">
-                    9/23/2017<br>11:37 AM
+                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
                     <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
                         - 12:49 PM
                     </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
@@ -498,7 +498,7 @@
     <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
         <div class="item-header visit">
             <span class="time-line ">
-                9/23/2017<br>11:37 AM
+                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
                 <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
                     - 12:49 PM
                 </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
@@ -522,7 +522,7 @@
             </span>
         </div>
         <div class="no-activities ">
-            <span ng-if="act.PhotoUrl"><img src="{{photostorage+act.PhotoUrl}}" class="wid-100" style="height: 125px;"></span>
+            <span ng-if="act.PhotoUrl"><img ng-src="{{Activities.PhotoStorage +act.PhotoUrl}}" class="wid-100" style="height: 125px;"></span>
 
         </div>
     </div>
@@ -532,7 +532,7 @@
     <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
         <div class="item-header visit">
             <span class="time-line ">
-                9/23/2017<br>11:37 AM
+                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
                 <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
                     - 12:49 PM
                 </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
@@ -566,7 +566,7 @@
     <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
         <div class="item-header visit">
             <span class="time-line ">
-                9/23/2017<br>11:37 AM
+                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
                 <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
                     - 12:49 PM
                 </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->

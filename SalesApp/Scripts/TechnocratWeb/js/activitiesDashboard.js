@@ -1,9 +1,9 @@
 angular.module('activitiesDashboard.controllers', [])
 
-    .controller('activitiesDashboardCtrl', function ($scope, APIService, $state) {
+    .controller('activitiesDashboardCtrl', function ($scope, APIService, $state,$rootScope) {
 
         $scope.Activities = {};
-        $scope.photostorage = PhotoStorage;
+        $scope.Activities.PhotoStorage = PhotoStorage;
             $scope.GetActivities = function () {
 
                 APIService.getData({

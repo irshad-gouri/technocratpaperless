@@ -17,9 +17,9 @@ namespace SalesAppDLL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PlacesDetail()
         {
-            this.UserAssignedPlaces = new HashSet<UserAssignedPlace>();
             this.NotesActivities = new HashSet<NotesActivity>();
             this.PhotoActivities = new HashSet<PhotoActivity>();
+            this.UserAssignedPlaces = new HashSet<UserAssignedPlace>();
         }
     
         public int Id { get; set; }
@@ -37,12 +37,14 @@ namespace SalesAppDLL
         public Nullable<decimal> Latitude { get; set; }
         public Nullable<decimal> Longitude { get; set; }
         public string Tags { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAssignedPlace> UserAssignedPlaces { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotesActivity> NotesActivities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhotoActivity> PhotoActivities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserAssignedPlace> UserAssignedPlaces { get; set; }
     }
 }

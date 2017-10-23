@@ -19,6 +19,7 @@ namespace SalesAppDLL.CustomModels
         public decimal? OrderCost { get; set; }
         public int? AuditItems { get; set; }
         public int? PlaceId { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public Places_Detail Place_Details { get; set; }
     }
 
@@ -70,6 +71,7 @@ namespace SalesAppDLL.CustomModels
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
         public string Tags { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 
     public class Activities_Type

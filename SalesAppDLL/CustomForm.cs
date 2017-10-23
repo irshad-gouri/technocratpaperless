@@ -28,6 +28,7 @@ namespace SalesAppDLL
         public Nullable<int> UserId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FormsVisibleOnTheseRep> FormsVisibleOnTheseReps { get; set; }

@@ -64,7 +64,8 @@ namespace SalesAppBLL.Repository
                         PostalCode = data.PostalCode,
                         State = data.State,
                         Tags = data.Tags,
-                        Website = data.Website
+                        Website = data.Website,
+                        CreatedDate = data.CreatedDate
                     }; ;
                 }
             }
@@ -293,7 +294,7 @@ namespace SalesAppBLL.Repository
                                   join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
                                   join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
                                   where userAct.UserId == userId
-                                  select new { Id = userAct.ActivityId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                                  select new { Id = userAct.ActivityId, CreatedDate = userAct.CreatedDate, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
                 return getUserAct;
             }
             catch (Exception ex)
@@ -454,6 +455,7 @@ namespace SalesAppBLL.Repository
                                                               }).FirstOrDefault();
                             objDB.PhotoUrl = item.PhotoUrl;
                             objDB.Note = item.Note;
+                            objDB.CreatedDate = item.CreatedDate;
                             objDB.FormName = item.FormName;
                             objDB.OrderCost = item.OrderCost;
                             objDB.AuditItems = item.AuditItems;

@@ -22,5 +22,6 @@ namespace SalesAppDLL
         public string ListOptions { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModefiedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     }
 }

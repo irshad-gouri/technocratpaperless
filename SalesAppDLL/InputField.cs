@@ -16,5 +16,7 @@ namespace SalesAppDLL
     {
         public int Id { get; set; }
         public string FieldName { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     }
 }
