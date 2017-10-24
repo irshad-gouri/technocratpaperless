@@ -529,7 +529,7 @@ namespace SalesAppBLL.Repository
 
 
                 }
-                return objActDashList;
+                return objActDashList.OrderByDescending(i => i.CreatedDate);
             }
             catch (Exception ex)
             {
@@ -610,6 +610,7 @@ namespace SalesAppBLL.Repository
                                                               }).FirstOrDefault();
                             objDB.PhotoUrl = item.PhotoUrl;
                             objDB.Note = item.Note;
+                            objDB.CreatedDate = item.CreatedDate;
                             objDB.FormName = item.FormName;
                             objDB.OrderCost = item.OrderCost;
                             objDB.AuditItems = item.AuditItems;
@@ -668,6 +669,7 @@ namespace SalesAppBLL.Repository
                                                               Address = userDtls.Address,
                                                           }).FirstOrDefault();
                         objDB.PhotoUrl = item.PhotoUrl;
+                        objDB.CreatedDate = item.CreatedDate;
                         objDB.Note = item.Note;
                         objDB.FormName = item.FormName;
                         objDB.OrderCost = item.OrderCost;
@@ -683,7 +685,8 @@ namespace SalesAppBLL.Repository
 
 
                 }
-                return objActDashList;
+
+                return objActDashList.OrderByDescending(i=>i.CreatedDate);
             }
             catch (Exception ex)
             {
@@ -752,6 +755,7 @@ namespace SalesAppBLL.Repository
                     objUAct.UserId = (int)objACTComm.UserId;
                     objUAct.PhotoUrl = string.Empty;
                     objUAct.Note = objACTComm.Note;
+                    objUAct.CreatedDate = objACTComm.CreatedDate;
                     objUAct.PlaceId = objACTComm.PlaceId;
                     AddUsersActivities(objUAct);
 
@@ -812,6 +816,7 @@ namespace SalesAppBLL.Repository
                     objUAct.UserId = (int)objACTComm.UserId;
                     objUAct.PhotoUrl = photoAct.PhotoUrl;
                     objUAct.Note = objACTComm.Note;
+                    objUAct.CreatedDate = objACTComm.CreatedDate;
                     //objUAct.Tags = objACTComm.Tags;
                     objUAct.PlaceId = objACTComm.PlaceId;
                     objUAct.ActivityId = 3;
