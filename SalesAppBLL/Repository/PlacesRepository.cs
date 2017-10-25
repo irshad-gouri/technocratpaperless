@@ -522,6 +522,7 @@ namespace SalesAppBLL.Repository
                         objDB.PhotoUrl = item.PhotoUrl;
                         objDB.Note = item.Note;
                         objDB.FormName = item.FormName;
+                        objDB.CreatedDate = item.CreatedDate;
                         objDB.OrderCost = item.OrderCost;
                         objDB.AuditItems = item.AuditItems;
                         objDB.PlaceId = item.PlaceId;

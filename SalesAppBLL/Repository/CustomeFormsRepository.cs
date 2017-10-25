@@ -49,9 +49,25 @@ namespace SalesAppBLL.Repository
             try
             {
                 var getFormsAns = (from i in DbContext.FormsAnswers
-                                    where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId && i.CreatedDate == CreatedDate
-                                    select i).ToList();
 
+                                   join ques in DbContext.FormsQuestionFields on i.FormId equals ques.FormId
+                                   where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId && i.CreatedDate == CreatedDate
+                                   select new {
+                                       Id = i.Id,
+                                       FormsQuestionId = i.FormsQuestionId,
+                                       UserId = i.UserId,
+                                       PlaceId = i.PlaceId,
+                                       Answer = i.Answer,
+                                       ModifiedDate = i.ModifiedDate,
+                                       CreatedDate = i.CreatedDate,
+                                       CreatedBy = i.CreatedBy,
+                                       FormId = ques.FormId,
+                                       Question = ques.Question,
+                                       Mandatory = ques.IsMandatory,
+                                       ListOption =ques.IsMandatory}).ToList();
+
+              
+                                
                 return getFormsAns;
             }
             catch (Exception ex)
