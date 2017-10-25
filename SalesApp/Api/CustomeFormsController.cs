@@ -81,5 +81,38 @@ namespace SalesApp.Api
                 return data;
             }
         }
+
+        [HttpGet, Route("getallformsanswerbyuseridplaceidformidandcreateddate")]
+        public ResponseData GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId,int FormId,DateTime CreatedDate)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(UserId, PlaceId,FormId, CreatedDate);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
     }
 }

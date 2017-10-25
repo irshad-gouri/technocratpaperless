@@ -43,5 +43,21 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+
+        public object GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId, int FormId, DateTime CreatedDate)
+        {
+            try
+            {
+                var getFormsAns = (from i in DbContext.FormsAnswers
+                                    where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId && i.CreatedDate == CreatedDate
+                                    select i).ToList();
+
+                return getFormsAns;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
