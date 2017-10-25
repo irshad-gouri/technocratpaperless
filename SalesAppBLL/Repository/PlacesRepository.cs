@@ -16,6 +16,8 @@ namespace SalesAppBLL.Repository
             try
             {
                 //det.Id is userid when adding place
+                //createdby will be the admin id of particular user
+                det.CreatedDate = System.DateTime.Now;
                 var check = DbContext.PlacesDetails.Where(i => i.PlaceId == det.PlaceId).FirstOrDefault();
 
                 if (check != null)
@@ -38,6 +40,7 @@ namespace SalesAppBLL.Repository
                         PostalCode = check.PostalCode,
                         State = check.State,
                         Tags = check.Tags,
+                         CreatedDate=System.DateTime.Now,
                         Website = check.Website
                     };
                 }
@@ -65,7 +68,7 @@ namespace SalesAppBLL.Repository
                         State = data.State,
                         Tags = data.Tags,
                         Website = data.Website,
-                        CreatedDate = data.CreatedDate
+                        CreatedDate = data.CreatedDate                   
                     }; ;
                 }
             }
@@ -202,6 +205,7 @@ namespace SalesAppBLL.Repository
             AddCustomFormsResponse objResp = new AddCustomFormsResponse();
             try
             {
+                var currentDateTime = System.DateTime.Now;
                 foreach (var formAns in ansList)
                 {
                     if (formAns.PlaceId == 0)
@@ -227,8 +231,8 @@ namespace SalesAppBLL.Repository
                     else
                     {
                         // TODO: Perform on db
-                        formAns.CreatedDate = System.DateTime.Now;
-                        formAns.ModifiedDate = System.DateTime.Now;
+                        formAns.CreatedDate = currentDateTime;
+                        formAns.ModifiedDate = currentDateTime;
                         DbContext.FormsAnswers.Add(formAns);
                         DbContext.SaveChanges();
 
@@ -246,6 +250,8 @@ namespace SalesAppBLL.Repository
                 objUAct.UserId = (int)ansList.First().UserId;
                 objUAct.PhotoUrl = string.Empty;
                 objUAct.Note = string.Empty;
+                objUAct.CreatedDate = currentDateTime;
+                objUAct.CreatedBy = form.UserId;
                 objUAct.PlaceId = ansList.First().PlaceId;
                 objUAct.FormName = formDetails.Title;
                 AddUsersActivities(objUAct);
