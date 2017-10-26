@@ -10,24 +10,26 @@ angular.module('formsdashboard.controllers', [])
 
         }).then(function (res) {
             if (res.data.Status == 'SUCCESS') {
-                $scope.formsdashboardCtrl= res.data.Data;
+                $scope.formsdashboardCtrl = res.data.Data;
+                $scope.formId = $scope.formsdashboardCtrl.Id;
                 console.log(res.data.Data);
             }
         }, function (resp) {
            
         });
         }
+    $scope.formclick = function () {
+        $state.go("app.customforms", { data: $scope.formsdashboardCtrl});
+    }
+
+    $scope.formsdashboardCtrl.getallcustomformsbyid();
+
+     
+
+
+    
+
   
-   
-
-     $scope.formsdashboardCtrl.getallcustomformsbyid();
-
-
-
-
-
-
-
 
 
 

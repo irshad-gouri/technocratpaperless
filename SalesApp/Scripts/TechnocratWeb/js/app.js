@@ -101,7 +101,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
     }
       })
       .state('app.customforms', {
-          url: '/customforms',
+          url: '/customforms/:data',
           authenticate: true,
           views: {
               'container': {

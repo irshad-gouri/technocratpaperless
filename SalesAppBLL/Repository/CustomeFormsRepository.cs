@@ -44,14 +44,14 @@ namespace SalesAppBLL.Repository
             }
         }
 
-        public object GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId, int FormId, DateTime CreatedDate)
+        public object GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId, int FormId)
         {
             try
             {
                 var getFormsAns = (from i in DbContext.FormsAnswers
 
                                    join ques in DbContext.FormsQuestionFields on i.FormId equals ques.FormId
-                                   where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId && i.CreatedDate == CreatedDate
+                                   where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId 
                                    select new {
                                        Id = i.Id,
                                        FormsQuestionId = i.FormsQuestionId,

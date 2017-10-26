@@ -83,12 +83,12 @@ namespace SalesApp.Api
         }
 
         [HttpGet, Route("getallformsanswerbyuseridplaceidformidandcreateddate")]
-        public ResponseData GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId,int FormId,DateTime CreatedDate)
+        public ResponseData GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId,int FormId)
         {
             ResponseData data = new ResponseData();
             try
             {
-                var lst = _placeRepo.GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(UserId, PlaceId,FormId, CreatedDate);
+                var lst = _placeRepo.GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(UserId, PlaceId,FormId);
                 if (lst != null)
                 {
                     data.Data = lst;

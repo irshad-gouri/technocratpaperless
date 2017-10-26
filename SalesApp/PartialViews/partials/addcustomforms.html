@@ -37,22 +37,23 @@
                                 Forms
                             </span>
                             <span class="header-sub ng-binding">
-                                Use forms to keep record of your reps activities.
+                                Use forms to keep record of your reps activities. 
                             </span>
                         </h1>
                     </div>
                     <div class="actions_header clearfix"></div>
-                    <!-- ngIf: pageLoaded --><div id="form-edit-container" ng-if="true" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
+                    <!-- ngIf: pageLoaded --><div id="form-edit-container" type="details-container" class="details_edit display-sheet clearfix editor-container ng-scope">
                         <!-- ngIf: SystemUser != null -->
                         <div class="left_bar flat">
                             <div id="common-data-editor" class="">
-                                <div class="form_container clearleft basic-info form-editor">
+                                <div class="form_container clearleft basic-info form-editor" >
                                     <div class="form-grid">
                                         <div class="unit w-2-3">
                                             <div for="tbCode" class="label ng-binding">
                                                 Title:
                                             </div>
-                                            <input id="Title" type="text" value="" class="name border-edit rounded ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="addcustomformCtrl.Title" ng-class="{&#39;border_red&#39;: !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" maxlength="256" placeholder="...">
+                                            <input id="Title" type="text" value="" class="name border-edit rounded ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-if="!title" ng-model="addcustomformCtrl.Title" ng-class="{&#39;border_red&#39;: !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" maxlength="256" placeholder="...">
+                                            <input id="Title" type="text" value="" class="name border-edit rounded ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="title.Title" ng-class="{&#39;border_red&#39;: !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" maxlength="256" placeholder="...">
                                         </div>
                                         <div class="unit w-1-3">
                                             <span class="isActiveCheckbox afterInput rounded inline-block" type="">
@@ -74,7 +75,8 @@
                                             <div for="tbCode" class="label ng-binding">
                                                 Description:
                                             </div>
-                                            <textarea ng-model="addcustomformCtrl.Description" rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Description" placeholder="..."></textarea>
+                                            <textarea ng-if="!title" ng-model="addcustomformCtrl.Description" rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Description" placeholder="..."></textarea>
+                                            <textarea ng-model="title.Description" rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Description" placeholder="..."></textarea>
                                         </div>
                                     </div>
                                 </div>

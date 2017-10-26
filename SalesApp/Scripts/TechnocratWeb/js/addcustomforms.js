@@ -1,6 +1,6 @@
 ﻿angular.module('form.addcustomform', [])
 
-    .controller('addcustomformCtrl', function ($scope, TypesOfInputs, APIService) {
+    .controller('addcustomformCtrl', function ($scope, TypesOfInputs, APIService, $stateParams) {
         $scope.addcustomformCtrl = {};
         $scope.addcustomformCtrl.FormsQuestionFieldDetail = [];
         $scope.addcustomformCtrl.FormsVisibleOnTheseRepsDetail = [];
@@ -78,6 +78,8 @@
         $scope.addcustomformCtrl.removeDistributionItem = function (index) {
             $scope.addcustomformCtrl.FormsVisibleOnTheseRepsDetail.splice(index, 1);
         }
+
+
         $scope.addcustomformCtrl.saveFormTrigger = function () {
             $scope.addcustomformCtrl.isSubmit = true;
             var isValid = false;
@@ -173,4 +175,29 @@
                     }
             }
         }
+
+
+
+        $scope.title =JSON.parse($stateParams.data);
+        $scope.FormId = $scope.title.Id;
+        console.log($scope.title.Title);
+
+
+
+        $scope.getQuestion = function () {
+            APIService.getData({
+                req_url: url_prifix + 'place/getquestionsbyformsid?formId=' + $scope.FormId
+
+            }).then(function (res) {
+                    if (res.data.Status == 'SUCCESS') {
+                        $scope.quetions = res.data.Data;
+                        console.log(res.data.Data);
+                    }
+                }, function (resp) {
+
+                });
+        }
+
+
+        $scope.getQuestion();
     });

@@ -1,7 +1,55 @@
 angular.module('placedashboard.controllers', [])
 
 .controller('placedashboardCtrl', function ($scope, APIService, $state, $uibModal,$rootScope) {
-  
+
+    $scope.placedashboardCtrl = [];
+
+
+
+    $scope.placedashboardCtrl.getAllPlace = function () {
+        APIService.getData({
+            req_url: url_prifix + 'place/showallplaces?userId=' + localStorage.getItem("UserId")
+
+        }).then(function (res) {
+            if (res.data.Status == 'SUCCESS') {
+                $scope.placedashboardCtrl = res.data.Data;
+                console.log(res.data.Data);
+            }
+        })
+    }
+
+    $scope.placedashboardCtrl.getAllPlace();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // var myLat;
     // var myLng;
     // $scope.filter = { UserAuthorInfo: { OwnerId: '' }, Title: '', distance: '', reportedCount: '', Address: '' }
@@ -32,7 +80,7 @@ angular.module('placedashboard.controllers', [])
       
 })
 
-.controller('DeleteConfirmationCtrl', function ($scope, $rootScope, $uibModalInstance, APIService, product, url){
+//.controller('DeleteConfirmationCtrl', function ($scope, $rootScope, $uibModalInstance, APIService, product, url){
     // $scope.delete = function () {
     //     APIService.removeData({
     //         req_url: url,
@@ -47,7 +95,7 @@ angular.module('placedashboard.controllers', [])
     // $scope.cancel = function () {
     //     $uibModalInstance.dismiss('cancel');
     // };
-})
+//})
 // .filter('rangeFilter', function() {
 //     return function( items, rangeInfo ) {
 //         var filtered = [];

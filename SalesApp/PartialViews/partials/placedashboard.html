@@ -263,15 +263,15 @@
                 </td>
             </tr>
         </thead>
-        <tbody>
-            <tr elementid="8240143" class="list-item-container">
+        <tbody >
+            <tr class="list-item-container"  ng-repeat="place in placedashboardCtrl">
                 <td class="row-checkbox">
-                    <input type="checkbox" valueid="8240143" class="row-indicator"> </td>
+                    <input type="checkbox"  class="row-indicator"> </td>
                 <td class="action-cell">
-                    <a class="action-detail action icon icon-details" href="/Client/view/8240143"></a>
+                    <a class="action-detail action icon icon-details"></a>
                 </td>
-                <td class="code">4</td>
-                <td class="name"><a class="table-link" href="/Client/view/8240143">delhi</a><span class="subtext">Palasia Square, Indore, Madhya Pradesh 452001, India</span></td>
+                <td class="code">{{place.Id}}</td>
+                <td class="name"><a class="table-link" >{{place.Name}}</a><span class="subtext">{{place.Address}}</span></td>
                 <td class="territory"></td>
                 <td class="status">Active Client</td>
                 <td class="last_activity type_">
@@ -279,7 +279,7 @@
                 </td>
                 <td class="active"><span class="active-icon true"></span></td>
             </tr>
-            <tr elementid="8460280" class="list-item-container">
+            <!--<tr elementid="8460280" class="list-item-container">
                 <td class="row-checkbox">
                     <input type="checkbox" valueid="8460280" class="row-indicator"> </td>
                 <td class="action-cell">
@@ -413,7 +413,7 @@
                     <div class="relatived"> <a href="javascript:;" dogadjajid="63f3f894-1c66-482f-ba49-fe9a2f1ef7aa" class="last-event modal dokument rounded" title="View this document in details"><i class="icon icon-invoice"></i></a> <a href="Representative/View/67586">Glen- Sales Representative</a>, 8/26/2017 2:54 PM </div>
                 </td>
                 <td class="active"><span class="active-icon true"></span></td>
-            </tr>
+            </tr>-->
         </tbody>
     </table>
 </div>

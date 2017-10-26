@@ -121,7 +121,7 @@
                             <td class="action-cell">
                                 <a class="action-detail action icon" > <img class="representative-list-avatar" ng-src="{{representativeDashboardCtrl.startImagePath + val.PhotoUrl}}"> </a>
                             </td>
-                            <td class="name"> <a class="table-link" {{val.FirstName}}</a><span class="subtext">{{val.Email}}</span> </td>
+                            <td class="name"> <a class="table-link" ui-sref ="app.addRepresentative({data:'{{representativeDashboardCtrl.representativeList}}'})" {{val.FirstName}}</a><span class="subtext">{{val.Email}}</span> </td>
                             <td class="territory"></td>
                             <td class="last_activity type_1">
                                 <div class="relatived"> <a href="javascript:;" dogadjajid="66b66e1a-bcc4-45ed-a69b-a14d017ac800" class="last-event modal form rounded" title="View this form in details"><i class="icon icon-forms"></i></a> 9/24/2017 8:27 AM at <a href="Client/View/8229767">Isha Medical</a>, Anand Bazar Road 57 , Indore, Madhya Pradesh 452018, India </div>
