@@ -92,6 +92,22 @@ namespace SalesAppBLL.Repository
 
         }
 
+        public List <PlacesDetail> ShowAllPlacesByCreatedBy(int CreatedBy)
+        {
+            try
+            {
+                var plc = (from pl in DbContext.PlacesDetails
+                           where pl.CreatedBy == CreatedBy
+                           select pl).ToList();
+                return plc;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
         public PlacesDetail GetPlaceById(int placeId)
         {
             try

@@ -8,7 +8,7 @@ angular.module('placedashboard.controllers', [])
 
     $scope.placedashboardCtrl.getAllPlace = function () {
         APIService.getData({
-            req_url: url_prifix + 'place/showallplaces?userId=' + localStorage.getItem("UserId")
+            req_url: url_prifix + 'place/showallplacescreatedby?CreatedBy=' + localStorage.getItem("UserId")
 
         }).then(function (res) {
             if (res.data.Status == 'SUCCESS') {
