@@ -214,6 +214,7 @@
           <Property Name="FormName" Type="varchar" MaxLength="50" />
           <Property Name="OrderCost" Type="decimal" Precision="6" Scale="2" />
           <Property Name="AuditItems" Type="int" />
+          <Property Name="FormId" Type="int" />
           <Property Name="PlaceId" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
@@ -486,11 +487,6 @@
           <EntitySet Name="UseActivitiesComments" EntityType="SalesAppModel.UseActivitiesComment" />
           <EntitySet Name="UserAssignedPlaces" EntityType="SalesAppModel.UserAssignedPlace" />
           <EntitySet Name="Users" EntityType="SalesAppModel.User" />
-          <EntitySet Name="UsersActivities" EntityType="SalesAppModel.UsersActivity" />
-          <AssociationSet Name="FK_UsersActivities_ActivitiesType" Association="SalesAppModel.FK_UsersActivities_ActivitiesType">
-            <End Role="ActivitiesType" EntitySet="ActivitiesTypes" />
-            <End Role="UsersActivity" EntitySet="UsersActivities" />
-          </AssociationSet>
           <AssociationSet Name="FK_Users_CompanyDetails" Association="SalesAppModel.FK_Users_CompanyDetails">
             <End Role="CompanyDetail" EntitySet="CompanyDetails" />
             <End Role="User" EntitySet="Users" />
@@ -531,13 +527,18 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UseActivitiesComment" EntitySet="UseActivitiesComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_UseActivitiesComments_UsersActivities" Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities">
-            <End Role="UsersActivity" EntitySet="UsersActivities" />
-            <End Role="UseActivitiesComment" EntitySet="UseActivitiesComments" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserAssignedPlaces_Users" Association="SalesAppModel.FK_UserAssignedPlaces_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="UserAssignedPlace" EntitySet="UserAssignedPlaces" />
+          </AssociationSet>
+          <EntitySet Name="UsersActivities" EntityType="SalesAppModel.UsersActivity" />
+          <AssociationSet Name="FK_UsersActivities_ActivitiesType" Association="SalesAppModel.FK_UsersActivities_ActivitiesType">
+            <End Role="ActivitiesType" EntitySet="ActivitiesTypes" />
+            <End Role="UsersActivity" EntitySet="UsersActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseActivitiesComments_UsersActivities" Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities">
+            <End Role="UsersActivity" EntitySet="UsersActivities" />
+            <End Role="UseActivitiesComment" EntitySet="UseActivitiesComments" />
           </AssociationSet>
           <AssociationSet Name="FK_UsersActivities_Users" Association="SalesAppModel.FK_UsersActivities_Users">
             <End Role="User" EntitySet="Users" />
@@ -781,37 +782,6 @@
           <NavigationProperty Name="UserAssignedPlaces" Relationship="SalesAppModel.FK_UserAssignedPlaces_Users" FromRole="User" ToRole="UserAssignedPlace" />
           <NavigationProperty Name="UsersActivities" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="User" ToRole="UsersActivity" />
         </EntityType>
-        <EntityType Name="UsersActivity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ActivityId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="PhotoUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderCost" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="AuditItems" Type="Int32" />
-          <Property Name="PlaceId" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <NavigationProperty Name="ActivitiesType" Relationship="SalesAppModel.FK_UsersActivities_ActivitiesType" FromRole="UsersActivity" ToRole="ActivitiesType" />
-          <NavigationProperty Name="UseActivitiesComments" Relationship="SalesAppModel.FK_UseActivitiesComments_UsersActivities" FromRole="UsersActivity" ToRole="UseActivitiesComment" />
-          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="UsersActivity" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_UsersActivities_ActivitiesType">
-          <End Type="SalesAppModel.ActivitiesType" Role="ActivitiesType" Multiplicity="1" />
-          <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ActivitiesType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsersActivity">
-              <PropertyRef Name="ActivityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Users_CompanyDetails">
           <End Type="SalesAppModel.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
           <End Type="SalesAppModel.User" Role="User" Multiplicity="*" />
@@ -932,18 +902,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UseActivitiesComments_UsersActivities">
-          <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="0..1" />
-          <End Type="SalesAppModel.UseActivitiesComment" Role="UseActivitiesComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersActivity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UseActivitiesComment">
-              <PropertyRef Name="UsersActivitiesId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserAssignedPlaces_Users">
           <End Type="SalesAppModel.User" Role="User" Multiplicity="1" />
           <End Type="SalesAppModel.UserAssignedPlace" Role="UserAssignedPlace" Multiplicity="*" />
@@ -953,6 +911,50 @@
             </Principal>
             <Dependent Role="UserAssignedPlace">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UsersActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderCost" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="AuditItems" Type="Int32" />
+          <Property Name="FormId" Type="Int32" />
+          <Property Name="PlaceId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <NavigationProperty Name="ActivitiesType" Relationship="SalesAppModel.FK_UsersActivities_ActivitiesType" FromRole="UsersActivity" ToRole="ActivitiesType" />
+          <NavigationProperty Name="UseActivitiesComments" Relationship="SalesAppModel.FK_UseActivitiesComments_UsersActivities" FromRole="UsersActivity" ToRole="UseActivitiesComment" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="UsersActivity" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UsersActivities_ActivitiesType">
+          <End Type="SalesAppModel.ActivitiesType" Role="ActivitiesType" Multiplicity="1" />
+          <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivitiesType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersActivity">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseActivitiesComments_UsersActivities">
+          <End Type="SalesAppModel.UsersActivity" Role="UsersActivity" Multiplicity="0..1" />
+          <End Type="SalesAppModel.UseActivitiesComment" Role="UseActivitiesComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersActivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UseActivitiesComment">
+              <PropertyRef Name="UsersActivitiesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1211,6 +1213,7 @@
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
                 <ScalarProperty Name="AuditItems" ColumnName="AuditItems" />
                 <ScalarProperty Name="OrderCost" ColumnName="OrderCost" />
                 <ScalarProperty Name="FormName" ColumnName="FormName" />

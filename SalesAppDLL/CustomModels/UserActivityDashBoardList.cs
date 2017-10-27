@@ -19,6 +19,7 @@ namespace SalesAppDLL.CustomModels
         public decimal? OrderCost { get; set; }
         public int? AuditItems { get; set; }
         public int? PlaceId { get; set; }
+        public int? FormId { get; set; }
         public DateTime? CreatedDate { get; set; }
         public Places_Detail Place_Details { get; set; }
     }

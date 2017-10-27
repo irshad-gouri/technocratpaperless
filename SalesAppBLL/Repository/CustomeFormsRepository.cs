@@ -44,14 +44,30 @@ namespace SalesAppBLL.Repository
             }
         }
 
-        public object GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId, int FormId)
+        public object GetFormDetailsByFormIdRepo(int formId)
+        {
+            try
+            {
+                var getFormsList = (from i in DbContext.CustomForms
+                                    where i.Id == formId
+                                    select i).FirstOrDefault();
+
+                return getFormsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public object GetAllFormsAnswerByUserIdPlaceIdFormIdAndCreatedDate(int UserId, int PlaceId, int FormId, DateTime createdDate)
         {
             try
             {
                 var getFormsAns = (from i in DbContext.FormsAnswers
 
-                                   join ques in DbContext.FormsQuestionFields on i.FormId equals ques.FormId
-                                   where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId 
+                                   join ques in DbContext.FormsQuestionFields on i.FormsQuestionId equals ques.Id
+                                   where i.UserId == UserId && i.FormId == FormId && i.PlaceId == PlaceId && i.CreatedDate==createdDate
                                    select new {
                                        Id = i.Id,
                                        FormsQuestionId = i.FormsQuestionId,
@@ -64,7 +80,8 @@ namespace SalesAppBLL.Repository
                                        FormId = ques.FormId,
                                        Question = ques.Question,
                                        Mandatory = ques.IsMandatory,
-                                       ListOption =ques.IsMandatory}).ToList();
+                                       InputFieldsId=ques.InputFieldsId,
+                                       ListOptions = ques.ListOptions}).ToList();
 
               
                                 
@@ -74,6 +91,29 @@ namespace SalesAppBLL.Repository
             {
                 return null;
             }
+        }
+
+        public bool UpdateQuestionAnsersRepo(List<FormsAnswer> formAns)
+        {
+            try
+            {
+                foreach (var value in formAns)
+                {
+                    var questionNo = DbContext.FormsAnswers.Where(i => i.CreatedDate == value.CreatedDate &&
+                    i.FormId == value.FormId && i.FormsQuestionId == value.FormsQuestionId
+                    && i.PlaceId == value.PlaceId && i.UserId == value.UserId).FirstOrDefault();
+                    questionNo.Answer = value.Answer;
+                    questionNo.ModifiedDate = System.DateTime.Now;
+                    
+                }
+                DbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
         }
     }
 }

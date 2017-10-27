@@ -164,7 +164,7 @@
                             <td class="action-cell">
                                 <a class="action-detail action icon icon-details" ></a>
                             </td>
-                            <td class="name"> <a class="table-link" ng-click="formclick(data)" ui-sref="app.customforms({data:'{{form}}'})">{{form.Title}}</a> <span class="subtext">{{form.Description}}.</span> </td>
+                            <td class="name"> <a class="table-link" ng-click="formclick(form)">{{form.Title}}</a> <span class="subtext">{{form.Description}}.</span> </td>
                             <td class="active" ng-if="form.IsActive == true">Active<span class="active-icon true"></span> </td>
                             <td class="active" ng-if="form.IsActive == false">InActive<span class="active-icon true"></span> </td>
                         </tr>

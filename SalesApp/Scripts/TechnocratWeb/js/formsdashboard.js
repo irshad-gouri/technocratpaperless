@@ -18,8 +18,8 @@ angular.module('formsdashboard.controllers', [])
            
         });
         }
-    $scope.formclick = function () {
-        $state.go("app.customforms", { data: $scope.formsdashboardCtrl});
+    $scope.formclick = function (data) {
+        $state.go("app.customforms", { data: JSON.stringify(data) });
     }
 
     $scope.formsdashboardCtrl.getallcustomformsbyid();

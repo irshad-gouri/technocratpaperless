@@ -178,11 +178,11 @@
 
 
 
-        $scope.title =JSON.parse($stateParams.data);
-        $scope.FormId = $scope.title.Id;
-        console.log($scope.title.Title);
+        //$scope.title =JSON.parse($stateParams.data);
+        //$scope.FormId = $scope.title.Id;
+        //console.log($scope.title.Title);
 
-
+        
 
         $scope.getQuestion = function () {
             APIService.getData({
@@ -198,6 +198,13 @@
                 });
         }
 
+        if ($stateParams.data) {
+            var localData = JSON.parse($stateParams.data);
+            $scope.addcustomformCtrl.Title = localData.Title;
+            $scope.addcustomformCtrl.IsActive = localData.IsActive;
+            $scope.addcustomformCtrl.Description = localData.Description;
+            //$scope.getQuestion();
+        }
 
-        $scope.getQuestion();
+        //$scope.getQuestion();
     });

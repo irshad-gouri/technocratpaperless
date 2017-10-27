@@ -20,8 +20,6 @@
         <EntityTypeShape EntityType="SalesAppModel.UseActivitiesComment" Width="1.5" PointX="10.5" PointY="10.875" />
         <EntityTypeShape EntityType="SalesAppModel.UserAssignedPlace" Width="1.5" PointX="5.25" PointY="11.125" />
         <EntityTypeShape EntityType="SalesAppModel.User" Width="1.5" PointX="3" PointY="9.125" />
-        <EntityTypeShape EntityType="SalesAppModel.UsersActivity" Width="1.5" PointX="8.25" PointY="10.375" />
-        <AssociationConnector Association="SalesAppModel.FK_UsersActivities_ActivitiesType" />
         <AssociationConnector Association="SalesAppModel.FK_Users_CompanyDetails" />
         <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_CustomForms" />
         <AssociationConnector Association="SalesAppModel.FK_FormsVisibleOnTheseReps_Users" />
@@ -32,8 +30,10 @@
         <AssociationConnector Association="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails" />
         <AssociationConnector Association="SalesAppModel.FK_Users_Roles" />
         <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_Users" />
-        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities" />
         <AssociationConnector Association="SalesAppModel.FK_UserAssignedPlaces_Users" />
+        <EntityTypeShape EntityType="SalesAppModel.UsersActivity" Width="1.5" PointX="8.25" PointY="13.375" />
+        <AssociationConnector Association="SalesAppModel.FK_UsersActivities_ActivitiesType" />
+        <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities" />
         <AssociationConnector Association="SalesAppModel.FK_UsersActivities_Users" />
       </Diagram>
     </edmx:Diagrams>

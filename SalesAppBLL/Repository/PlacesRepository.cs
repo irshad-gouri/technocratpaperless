@@ -223,11 +223,7 @@ namespace SalesAppBLL.Repository
                         objResp.Status = "Failed";
                         objResp.Message = "QuestionId Can't be blank!";
                     }
-                    else if (string.IsNullOrEmpty(formAns.Answer))
-                    {
-                        objResp.Status = "Failed";
-                        objResp.Message = "Answer Can't be blank!";
-                    }
+                   
                     else
                     {
                         // TODO: Perform on db
@@ -254,6 +250,7 @@ namespace SalesAppBLL.Repository
                 objUAct.CreatedBy = form.UserId;
                 objUAct.PlaceId = ansList.First().PlaceId;
                 objUAct.FormName = formDetails.Title;
+                objUAct.FormId = id;
                 AddUsersActivities(objUAct);
             }
             catch (Exception ex)
@@ -300,7 +297,7 @@ namespace SalesAppBLL.Repository
                                   join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
                                   join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
                                   where userAct.UserId == userId
-                                  select new { Id = userAct.ActivityId, CreatedDate = userAct.CreatedDate, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                                  select new { Id = userAct.ActivityId, FormId=userAct.FormId, CreatedDate = userAct.CreatedDate, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
                 return getUserAct;
             }
             catch (Exception ex)
@@ -317,7 +314,7 @@ namespace SalesAppBLL.Repository
                                   join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
                                   join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
                                   where userAct.PlaceId == placeId
-                                  select new { Id = userAct.ActivityId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                                  select new { Id = userAct.ActivityId, FormId = userAct.FormId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
                 return getUserAct;
             }
             catch (Exception ex)
@@ -334,7 +331,7 @@ namespace SalesAppBLL.Repository
                                   join actType in DbContext.ActivitiesTypes on userAct.ActivityId equals actType.Id
                                   join placeDtls in DbContext.PlacesDetails on userAct.PlaceId equals placeDtls.Id
                                   where userAct.ActivityId == activityId
-                                  select new { Id = userAct.ActivityId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
+                                  select new { Id = userAct.ActivityId, FormId = userAct.FormId, ActivityName = actType.Type, UserId = userAct.UserId, PhotoUrl = userAct.PhotoUrl, Note = userAct.PhotoUrl, FormName = userAct.FormName, OrderCost = userAct.OrderCost, AuditItems = userAct.AuditItems, PlaceName = placeDtls.Name, PlaceIsActive = placeDtls.IsActive, PlaceAddress = placeDtls.Address }).ToList();
                 return getUserAct;
             }
             catch (Exception ex)
@@ -428,6 +425,7 @@ namespace SalesAppBLL.Repository
                             objDB = new UserActivityDashBoardList();
                             objDB.Id = item.Id;
                             objDB.ActivityId = item.ActivityId;
+                            objDB.FormId = item.FormId;
                             objDB.Activity_Type = (from actType in DbContext.ActivitiesTypes
                                                    where actType.Id == item.ActivityId
                                                    select new Activities_Type { Id = actType.Id, Description = actType.Description, Type = actType.Type }).FirstOrDefault();
@@ -487,6 +485,7 @@ namespace SalesAppBLL.Repository
                         objDB = new UserActivityDashBoardList();
                         objDB.Id = item.Id;
                         objDB.ActivityId = item.ActivityId;
+                        objDB.FormId = item.FormId;
                         objDB.Activity_Type = (from actType in DbContext.ActivitiesTypes
                                                where actType.Id == item.ActivityId
                                                select new Activities_Type { Id = actType.Id, Description = actType.Description, Type = actType.Type }).FirstOrDefault();
@@ -584,6 +583,7 @@ namespace SalesAppBLL.Repository
                             objDB = new UserActivityDashBoardList();
                             objDB.Id = item.Id;
                             objDB.ActivityId = item.ActivityId;
+                            objDB.FormId = item.FormId;
                             objDB.Activity_Type = (from actType in DbContext.ActivitiesTypes
                                                    where actType.Id == item.ActivityId
                                                    select new Activities_Type { Id = actType.Id, Description = actType.Description, Type = actType.Type }).FirstOrDefault();
@@ -643,6 +643,7 @@ namespace SalesAppBLL.Repository
                         objDB = new UserActivityDashBoardList();
                         objDB.Id = item.Id;
                         objDB.ActivityId = item.ActivityId;
+                        objDB.FormId = item.FormId;
                         objDB.Activity_Type = (from actType in DbContext.ActivitiesTypes
                                                where actType.Id == item.ActivityId
                                                select new Activities_Type { Id = actType.Id, Description = actType.Description, Type = actType.Type }).FirstOrDefault();
@@ -748,7 +749,7 @@ namespace SalesAppBLL.Repository
                     objACTComm.CreatedDate = System.DateTime.Now;
                     objACTComm.ModifiedDate = System.DateTime.Now;
 
-
+                    objACTComm.CreatedBy = notesAct.CreatedBy;
                     // TODO: Perform on db
                     DbContext.NotesActivities.Add(objACTComm);
                     DbContext.SaveChanges();

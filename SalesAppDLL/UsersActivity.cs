@@ -28,6 +28,7 @@ namespace SalesAppDLL
         public string FormName { get; set; }
         public Nullable<decimal> OrderCost { get; set; }
         public Nullable<int> AuditItems { get; set; }
+        public Nullable<int> FormId { get; set; }
         public Nullable<int> PlaceId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
