@@ -184,18 +184,41 @@
 
         
 
-        $scope.getQuestion = function () {
+        $scope.getQuestion = function (id) {
             APIService.getData({
-                req_url: url_prifix + 'place/getquestionsbyformsid?formId=' + $scope.FormId
+                req_url: url_prifix + 'place/getquestionsbyformsid?formId=' +id
 
             }).then(function (res) {
+                console.log(res);
                     if (res.data.Status == 'SUCCESS') {
-                        $scope.quetions = res.data.Data;
-                        console.log(res.data.Data);
+                        $scope.addcustomformCtrl.FormsQuestionFieldDetail = res.data.Data;
+                        angular.forEach($scope.addcustomformCtrl.FormsQuestionFieldDetail, function (value, index) {
+                            value.showInputTypeClass = $scope.addcustomformCtrl.getIconName(value.InputFieldsId).icon;
+                            if (value.ListOptions) {
+                                var letListOptions = value.ListOptions.split(',');
+                                var newVar = [];
+                                angular.forEach(letListOptions, function (val, ind) {
+                                    newVar.push({ value: val });
+                                });
+                                value.ListOptions = newVar;
+                               
+                            }
+
+                        })
+                       // console.log(res.data.Data);
                     }
                 }, function (resp) {
 
                 });
+        }
+
+        $scope.getAllAssignedRepresentative = function (id) {
+            APIService.getData({
+                req_url: url_prifix + 'customforms/getassigneduserofform?formId=' + id + '&adminId=' + localStorage.getItem("UserId")
+
+            }).then(function (res) {
+                console.log(res);
+           })
         }
 
         if ($stateParams.data) {
@@ -203,7 +226,8 @@
             $scope.addcustomformCtrl.Title = localData.Title;
             $scope.addcustomformCtrl.IsActive = localData.IsActive;
             $scope.addcustomformCtrl.Description = localData.Description;
-            //$scope.getQuestion();
+            $scope.getQuestion(localData.Id);
+            $scope.getAllAssignedRepresentative(localData.Id);
         }
 
         //$scope.getQuestion();

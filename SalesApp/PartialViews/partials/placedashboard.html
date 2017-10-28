@@ -274,11 +274,11 @@
                 <td class="name"><a class="table-link" >{{place.Name}}</a><span class="subtext">{{place.Address}}</span></td>
                 <td class="territory"></td>
                 <td class="status" ></td>
-                <td class="status" ng-If="{{place.IsActive}} == false">InActive Client</td>
+                <!--<td class="status" ng-If="place.IsActive">InActive Client</td>-->
                 <td class="last_activity type_">
                     <div class="relatived"> - </div>
                 </td>
-                <td class="active" ng-If="{{place.IsActive}} == true"><span class="active-icon true"></span></td>
+                <td class="active" ng-If="place.IsActive"><span class="active-icon true"></span></td>
             </tr>
             <!--<tr elementid="8460280" class="list-item-container">
                 <td class="row-checkbox">
