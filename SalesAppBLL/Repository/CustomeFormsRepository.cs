@@ -115,5 +115,23 @@ namespace SalesAppBLL.Repository
             }
             
         }
+
+        public object GetAssignedUserOfFormRepo(int formId,int adminId)
+        {
+            try
+            {
+                var getFormsList = (from i in DbContext.FormsVisibleOnTheseReps
+                                    where i.CustomFormsId == formId join k in DbContext.CustomForms 
+                                    on i.CustomFormsId equals k.Id where k.UserId==adminId join m in DbContext.Users
+                                    on i.UserId equals m.Id where m.CreatedById.Equals(k.UserId)
+                                    select m).ToList();
+
+                return getFormsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
