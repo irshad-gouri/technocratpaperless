@@ -1,6 +1,6 @@
 ﻿angular.module('addRepresentative.controllers', [])
 
-    .controller('addRepresentativeController', function ($scope, $state, APIService, Upload, $timeout) {
+    .controller('addRepresentativeController', function ($scope, $state, APIService, Upload, $timeout,$stateParams) {
         $scope.addRepresentativeController = {};
         $scope.addRepresentativeController.PhotoUrl = "./images/no_avatar_putnik.png";
         $scope.addRepresentativeController.startImagePath = PhotoStorage;
@@ -68,5 +68,7 @@
                 // This block execute in case of error.
             });
         }
-     
+
+        $scope.userdetails = JSON.parse($stateParams.data);
+        console.log($scope.userdetails);
     })

@@ -16,6 +16,10 @@ angular.module('representativeDashboard.controllers', [])
                 // This block execute in case of error.
             });
         }
+        $scope.representativeClick = function (data) {
+            $state.go("app.addRepresentative", { data: JSON.stringify(data) });
+        }
+
         $scope.representativeDashboardCtrl.getAllRepresentative();
 });
     

@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1071,6 +1072,7 @@
     <Content Include="Content\ngDialog-theme-default.min.css" />
     <Content Include="Content\ngDialog.min.css" />
     <Content Include="Scripts\TechnocratWeb\js\addcustomforms.js" />
+    <Content Include="Scripts\TechnocratWeb\js\addPlace.js" />
     <Content Include="Scripts\TechnocratWeb\js\addRepresentative.js" />
     <Content Include="Scripts\TechnocratWeb\js\app.js" />
     <Content Include="Scripts\TechnocratWeb\js\authService.js" />

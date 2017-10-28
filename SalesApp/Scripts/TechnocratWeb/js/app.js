@@ -7,7 +7,7 @@ var PhotoStorage = "http://localhost/SalesApp/";
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
     'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
     'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
-    'representativeDashboard.controllers','activitiesDashboard.controllers'])
+    'representativeDashboard.controllers', 'activitiesDashboard.controllers'])
 
 .run(function($rootScope, $state, AuthService){
     if(localStorage.getItem('isLoggedIn') === 'success'){
@@ -100,6 +100,17 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
       }
     }
       })
+
+      .state('app.place', {
+          url: '/place',
+          authenticate: true,
+          views: {
+              'container': {
+                  templateUrl: './PartialViews/partials/addPlace.html',
+                  controller: 'addPlaceCtrl'
+              }
+          }
+      })
       .state('app.customforms', {
           url: '/customforms/:data',
           authenticate: true,
@@ -132,7 +143,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
       }
     }
       }).state('app.addRepresentative', {
-          url: '/addRepresentative',
+          url: '/addRepresentative/:data',
           authenticate: true,
           views: {
               'container': {
