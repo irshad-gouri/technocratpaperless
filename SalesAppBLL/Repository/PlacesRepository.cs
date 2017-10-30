@@ -92,6 +92,8 @@ namespace SalesAppBLL.Repository
 
         }
 
+
+
         public List <PlacesDetail> ShowAllPlacesByCreatedBy(int CreatedBy)
         {
             try

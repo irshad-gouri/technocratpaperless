@@ -34,7 +34,7 @@
                 }
             </style>
 
-            <div class="rep-card-main ng-scope" data-ng-controller="PlaceEditController">
+            <div class="rep-card-main ng-scope" >
                 <div id="kupacHref" style="display:none"><a href="https://user.repsly.com/client/view"></a></div>
                 <div class="view-content clearfix">
                     <div class="view-content-head clearfix">
@@ -81,12 +81,12 @@
                                     <div class="unit w-2-5" title="Place name. Required field when inserting new records.">
                                         <div for="Name" class="label">Name:</div>
 
-                                        <input type="text" id="NazivEdit" class="name border-edit rounded required_field " ng-model="addplaceCtrl.placeObj.name" placeholder="">
+                                        <input type="text" id="NazivEdit" class="name border-edit rounded required_field " ng-model="addplaceCtrl.placeObj.Name" placeholder="">
                                     </div>
                                     <div class="unit w-2-5">
 
                                         <div for="Code" class="label" title="Place ID - must be unique! This is the ID that's used for any inserts and updates.">ID:</div>
-                                        <input type="text" id="Sifra" class="code border-edit rounded required_field " ng-model=" $scope.addplaceCtrl.placeObj.placeId" placeholder="..." title="Place ID - must be unique! This is the ID that's used for any inserts and updates.">
+                                        <input type="text" id="Sifra" class="code border-edit rounded required_field "  placeholder="..." title="Place ID - must be unique! This is the ID that's used for any inserts and updates.">
                                         <div id="msgWrong" class="hidden">
                                             Morate promijeniti šifru jer je ova loša.
                                             <button type="button">Iskoristi našu</button>
@@ -96,28 +96,13 @@
                                     </div>
                                     <div class="unit w-1-5">
                                         <span class="isActiveCheckbox afterInput rounded" type="" title="Determines whether place is active or not. Similar to trash can, places that are not active will not be avalable on mobile device. This field is not required.">
-                                            <input type="checkbox" checked="checked" ng-model="$scope.addplaceCtrl.placeObj.active" id="Aktivan" class="">
+                                            <input type="checkbox" checked="checked" ng-model="$scope.addplaceCtrl.placeObj.IsActive" id="Aktivan" class="">
                                             <label for="Aktivan">active place</label>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="form-grid">
-                                    <div class="unit w-2-5" style="" title="Representative name, used to assign a rep to the place. When rep is assigned to the place and filtering is ON, then the place is not visible to other reps. This field is not required.">
-                                        <span class="relatived">
-                                            <div for="tbPerson" class="label" id="PersonAutocompleteLabel">Representatives:</div>
-                                            <input type="hidden" id="PutnikID" ng-model="$scope.addplaceCtrl.placeObj.representatives" value="" class="rounded border">
-
-                                            <input type="text" id="PutnikNaziv" class="medium border rounded  ui-autocomplete-input putnikNaziv" autocomplete="off" placeholder="There are no reps assigned to this place"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-
-                                            <span class="range-picker ui-corner-all" style="display:inline-table;">
-                                                <span id="show-reps" class="range-picker-overlay closed" title="Show all reps"></span>
-                                            </span>
-                                        </span>
-
-
-                                        <!--  <span class="clear-filter ui-icon ui-icon-closethick initial-hidden"></span><span
-                                              class="input-loader initial-hidden" style="top: -4px;"></span></span> -->
-                                    </div>
+                                   
                                     <div class="unit w-1-4" title="Status in the sales pipeline. This field is not required.">
                                         <div class="label">Status:</div>
                                         <select class="medium border rounded" id="StatusPodjelaGrupaID">
@@ -140,8 +125,25 @@
                                     </div>
                                     <div class="unit w-1-4">
                                         <div class="label">Territory:</div>
-                                        <select id="PoslovnaJedinicaID" ng-model="$scope.addplaceCtrl.placeObj.representatives" class="territory border-edit rounded"><option value="">-</option></select>
+                                        <select id="PoslovnaJedinicaID" ng-model="addplaceCtrl.placeObj.representatives" class="territory border-edit rounded"><option value="">-</option></select>
                                     </div>
+                                </div>
+                                <div for="tbPerson" class="label" id="PersonAutocompleteLabel">Representatives:</div>
+                                <div class="reps rounded border">
+
+                                    <ul class="rep-list">
+
+                                        <li class="icon-distribution-item ng-isolate-scope"  item="item" remove-distribution-item="removeRep(item)">
+                                            <i class="icon-representative icon-active"></i>
+                                            <span class="label ng-binding"></span>
+                                            <span class="remove-tag remove-rep-clientTag" ></span>
+                                        </li>
+                                        <li class="input-holder">
+                                            <angucomplete localdata="addcustomformCtrl.repsAutocompleteList" selectedobject="addcustomformCtrl.repsAutocompleteListSelected" searchfields="FirstName" titlefield="FirstName" pause="10" minlength="1" no-results-found-message="No result Found" placeholder="Type Rep Name" class="ng-isolate-scope">
+
+                                            </angucomplete>
+                                        </li>
+                                    </ul>
                                 </div>
 
                                 <div id="reps-entered" style="top: -450px;">
@@ -173,9 +175,9 @@
                             </div>
                         </div>
                         <div class="right_bar flat save-discard">
-                            <div class="clearfix">
+                            <div class="clearfix" >
                                 <div class="actions clearfix">
-                                    <input type="button" id="btnSave" value="Save" class="button_save rounded">
+                                    <input type="button" id="btnSave" value="Save" ng-click="addPlaceDetails()"  class="button_save rounded">
                                     <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
                                 </div>
                             </div>
@@ -204,38 +206,38 @@
                                     <label for="name" class="inline">
                                         Address:
                                     </label>
-                                    <input type="text" id="AdresaLine1" ng-model="$scope.addplaceCtrl.place.address" class="medium rounded border-edit gm-err-autocomplete" placeholder="..." autocomplete="off" disabled="">
+                                    <input type="text" id="AdresaLine1" ng-model="addplaceCtrl.placeObj.Address" class="medium rounded border-edit gm-err-autocomplete" placeholder="..."  >
                                 </div>
                                 <div class="form_row" title="City. This field is not required.">
                                     <label for="email" class="inline">
                                         City:
                                     </label>
-                                    <input type="text" id="AdresaNaselje"  ng-model="$scope.addplaceCtrl.place.city" value="" class="medium rounded border-edit" placeholder="...">
+                                    <input type="text" id="AdresaNaselje"  ng-model="addplaceCtrl.placeObj.city" value="" class="medium rounded border-edit" placeholder="...">
                                 </div>
                                 <div class="form_row" title="State. This field is not required.">
                                     <label for="email" class="inline">
                                         State:
                                     </label>
-                                    <input type="text" id="AdresaRegija" ng-model="$scope.addplaceCtrl.place.state" value="" class="medium rounded border-edit">
+                                    <input type="text" id="AdresaRegija" ng-model="addplaceCtrl.placeObj.State" value="" class="medium rounded border-edit">
                                 </div>
                                 <div class="form_row" title="ZIP code. This field is not required.">
                                     <label for="email" class="inline">
                                         ZIP:
                                     </label>
-                                    <input type="text" id="AdresaPostBroj" value="" ng-model="$scope.addplaceCtrl.place.zip" class="small rounded border-edit">&nbsp;
+                                    <input type="text" id="AdresaPostBroj" value="" ng-model="addplaceCtrl.placeObj.PostalCode" class="small rounded border-edit">&nbsp;
                                     <input type="text" id="AdresaPostBrojNastavak" value="" class="mini rounded border-edit" placeholder="...">
                                 </div>
                                 <div class="form_row" title="Country. This field is not required.">
                                     <label for="email" class="inline">
                                         Country:
                                     </label>
-                                    <input type="text" id="AdresaDrzava" ng-model="$scope.addplaceCtrl.place.country" value="" class="medium rounded border-edit">
+                                    <input type="text" id="AdresaDrzava" ng-model="addplaceCtrl.placeObj.Country" value="" class="medium rounded border-edit">
                                 </div>
                                 <div class="form_row" title="">
                                     <label for="email" class="inline">
                                         Country code:
                                     </label>
-                                    <input type="text" id="AdresaDrzavaKratica" ng-model="$scope.addplaceCtrl.placeObj.countryCode" value="" class="medium rounded border-edit">
+                                    <input type="text" id="AdresaDrzavaKratica" ng-model="addplaceCtrl.placeObj.CountryCode" value="" class="medium rounded border-edit">
                                 </div>
                             </div>
 
@@ -245,37 +247,37 @@
                                     <label for="tbEmail" class="inline">
                                         Email:
                                     </label>
-                                    <input type="text" id="Email" ng-model="$scope.addplaceCtrl.placeObj.email" class="medium border-edit rounded" placeholder="...">
+                                    <input type="text" id="Email" ng-model="addplaceCtrl.placeObj.email" class="medium border-edit rounded" placeholder="...">
                                 </div>
                                 <div class="form_row" title="Telephone. This field is not required.">
                                     <label for="tbPhone" class="inline">
                                         Phone:
                                     </label>
-                                    <input type="text" id="Telefon" ng-model="$scope.addplaceCtrl.placeObj.phone" class="medium border-edit rounded" placeholder="...">
+                                    <input type="text" id="Telefon" ng-model="addplaceCtrl.placeObj.phone" class="medium border-edit rounded" placeholder="...">
                                 </div>
                                 <div class="form_row" title="Mobile phone. This field is not required.">
                                     <label for="tbMobile" class="inline">
                                         Cell phone:
                                     </label>
-                                    <input type="text" id="Mobitel" ng-model="$scope.addplaceCtrl.placeObj.cell_phone" class="medium border-edit rounded" placeholder="...">
+                                    <input type="text" id="Mobitel" ng-model="addplaceCtrl.placeObj.cell_phone" class="medium border-edit rounded" placeholder="...">
                                 </div>
                                 <div class="form_row" title="Website. This field is not required.">
                                     <label class="inline">
                                         Website:
                                     </label>
-                                    <input type="text" id="Website" ng-model=" $scope.addplaceCtrl.placeObj.website" class="medium border-edit rounded" placeholder="...">
+                                    <input type="text" id="Website" ng-model="addplaceCtrl.placeObj.Website" class="medium border-edit rounded" placeholder="...">
                                 </div>
                                 <div class="form_row" title="Contact name. This field is not required.">
                                     <label class="inline">
                                         Contact name:
                                     </label>
-                                    <input type="text" id="AdresaKontaktIme" ng-model=" $scope.addplaceCtrl.placeObj.contact_name" class="medium border-edit rounded" placeholder="...">
+                                    <input type="text" id="AdresaKontaktIme" ng-model="addplaceCtrl.placeObj.contact_name" class="medium border-edit rounded" placeholder="...">
                                 </div>
                                 <div class="form_row" title="Contact title. This field is not required.">
                                     <label class="inline">
                                         Contact title:
                                     </label>
-                                    <input type="text" id="AdresaKontaktTitula" ng-model="$scope.addplaceCtrl.placeObj.contact_title" class="medium border-edit rounded" placeholder="...">
+                                    <input type="text" id="AdresaKontaktTitula" ng-model="addplaceCtrl.placeObj.contact_title" class="medium border-edit rounded" placeholder="...">
                                 </div>
                             </div>
                         </div>
@@ -294,7 +296,7 @@
 
                             <div class="form_container" title="Note. This field is not required.">
                                 <div class="title">Note</div>
-                                <textarea id="Napomena" class="note border-edit rounded" ng-model="$scope.addplaceCtrl.placeObj.note" rows="5" cols="" placeholder="..."></textarea>
+                                <textarea id="Napomena" class="note border-edit rounded" ng-model="addplaceCtrl.placeObj.Note" rows="5" cols="" placeholder="..."></textarea>
                             </div>
                             <div class="form_container tags-wrapper second" ng-model="$scope.addplaceCtrl.placeObj.tag" title="Tags on a place separated with comma. For example &quot;New place, Big store, Promotion&quot;. This field is not required.">
                                 <div class="title">Tags</div>

@@ -18,7 +18,7 @@
         </div>
 
         <div class="actions with_menu">
-            <a ng-hide="true" id="rn-new-client" ui-sref="app.place"" class="button_create rounded" title="Add new place" ><!-- href="/client/view" -->
+            <a id="rn-new-client" ui-sref="app.place" class="button_create rounded" title="Add new place" >
                 <i class="icon icon-plus"></i> New place
             </a>
 
@@ -271,7 +271,7 @@
                     <a class="action-detail action icon icon-details"></a>
                 </td>
                 <td class="code">{{place.Id}}</td>
-                <td class="name"><a class="table-link" >{{place.Name}}</a><span class="subtext">{{place.Address}}</span></td>
+                <td class="name"><a class="table-link" ng-click="placeDetails(place)" >{{place.Name}}</a><span class="subtext">{{place.Address}}</span></td>
                 <td class="territory"></td>
                 <td class="status" ></td>
                 <!--<td class="status" ng-If="place.IsActive">InActive Client</td>-->
