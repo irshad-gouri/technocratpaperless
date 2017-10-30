@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6ec7b95a5f1446358845f3b4ce21bbe1" Name="Diagram1">
+      <Diagram DiagramId="6ec7b95a5f1446358845f3b4ce21bbe1" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="SalesAppModel.ActivitiesType" Width="1.5" PointX="6" PointY="19.25" />
         <EntityTypeShape EntityType="SalesAppModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="11.125" />
         <EntityTypeShape EntityType="SalesAppModel.CustomForm" Width="1.5" PointX="6" PointY="2.75" />

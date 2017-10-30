@@ -7,6 +7,7 @@ using System.Web.Http;
 using SalesAppBLL.Repository;
 using SalesAppBLL;
 using SalesAppDLL;
+using SalesAppDLL.CustomModels;
 
 namespace SalesApp.Api
 {
@@ -182,13 +183,46 @@ namespace SalesApp.Api
         }
 
         [HttpGet, Route("getassigneduserofform")]
-        public ResponseData GetAssignedUserOfForm(int formId,int adminId)
+        public ResponseData GetAssignedUserOfForm(int? formId,int? adminId)
         {
             ResponseData data = new ResponseData();
             try
             {
                 var lst = _placeRepo.GetAssignedUserOfFormRepo(formId,adminId);
                 if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
+
+        [HttpPost, Route("updatecustomforms")]
+        public ResponseData UpdateCustomForms(CustomFormsDetails customFormDetails)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.UpdateCustomFormsRepo(customFormDetails);
+                if (lst)
                 {
                     data.Data = lst;
                     data.Status = "SUCCESS";

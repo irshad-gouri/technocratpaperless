@@ -1,6 +1,6 @@
 angular.module('login.controllers', [])
 
-    .controller('LoginController', function ($scope, $state, APIService) {
+    .controller('LoginController', function ($scope, $state, APIService, $rootScope) {
         $scope.LoginController = {};
         $scope.LoginController.doLogin = function (loginData) {
             loginData.RoleId = 1;
@@ -14,6 +14,7 @@ angular.module('login.controllers', [])
           } else {
               console.log(res.data);
               localStorage.setItem("UserId", res.data.Data.Id);
+              $rootScope.userDetails = res.data.Data;
               localStorage.setItem("UserDetails", JSON.stringify(res.data.Data));
               $state.go('app.placedashboard');
           }

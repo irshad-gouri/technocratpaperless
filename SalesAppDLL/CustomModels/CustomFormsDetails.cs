@@ -22,6 +22,7 @@ namespace SalesAppDLL.CustomModels
 
     public class FormsQuestionFieldDetails
     {
+        public int Id { get; set; }
         public int FormId { get; set; }
         public string Question { get; set; }
         public bool IsMandatory { get; set; }

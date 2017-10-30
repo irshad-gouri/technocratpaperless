@@ -202,6 +202,9 @@
                                 });
                                 value.ListOptions = newVar;
                                
+                            } else {
+
+                            value.ListOptions = [];
                             }
 
                         })
@@ -218,16 +221,61 @@
 
             }).then(function (res) {
                 console.log(res);
+                $scope.addcustomformCtrl.FormsVisibleOnTheseRepsDetail = res.data.Data;
            })
         }
+        $scope.addcustomformCtrl.updateFormTrigger = function () {
+            $scope.addcustomformCtrl.isSubmit = true;
+            var isValid = false;
+            angular.forEach($scope.addcustomformCtrl.FormsQuestionFieldDetail, function (value, index) {
+                var lstOpt = "";
+                if (value.ListOptions.length > 0) {
+                    angular.forEach(value.ListOptions, function (value1, index1) {
+                        if (value.ListOptions.length - 1 == index1) {
+                            lstOpt += value1.value;
+                        } else {
+                            lstOpt += value1.value + ",";
+                        }
 
+                    })
+                    value.ListOptions = lstOpt;
+                }
+                if (!value.Question) {
+                    isValid = true
+                }
+            });
+            if (!isValid) {
+                APIService.setData({
+                    req_url: url_prifix + 'customforms/updatecustomforms',
+                    data: $scope.addcustomformCtrl
+                }).then(function (res) {
+                    $scope.message = res.data.message;
+                    if (res.data.Status != "SUCCESS") {
+                        alert(res.data.Data);
+                    } else {
+                        alert("Your form saved successfully.");
+                        $scope.addcustomformCtrl = {};
+                        $scope.addcustomformCtrl.positionOfSideInputToolbar = { "display": "none" };
+                        $scope.addcustomformCtrl.FormsQuestionFieldDetail = [];
+                        $scope.addcustomformCtrl.FormsVisibleOnTheseRepsDetail = [];
+                        $scope.addcustomformCtrl.isSubmit = false;
+                    }
+                }, function (resp) {
+                    // This block execute in case of error.
+                });
+            }
+        }
         if ($stateParams.data) {
             var localData = JSON.parse($stateParams.data);
             $scope.addcustomformCtrl.Title = localData.Title;
             $scope.addcustomformCtrl.IsActive = localData.IsActive;
             $scope.addcustomformCtrl.Description = localData.Description;
+            $scope.addcustomformCtrl.Id = localData.Id;
             $scope.getQuestion(localData.Id);
             $scope.getAllAssignedRepresentative(localData.Id);
+            $scope.isUpdate = true;
+        } else {
+            $scope.isUpdate = false;
         }
 
         //$scope.getQuestion();

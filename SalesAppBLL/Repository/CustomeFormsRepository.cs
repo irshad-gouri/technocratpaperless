@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SalesAppDLL;
-
+using SalesAppDLL.CustomModels;
 
 namespace SalesAppBLL.Repository
 {
@@ -116,14 +116,64 @@ namespace SalesAppBLL.Repository
             
         }
 
-        public object GetAssignedUserOfFormRepo(int formId,int adminId)
+        public bool UpdateCustomFormsRepo(CustomFormsDetails customFormDetails)
+        {
+            try
+            {
+                foreach (var value in customFormDetails.FormsQuestionFieldDetail)
+                {
+                    var questionName = DbContext.FormsQuestionFields.Where(i => i.Id.Equals(value.Id)).FirstOrDefault();
+                    questionName.InputFieldsId = value.InputFieldsId;
+                    questionName.IsMandatory = value.IsMandatory;
+                    if (questionName.ListOptions != null)
+                    {
+
+                    questionName.ListOptions = value.ListOptions;
+                    }
+                    questionName.Question = value.Question;
+                    
+                }
+                DbContext.SaveChanges();
+                var formsVisbRep = DbContext.FormsVisibleOnTheseReps.Where(i => i.CustomFormsId == customFormDetails.Id).ToList();
+                foreach (var val in formsVisbRep)
+                {
+                    DbContext.FormsVisibleOnTheseReps.Remove(val);
+                }
+                DbContext.SaveChanges();
+                if (customFormDetails.FormsVisibleOnTheseRepsDetail != null)
+                {
+                    //TODO: Add FormsVisibleOnTheseReps list.
+                    
+                    
+                    foreach (var item in customFormDetails.FormsVisibleOnTheseRepsDetail)
+                    {
+                        FormsVisibleOnTheseRep objfrmVisOnThsRep;
+                        objfrmVisOnThsRep = new FormsVisibleOnTheseRep();
+                        objfrmVisOnThsRep.UserId = item.Id;
+                        objfrmVisOnThsRep.CustomFormsId = customFormDetails.Id;
+                        // TODO: Perform on db
+                        DbContext.FormsVisibleOnTheseReps.Add(objfrmVisOnThsRep);
+                        
+                    }
+                    DbContext.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        public object GetAssignedUserOfFormRepo(int? formId,int? adminId)
         {
             try
             {
                 var getFormsList = (from i in DbContext.FormsVisibleOnTheseReps
-                                    where i.CustomFormsId == formId join k in DbContext.CustomForms 
-                                    on i.CustomFormsId equals k.Id where k.UserId==adminId join m in DbContext.Users
-                                    on i.UserId equals m.Id where m.CreatedById.Equals(k.UserId)
+                                    where i.CustomFormsId == formId  join m in DbContext.Users
+                                    on i.UserId equals m.Id 
                                     select m).ToList();
 
                 return getFormsList;

@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="right_bar flat save-discard" ng-style="showSaveDiscardButtons ?  { &#39;visibility&#39;:&#39;visible&#39; } : { &#39;visibility&#39;:&#39;visible&#39; }" style="visibility: visible;">
+                        <div ng-show="!isUpdate" class="right_bar flat save-discard" ng-style="showSaveDiscardButtons ?  { &#39;visibility&#39;:&#39;visible&#39; } : { &#39;visibility&#39;:&#39;visible&#39; }" style="visibility: visible;">
                             <div class="clearfix save-discard-inner ng-isolate-scope" sticky="" offset="30" style="display: block; z-index: 10; width: 245px; position: static; left: auto; top: auto; margin-top: 0px; height: 61px;">
                                 <div class="actions clearfix">
                                     <input type="button" id="btnSave" ng-click="addcustomformCtrl.saveFormTrigger()" value="Save" class="button_save rounded">
@@ -92,6 +92,16 @@
                                 </div>
                             </div>
                         </div>
+                       <div ng-show="isUpdate" class="right_bar flat save-discard" ng-style="showSaveDiscardButtons ?  { &#39;visibility&#39;:&#39;visible&#39; } : { &#39;visibility&#39;:&#39;visible&#39; }" style="visibility: visible;">
+                           <div class="clearfix save-discard-inner ng-isolate-scope" sticky="" offset="30" style="display: block; z-index: 10; width: 245px; position: static; left: auto; top: auto; margin-top: 0px; height: 61px;">
+                               <div class="actions clearfix">
+                                   <input type="button" id="btnSave1" ng-click="addcustomformCtrl.updateFormTrigger()" value="Update" class="button_save rounded">
+                                   <span ng-click="discardChanges()" id="Reload" class="lnkCancel ng-binding">
+                                       Discard
+                                   </span>
+                               </div>
+                           </div>
+                       </div>
                         <div class="left_bar obrazac-extended flat">
                             <div class="form_container clearleft relatived ">
                                 <!--<div class="form-editor__title ng-binding">Set form accessibility</div>
