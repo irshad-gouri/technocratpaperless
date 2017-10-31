@@ -2,6 +2,7 @@
 
     .controller('addPlaceCtrl', function ($scope, APIService, $stateParams) {
         $scope.addplaceCtrl = {};
+        $scope.addplaceCtrl.FormsVisibleOnTheseRepsDetail = [];
         $scope.addplaceCtrl.placeObj = {};
 
         $scope.addPlaceDetails = function () {
@@ -11,8 +12,8 @@
             var obj =
                 {
                     Name: $scope.addplaceCtrl.placeObj.Name,
-                    /*  Representative: $scope.addplaceCtrl.placeObj.representatives, */    /*Its new in this Model*/
-                    IsActive: $scope.addplaceCtrl.placeObj.IsActive,
+                    UserAssignedPlace: $scope.addplaceCtrl.FormsVisibleOnTheseRepsDetail, 
+                    IsActive: true , /*$scope.addplaceCtrl.placeObj.IsActive,*/
                     Address: $scope.addplaceCtrl.placeObj.Address,
                     /* City: $scope.addplaceCtrl.place.city, */                            /*Its new in this Model*/
                     State: $scope.addplaceCtrl.placeObj.State,
@@ -29,13 +30,13 @@
                     //PhotoUrl: "",                                                /* this is not in this model*/
                     //Latitude: $scope.addplaceCtrl.placeObj.position.lat,          /* this is not in this model*/
                     //Longitude: $scope.addplaceCtrl.placeObj.position.lng,  
-                    PlaceId: new Date().getTime(),
+                    //PlaceId: "1509453611107",
                     Tags: $scope.addplaceCtrl.placeObj.Tags,
                     CreatedBy: parseInt(localStorage.getItem("UserId"))
                 }
 
-            if ((obj.Name && obj.Address) == !null) {
-                APIService.setData({ req_url: url_prifix + "place/addplace", data: obj }).then(function (res) {
+            if ((obj.Name && obj.Address)) {
+                APIService.setData({ req_url: url_prifix + "place/addplaceandreps", data: obj }).then(function (res) {
 
                     if (res.data.Status == 'SUCCESS') {
 
@@ -54,9 +55,12 @@
                
         }
 
-       
+        if ($stateParams.data)
+        {
         $scope.placeDetails = JSON.parse($stateParams.data);
         console.log($scope.placeDetails);
+        }
+      
         
         if ($scope.placeDetails) {
 
@@ -64,7 +68,44 @@
            
         }
 
+        $scope.addplaceCtrl.repsAutocompleteListFunction = function () {
+            APIService.getData({
+                req_url: url_prifix + 'representative/getallrepresentativebycreatedbyid?userId=' + localStorage.getItem("UserId")
 
-       
+            }).then(function (res) {
+                if (res.data.Status == 'SUCCESS') {
+                    $scope.addplaceCtrl.repsAutocompleteList = res.data.Data;
+                    console.log(res.data.Data);
+                }
+            }, function (resp) {
+                // This block execute in case of error.
+            });
+        }
 
+
+        $scope.$watch('addplaceCtrl.repsAutocompleteListSelected', function () {
+            if ($scope.addplaceCtrl.repsAutocompleteListSelected) {
+                var isAvailable = false;
+                angular.forEach($scope.addplaceCtrl.FormsVisibleOnTheseRepsDetail, function (value, index) {
+
+                    if (value.Id == $scope.addplaceCtrl.repsAutocompleteListSelected.originalObject.Id) {
+                        isAvailable = true;
+                    }
+                })
+                if (!isAvailable) {
+                    $scope.addplaceCtrl.repsAutocompleteListSelected.originalObject.UserId = $scope.addplaceCtrl.repsAutocompleteListSelected.originalObject.Id;
+                    $scope.addplaceCtrl.FormsVisibleOnTheseRepsDetail.push($scope.addplaceCtrl.repsAutocompleteListSelected.originalObject);
+                }
+
+                console.log($scope.addplaceCtrl.FormsVisibleOnTheseRepsDetail);
+            }
+        });
+        $scope.addplaceCtrl.addRep = function (item) {
+            console.log(item);
+            $scope.addplaceCtrl.repsAutocompleteListSelected.push(item);
+        }
+        $scope.addplaceCtrl.repsAutocompleteListFunction();
+        $scope.addplaceCtrl.removeDistributionItem = function (index) {
+            $scope.addplaceCtrl.FormsVisibleOnTheseRepsDetail.splice(index, 1);
+        }
     })

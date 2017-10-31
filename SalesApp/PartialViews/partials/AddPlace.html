@@ -14,14 +14,14 @@
 
 
             <link href="./Place_files/places.min.css" async="" type="text/css" rel="stylesheet" media="screen">
-            <script>
+            <!--<script>
                 if (API.Settings.isTestOrDemoUser == "false") {
                     var placesScript = document.createElement('script');
                     placesScript.type = 'text/javascript';
                     placesScript.src = '/frontend-app/dist/js/places.min.js?' + API.JavascriptGlobals.props.linkedFileVersion;
                     document.write(placesScript.outerHTML);
                 }
-            </script>
+            </script>-->
             <script type="text/javascript" src="/frontend-app/dist/js/places.min.js?406"></script>
             <script type="text/javascript" src="./Place_files/places.min.js.download"></script>
 
@@ -133,13 +133,13 @@
 
                                     <ul class="rep-list">
 
-                                        <li class="icon-distribution-item ng-isolate-scope"  item="item" remove-distribution-item="removeRep(item)">
+                                        <li class="icon-distribution-item ng-isolate-scope"  ng-repeat="item in addplaceCtrl.FormsVisibleOnTheseRepsDetail track by $index" item="item" remove-distribution-item="removeRep(item)">
                                             <i class="icon-representative icon-active"></i>
-                                            <span class="label ng-binding"></span>
-                                            <span class="remove-tag remove-rep-clientTag" ></span>
+                                            <span class="label ng-binding">{{item.FirstName}}</span>
+                                            <span class="remove-tag remove-rep-clientTag"  ng-click="addplaceCtrl.removeDistributionItem($index)"></span>
                                         </li>
                                         <li class="input-holder">
-                                            <angucomplete localdata="addcustomformCtrl.repsAutocompleteList" selectedobject="addcustomformCtrl.repsAutocompleteListSelected" searchfields="FirstName" titlefield="FirstName" pause="10" minlength="1" no-results-found-message="No result Found" placeholder="Type Rep Name" class="ng-isolate-scope">
+                                            <angucomplete localdata="addplaceCtrl.repsAutocompleteList" selectedobject="addplaceCtrl.repsAutocompleteListSelected" searchfields="FirstName" titlefield="FirstName" pause="10" minlength="1" no-results-found-message="No result Found" placeholder="Type Rep Name" class="ng-isolate-scope">
 
                                             </angucomplete>
                                         </li>
@@ -613,7 +613,7 @@
 
                         <script src="./Place_files/visit-schedule.js.download" type="text/javascript"></script>
 
-                        <script type="text/javascript">
+                        <!--<script type="text/javascript">
 
                             $(document).ready(function () {
                                 if ($("#IDPutnik").val() == undefined) {
@@ -788,7 +788,7 @@
 
                             });
 
-                        </script>
+                        </script>-->
 
 
 

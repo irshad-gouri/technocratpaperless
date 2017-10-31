@@ -72,7 +72,7 @@
                             <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
                             <input type="hidden" id="Filename" value="Places" class="filter-data rounded border">
                             <input type="hidden" id="KupacLokacijaID" class="filter-data rounded border">
-                            <input type="text" id="search" class="filter-data grid_filter border rounded search list" datatype="search" placeholder="Search places">
+                            <input type="text" id="search" ng-model="searchText" class="filter-data grid_filter border rounded search list" datatype="search" placeholder="Search places">
                             <span class="input-loader" style="display: none;"></span>
                         </li>
                         <li id="dateFilter" class="filter-item range-wrapper" style="display: none;">
@@ -264,7 +264,7 @@
             </tr>
         </thead>
         <tbody >
-            <tr class="list-item-container"  ng-repeat="place in placedashboardCtrl">
+            <tr class="list-item-container"  ng-repeat="place in placedashboardCtrl | filter:searchText">
                 <td class="row-checkbox">
                     <input type="checkbox"  class="row-indicator"> </td>
                 <td class="action-cell">

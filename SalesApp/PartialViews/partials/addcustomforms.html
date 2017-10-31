@@ -130,17 +130,20 @@
                                     <div class="reps rounded border">
 
                                         <ul class="rep-list">
-                                          
-                                            <li class="icon-distribution-item ng-isolate-scope" ng-repeat="item in addcustomformCtrl.FormsVisibleOnTheseRepsDetail track by $index" item="item" remove-distribution-item="removeRep(item)">
-                                                <i class="icon-representative icon-active"></i>
-                                                <span class="label ng-binding">{{item.FirstName}}</span>
-                                                <span class="remove-tag remove-rep-clientTag" ng-click="addcustomformCtrl.removeDistributionItem($index)"></span>
-                                            </li>
                                             <li class="input-holder">
                                                 <angucomplete localdata="addcustomformCtrl.repsAutocompleteList" selectedobject="addcustomformCtrl.repsAutocompleteListSelected"  searchfields="FirstName" titlefield="FirstName" pause="10" minlength="1" no-results-found-message="No result Found" placeholder="Type Rep Name" class="ng-isolate-scope">
                                                    
                                                 </angucomplete>
                                             </li>
+                                        </ul>
+                                        <ul class="rep-list">
+
+                                            <li class="icon-distribution-item ng-isolate-scope" ng-repeat="item in addcustomformCtrl.FormsVisibleOnTheseRepsDetail track by $index" item="item" remove-distribution-item="removeRep(item)">
+                                                <i class="icon-representative icon-active"></i>
+                                                <span class="label ng-binding">{{item.FirstName}}</span>
+                                                <span class="remove-tag remove-rep-clientTag" ng-click="addcustomformCtrl.removeDistributionItem($index)"></span>
+                                            </li>
+                                           
                                         </ul>
                                     </div>
                                 </div><!-- end ngIf: !isPersonalEdition -->
