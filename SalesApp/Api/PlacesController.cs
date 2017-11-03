@@ -662,5 +662,75 @@ namespace SalesApp.Api
                 return data;
             }
         }
+        [HttpGet, Route("getassigneduserofplacerepo")]
+        public ResponseData GetAssignedUserOfPlaceRepo(int? PlaceId, int? adminId)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.GetAssignedUserOfPlaceRepo(PlaceId, adminId);
+                if (lst != null)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception exception)
+            {
+                data.Data = null;
+                data.Status = "FAIL";
+                data.Error = exception.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+
+        }
+
+
+        [HttpPost, Route("updateplacedetails")]
+        public ResponseData updatePlaceDetails(AddPlaceAndRepsModel UpdateDetails)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _placeRepo.updatePlaceDetails(UpdateDetails);
+                if (lst)
+                {
+                    data.Data = lst;
+                    data.Status = "SUCCESS";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                else
+                {
+                    data.Data = null;
+                    data.Status = "FAIL";
+                    data.Error = "";
+                    data.ErrorCode = "";
+                }
+                return data;
+            }
+            catch (Exception exception)
+            {
+                data.Data = null;
+                data.Status = "FAIL";
+                data.Error = exception.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+
+        }
+
+
     }
 }

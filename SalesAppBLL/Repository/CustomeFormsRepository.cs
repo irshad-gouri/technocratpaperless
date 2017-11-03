@@ -183,5 +183,21 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+
+        public List<CustomForm> GetFormDetailsByCreatedId(int? UserId)
+        {
+            try
+            {
+                var getFormsList = (from i in DbContext.CustomForms
+                                    where i.UserId == UserId
+                                    select i).ToList();
+
+                return getFormsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

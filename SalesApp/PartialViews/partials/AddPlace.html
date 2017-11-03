@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="unit w-1-5">
                                         <span class="isActiveCheckbox afterInput rounded" type="" title="Determines whether place is active or not. Similar to trash can, places that are not active will not be avalable on mobile device. This field is not required.">
-                                            <input type="checkbox" checked="checked" ng-model="$scope.addplaceCtrl.placeObj.IsActive" id="Aktivan" class="">
+                                            <input type="checkbox" id="IsActive" ng-model="$scope.addplaceCtrl.placeObj.IsActive" class="">
                                             <label for="Aktivan">active place</label>
                                         </span>
                                     </div>
@@ -177,7 +177,11 @@
                         <div class="right_bar flat save-discard">
                             <div class="clearfix" >
                                 <div class="actions clearfix">
-                                    <input type="button" id="btnSave" value="Save" ng-click="addPlaceDetails()"  class="button_save rounded">
+                                    <input type="button" ng-show="!isUpdate" id="btnSave" value="Save" ng-click="addPlaceDetails()"  class="button_save rounded">
+                                    <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
+                                </div>
+                                <div class="actions clearfix">
+                                    <input ng-show="isUpdate"  type="button" id="btnSave" value="Update" ng-click="addplaceCtrl.updatePlaceDetails()" class="button_save rounded">
                                     <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
                                 </div>
                             </div>

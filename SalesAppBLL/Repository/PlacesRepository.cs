@@ -1014,8 +1014,82 @@ namespace SalesAppBLL.Repository
             }
         }
 
+        public object GetAssignedUserOfPlaceRepo(int? PlaceId, int? adminId)
+        {
+            try
+            {
+                var getFormsList = (from i in DbContext.UserAssignedPlaces
+                                    where i.PlaceId == PlaceId
+                                    join m in DbContext.Users
+   on i.UserId equals m.Id
+                                    select m).ToList();
 
-        
+                return getFormsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
+
+        public bool updatePlaceDetails(AddPlaceAndRepsModel UpdateDetails)
+        {
+            try
+            {
+
+                    var details = UpdateDetails;
+                    var allDetials = DbContext.PlacesDetails.Where(i => i.Id.Equals(details.Id)).FirstOrDefault();
+
+                       allDetials.Name = details.Name;
+                       allDetials.Address = details.Address;
+                       allDetials.Country = details.Country;
+                allDetials.Note = details.Note;
+                allDetials.PlaceId = details.PlaceId;
+                allDetials.PostalCode = details.PostalCode;
+                allDetials.IsActive = details.IsActive;
+                allDetials.Tags = details.Tags;
+                allDetials.Website = details.Website;
+                allDetials.State = details.State;
+                allDetials.CreatedBy = details.CreatedBy;
+                allDetials.CreatedDate =details.CreatedDate;
+                allDetials.CountryCode = details.CountryCode;
+
+                DbContext.SaveChanges();
+
+                var userAssign = DbContext.UserAssignedPlaces.Where(i => i.PlaceId == details.Id).ToList();
+                foreach (var val in userAssign)
+                {
+                    DbContext.UserAssignedPlaces.Remove(val);
+                }
+                DbContext.SaveChanges();
+                if (details.UserAssignedPlace != null)
+                {
+                    //TODO: Add FormsVisibleOnTheseReps list.
+
+
+                    foreach (var item in details.UserAssignedPlace)
+                    {
+                        UserAssignedPlace objuserAsgPlc;
+                        objuserAsgPlc = new UserAssignedPlace();
+                        objuserAsgPlc.UserId = item.Id;
+                        objuserAsgPlc.PlaceId = details.Id;
+                        objuserAsgPlc.CreatedDate = System.DateTime.Now;
+                        objuserAsgPlc.CreatedBy = details.CreatedBy;
+                        // TODO: Perform on db
+                        DbContext.UserAssignedPlaces.Add(objuserAsgPlc);
+
+                    }
+                    DbContext.SaveChanges();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
     }
 }

@@ -71,4 +71,43 @@
 
         $scope.userdetails = JSON.parse($stateParams.data);
         console.log($scope.userdetails);
+        if ($scope.userdetails) {
+
+            $scope.addRepresentativeController = $scope.userdetails;
+
+            $scope.isUpdate = true;
+        }
+        else {
+            $scope.isUpdate = false;
+        }
+
+
+        $scope.addRepresentativeController.updateRepresentativeDetails = function () {
+            $scope.addRepresentativeController.isSubmit = true;
+           
+            var isValid = false;
+            if (!isValid) {
+                APIService.setData({
+                    req_url: url_prifix + 'representative/UpdateRepresentative',
+
+
+                    data: $scope.addRepresentativeController
+
+                }).then(function (res) {
+                  
+                    $scope.message = res.data.message;
+                    if (res.data.Status != "SUCCESS") {
+                        alert(res.data.Data);
+                    } else {
+                        alert("Your Representative is  Updated successfully.");
+                        $scope.addRepresentativeController = {};
+                      
+                        $scope.addRepresentativeController.isSubmit = false;
+                    }
+                }, function (resp) {
+                    // This block execute in case of error.
+                });
+            }
+        }
+
     })
