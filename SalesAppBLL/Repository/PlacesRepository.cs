@@ -92,6 +92,109 @@ namespace SalesAppBLL.Repository
 
         }
 
+
+        public AddPlaceAndRepsModel AddPlaceAndReps(AddPlaceAndRepsModel det)
+        {
+            try
+            {
+                //det.Id is userid when adding place
+                //createdby will be the admin id of particular user
+                det.CreatedDate = System.DateTime.Now;
+                var check = DbContext.PlacesDetails.Where(i => i.PlaceId == det.PlaceId).FirstOrDefault();
+
+
+
+                if (check != null)
+
+
+                {
+                    PlacesDetail obj = new PlacesDetail();
+
+                    obj.Address = check.Address;
+                    obj.Id = check.Id;
+                    obj.Country = check.Country;
+                    obj.CountryCode = check.CountryCode;
+                    obj.IsActive = check.IsActive;
+                    obj.Latitude = check.Latitude;
+                    obj.Longitude = check.Longitude;
+                    obj.Name = check.Name;
+                    obj.Note = check.Note;
+                    obj.PhotoUrl = check.PhotoUrl;
+                    obj.PlaceId = check.PlaceId;
+                    obj.PostalCode = check.PostalCode;
+                    obj.State = check.State;
+                    obj.Tags = check.Tags;
+                    obj.CreatedDate = System.DateTime.Now;
+                    obj.Website = check.Website;
+                   var data = DbContext.PlacesDetails.Add(obj);
+                    DbContext.SaveChanges();
+                    
+                    
+                    UserAssignedPlace usobj;
+                    foreach (var item in det.UserAssignedPlace)
+                    {
+                        usobj = new UserAssignedPlace();
+                        usobj.PlaceId = data.Id;
+                        usobj.UserId = item.Id;
+                        usobj.CreatedBy = item.Id;
+                        usobj.CreatedDate = System.DateTime.Now;
+
+                    }
+                    return new AddPlaceAndRepsModel();
+                }
+
+                else
+                {
+                    {
+                        PlacesDetail obj = new PlacesDetail();
+
+                        obj.Address = det.Address;
+                        obj.Id = det.Id;
+                        obj.Country = det.Country;
+                        obj.CountryCode = det.CountryCode;
+                        obj.IsActive = det.IsActive;
+                        obj.Latitude = det.Latitude;
+                        obj.Longitude = det.Longitude;
+                        obj.Name = det.Name;
+                        obj.Note = det.Note;
+                        obj.PhotoUrl = det.PhotoUrl;
+                        obj.PostalCode = det.PostalCode;
+                        obj.State = det.State;
+                        obj.Tags = det.Tags;
+                        obj.CreatedBy = det.CreatedBy;
+                        obj.CreatedDate = System.DateTime.Now;
+                        obj.Website = det.Website;
+                        var data = DbContext.PlacesDetails.Add(obj);
+                        data.PlaceId = data.Id.ToString();
+                        DbContext.SaveChanges();
+                        data.PlaceId = data.Id.ToString();
+                        DbContext.SaveChanges();
+                        UserAssignedPlace usobj;
+                      
+                        foreach (var item in det.UserAssignedPlace)
+                        {
+                            usobj = new UserAssignedPlace();
+                            usobj.PlaceId =data.Id;
+                            usobj.UserId = item.UserId;
+                            usobj.CreatedBy = det.CreatedBy;
+                            usobj.CreatedDate = System.DateTime.Now;
+                            DbContext.UserAssignedPlaces.Add(usobj);
+                            DbContext.SaveChanges();
+
+                        }
+                        return new AddPlaceAndRepsModel();
+                    }
+                }
+            }
+
+            catch (System.Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+
         public List <PlacesDetail> ShowAllPlacesByCreatedBy(int CreatedBy)
         {
             try
@@ -910,5 +1013,9 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+
+
+        
+
     }
 }

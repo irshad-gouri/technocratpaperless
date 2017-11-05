@@ -1,13 +1,13 @@
 
-//var url_prifix = "http://localhost/SalesApp/api/";
-//var PhotoStorage = "http://localhost/SalesApp/";
-var url_prifix = "http://technocrat92-001-site1.gtempurl.com/api/";
-var PhotoStorage = "http://technocrat92-001-site1.gtempurl.com/";
+var url_prifix = "http://localhost/SalesApp/api/";
+var PhotoStorage = "http://localhost/SalesApp/";
+//var url_prifix = "http://technocrat92-001-site1.gtempurl.com/api/";
+//var PhotoStorage = "http://technocrat92-001-site1.gtempurl.com/";
 // var url_prifix = 'http://localhost:8000/';
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
     'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
     'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
-    'representativeDashboard.controllers', 'activitiesDashboard.controllers'])
+    'representativeDashboard.controllers', 'activitiesDashboard.controllers', 'addPlaceCtrl.controllers' ])
 
 .run(function($rootScope, $state, AuthService){
     if(localStorage.getItem('isLoggedIn') === 'success'){
@@ -102,11 +102,11 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
       })
 
       .state('app.place', {
-          url: '/place',
+          url: '/place/:data',
           authenticate: true,
           views: {
               'container': {
-                  templateUrl: './PartialViews/partials/addPlace.html',
+                  templateUrl: './PartialViews/partials/AddPlace.html',
                   controller: 'addPlaceCtrl'
               }
           }

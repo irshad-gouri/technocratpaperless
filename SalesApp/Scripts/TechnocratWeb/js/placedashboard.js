@@ -20,6 +20,9 @@ angular.module('placedashboard.controllers', [])
 
     $scope.placedashboardCtrl.getAllPlace();
 
+    $scope.placeDetails = function (data ) {
+        $state.go("app.place", { data: JSON.stringify(data) });
+    }
 
 
 

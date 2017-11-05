@@ -71,6 +71,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Models\AddCustomFormsResponse.cs" />
+    <Compile Include="Models\AddPlaceAndReps.cs" />
     <Compile Include="Models\FormsQuestionFieldResponse.cs" />
     <Compile Include="Models\UploadImageResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

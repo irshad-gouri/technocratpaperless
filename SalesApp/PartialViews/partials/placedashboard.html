@@ -18,7 +18,7 @@
         </div>
 
         <div class="actions with_menu">
-            <a ng-hide="true" id="rn-new-client" ui-sref="app.place"" class="button_create rounded" title="Add new place" ><!-- href="/client/view" -->
+            <a id="rn-new-client" ui-sref="app.place" class="button_create rounded" title="Add new place" >
                 <i class="icon icon-plus"></i> New place
             </a>
 
@@ -72,7 +72,7 @@
                             <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
                             <input type="hidden" id="Filename" value="Places" class="filter-data rounded border">
                             <input type="hidden" id="KupacLokacijaID" class="filter-data rounded border">
-                            <input type="text" id="search" class="filter-data grid_filter border rounded search list" datatype="search" placeholder="Search places">
+                            <input type="text" id="search" ng-model="searchText" class="filter-data grid_filter border rounded search list" datatype="search" placeholder="Search places">
                             <span class="input-loader" style="display: none;"></span>
                         </li>
                         <li id="dateFilter" class="filter-item range-wrapper" style="display: none;">
@@ -264,14 +264,14 @@
             </tr>
         </thead>
         <tbody >
-            <tr class="list-item-container"  ng-repeat="place in placedashboardCtrl">
+            <tr class="list-item-container"  ng-repeat="place in placedashboardCtrl | filter:searchText">
                 <td class="row-checkbox">
                     <input type="checkbox"  class="row-indicator"> </td>
                 <td class="action-cell">
                     <a class="action-detail action icon icon-details"></a>
                 </td>
                 <td class="code">{{place.Id}}</td>
-                <td class="name"><a class="table-link" >{{place.Name}}</a><span class="subtext">{{place.Address}}</span></td>
+                <td class="name"><a class="table-link" ng-click="placeDetails(place)" >{{place.Name}}</a><span class="subtext">{{place.Address}}</span></td>
                 <td class="territory"></td>
                 <td class="status" ></td>
                 <!--<td class="status" ng-If="place.IsActive">InActive Client</td>-->
