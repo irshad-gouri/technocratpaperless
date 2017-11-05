@@ -69,6 +69,6 @@
             });
         }
 
-        $scope.userdetails = JSON.parse($stateParams.data);
-        console.log($scope.userdetails);
+     //   $scope.userdetails = JSON.parse($stateParams.data);
+       // console.log($scope.userdetails);
     })

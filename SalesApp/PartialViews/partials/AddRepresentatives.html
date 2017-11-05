@@ -38,7 +38,7 @@
                             <div class="form_container clearleft basic-info putnik">
                                 <div class="avatar_float">
                                     <div class="avatar-container mini_rep">
-                                        <img id="AvatarPreview" class="avatar-image rounded" width="160" height="160" ng-src="{{addRepresentativeController.startImagePath + addRepresentativeController.PhotoUrl}}">
+                                        <img id="AvatarPreview" class="avatar-image rounded" width="160" height="160" ng-src="{{addRepresentativeController.startImagePath}}{{addRepresentativeController.PhotoUrl}}">
                                         <div id="AvatarForm" method="post" class="avatar-upload-form ng-pristine ng-valid" >
                                             <span class="change">Change picture<input type="file" ngf-select="addRepresentativeController.uploadFiles($file, $invalidFiles)"
                                                     accept="image/*"id="AvatarFile" name="AvatarFile" class="rounded border"></span>
