@@ -1,0 +1,541 @@
+﻿<!DOCTYPE html>
+
+<meta charset="utf-8" />
+<title></title>
+<link href="../../Content/forms.min.css" rel="stylesheet" />
+<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
+
+
+<div class="wrapper">
+    <div class="content">
+        <span id="menu_pointer" class="hidden menu_pointer"></span>
+        <div id="main">
+            <!-- ngView:  --><div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
+                <style type="text/css" class="ng-binding ng-scope">
+                    @import url("/frontend-app/dist/css/audits.min.css?67");
+                </style>
+
+
+                <!-- ngIf: pageLoaded --><div class="view-content clearfix ng-scope" ng-if="pageLoaded" style="">
+                    <div class="view-content-head clearfix">
+                        <h1 class="page-head forms">
+                            <i class="icon icon-pricescan"></i>
+                            <span class="header-main ng-binding" id="NazivLabel">
+                                New retail audit
+                            </span>
+                        </h1>
+                    </div>
+
+                    <div class="actions_header clearfix"></div>
+
+                    <div id="pricescan-edit-container" type="details-container" class="details_edit display-sheet clearfix editor-container">
+
+                        <div class="left_bar flat">
+                            <div class="basic-info pricescan">
+                                <div class="form-grid">
+                                    <div class="unit w-1-2 no-left">
+                                        <div for="tbCode" class="label ng-binding">Name:</div>
+                                        <input id="Naziv" type="text" value="" class="name border rounded required_field ng-pristine ng-untouched ng-valid" ng-class="{'border_red': !data.isTitleValid &amp;&amp; data.isTitleValid != undefined}" ng-model="data.Naziv">
+
+                                    </div>
+                                    <div class="unit w-1-2">
+                                        <span class="isActiveCheckbox afterInput rounded inline-block" type="">
+                                            <input type="checkbox" id="Aktivan" ng-model="data.Aktivan" class="ng-pristine ng-untouched ng-valid">
+                                            <label for="Aktivan" class="ng-binding">active retail audit</label>
+                                        </span>
+                                        <span class="rounded inline-block" type="">
+                                            <input type="checkbox" id="KoristiPredupis" ng-model="data.KoristiPredupis" class="ng-pristine ng-untouched ng-valid">
+                                            <label for="KoristiPredupis" class="ng-binding">Auto-fill on open</label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="unit w-1-1 no-left">
+                                        <div for="tbCode" class="label ng-binding">
+                                            Description:
+                                        </div>
+                                        <textarea rows="5" cols="80" class="border-edit editor-value ng-pristine ng-untouched ng-valid" id="Napomena" placeholder="..." ng-model="data.Napomena"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="right_bar flat save-discard">
+                            <div class="clearfix">
+                                <div class="actions clearfix">
+                                    <input type="button" id="btnSave" ng-click="saveAudit()" value="Save" class="button_save rounded">
+                                    <span ng-click="discardChanges()" id="Reload" class="lnkCancel ng-binding">
+                                        Discard
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="left_bar flat pricescan">
+                            <div class="form_container full-width">
+                                <div class="form-grid">
+                                    <div class="title ng-binding">Built-in fields</div>
+                                    <ul id="standardfields" class="">
+                                        <li>
+                                            <input id="PRISUTAN" type="checkbox" checked="" disabled="">
+                                            <label for="PRISUTAN" rel="tipsy" title="Enables you to record product availability." class="ng-binding">
+                                                Product availability
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input id="PROMOCIJA" type="checkbox" checked="" disabled="">
+                                            <label for="PROMOCIJA" rel="tipsy" title="Enables you to record if the product is promoted." class="ng-binding">
+                                                Product promoted
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input id="CIJENA" type="checkbox" checked="" disabled="">
+                                            <label for="CIJENA" rel="tipsy" title="Enables you to record product prices." class="ng-binding">
+                                                Product price
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input id="ZALIHA" type="checkbox" ng-model="builtInFields.productStockLevelCheckbox" class="ng-pristine ng-untouched ng-valid">
+                                            <label for="ZALIHA" rel="tipsy" title="Enables you to record product stock level." class="ng-binding">
+                                                Product stock level
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input id="NAPOMENA" type="checkbox" ng-model="builtInFields.noteCheckbox" class="ng-pristine ng-untouched ng-valid">
+                                            <label for="NAPOMENA" rel="tipsy" title="Enables you to attach a note on the product" class="ng-binding">
+                                                Note
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left_bar obrazac-extended flat">
+
+                            <div class="form_container clearleft relatived ">
+                                <div class="title ng-binding">Set retail audit accessibility</div>
+                                <div class="form-text ng-binding">Connected to places with any of these tags:</div>
+                                <div class="clientTags rounded border">
+                                    <ul class="clientTag-list">
+                                        <!-- ngIf: placeTags.length == 0 -->
+                                        <li ng-if="placeTags.length == 0" class="all-clientTags ng-binding ng-scope" tabindex="0">
+                                            All places
+                                        </li><!-- end ngIf: placeTags.length == 0 -->
+                                        <!-- ngRepeat: item in placeTags -->
+                                        <li class="input-holder">
+                                            <angucomplete localdata="placeTagsAutocompleteList" searchfields="value" titlefield="value" pause="10" minlength="1" add-item="addPlaceTag(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeClientName" class="ng-isolate-scope">
+                                                <div class="angucomplete-holder" ng-click="focusInput = true">
+                                                    <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{'border_red': inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing a place tag" size="24">
+                                                    <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
+                                                    <!-- ngIf: showDropdown -->
+                                                </div>
+                                            </angucomplete>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- ngIf: !isPersonalEdition --><div ng-if="!isPersonalEdition" class="ng-scope">
+                                    <div class="form-text ng-binding">:</div>
+                                    <div class="reps rounded border">
+                                        <ul class="rep-list">
+                                            <!-- ngIf: reps.length == 0 -->
+                                            <li ng-if="reps.length == 0" class="all-reps ng-binding ng-scope" tabindex="0">
+                                                All reps
+                                            </li><!-- end ngIf: reps.length == 0 -->
+                                            <!-- ngRepeat: item in reps -->
+                                            <li class="input-holder">
+                                                <angucomplete localdata="repsAutocompleteList" searchfields="Naziv" titlefield="Naziv" pause="10" minlength="1" add-item="addRep(item)" no-results-found-message="dictionary.NoResultsFound" placeholder="dictionary.TypeRepName" class="ng-isolate-scope">
+                                                    <div class="angucomplete-holder" ng-click="focusInput = true">
+                                                        <input stopccp="stopCopyPaste" focus-input="focusInput" ng-class="{'border_red': inputValid != undefined &amp;&amp; !inputValid}" ng-disabled="inputDisabled" ng-style="inputWidth" ng-blur="searchInputOnBlurTrigger()" ng-model="searchStr" id="" type="text" class="angucomplete-search-str " onmouseup="this.select();" ng-focus="resetHideResults()" ng-attr-placeholder="{{placeholder}}" ng-change="inputChangeHandler()" value="" placeholder="Start typing rep's name" size="23">
+                                                        <span class="angucomplete-hint ng-binding ng-hide" ng-show="showHint"></span>
+                                                        <!-- ngIf: showDropdown -->
+                                                    </div>
+                                                </angucomplete>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div><!-- end ngIf: !isPersonalEdition -->
+                                <div class="clear-fix"></div>
+                            </div>
+
+                            <div id="custFieldEditor" class="form_container clearleft relatived">
+                                <div class="title ng-binding">
+                                    Questions &amp; input fields
+                                </div>
+                                <ul id="input-questions" ui-sortable="questionsSortableOptions" ng-model="data.InputData" class="obrazac-container ui-sortable ng-pristine ng-untouched ng-valid ng-isolate-scope">
+                                    <!-- ngRepeat: item in data.InputData -->
+                                    <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-" ng-show="showItem" ng-repeat="item in data.InputData" item="item" index="$index" remove-field="removeField(index)" style="">
+
+                                        <div class="form-row form-grid">
+
+                                            <span class="mover form-control"></span>
+
+                                            <span class="type  icon-text" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)" style=""></span>
+
+                                            <span class="input">
+
+                                                <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field" style="">
+
+                                            </span>
+
+                                            <span ng-show="item.datatype != 8" class="switch row-switch">
+
+                                                <label class="ng-binding">
+
+                                                    Mandatory
+
+                                                    <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
+
+                                                </label>
+
+                                            </span>
+
+                                            <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
+
+                                        </div>
+
+                                        <!-- ngIf: item.datatype == 2 && entity == 'form' -->
+                                        <!-- ngIf: item.datatype == 3 -->
+
+                                    </li><!-- end ngRepeat: item in data.InputData -->
+                                    <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-" ng-show="showItem" ng-repeat="item in data.InputData" item="item" index="$index" remove-field="removeField(index)" style="">
+
+                                        <div class="form-row form-grid">
+
+                                            <span class="mover form-control"></span>
+
+                                            <span class="type  icon-longtext" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)" style=""></span>
+
+                                            <span class="input">
+
+                                                <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field" style="">
+
+                                            </span>
+
+                                            <span ng-show="item.datatype != 8" class="switch row-switch">
+
+                                                <label class="ng-binding">
+
+                                                    Mandatory
+
+                                                    <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
+
+                                                </label>
+
+                                            </span>
+
+                                            <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
+
+                                        </div>
+
+                                        <!-- ngIf: item.datatype == 2 && entity == 'form' -->
+                                        <!-- ngIf: item.datatype == 3 -->
+
+                                    </li><!-- end ngRepeat: item in data.InputData -->
+                                    <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-" ng-show="showItem" ng-repeat="item in data.InputData" item="item" index="$index" remove-field="removeField(index)" style="">
+
+                                        <div class="form-row form-grid">
+
+                                            <span class="mover form-control"></span>
+
+                                            <span class="type  icon-numeric" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)" style=""></span>
+
+                                            <span class="input">
+
+                                                <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field" style="">
+
+                                            </span>
+
+                                            <span ng-show="item.datatype != 8" class="switch row-switch">
+
+                                                <label class="ng-binding">
+
+                                                    Mandatory
+
+                                                    <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
+
+                                                </label>
+
+                                            </span>
+
+                                            <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
+
+                                        </div>
+
+                                        <!-- ngIf: item.datatype == 2 && entity == 'form' -->
+                                        <!-- ngIf: item.datatype == 3 -->
+
+                                    </li><!-- end ngRepeat: item in data.InputData -->
+                                    <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-" ng-show="showItem" ng-repeat="item in data.InputData" item="item" index="$index" remove-field="removeField(index)" style="">
+
+                                        <div class="form-row form-grid">
+
+                                            <span class="mover form-control"></span>
+
+                                            <span class="type  icon-boolean" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)" style=""></span>
+
+                                            <span class="input">
+
+                                                <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field" style="">
+
+                                            </span>
+
+                                            <span ng-show="item.datatype != 8" class="switch row-switch">
+
+                                                <label class="ng-binding">
+
+                                                    Mandatory
+
+                                                    <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
+
+                                                </label>
+
+                                            </span>
+
+                                            <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
+
+                                        </div>
+
+                                        <!-- ngIf: item.datatype == 2 && entity == 'form' -->
+                                        <!-- ngIf: item.datatype == 3 -->
+
+                                    </li><!-- end ngRepeat: item in data.InputData -->
+                                    <li class="the-row sortable ng-isolate-scope" ng-class="{'group-question':isInGroup}" id="question-" ng-show="showItem" ng-repeat="item in data.InputData" item="item" index="$index" remove-field="removeField(index)" style="display: list-item;">
+
+                                        <div class="form-row form-grid">
+
+                                            <span class="mover form-control"></span>
+
+                                            <span class="type  icon-selection" toolbar="" content="#question-options" position="left" action="switchQuestiontType(type)" style=""></span>
+
+                                            <span class="input">
+
+                                                <input type="text" ng-class="{'border_red': !item.isFieldValid}" ng-model="item.question" focus-input="item.focusInput" class="rounded border question ng-pristine ng-valid ng-touched" name="question" ng-blur="questionInputOnBlurTrigger()" placeholder="Field" style="">
+
+                                            </span>
+
+                                            <span ng-show="item.datatype != 8" class="switch row-switch">
+
+                                                <label class="ng-binding">
+
+                                                    Mandatory
+
+                                                    <input type="checkbox" name="isRequired" ng-model="item.isRequired" class="ng-pristine ng-untouched ng-valid">
+
+                                                </label>
+
+                                            </span>
+
+                                            <span class="remove form-control row-delete" ng-click="removeField({index: index})"></span>
+
+                                        </div>
+
+                                        <!-- ngIf: item.datatype == 2 && entity == 'form' -->
+                                        <!-- ngIf: item.datatype == 3 --><div ng-if="item.datatype == 3" class="grid multiples selection ng-scope" style="">
+
+                                            <ul ui-sortable="sortableOptions" ng-model="item.selectionOptions" class="dropDownData ng-pristine ng-untouched ng-valid ng-isolate-scope ui-sortable">
+
+                                                <!-- ngRepeat: option in item.selectionOptions -->
+                                                <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in item.selectionOptions" option="option" index="$index" datatype="3" add-empty-selection-option="addEmptySelectionOption()" remove-selection-option="removeOptionTrigger(index)" paste-selection-options="pasteSelectionOptions(options)" question-groups="questionGroups" question-id="entity == 'form' ? item.id : null" style="">
+                                                    <!-- ngIf: datatype == 3 --><span class="selection-option__sortable ng-scope" ng-if="datatype == 3"></span><!-- end ngIf: datatype == 3 -->
+                                                    <!-- ngIf: datatype == 3 --><input class="rounded border ng-pristine ng-valid ng-scope ng-touched" ng-class="{'border_red': !option.isOptionValid}" data-edit="true" ng-if="datatype == 3" ng-model="option.title" focus-input="option.focusInput" ng-paste="pasteTextTrigger($event)" on-enter="addEmptySelectionOption()" ng-blur="selectionOptionInputOnBlur()" style=""><!-- end ngIf: datatype == 3 -->
+                                                    <!-- ngIf: datatype == 2 -->
+
+                                                    <span class="selection-option__choose-action-link ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="optionIndex == 0 &amp;&amp; questionId &amp;&amp; !showActionsDropdown">
+                                                        Conditional action
+                                                    </span>
+
+                                                    <span class="selection-option__branching-option ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="optionIndex != 0">
+                                                        Conditional action
+                                                    </span>
+
+                                                    <span class="selection-option__choose-action-arrow ng-hide" ng-click="actionsDropdownToggle($event)" ng-show="questionId"></span>
+
+                                                    <span class="remove" ng-click="removeSelectionOption({index: index})" ng-show="datatype == 3"></span>
+                                                </li><!-- end ngRepeat: option in item.selectionOptions -->
+                                                <li id="question-option-" class="selection-option ng-isolate-scope" ng-repeat="option in item.selectionOptions" option="option" index="$index" datatype="3" add-empty-selection-option="addEmptySelectionOption()" remove-selection-option="removeOptionTrigger(index)" paste-selection-options="pasteSelectionOptions(options)" question-groups="questionGroups" question-id="entity == 'form' ? item.id : null" style="">
+                                                    <!-- ngIf: datatype == 3 --><span class="selection-option__sortable ng-scope" ng-if="datatype == 3"></span><!-- end ngIf: datatype == 3 -->
+                                                    <!-- ngIf: datatype == 3 --><input class="rounded border ng-pristine ng-valid ng-scope ng-touched" ng-class="{'border_red': !option.isOptionValid}" data-edit="true" ng-if="datatype == 3" ng-model="option.title" focus-input="option.focusInput" ng-paste="pasteTextTrigger($event)" on-enter="addEmptySelectionOption()" ng-blur="selectionOptionInputOnBlur()" style=""><!-- end ngIf: datatype == 3 -->
+                                                    <!-- ngIf: datatype == 2 -->
+
+                                                    <span class="selection-option__choose-action-link ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="optionIndex == 0 &amp;&amp; questionId &amp;&amp; !showActionsDropdown">
+                                                        Conditional action
+                                                    </span>
+
+                                                    <span class="selection-option__branching-option ng-binding ng-hide" ng-click="actionsDropdownToggle()" ng-show="optionIndex != 0">
+                                                        Conditional action
+                                                    </span>
+
+                                                    <span class="selection-option__choose-action-arrow ng-hide" ng-click="actionsDropdownToggle($event)" ng-show="questionId"></span>
+
+                                                    <span class="remove" ng-click="removeSelectionOption({index: index})" ng-show="datatype == 3"></span>
+                                                </li><!-- end ngRepeat: option in item.selectionOptions -->
+
+                                                <li class="new-item">
+
+                                                    <a href="javascript:void(0)" ng-click="addEmptySelectionOption()" class="ng-binding">
+                                                        <span>+</span>
+                                                        Add answer
+                                                    </a>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </div><!-- end ngIf: item.datatype == 3 -->
+
+                                    </li><!-- end ngRepeat: item in data.InputData -->
+                                </ul>
+                                <span class="addField secondary-button rounded add ng-binding" scroll-to-element="" ng-click="addNewField()" title="Add new field to this form">
+                                    Add new field
+                                </span>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="left_bar">
+                                <div class="products_container add-item-container">
+                                    <div class="title ng-binding">Products</div>
+                                    <input ng-model="searchGroupsAndProducts" id="rn-ra-search-product-fields" type="text" placeholder="Search for products or groups already on the list" class="search-retail-audits-items rounded border ng-pristine ng-untouched ng-valid">
+                                    <span id="rn-ra-add-product-group" class="edit-retail-audit-items" ng-click="openAuditProductsPopupTrigger()">+</span>
+                                    <ul id="retail-audit-items-container" ui-sortable="productsSortableOptions" ng-model="assignedGroupsAndProducts" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ui-sortable">
+                                        <!-- ngRepeat: item in assignedGroupsAndProducts | filter:{DisplayName: searchGroupsAndProducts} -->
+                                    </ul>
+                                    <div class="clear-fix"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!-- end ngIf: pageLoaded -->
+
+                <div id="question-options" class="toolbar-icons ng-scope ng-hide" ng-hide="true">
+                    <a href="#" data-type="0" class="ng-binding">
+                        <i class="icon-text"></i>
+                        Short text
+                    </a>
+                    <a href="#" data-type="1" class="ng-binding">
+                        <i class="icon-longtext"></i>
+                        Long text
+                    </a>
+                    <a href="#" data-type="4" class="ng-binding">
+                        <i class="icon-numeric"></i>
+                        Numeric
+                    </a>
+                    <a href="#" data-type="2" class="ng-binding">
+                        <i class="icon-boolean"></i>
+                        Yes/No
+                    </a>
+                    <a href="#" data-type="3" class="ng-binding">
+                        <i class="icon-selection"></i>
+                        Selection
+                    </a>
+                </div>
+            </div>
+            <!--Shared elements stuff-->
+            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' --><div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
+
+                <div id="success-alert" class="alert alert-success hidden ng-scope">
+                    <a href="#" class="close" aria-label="close">×</a>
+                    <span id="alert-message"></span>
+                </div>
+
+
+
+
+
+
+                <div id="message-box" class="hidden ng-scope"></div>
+
+
+                <div id="requestDemoCloner" class="hidden ng-binding ng-scope">
+                    Message:
+                    <br>
+                    <textarea cols="30" rows="5" class="ng-binding rounded border">Hi! I would like to have Repsly Coaching Session.</textarea>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script type="text/x-jquery-tmpl" id="tmpl-coach-item" class="ng-scope">
+                    {{if IsLive}}
+                    <tr>
+                        <td class="datetime">${LocalDate}<span class="subtitle">${LocalTime}</span></td>
+                        {{else}}
+                    <tr class="recorded">
+                        <td class="datetime">{{dictionary.CoachRecordedSession}}</td>
+                        {{/if}}
+
+                        <td>${Title}<span class="subtitle">({{dictionary.CoachCoachName}}: ${Author})</span></td>
+                        <td>${DurationMin} min</td>
+                        {{if IsLive}}
+                        <td class="action"><a href="${Url}" target="_blank" class="webinar-link">{{dictionary.CoachSignUp}}</a></td>
+                        {{else}}
+                        <td class="action"><a href="${Url}" target="_blank" class="youtube-link">{{dictionary.CoachViewNow}}</a></td>
+                        {{/if}}
+                    </tr>
+                </script>
+                <script type="text/x-jquery-tmpl" id="tmpl-additional-filter-item" class="ng-scope">
+                    <li class="${cssClass}" entity="${entity}" type="${type}" valueid="${id}" labelvalue="${label}">
+                        ${label}
+                        {{if extra!= null && extra!=""}}
+                        <div class="subtext">${extra}</div>
+                        {{/if}}
+                    </li>
+                </script>
+                <script type="text/x-jquery-tmpl" id="tmpl-additional-filter-result" class="ng-scope">
+                    <li class="${cssClass} add-filter-item" entity="${entity}" type="${type}" valueid="${id}" label="${label}" id="${htmlid}"><span class="label">${label}</span><span class="remove"><span></li>
+                </script>
+                <script type="text/x-jquery-tmpl" id="tmpl-DeleteSampleData" class="ng-scope">
+                    <div class="delete-sample-data">
+                        <h2 class="warning">{{dictionary.DeleteSampleDataTitle}}</h2>
+                        <p class="explanation">{{dictionary.DeleteSampleDataExplanation}}</p>
+                        <ul>
+                            <li class="bullet active">{{dictionary.Clients}}</li>
+                            <li class="bullet active">{{dictionary.SummaryActivities}} & {{dictionary.Documents | lowercase}}</li>
+                            <li class="bullet active">{{dictionary.Announcements}}</li>
+                            <li ng-if="usesForms" class="bullet active">{{dictionary.Forms}}</li>
+                            <li ng-if="isProductsAvailable" class="bullet active">{{dictionary.Products}}</li>
+                        </ul>
+
+                        <p class="trialRed">
+                            {{dictionary.TrialDel}}
+                            <br /><br />{{dictionary.TrialDelInstructions}} :
+                        </p>
+                        <input id="delTrial" type="text" />
+                    </div>
+                </script>
+
+                <script type="text/x-jquery-tmpl" id="tmpl-tag" class="ng-scope">
+                    <li class="tag-list-item" id="" valueid="${value}"><input type="checkbox" id="check_${value}" valueid="${value}" class="tag-list-result" /><label for="check_${value}">${label}</label></li>
+                </script>
+                <!-- jquery template for paging -->
+                <script type="text/x-jquery-tmpl" id="tmpl-paging" class="ng-scope">
+                    <div class="table_footer">
+                        <div class="grid_info">${ShowingInfo}</div>
+                        <div class="paging">
+                            <span id="rn-paging-prev" href="#" class="prev pager" page=${Previous}>{{dictionary.Previous}}</span>
+                            <span id="rn-paging-next" href="#" class="next pager" page=${Next}>{{dictionary.Next}}</span>
+                        </div>
+                    </div>
+                </script>
+                <!-- jquery template for quick search -->
+                <script type="text/x-jquery-tmpl" id="tmpl-quicksearch-row" class="ng-scope">
+                    <li class=""><a href="${link}">${label}</a></li>
+                </script>
+            </div>
+        </div>
+        <footer></footer>
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+    </div>
+</div>
