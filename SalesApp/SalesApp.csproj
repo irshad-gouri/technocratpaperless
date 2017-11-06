@@ -247,6 +247,8 @@
     <Content Include="PartialViews\partials\AddProduct_Setting.html" />
     <Content Include="PartialViews\partials\AddRepresentatives.html" />
     <Content Include="PartialViews\partials\NewRetailAudit.html" />
+    <Content Include="PartialViews\partials\ProductLIst.html" />
+    <Content Include="PartialViews\partials\RetailAudits_List.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
