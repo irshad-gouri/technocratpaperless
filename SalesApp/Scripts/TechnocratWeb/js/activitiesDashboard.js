@@ -2,7 +2,8 @@ angular.module('activitiesDashboard.controllers', [])
 
     .controller('activitiesDashboardCtrl', function ($scope, APIService, $state,$rootScope) {
 
-        $scope.Activities = {};
+        $scope.Activities = [];
+        $scope.filterData = {};
         $scope.Activities.PhotoStorage = PhotoStorage;
             $scope.GetActivities = function () {
 
@@ -12,15 +13,85 @@ angular.module('activitiesDashboard.controllers', [])
                 }).then(function (res) {
                     $scope.Activities = res.data.Data;
                     console.log($scope.Activities)
+                    
+                   
                 })
 
 
             }
             $scope.GetActivities();
-
            
-})
+           
+            $scope.noteClick = function () {
 
+                $scope.filterData.ActivityId ="4";
+
+            }
+
+            $scope.FormClickFilter = function () {
+
+                $scope.filterData.ActivityId = "5";
+               
+
+            }
+            $scope.showForm = false;
+
+            $scope.AllFormClickFilter = function () {
+                $scope.showForm = !$scope.showForm;
+                $scope.allActivitiesFilterShow = !$scope.allActivitiesFilterShow;
+
+            }
+
+            $scope.photoClikFilter = function () {
+
+                $scope.filterData.ActivityId = "3";
+               
+            }
+            $scope.allActivitiesFilterShow = false;
+            $scope.filterclick= function () {
+
+                $scope.allActivitiesFilterShow = !$scope.allActivitiesFilterShow;
+               
+            }
+            $scope.auditshow = false;
+            $scope.AuditClick = function () {
+                $scope.auditshow = !$scope.auditshow;
+                $scope.allActivitiesFilterShow = !$scope.allActivitiesFilterShow;
+            }
+        
+            
+
+            $scope.filterDataDate = {};
+              $scope.filterDataDate.from_date = new Date();
+              $scope.filterDataDate.to_date = new Date();
+
+            
+            
+
+
+})
+    .filter('dateRange', function () {
+        return function (items, fromDate, toDate,) {
+            var filtered = [];
+
+            //here you will have your desired input
+            
+
+                var from_date = Date.parse(new Date(fromDate));
+                var to_date = Date.parse(new Date(toDate));
+                angular.forEach(items, function (item, index) {
+                    var CreatedDate = Date.parse(new Date(item.CreatedDate))
+                    if (CreatedDate >= from_date && CreatedDate < to_date) {
+                        filtered.push(item);
+                    }
+                });
+                return filtered;
+            
+
+
+        };
+
+    });
     // , APIService, $state, $rootScope, ngDialog
 
 

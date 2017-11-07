@@ -36,6 +36,7 @@ namespace SalesApp
                       "~/Content/ngDialog-theme-default.min.css",
                       "~/Content/ngDialog.min.css",
                       "~/Content/font-awesome.min.css",
+                      
                       "~/Content/ui-bootstrap-csp.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/TechnocratWeb").Include(

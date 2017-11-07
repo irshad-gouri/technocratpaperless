@@ -1,76 +1,80 @@
 <style>
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover {
-  color: #fff;
-  background-color: #53B889;
-  font-size: 21px;
-  font-weight: bolder;
-}
-.nav-tabs>li {
-  width: 33%;
-  text-align: center;
-}
-.nav>li>a {
-  color: #53B889;
-}
-.nav-tabs>li>a {
-  font-size: 21px;
-  font-weight: bolder;
-}
-.checkbox-custom, .radio-custom {
-    opacity: 0;
-    position: absolute;   
-}
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li > a:focus, .nav-tabs > li > a:hover {
+        color: #fff;
+        background-color: #53B889;
+        font-size: 21px;
+        font-weight: bolder;
+    }
 
-.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 0;
-    cursor: pointer;
-}
+    .nav-tabs > li {
+        width: 33%;
+        text-align: center;
+    }
 
-.checkbox-custom-label, .radio-custom-label {
-    position: relative;
-}
+    .nav > li > a {
+        color: #53B889;
+    }
 
-.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
-    content: '';
-    background: #fff;
-    border: 2px solid #ddd;
-    display: inline-block;
-    vertical-align: middle;
-    width: 20px;
-    height: 20px;
-    padding: 2px;
-    margin-right: 10px;
-    text-align: center;
-}
+    .nav-tabs > li > a {
+        font-size: 21px;
+        font-weight: bolder;
+    }
 
-.checkbox-custom:checked + .checkbox-custom-label:before {
-    background: #62D7D8;
-    border: 2px solid #62D7D8;
-    box-shadow: inset 0px 0px 0px 4px #fff;
-}
+    .checkbox-custom, .radio-custom {
+        opacity: 0;
+        position: absolute;
+    }
 
-.radio-custom + .radio-custom-label:before {
-    border-radius: 50%;
-}
+    .checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 5px 0;
+        cursor: pointer;
+    }
 
-.radio-custom:checked + .radio-custom-label:before {
-    background: #62D7D8;
-    box-shadow: inset 0px 0px 0px 4px #fff;
-}
+    .checkbox-custom-label, .radio-custom-label {
+        position: relative;
+    }
+
+    .checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+        content: '';
+        background: #fff;
+        border: 2px solid #ddd;
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        padding: 2px;
+        margin-right: 10px;
+        text-align: center;
+    }
+
+    .checkbox-custom:checked + .checkbox-custom-label:before {
+        background: #62D7D8;
+        border: 2px solid #62D7D8;
+        box-shadow: inset 0px 0px 0px 4px #fff;
+    }
+
+    .radio-custom + .radio-custom-label:before {
+        border-radius: 50%;
+    }
+
+    .radio-custom:checked + .radio-custom-label:before {
+        background: #62D7D8;
+        box-shadow: inset 0px 0px 0px 4px #fff;
+    }
 
 
-.checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
-  /*outline: 1px solid #62D7D8; /* focus style */*/
-}
+    .checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
+        /*outline: 1px solid #62D7D8; /* focus style */ */
+    }
 </style>
 
 
 
-<div class="content">
-            <span id="menu_pointer" class="hidden menu_pointer"></span>
-            
+<div class="content"   >
+    <span id="menu_pointer" class="hidden menu_pointer"></span>
+
 
     <ul class="filter home">
         <li class="hidden">
@@ -97,295 +101,297 @@
             <input id="Period" type="hidden" value="h" class="filter-data rounded border">
         </li>
 
-       
-        <li class="chunk">
 
-            <span id="ActivitySexyDropDown" ng-click="ActivitySexyDropDown()" class="sexy-drop-down-container with-icons sprites no-auto-submit rounded border">
-                <input type="hidden" id="Activity" class="filter-data rounded border" value="" title="">
-                <div id="rn-activities-menu-trigger" class="line" tabindex="0">
-                    <span activity="" class="current  " title="Select particular activity or document type you want to analyze." value=""><span class="icon icon-"></span> All field activities</span>
-                </div>
-
-                <ul class="sexy-drop-down-list ui-corner-bottom ui-corner-tr">
-                        
-                            <li class="ddl-item ui-corner-all " activity="" tabindex="0">
-                                <span id="rn-ad-" value="" class=" " title=""><span class="icon icon-"></span> All field activities</span>
-
-                            </li>
+        <li class="chunk" ng-click="filterclick()">
+            <!--<button type="button"  ></button>aaaaa-->
+            <span  class="sexy-drop-down-container with-icons sprites no-auto-submit rounded border">
 
 
-                        
-                        
-                            <li class="ddl-item ui-corner-all form" activity="form" tabindex="0">
-                                <span id="rn-ad-form" value="form" class="form " title=""><span class="icon icon-form"></span> Forms (all)</span>
-                                    <span id="rn-ad-forms-arrow" class="submore"></span>
-
-                            </li>
-
-                                    <li class="voidClick">
-                                        <ul class="sublist">
-                                    <li class="ddl-item ui-corner-all form" activity="form" formid="117070" rowid="9cd3a583-b67b-4b45-9f0e-a4b8c17166b9" tabindex="0" title="Job Estimate">
-                                        <span value="form" formid="117070" rowid="9cd3a583-b67b-4b45-9f0e-a4b8c17166b9">
-                                            <span class="icon icon-forms"></span>
-                                                <span>Job Estimate</span>
-                                        </span>
-                                    </li>
-                                    <li class="ddl-item ui-corner-all form" activity="form" formid="117063" rowid="05861144-56fb-4f06-91e1-3a1202f9f6ee" tabindex="0" title="Merchandising and Competitor Insight Report">
-                                        <span value="form" formid="117063" rowid="05861144-56fb-4f06-91e1-3a1202f9f6ee">
-                                            <span class="icon icon-forms"></span>
-                                                <span>Merchandising and Competitor Insight Report</span>
-                                        </span>
-                                    </li>
-                                    <li class="ddl-item ui-corner-all form" activity="form" formid="117064" rowid="c5ff9e28-b435-4e98-a416-ee38e7ba1039" tabindex="0" title="Out of Stock">
-                                        <span value="form" formid="117064" rowid="c5ff9e28-b435-4e98-a416-ee38e7ba1039">
-                                            <span class="icon icon-forms"></span>
-                                                <span>Out of Stock</span>
-                                        </span>
-                                    </li>
-                                    <li class="ddl-item ui-corner-all form" activity="form" formid="117065" rowid="26e35a0b-5422-4ba1-b0a5-604965c61359" tabindex="0" title="Sampling Event Recap">
-                                        <span value="form" formid="117065" rowid="26e35a0b-5422-4ba1-b0a5-604965c61359">
-                                            <span class="icon icon-forms"></span>
-                                                <span>Sampling Event Recap</span>
-                                        </span>
-                                    </li>
-                                    <li class="ddl-item ui-corner-all form" activity="form" formid="117071" rowid="c7adfa38-2b65-47bf-8d79-45155f6f2f01" tabindex="0" title="Service Form Checklist">
-                                        <span value="form" formid="117071" rowid="c7adfa38-2b65-47bf-8d79-45155f6f2f01">
-                                            <span class="icon icon-forms"></span>
-                                                <span>Service Form Checklist</span>
-                                        </span>
-                                    </li>
-                                    <li class="ddl-item ui-corner-all form" activity="form" formid="117647" rowid="09903581-0636-4a25-8bd4-c365ab53113c" tabindex="0" title="visit place">
-                                        <span value="form" formid="117647" rowid="09903581-0636-4a25-8bd4-c365ab53113c">
-                                            <span class="icon icon-forms"></span>
-                                                <span>visit place</span>
-                                        </span>
-                                    </li>
-                                        </ul>
-                                    </li>
-
-                        
-                        
-                            <li class="ddl-item ui-corner-all photo" activity="photo" tabindex="0">
-                                <span id="rn-ad-photo" value="photo" class="photo " title="Photos taken at your places, displayed as a stream or a gallery."><span class="icon icon-photo"></span> Photos</span>
-
-                            </li>
+                <span    class="current  " title="Select particular activity or document type you want to analyze." value=""><span class="icon "></span> {{showSelectedText}}</span>
 
 
-                        
-                        
-                            <li class="ddl-item ui-corner-all timemileage" activity="timemileage" tabindex="0">
-                                <span id="rn-ad-timemileage" value="timemileage" class="timemileage " title=""><span class="icon icon-timemileage"></span> Time &amp; Mileage tracking</span>
+                <ul class="showhide" ng-show="allActivitiesFilterShow" >
 
-                            </li>
+                    <li class="ddl-item ui-corner-all " activity="aaa" tabindex="0">
+                        <span id="rn" value="" class=" " title="" ng-click="showSelectedText='All field activities'"><span class="icon icon-"></span> All field activities</span>
 
-
-                        
-                        
-                            <li class="ddl-item ui-corner-all visit" activity="visit" tabindex="0">
-                                <span id="rn-ad-visit" value="visit" class="visit " title="Chronological list of reps visits to places."><span class="icon icon-visit"></span> Place Visits</span>
-
-                            </li>
+                    </li>
 
 
-                        
-                        
-                            <li class="ddl-item ui-corner-all message" activity="message" tabindex="0">
-                                <span id="rn-ad-message" value="message" class="message " title="Conversations within your team."><span class="icon icon-message"></span> Messages</span>
-
-                            </li>
 
 
-                        
-                        
-                            <li class="ddl-item ui-corner-all clientnote" activity="clientnote" tabindex="0">
-                                <span id="rn-ad-clientnote" value="clientnote" class="clientnote " title=""><span class="icon icon-clientnote"></span> Place notes</span>
+                    <li class="ddl-item ui-corner-all " name=" Forms (all) " ng-click="FormClickFilter()" tabindex="0">
+                        <span id="rn" value="" class=" " title="" ng-click="showSelectedText='Forms (all)'">
+                            <span class="icon icon-form"></span> Forms (all)
+                            <span class="pad-mar" ng-click="AllFormClickFilter()">>></span>
+                        </span>
+</li>
 
-                            </li>
-
-
-                        
-                        
-                            <li class="ddl-item ui-corner-all newclient" activity="newclient" tabindex="0">
-                                <span id="rn-ad-newclient" value="newclient" class="newclient " title="New places acquired by your sales reps in a selected period."><span class="icon icon-newclient"></span> New places</span>
-
-                            </li>
-
-
-                        
-                        
-                            <li class="ddl-item ui-corner-all clientstatuschange" activity="clientstatuschange" tabindex="0">
-                                <span id="rn-ad-clientstatuschange" value="clientstatuschange" class="clientstatuschange " title="Status of a place changed, e.g. when lead converts to an active account."><span class="icon icon-clientstatuschange"></span> Status changes</span>
-                                    <a id="rn-ad-conversions-customizeButton" href="/Client/StatusEdit" class="home-activity-dropdown-customize">Customize</a>
-
-                            </li>
-
-
-                        
-                        
-                            <li class="ddl-item ui-corner-all document" activity="document" tabindex="0">
-                                <span id="rn-ad-document" value="document" class="document " title="Your places' purchases in a selected period."><span class="icon icon-document"></span> Orders</span>
-
-                            </li>
-
-
-                        
-                        
-                            <li class="ddl-item ui-corner-all pricescan" activity="pricescan" tabindex="0">
-                                <span id="rn-ad-pricescan" value="pricescan" class="pricescan  retail-audits-all  " title="Product retail auditing, availability and layout analysis."><span class="icon icon-pricescan"></span> Retail audits (all)</span>
-                                    <span id="rn-ad-ra-arrow" class="submore"></span>
-
-                            </li>
-
-                                    <li class="voidClick">
-                                        <ul class="sublist">
-                                                
-                                                    <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939" tabindex="0" title="Initial Product Audit">
-                                                        <span class="pricescan" value="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939"><span class="icon icon-pricescan"></span> Initial Product Audit</span>
-                                                    </li>
-                                                
-                                                
-                                                    <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad" tabindex="0" title="NEW AUDIT">
-                                                        <span class="pricescan" value="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad"><span class="icon icon-pricescan"></span> NEW AUDIT</span>
-                                                    </li>
-                                                
-                                                
-                                                    <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b" tabindex="0" title="Retail audit sample">
-                                                        <span class="pricescan" value="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b"><span class="icon icon-pricescan"></span> Retail audit sample</span>
-                                                    </li>
-                                                
-                                                
-                                                    <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625" tabindex="0" title="Store Audit Consumer goods only">
-                                                        <span class="pricescan" value="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625"><span class="icon icon-pricescan"></span> Store Audit Consumer goods only</span>
-                                                    </li>
-                                                
-                                                
-                                                    <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184" tabindex="0" title="Test Audit">
-                                                        <span class="pricescan" value="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184"><span class="icon icon-pricescan"></span> Test Audit</span>
-                                                    </li>
-                                                
-                                        </ul>
-                                    </li>
-
-                        
-
-                </ul>
-            </span>
+        <li style="
+    position: absolute;
+    height: auto;
+    width: 100%;
+    left: 164px;
+    top: 40px;
+    z-index: 100006;
+    color: black;
+    background:   #fcfcfc;
+    border-radius: 14px;" ng-show="showForm" >
+            <ul ng-repeat="act in Activities " >
+                <li  ng-if="act.ActivityId == 5" >
+                    <span>
+                        <span class="icon icon-forms"></span>
+                        <span  ng-click="formId(act.FormId)">{{act.FormName}}</span>
+                    </span>
+                </li>
+                
+            </ul>
         </li>
-        <li class="range-wrapper chunk" title="Use this period picker to select period you're observing.">
-            
-<input id="DateBegin" type="text" class="date_picker datebegin rounded border filter-data hasDatepicker" value="9/23/2017"> - <input id="DateEnd" type="text" class="date_picker dateend rounded border filter-data hasDatepicker" value="9/23/2017"> 
-<span class="range-picker ui-corner-all">
-<span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
-<div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
-<ul class="">
-    <li id="rn-range-picker-today" class="range rounded" db="9/23/2017" de="9/23/2017">Today</li>
-    <li id="rn-range-picker-yesterday" class="range rounded" db="9/22/2017" de="9/22/2017">Yesterday</li>
-    <li class="delimiter"></li>
-    <li id="rn-range-picker-this-week" class="range rounded" db="9/18/2017" de="9/23/2017">This week</li>
-    <li id="rn-range-picker-last-week" class="range rounded" db="9/11/2017" de="9/17/2017">Last week</li>
-    <li class="delimiter"></li>
-    <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/23/2017">This month</li>
-    <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
-    <li class="delimiter"></li>
-    <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/23/2017">This year</li>
-    <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
-        <li class="delimiter"></li>
-    <li id="rn-range-picker-no-date" class="range rounded recent" db="" de="">No date specified</li>
-</ul>
-<span class="clip"></span>
-</div>
-</span>
 
 
 
-           
+      
 
+
+        <li  class="ddl-item ui-corner-all timemileage" name="Photos Place Activities" tabindex="0">
+            <span id="rn-ad-timemileage" ng-click="showSelectedText=' Photos Place Activities'" class="timemileage " title=""><span class="icon icon-photo"></span> Photos Place Activities </span>
+
+        </li>
+
+
+        <li class="ddl-item ui-corner-all timemileage" name=" Time & Mileage tracking"tabindex="0">
+            <span id="rn-ad-timemileage"   ng-click="showSelectedText=' Time & Mileage tracking'" title=""><span class="icon icon-timemileage"></span> Time &amp; Mileage tracking</span>
+
+        </li>
+
+
+
+
+        <li class="ddl-item ui-corner-all visit" activity="visit" tabindex="0">
+            <span id="rn-ad-visit"  ng-click="showSelectedText='  Place Visits'" title="Chronological list of reps visits to places."><span class="icon icon-visit"></span> Place Visits</span>
+
+        </li>
+
+
+
+
+        <li class="ddl-item ui-corner-all message" tabindex="0">
+            <span id="rn-ad-message"  ng-click="showSelectedText=' Messages'" title="Conversations within your team."><span class="icon icon-message"></span>&nbsp; &nbsp; Messages</span>
+
+        </li>
+
+
+
+
+        <li ng-click="noteClick()">
+            <span id="rn-ad-message" ng-click="showSelectedText=' Place notes'" title="Conversations within your team."> <span class="icon icon-clientnote"></span> Place notes
 
 </li>
 
-        <li class="drop chunk no-left-margin">
 
-            <a id="rn-more-filters-trigger" href="#" class="more-filters-trigger" tipsy="true" title="Use additional filter to select particular representative or place.">Add more filters</a>
-            <div id="megadrop_container" class="more-filters-container home" style="display: none;">
-                <span class="menu_pointer"></span>
-                <span id="rn-add-more-filters-close" class="close"></span>
-                <ul class="drop_content">
-                    <li class="filter-type-wrapper reps-wrapper" title="Select particular rep or choose to see all reps.">
-                        <h3 class="putnik"><i class="icon icon-representative"></i> Filter by representative</h3>
-                        <select id="MFPutnikID" databoundto="PutnikID" htmlboundto="PutnikNaziv" class="rounded border filter-data "><option value="">-</option><option value="67586">Glen- Sales Representative</option><option class="inactive-rep" title="Rep is deactivated" value="68066">xyz</option></select>
-                    </li>
 
-                    <li class="filter-type-wrapper client-wrapper" title="Filter for a particular place. Start typing to search and then select searched place from a list.">
-                        <h3 class="kupac"><i class="icon icon-client"></i> Filter by place</h3>   
-                        <input type="hidden" databoundto="KupacLokacijaRowID" class="filter-data filter-rowid rounded border" id="MFKupacLokacijaRowID">                
-                        <input type="hidden" databoundto="KupacLokacijaID" class="filter-data filter-id rounded border" id="MFKupacLokacijaID">                     
-                        <input id="ClientSearch" databoundto="KupacLokacijaNaziv" type="text" class="rounded border autocomplete ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                        <span class="clear-client-filter ui-icon ui-icon-closethick" style="display: none;">  </span>
-                        <span class="input-loader" style="display: none;">  </span>
-                    </li>
-                        <li class="filter-type-wrapper tag-wrapper client" databoundto="ClientTagsID" htmlboundto="ClientTagsNaziv" title="Select particular place tag or choose to see all places.">
-                            <h3 class="clienttag">Filter by places tags</h3>
-                            <ul class="inline-input-tag-container rounded border">
 
-                                <li class="input-holder">
-                                    <input id="ClientTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                    <span class="input-loader" style="display: none;"></span>
-                                    <div class="auto-list-holder"></div>
-                                </li>
-                            </ul>
-                        </li>
-                                            <li class="filter-type-wrapper territory-wrapper" title="Select particular territory or choose to see all territories.">
-                            <h3 class="poslovnaJedinica"><i class="icon icon-teritorymanagement"></i> Filter by territory</h3>
-                            <select id="MFPoslovnaJedinicaID" databoundto="PoslovnaJedinicaID" htmlboundto="PoslovnaJedinicaNaziv" class="rounded border filter-data "><option value="">-</option></select>
-                        </li>
-                    <li id="photo-filter" class="filter-type-wrapper tag-wrapper photo" databoundto="PhotoTagsID" htmlboundto="PhotoTagsNaziv" title="Filter gallery by photo tags. Start typing to choose tags from a list." style="display: list-item;">
-                        <h3 class="phototag">Filter by photo tags (multiple selection)</h3>
-                        <ul class="inline-input-tag-container rounded border">
-
-                            <li class="input-holder">
-                                <input id="PhotoTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                <span class="input-loader" style="display: none;"></span>
-                                <div class="auto-list-holder"></div>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li id="form-field-filter" class="filter-type-wrapper form-wrapper" title="." style="display: none;">
-                        <h3 class="unidoccell">Filter by form field</h3>
-                        <select class="border rounded" datatype="UniDocCellID" id="MFUniDocCellID">
-                            <option class="emtpy-val" value="">-- Choose field in a form --</option>
-                        </select>
-                        <div class="cascade">
-                            <input type="text" id="UniDocCellTextValue" class="cascade-filter rounded border" placeholder="Write exact value" style="display: none;">
-                            <select id="UniDocCellDdlValue" class="cascade-filter rounded border" style="display: none;"></select>
-                        </div>
-                        <input type="hidden" class="filter-data rounded border" datatype="ClientExtraInfoValue" id="ClientExtraInfoValue">
-                    </li>
-                    <!-- TODO END -->
-                    <li class="filter-actions-wrapper">
-                        <button id="rn-add-this-filter" class="button add rounded border">Add this filter</button>
-                        <button id="rn-add-more-filters-cancel" class="button cancel rounded border">Cancel</button>
-                    </li>
-                </ul>
-            <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-19" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-20" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-21" tabindex="0" style="z-index: 2001; display: none;"></ul></div>
+        <li class="ddl-item ui-corner-all newclient" activity="newclient" tabindex="0">
+            <span id="rn-ad-newclient" ng-click="showSelectedText=' New places'" title="New places acquired by your sales reps in a selected period."><span class="icon icon-newclient"></span> New places</span>
 
         </li>
-        <li class="chunk no-left-margin"><button id="rn-home-apply-button" class="filter-trigger semafor-trigger rounded" title="Refresh screen according to filter selection.">Apply</button></li>
-        <li class="view chunk">
-            <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
-            <input type="hidden" id="ViewSelection" class="filter-data rounded border" value="stream">
-            <label title="Select how you'd like to have data displayed. Options change according to activity you selected.">View as:</label>
-            <a value="stream" class="option viewas_stream selected" use="all" title="Plain list"><i class="icon icon-plainlist"></i></a>
-            <a id="rn-viewas-tabular" value="table" class="option viewas_table" use="event visit form workday timemileage newclient clientstatuschange pricescan document clientnote" title="Tabular view" style="display: none;"><i class="icon icon-tabular"></i></a>
-            <a id="rn-viewas-gallery" value="gallery" class="option viewas_gallery" use="photo" title="Gallery" style="display: none;"><i class="icon icon-gallery"></i></a>
-            
-            <a id="rn-viewas-summary" value="summary" class="option viewas_summary" use="summary" title="Summary report" style=""><i class="icon icon-summary"></i></a>
-            
+
+
+
+
+        <li class="ddl-item ui-corner-all clientstatuschange" activity="clientstatuschange" tabindex="0">
+            <span id="rn-ad-clientstatuschange" ng-click="showSelectedText='  Status changes'" title="Status of a place changed, e.g. when lead converts to an active account."><span class="icon icon-clientstatuschange"></span> Status changes</span>
+            <a id="rn-ad-conversions-customizeButton" href="/Client/StatusEdit" class="home-activity-dropdown-customize">Customize</a>
+
         </li>
+
+
+
+
+        <li class="ddl-item ui-corner-all document" activity="document" tabindex="0">
+            <span id="rn-ad-document" ng-click="showSelectedText=' Orders'" title="Your places' purchases in a selected period."><span class="icon icon-document"></span> Orders</span>
+
+        </li>
+
+
+
+
+        <li class="ddl-item ui-corner-all pricescan" activity="pricescan" tabindex="0">
+            <span id="rn-ad-pricescan"  ng-click="showSelectedText=' Retail audits (all)'" title="Product retail auditing, availability and layout analysis."><span class="icon icon-pricescan"></span> Retail audits (all)</span>
+            <!--<span id="rn-ad-ra-arrow" class=""></span>--><span style="margin-left: 24px; font-size: 17px;" ng-click="AuditClick()">>></span>
+
+        </li>
+
+        <li style="
+    position: absolute;
+    height: auto;
+    width: 100%;
+    left: 164px;
+    top: 420px;
+    z-index: 100006;
+    color: black;
+    background:  #fcfcfc;
+    border-radius: 14px;"  ng-show="auditshow">
+            <ul >
+
+                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939" tabindex="0" title="Initial Product Audit">
+                    <span class="pricescan" value="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939"><span class="icon icon-pricescan"></span> Initial Product Audit</span>
+                </li>
+
+
+                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad" tabindex="0" title="NEW AUDIT">
+                    <span class="pricescan" value="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad"><span class="icon icon-pricescan"></span> NEW AUDIT</span>
+                </li>
+
+
+                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b" tabindex="0" title="Retail audit sample">
+                    <span class="pricescan" value="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b"><span class="icon icon-pricescan"></span> Retail audit sample</span>
+                </li>
+
+
+                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625" tabindex="0" title="Store Audit Consumer goods only">
+                    <span class="pricescan" value="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625"><span class="icon icon-pricescan"></span> Store Audit Consumer goods only</span>
+                </li>
+
+
+                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184" tabindex="0" title="Test Audit">
+                    <span class="pricescan" value="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184"><span class="icon icon-pricescan"></span> Test Audit</span>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+    </ul>
+
+
+    </span>
+    </li>
+    <li class="range-wrapper chunk" title="Use this period picker to select period you're observing.">
         
-        <li class="additional-filter-list-container chunk">
-            <ul id="AdditionalFilterListResult" class="filters"></ul>
-        </li>
+        <input ng-click="showCalender=!showCalender;showCalender1 = false" type="text" class=" datebegin rounded border " style="width: 100px;" ng-model="filterDataDate.from_date | date :'M/d/yy'"> - <input id="DateEnd" ng-click="showCalender1=!showCalender1;showCalender = false" type="text" style="width: 100px;" class=" dateend rounded border filter-data hasDatepicker" ng-model="filterDataDate.to_date | date :'M/d/yy'">
+        <div ng-show="showCalender" style="position:absolute; right: 200px;    z-index: 99;">
+            <date-picker on-date-selected="showCalender = false" ng-model="filterDataDate.from_date ">
+            </date-picker>
+        </div>
+        <div ng-show="showCalender1" style="position:absolute; left: 200px;    z-index: 99;">
+            <date-picker  on-date-selected="showCalender1 = false" ng-model="filterDataDate.to_date">
+            </date-picker>
+        </div>
+        <span class="range-picker ui-corner-all">
+            <span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
+            <div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
+                <ul class="">
+                    <li id="rn-range-picker-today" class="range rounded" db="9/23/2017" de="9/23/2017">Today</li>
+                    <li id="rn-range-picker-yesterday" class="range rounded" db="9/22/2017" de="9/22/2017">Yesterday</li>
+                    <li class="delimiter"></li>
+                    <li id="rn-range-picker-this-week" class="range rounded" db="9/18/2017" de="9/23/2017">This week</li>
+                    <li id="rn-range-picker-last-week" class="range rounded" db="9/11/2017" de="9/17/2017">Last week</li>
+                    <li class="delimiter"></li>
+                    <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/23/2017">This month</li>
+                    <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
+                    <li class="delimiter"></li>
+                    <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/23/2017">This year</li>
+                    <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
+                    <li class="delimiter"></li>
+                    <li id="rn-range-picker-no-date" class="range rounded recent" db="" de="">No date specified</li>
+                </ul>
+                <span class="clip"></span>
+            </div>
+        </span>
+
+
+
+
+
+
+    </li>
+
+    <li class="drop chunk no-left-margin">
+
+        <a id="rn-more-filters-trigger" href="#" class="more-filters-trigger" tipsy="true" title="Use additional filter to select particular representative or place.">Add more filters</a>
+        <div id="megadrop_container" class="more-filters-container home" style="display: none;">
+            <span class="menu_pointer"></span>
+            <span id="rn-add-more-filters-close" class="close"></span>
+            <ul class="drop_content">
+                <li class="filter-type-wrapper reps-wrapper" title="Select particular rep or choose to see all reps.">
+                    <h3 class="putnik"><i class="icon icon-representative"></i> Filter by representative</h3>
+                    <select id="MFPutnikID" databoundto="PutnikID" htmlboundto="PutnikNaziv" class="rounded border filter-data "><option value="">-</option><option value="67586">Glen- Sales Representative</option><option class="inactive-rep" title="Rep is deactivated" value="68066">xyz</option></select>
+                </li>
+
+                <li class="filter-type-wrapper client-wrapper" title="Filter for a particular place. Start typing to search and then select searched place from a list.">
+                    <h3 class="kupac"><i class="icon icon-client"></i> Filter by place</h3>
+                    <input type="hidden" databoundto="KupacLokacijaRowID" class="filter-data filter-rowid rounded border" id="MFKupacLokacijaRowID">
+                    <input type="hidden" databoundto="KupacLokacijaID" class="filter-data filter-id rounded border" id="MFKupacLokacijaID">
+                    <input id="ClientSearch" databoundto="KupacLokacijaNaziv" type="text" class="rounded border autocomplete ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                    <span class="clear-client-filter ui-icon ui-icon-closethick" style="display: none;">  </span>
+                    <span class="input-loader" style="display: none;">  </span>
+                </li>
+                <li class="filter-type-wrapper tag-wrapper client" databoundto="ClientTagsID" htmlboundto="ClientTagsNaziv" title="Select particular place tag or choose to see all places.">
+                    <h3 class="clienttag">Filter by places tags</h3>
+                    <ul class="inline-input-tag-container rounded border">
+
+                        <li class="input-holder">
+                            <input id="ClientTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                            <span class="input-loader" style="display: none;"></span>
+                            <div class="auto-list-holder"></div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="filter-type-wrapper territory-wrapper" title="Select particular territory or choose to see all territories.">
+                    <h3 class="poslovnaJedinica"><i class="icon icon-teritorymanagement"></i> Filter by territory</h3>
+                    <select id="MFPoslovnaJedinicaID" databoundto="PoslovnaJedinicaID" htmlboundto="PoslovnaJedinicaNaziv" class="rounded border filter-data "><option value="">-</option></select>
+                </li>
+                <li id="photo-filter" class="filter-type-wrapper tag-wrapper photo" databoundto="PhotoTagsID" htmlboundto="PhotoTagsNaziv" title="Filter gallery by photo tags. Start typing to choose tags from a list." style="display: list-item;">
+                    <h3 class="phototag">Filter by photo tags (multiple selection)</h3>
+                    <ul class="inline-input-tag-container rounded border">
+
+                        <li class="input-holder">
+                            <input id="PhotoTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                            <span class="input-loader" style="display: none;"></span>
+                            <div class="auto-list-holder"></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li id="form-field-filter" class="filter-type-wrapper form-wrapper" title="." style="display: none;">
+                    <h3 class="unidoccell">Filter by form field</h3>
+                    <select class="border rounded" typeof t1` ` contextmenu="UniDocCellID" id="MFUniDocCellID">
+                        <option class="emtpy-val" value="">-- Choose field in a form --</option>
+                    </select>
+                    <div class="cascade">
+                        <input type="text" id="UniDocCellTextValue" class="cascade-filter rounded border" placeholder="Write exact value" style="display: none;">
+                        <select id="UniDocCellDdlValue" class="cascade-filter rounded border" style="display: none;"></select>
+                    </div>
+                    <input type="hidden" class="filter-data rounded border" datatype="ClientExtraInfoValue" id="ClientExtraInfoValue">
+                </li>
+                <!-- TODO END -->
+                <li class="filter-actions-wrapper">
+                    <button id="rn-add-this-filter" class="button add rounded border">Add this filter</button>
+                    <button id="rn-add-more-filters-cancel" class="button cancel rounded border">Cancel</button>
+                </li>
+            </ul>
+            <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-19" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-20" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-21" tabindex="0" style="z-index: 2001; display: none;"></ul>
+        </div>
+
+    </li>
+    <li class="chunk no-left-margin"><button id="rn-home-apply-button" class="filter-trigger semafor-trigger rounded" ng-click="AllFilterDate()" title="Refresh screen according to filter selection.">Apply</button></li>
+    <li class="view chunk">
+        <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
+        <input type="hidden" id="ViewSelection" class="filter-data rounded border" value="stream">
+        <label title="Select how you'd like to have data displayed. Options change according to activity you selected.">View as:</label>
+        <a value="stream" class="option viewas_stream selected" use="all" title="Plain list"><i class="icon icon-plainlist"></i></a>
+        <a id="rn-viewas-tabular" value="table" class="option viewas_table" use="event visit form workday timemileage newclient clientstatuschange pricescan document clientnote" title="Tabular view" style="display: none;"><i class="icon icon-tabular"></i></a>
+        <a id="rn-viewas-gallery" value="gallery" class="option viewas_gallery" use="photo" title="Gallery" style="display: none;"><i class="icon icon-gallery"></i></a>
+
+        <a id="rn-viewas-summary" value="summary" class="option viewas_summary" use="summary" title="Summary report" style=""><i class="icon icon-summary"></i></a>
+
+    </li>
+
+    <li class="additional-filter-list-container chunk">
+        <ul id="AdditionalFilterListResult" class="filters"></ul>
+    </li>
     </ul>
 
 
@@ -401,15 +407,15 @@
                 <span class="map-msg"></span>
                 <button type="button" id="show-reps-loactions" class="click-here hidden">Click here</button>
             </div>
-            
+
             <!--<iframe width="960" height="345" id="google-frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.hr/maps?f=q&amp;source=s_q&amp;hl=hr&amp;geocode=&amp;q=google+maps&amp;aq=&amp;sll=46.064878,16.593951&amp;sspn=1.52261,2.469177&amp;ie=UTF8&amp;hq=google+maps&amp;hnear=&amp;t=m&amp;ll=46.324172,15.842285&amp;spn=1.308699,5.267944&amp;z=8&amp;output=embed"></iframe>-->
             <div id="GoogleMap" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="z-index: 1; position: absolute; top: 0px; left: 0px; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; position: absolute; left: 306px; top: 33px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 562px; top: 33px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 562px; top: -223px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 306px; top: -223px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 306px; top: 289px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 562px; top: 289px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 50px; top: 33px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 818px; top: 33px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 50px; top: 289px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 818px; top: -223px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 818px; top: 289px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 50px; top: -223px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1074px; top: 33px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -206px; top: 33px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -206px; top: 289px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1074px; top: -223px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -206px; top: -223px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1074px; top: 289px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 306px; top: 33px;"><canvas draggable="false" height="256" width="256" style="user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 562px; top: 33px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 562px; top: -223px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 306px; top: -223px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 306px; top: 289px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 562px; top: 289px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 50px; top: 33px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 818px; top: 33px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 50px; top: 289px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 818px; top: -223px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 818px; top: 289px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 50px; top: -223px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1074px; top: 33px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -206px; top: 33px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -206px; top: 289px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1074px; top: -223px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -206px; top: -223px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1074px; top: 289px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="position: absolute; left: 306px; top: 33px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18935!3i18839!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=127421" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 562px; top: 33px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18936!3i18839!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=113141" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 562px; top: -223px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18936!3i18838!4i256!2m3!1e0!2sm!3i393088704!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=112993" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 306px; top: -223px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18935!3i18838!4i256!2m3!1e0!2sm!3i393088764!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=70614" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 306px; top: 289px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18935!3i18840!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=1677" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 562px; top: 289px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18936!3i18840!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=118261" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 50px; top: 33px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18934!3i18839!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=10837" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 818px; top: 33px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18937!3i18839!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=98861" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 50px; top: 289px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18934!3i18840!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=15957" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 818px; top: -223px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18937!3i18838!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=117147" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 818px; top: 289px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18937!3i18840!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=104188" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 50px; top: -223px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18934!3i18838!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=29123" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 1074px; top: 33px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18938!3i18839!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=84581" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -206px; top: 33px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18933!3i18839!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=25117" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -206px; top: 289px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18933!3i18840!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=30237" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 1074px; top: -223px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18938!3i18838!4i256!2m3!1e0!2sm!3i393088788!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=102867" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -206px; top: -223px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18933!3i18838!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=43403" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 1074px; top: 289px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i18938!3i18840!4i256!2m3!1e0!2sm!3i393088896!3m14!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjMzfHMuZTpsfHAudjpvZmY!4e0&amp;token=89908" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"><div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div></div><div style="z-index: 4; position: absolute; top: 0px; left: 0px; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div><iframe frameborder="0" style="z-index: -1; border: 0px none; position: absolute; height: 100%; width: 100%; padding: 0px; margin: 0px; left: 0px; top: 0px;"></iframe></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=-26.032541,28.03615&amp;z=15&amp;t=m&amp;hl=en&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 390px; top: 83px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2017 AfriGIS (Pty) Ltd, Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 166px; bottom: 0px; width: 197px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2017 AfriGIS (Pty) Ltd, Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2017 AfriGIS (Pty) Ltd, Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div style="cursor: pointer; width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 0px; right: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@-26.0325413,28.03615,15z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; user-select: none; position: absolute; top: 49px; left: 0px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 0px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;"><div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div><div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; position: absolute; left: 0px; top: 65px;"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="0" controlheight="0" style="margin: 10px; user-select: none; position: absolute; display: none; bottom: 14px; right: 0px;"><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; cursor: pointer; background-color: rgb(255, 255, 255); display: none;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 21px; font-weight: 500;">Map</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; left: 0px; top: 29px; text-align: left; display: none;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-left: 0px; min-width: 39px;">Satellite</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; right: 0px; top: 29px; text-align: left; display: none;"><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div></div>
             <ul class="scoreboard" style="display: block;">
-                
+
                 <li class="always-visible first" title="Total number of active representatives in a selected period."><span class="label">Active reps</span><span class="value reps">1</span></li>
                 <li class="stream-map-visible second" title="Total number of place visits in a selected period"><span class="label">Visits</span><span class="value visits">2</span></li>
                 <li class="stream-map-visible third" title="Total number of representative activities in a selected period."><span class="label">Activities</span><span class="value total">0</span></li>
-                    <li class="stream-map-visible fourth" title="Summed up taxable subtotal at all orders in a selected period." style="display: list-item;"><span class="value totalmoney money">$0.00</span></li>
+                <li class="stream-map-visible fourth" title="Summed up taxable subtotal at all orders in a selected period." style="display: list-item;"><span class="value totalmoney money">$0.00</span></li>
                 <li>
                     <span class="label">
                         <input type="checkbox" id="show-places" onclick="showHidePlacesOnMap(this)"> Show places
@@ -420,196 +426,198 @@
 
         <!-- FEED -->
 
-                    <div id="feedWrap" class="feed-wrap">
-                      <feed-item ng-repeat="act in Activities" content="item"  ><div>
+        <div id="feedWrap" class="feed-wrap">
+            <feed-item ng-repeat="act in Activities | filter : filterData | dateRange : filterDataDate.from_date : filterDataDate.to_date "  content="item">
+                <div>
 
-    <!-- --------------------------------------------visit section--------------------------------------------------------- -->
-    <div ng-if="act.ActivityId == 1">
+                    <!-- --------------------------------------------visit section--------------------------------------------------------- -->
+                    <div ng-if="act.ActivityId == 1">
 
-        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
-            <div class="item-header visit">
-                <span class="time-line ">
-                    {{act.CreatedDate | date :"EEEE,M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
-                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
-                        - 12:49 PM
-                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
-                </span>
-                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
-                <!-- ngIf: content.EmployeeAvatar == '' -->
-                <span >
-                    <a href="" >
-                        {{act.AcivityAdded_UserDetails.FirstName}}
-                    </a><br>
-                </span>
-                <span>
-                    <a href="">
-                        {{act.Place_Details.Name}}
-                    </a><br>
-                </span>
-                <span>
-                    <a href="">
-                        {{act.Place_Details.Address}}
-                    </a><br>
-                </span>
-            </div>
-          <div class="no-activities ng-binding ng-scope">
-              {{act.Activity_Type.Description}}
-            </div>
-        </div>
-    </div>
- <div ng-if="act.ActivityId == 2">
-
-        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
-            <div class="item-header visit">
-                <span class="time-line ">
-                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
-                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
-                        - 12:49 PM
-                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
-                </span>
-                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
-                <!-- ngIf: content.EmployeeAvatar == '' -->
-                <span >
-                    <a href="" >
-                        {{act.AcivityAdded_UserDetails.FirstName}}
-                    </a><br>
-                </span>
-                <span>
-                    <a href="">
-                        {{act.Place_Details.Name}}
-                    </a><br>
-                </span>
-                <span>
-                    <a href="">
-                        {{act.Place_Details.Address}}
-                    </a><br>
-                </span>
-            </div>
-          <div class="no-activities ">
-              <i class="icon icon-orders"></i>
-              {{act.OrderCost}}
-            </div>
-        </div>
-    </div>
-                          
-                          <div ng-if="act.ActivityId == 3">
-
-    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
-        <div class="item-header visit">
-            <span class="time-line ">
-                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
-                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
-                    - 12:49 PM
-                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
-            </span>
-            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
-            <!-- ngIf: content.EmployeeAvatar == '' -->
-            <span>
-                <a href="">
-                    {{act.AcivityAdded_UserDetails.FirstName}}
-                </a><br>
-            </span>
-            <span>
-                <a href="">
-                    {{act.Place_Details.Name}}
-                </a><br>
-            </span>
-            <span>
-                <a href="">
-                    {{act.Place_Details.Address}}
-                </a><br>
-            </span>
-        </div>
-        <div class="no-activities ">
-            <span ng-if="act.PhotoUrl"><img ng-src="{{Activities.PhotoStorage +act.PhotoUrl}}" class="wid-100" style="height: 125px;"></span>
-
-        </div>
-    </div>
-</div>
-                          <div ng-if="act.ActivityId == 4">
-
-    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
-        <div class="item-header visit">
-            <span class="time-line ">
-                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
-                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
-                    - 12:49 PM
-                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
-            </span>
-            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
-            <!-- ngIf: content.EmployeeAvatar == '' -->
-            <span>
-                <a href="">
-                    {{act.AcivityAdded_UserDetails.FirstName}}
-                </a><br>
-            </span>
-            <span>
-                <a href="">
-                    {{act.Place_Details.Name}}
-                </a><br>
-            </span>
-            <span>
-                <a href="">
-                    {{act.Place_Details.Address}}
-                </a><br>
-            </span>
-        </div>
-        <div class="no-activities ">
-            <i class="icon icon-forms" style="color:black"></i>
-            {{act.Note}}
-        </div>
-    </div>
-</div>
-                          <div ng-if="act.ActivityId == 5">
-
-    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
-        <div class="item-header visit">
-            <span class="time-line ">
-                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
-                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
-                    - 12:49 PM
-                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
-            </span>
-            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
-            <!-- ngIf: content.EmployeeAvatar == '' -->
-            <span>
-                <a href="">
-                    {{act.AcivityAdded_UserDetails.FirstName}}
-                </a><br>
-            </span>
-            <span>
-                <a href="">
-                    {{act.Place_Details.Name}}
-                </a><br>
-            </span>
-            <span>
-                <a href="">
-                    {{act.Place_Details.Address}}
-                </a><br>
-            </span>
-        </div>
-        <div class="no-activities ">
-            <i class="icon icon-forms " style="color:blue"></i>
-            {{act.FormName}}
-        </div>
-    </div>
-</div>
-
-   
-  
-   
-
-    
-
-
-
-
-            </div>
+                        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+                            <div class="item-header visit">
+                                <span class="time-line ">
+                                    {{act.CreatedDate | date :"EEEE,M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
+                                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                                        - 12:49 PM
+                                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+                                </span>
+                                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+                                <!-- ngIf: content.EmployeeAvatar == '' -->
+                                <span>
+                                    <a href="">
+                                        {{act.AcivityAdded_UserDetails.FirstName}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Name}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Address}}
+                                    </a><br>
+                                </span>
+                            </div>
+                            <div class="no-activities ng-binding ng-scope">
+                                {{act.Activity_Type.Description}}
+                            </div>
                         </div>
+                    </div>
+                    <div ng-if="act.ActivityId == 2">
 
-            <footer></footer>
+                        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+                            <div class="item-header visit">
+                                <span class="time-line ">
+                                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
+                                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                                        - 12:49 PM
+                                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+                                </span>
+                                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+                                <!-- ngIf: content.EmployeeAvatar == '' -->
+                                <span>
+                                    <a href="">
+                                        {{act.AcivityAdded_UserDetails.FirstName}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Name}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Address}}
+                                    </a><br>
+                                </span>
+                            </div>
+                            <div class="no-activities ">
+                                <i class="icon icon-orders"></i>
+                                {{act.OrderCost}}
+                            </div>
+                        </div>
+                    </div>
 
-        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div></div>
+                    <div ng-if="act.ActivityId == 3">
+
+                        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+                            <div class="item-header visit">
+                                <span class="time-line ">
+                                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
+                                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                                        - 12:49 PM
+                                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+                                </span>
+                                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+                                <!-- ngIf: content.EmployeeAvatar == '' -->
+                                <span>
+                                    <a href="">
+                                        {{act.AcivityAdded_UserDetails.FirstName}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Name}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Address}}
+                                    </a><br>
+                                </span>
+                            </div>
+                            <div class="no-activities ">
+                                <span ng-if="act.PhotoUrl"><img ng-src="{{Activities.PhotoStorage +act.PhotoUrl}}" class="wid-100" style="height: 125px;"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="act.ActivityId == 4">
+
+                        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+                            <div class="item-header visit">
+                                <span class="time-line ">
+                                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
+                                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                                        - 12:49 PM
+                                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+                                </span>
+                                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+                                <!-- ngIf: content.EmployeeAvatar == '' -->
+                                <span>
+                                    <a href="">
+                                        {{act.AcivityAdded_UserDetails.FirstName}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Name}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Address}}
+                                    </a><br>
+                                </span>
+                            </div>
+                            <div class="no-activities ">
+                                <i class="icon icon-forms" style="color:black"></i>
+                                {{act.Note}}
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="act.ActivityId == 5">
+
+                        <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+                            <div class="item-header visit">
+                                <span class="time-line ">
+                                    {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
+                                    <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                                        - 12:49 PM
+                                    </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+                                </span>
+                                <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+                                <!-- ngIf: content.EmployeeAvatar == '' -->
+                                <span>
+                                    <a href="">
+                                        {{act.AcivityAdded_UserDetails.FirstName}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Name}}
+                                    </a><br>
+                                </span>
+                                <span>
+                                    <a href="">
+                                        {{act.Place_Details.Address}}
+                                    </a><br>
+                                </span>
+                            </div>
+                            <div class="no-activities ">
+                                <i class="icon icon-forms " style="color:blue"></i>
+                                {{act.FormName}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+        </div>
+
+        <footer></footer>
+
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+    </div>
 
 
 
