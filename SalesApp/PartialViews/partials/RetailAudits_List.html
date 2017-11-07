@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+
+<meta charset="utf-8" />
+<title></title>
+<link href="../../Content/forms.min.css" rel="stylesheet" />
+<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
+
+
+<div class="wrapper">
+    <div class="content">
+        <span id="menu_pointer" class="hidden menu_pointer"></span>
+        <div id="main">
+            <!-- ngView:  --><div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
+                <div ng-bind-html="content" class="ng-binding ng-scope">
+
+
+
+
+
+                    <h1 class="page-head pricescans">
+                        <i class="icon icon-pricescan"></i>
+                        <span class="header-main">Retail audits </span><span class="header-sub">
+                            Analyze product pricing, distribution and positioning
+                        </span>
+                    </h1>
+                    <div class="actions">
+                        <a id="rn-new-retail-audit" href="/pricescan/view" class="button_create rounded" title="Create a new retail audit template.">
+                            <i class="icon icon-plus"></i> New retail audit
+                        </a>
+                    </div>
+
+                    <div id="ImportNotification" style="visibility:hidden;">
+
+
+
+
+
+                    </div>
+
+                    <div class="filter" id="filter">
+                        <div class="actions_header filter_padding">
+                            <input type="hidden" id="sortBy" class="filter-data rounded border">
+                            <input type="hidden" id="ascending" class="filter-data rounded border">
+                            <div class="filter-list">
+                                <div class="place_left">
+                                    <ul>
+                                        <li class="relatived filter-item">
+                                            <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
+                                            <input type="text" id="search" class="filter-data grid_filter border rounded search list" datatype="search" placeholder="Search">
+                                            <span class="input-loader" style="display: none;"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pricescan-list-container" class="display-sheet" style="display: block;">
+                        <div class="table_content">
+                            <table class="datatable grid" cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td sorttype="lastEvent">
+                                            Name
+                                        </td>
+                                        <td sorttype="active" class="active">
+                                            Active
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody><tr elementid="11772" class="list-item-container">         <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/11772"></a></td>          <td class="name"><a class="table-link" href="/pricescan/view/11772">Initial Product Audit</a>         </td>          <td class="active"><span class="active-icon true"></span></td>     </tr><tr elementid="13079" class="list-item-container">         <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/13079"></a></td>          <td class="name"><a class="table-link" href="/pricescan/view/13079">kkkk</a>         </td>          <td class="active"><span class="active-icon true"></span></td>     </tr><tr elementid="12013" class="list-item-container">         <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/12013"></a></td>          <td class="name"><a class="table-link" href="/pricescan/view/12013">NEW AUDIT</a>         </td>          <td class="active"><span class="active-icon true"></span></td>     </tr><tr elementid="11771" class="list-item-container">         <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/11771"></a></td>          <td class="name"><a class="table-link" href="/pricescan/view/11771">Retail audit sample</a>         </td>          <td class="active"><span class="active-icon true"></span></td>     </tr><tr elementid="11773" class="list-item-container">         <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/11773"></a></td>          <td class="name"><a class="table-link" href="/pricescan/view/11773">Store Audit Consumer goods only</a>         </td>          <td class="active"><span class="active-icon true"></span></td>     </tr><tr elementid="12035" class="list-item-container">         <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/12035"></a></td>          <td class="name"><a class="table-link" href="/pricescan/view/12035">Test Audit</a>         </td>          <td class="active"><span class="active-icon true"></span></td>     </tr></tbody>
+                            </table>
+                        </div>
+                        <div class="pager-holder"></div>
+                    </div>
+                    <div id="nodata-container" class="display-sheet" style="display: none;">
+                        <div class="nodatafound entity">
+                            <span class="coach-sprite no-data"></span>
+                            No retail audits found.
+                        </div>
+                    </div>
+                    <script type="text/x-jquery-tmpl" id="tmpl-pricescan-row">
+                        <tr elementID=${IDAsortimanObrazacZag} class="list-item-container">
+                            <td class="action-cell"><a class="action-detail action icon icon-details" href="/pricescan/view/${IDAsortimanObrazacZag}"></a></span></td>
+
+                            <td class="name">
+                                <a class="table-link" href="/pricescan/view/${IDAsortimanObrazacZag}">${Naziv}</a>
+                            </td>
+
+                            <td class="active"><span class="active-icon ${Aktivan}"></span></td>
+                        </tr>
+                    </script>
+                </div>
+            </div>
+            <!--Shared elements stuff-->
+            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' --><div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
+
+                <div id="success-alert" class="alert alert-success hidden ng-scope">
+                    <a href="#" class="close" aria-label="close">×</a>
+                    <span id="alert-message"></span>
+                </div>
+
+
+
+
+
+
+                <div id="message-box" class="hidden ng-scope"></div>
+
+
+                <div id="requestDemoCloner" class="hidden ng-binding ng-scope">
+                    Message:
+                    <br>
+                    <textarea cols="30" rows="5" class="ng-binding rounded border">Hi! I would like to have Repsly Coaching Session.</textarea>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script type="text/x-jquery-tmpl" id="tmpl-coach-item" class="ng-scope">
+                    {{if IsLive}}
+                    <tr>
+                        <td class="datetime">${LocalDate}<span class="subtitle">${LocalTime}</span></td>
+                        {{else}}
+                    <tr class="recorded">
+                        <td class="datetime">{{dictionary.CoachRecordedSession}}</td>
+                        {{/if}}
+
+                        <td>${Title}<span class="subtitle">({{dictionary.CoachCoachName}}: ${Author})</span></td>
+                        <td>${DurationMin} min</td>
+                        {{if IsLive}}
+                        <td class="action"><a href="${Url}" target="_blank" class="webinar-link">{{dictionary.CoachSignUp}}</a></td>
+                        {{else}}
+                        <td class="action"><a href="${Url}" target="_blank" class="youtube-link">{{dictionary.CoachViewNow}}</a></td>
+                        {{/if}}
+                    </tr>
+                </script>
+                <script type="text/x-jquery-tmpl" id="tmpl-additional-filter-item" class="ng-scope">
+                    <li class="${cssClass}" entity="${entity}" type="${type}" valueid="${id}" labelvalue="${label}">
+                        ${label}
+                        {{if extra!= null && extra!=""}}
+                        <div class="subtext">${extra}</div>
+                        {{/if}}
+                    </li>
+                </script>
+                <script type="text/x-jquery-tmpl" id="tmpl-additional-filter-result" class="ng-scope">
+                    <li class="${cssClass} add-filter-item" entity="${entity}" type="${type}" valueid="${id}" label="${label}" id="${htmlid}"><span class="label">${label}</span><span class="remove"><span></li>
+                </script>
+                <script type="text/x-jquery-tmpl" id="tmpl-DeleteSampleData" class="ng-scope">
+                    <div class="delete-sample-data">
+                        <h2 class="warning">{{dictionary.DeleteSampleDataTitle}}</h2>
+                        <p class="explanation">{{dictionary.DeleteSampleDataExplanation}}</p>
+                        <ul>
+                            <li class="bullet active">{{dictionary.Clients}}</li>
+                            <li class="bullet active">{{dictionary.SummaryActivities}} & {{dictionary.Documents | lowercase}}</li>
+                            <li class="bullet active">{{dictionary.Announcements}}</li>
+                            <li ng-if="usesForms" class="bullet active">{{dictionary.Forms}}</li>
+                            <li ng-if="isProductsAvailable" class="bullet active">{{dictionary.Products}}</li>
+                        </ul>
+
+                        <p class="trialRed">
+                            {{dictionary.TrialDel}}
+                            <br /><br />{{dictionary.TrialDelInstructions}} :
+                        </p>
+                        <input id="delTrial" type="text" />
+                    </div>
+                </script>
+
+                <script type="text/x-jquery-tmpl" id="tmpl-tag" class="ng-scope">
+                    <li class="tag-list-item" id="" valueid="${value}"><input type="checkbox" id="check_${value}" valueid="${value}" class="tag-list-result" /><label for="check_${value}">${label}</label></li>
+                </script>
+                <!-- jquery template for paging -->
+                <script type="text/x-jquery-tmpl" id="tmpl-paging" class="ng-scope">
+                    <div class="table_footer">
+                        <div class="grid_info">${ShowingInfo}</div>
+                        <div class="paging">
+                            <span id="rn-paging-prev" href="#" class="prev pager" page=${Previous}>{{dictionary.Previous}}</span>
+                            <span id="rn-paging-next" href="#" class="next pager" page=${Next}>{{dictionary.Next}}</span>
+                        </div>
+                    </div>
+                </script>
+                <!-- jquery template for quick search -->
+                <script type="text/x-jquery-tmpl" id="tmpl-quicksearch-row" class="ng-scope">
+                    <li class=""><a href="${link}">${label}</a></li>
+                </script>
+            </div>
+        </div>
+        <footer></footer>
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+    </div>
+</div>
