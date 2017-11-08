@@ -148,7 +148,13 @@
                         <div class="right_bar flat">
                             <div class="clearfix">
                                 <div class="actions clearfix">
-                                    <input type="button" id="btnSave" value="Save" class="button_save rounded" ng-click="addRepresentativeController.submitNewRepresentative()">
+                                    <input type="button" ng-show="!isUpdate" id="btnSave" value="Save" class="button_save rounded" ng-click="addRepresentativeController.submitNewRepresentative()">
+                                    <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="actions clearfix">
+                                    <input type="button" ng-show="isUpdate" id="btnSave" value="Update" class="button_save rounded" ng-click="addRepresentativeController.updateRepresentativeDetails()">
                                     <span id="Reload" class="lnkCancel" style="display: none;">Discard</span>
                                 </div>
                             </div>

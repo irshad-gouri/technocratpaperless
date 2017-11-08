@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    <link href="~/Scripts/TechnocratWeb/lib/angular-date-picker/angular-date-picker.css" rel="stylesheet" />
+    
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body ng-app="technocrat">
@@ -44,6 +46,8 @@
     <script src="~/Scripts/TechnocratWeb/js/representativeDashboard.js"></script>
     <script src="~/Scripts/TechnocratWeb/js/addPlace.js"></script>
     <script src="~/Scripts/TechnocratWeb/js/activitiesDashboard.js"></script>
+
+    <script src="~/Scripts/TechnocratWeb/lib/angular-date-picker/angular-date-picker.js"></script>
         @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 </body>

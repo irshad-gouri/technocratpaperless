@@ -30,5 +30,43 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
+
+        public bool UpdateRepresentative(User represen)
+        {
+            try
+            {
+                     var alldata = represen;
+                     var repDetails = DbContext.Users.Where(i => i.Id == represen.Id).FirstOrDefault();
+              
+                repDetails.FirstName = alldata.FirstName;
+                repDetails.LastName = alldata.LastName;
+                repDetails.Language = alldata.Language;
+                repDetails.IsActive = alldata.IsActive;
+                repDetails.UserName = alldata.UserName;
+                repDetails.CompanyDetail = alldata.CompanyDetail;
+                repDetails.CompanyId = alldata.CompanyId;
+                repDetails.Country = alldata.Country;
+                repDetails.Address = alldata.Address;
+                repDetails.City = alldata.City;
+                repDetails.Email = alldata.Email;
+                repDetails.CreatedById = alldata.CreatedById;
+                repDetails.Phone = alldata.Phone;
+                repDetails.Password = alldata.Password;
+                repDetails.PostalCode = alldata.PostalCode;
+                repDetails.RoleId = alldata.RoleId;
+                repDetails.Teritory = alldata.Teritory;
+                repDetails.Note = alldata.Note;
+
+
+                DbContext.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
     }
 }

@@ -33229,3 +33229,29 @@ body .carousel .carousel-inner .fa-chevron-right:before {
         -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0)
     }
 }
+.showhide {
+  height: auto;
+    position: absolute;
+    z-index: 99;
+    background: #fcfcfc;
+    top: 37px;
+    border-radius: 5px;
+    box-shadow: 2px 6px 5px 2px grey;
+}
+
+.icon-arrow {
+    /* background: url(../img/drop_arrow.png) no-repeat center; */
+    background-color: #ebebeb;
+    border-radius: 40px;
+    position: relative;
+    left: 10px;
+    top: 8px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin-left: 46px;
+}
+.pad-mar{
+    margin-left: 58px;
+    font-size: 16px;
+}   

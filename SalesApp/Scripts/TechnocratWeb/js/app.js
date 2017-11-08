@@ -7,7 +7,7 @@ var PhotoStorage = "http://localhost/SalesApp/";
 angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.controllers',
     'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
     'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
-    'representativeDashboard.controllers', 'activitiesDashboard.controllers', 'addPlaceCtrl.controllers' ])
+    'representativeDashboard.controllers', 'activitiesDashboard.controllers', 'addPlaceCtrl.controllers','mp.datePicker' ])
 
 .run(function($rootScope, $state, AuthService){
     if(localStorage.getItem('isLoggedIn') === 'success'){
