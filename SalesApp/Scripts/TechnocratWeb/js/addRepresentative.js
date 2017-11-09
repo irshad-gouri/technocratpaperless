@@ -69,7 +69,10 @@
             });
         }
 
-        $scope.userdetails = JSON.parse($stateParams.data);
+        if ($stateParams.data) {
+            $scope.userdetails = JSON.parse($stateParams.data);
+        }
+     
         console.log($scope.userdetails);
         if ($scope.userdetails) {
 
