@@ -72,10 +72,8 @@
 
 
 
-<div class="content"   >
+<div class="content">
     <span id="menu_pointer" class="hidden menu_pointer"></span>
-
-
     <ul class="filter home">
         <li class="hidden">
             <input id="PutnikID" type="hidden" class="filter-data rounded border" value="">
@@ -102,296 +100,327 @@
         </li>
 
 
-        <li class="chunk" ng-click="filterclick()">
+        <li class="chunk">
             <!--<button type="button"  ></button>aaaaa-->
-            <span  class="sexy-drop-down-container with-icons sprites no-auto-submit rounded border">
+            <span class="sexy-drop-down-container with-icons sprites no-auto-submit rounded border ">
+
+                <i class="icon icon-arrow" ng-click="allActivitiesFilterShow =!allActivitiesFilterShow; showForm=false ; auditshow =false ;showCalender1=false; showCalender=false;"></i>
+                <span class="current  " title="Select particular activity or document type you want to analyze." value=""><span class="icon "></span> {{showSelectedText}}</span>
 
 
-                <span    class="current  " title="Select particular activity or document type you want to analyze." value=""><span class="icon "></span> {{showSelectedText}}</span>
+                <ul class="showhide margin-bottom-on-li list-set " ng-show="allActivitiesFilterShow">
 
-
-                <ul class="showhide" ng-show="allActivitiesFilterShow" >
-
-                    <li class="ddl-item ui-corner-all " activity="aaa" tabindex="0">
-                        <span id="rn" value="" class=" " title="" ng-click="showSelectedText='All field activities'"><span class="icon icon-"></span> All field activities</span>
+                    <li class="ddl-item ui-corner-all li-set  " ng-click="showSelectedText='All field activities'; allActivitiesFilterShow = false;" tabindex="0">
+                        <span id="rn" value="" class=" " title=""><span class="icon icon-"></span> All field activities</span>
 
                     </li>
 
 
 
 
-                    <li class="ddl-item ui-corner-all " name=" Forms (all) " ng-click="FormClickFilter()" tabindex="0">
-                        <span id="rn" value="" class=" " title="" ng-click="showSelectedText='Forms (all)'">
+                    <li class="ddl-item ui-corner-all li-set   " ng-click="showSelectedText='Forms (all)'">
+                        <span id="rn" value="" class=" " title="" ng-click="filterData.ActivityId = 5 ">
                             <span class="icon icon-form"></span> Forms (all)
-                            <span class="pad-mar" ng-click="AllFormClickFilter()">>></span>
-                        </span>
-</li>
 
-        <li style="
-    position: absolute;
+                        </span>
+
+                        <span class="fa fa-angle-right" ng-click="showForm=!showForm; allActivitiesFilterShow = true ; auditshow =false" style="background: #b5b5b5;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    width: 20px !important;
+    float: right;
+    height: 22px;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    top: 4px;"></span>
+
+
+
+
+                    </li>
+
+                    <li style="    position: absolute;
     height: auto;
     width: 100%;
-    left: 164px;
+    left: 168px;
     top: 40px;
     z-index: 100006;
     color: black;
-    background:   #fcfcfc;
-    border-radius: 14px;" ng-show="showForm" >
-            <ul ng-repeat="act in Activities " >
-                <li  ng-if="act.ActivityId == 5" >
-                    <span>
-                        <span class="icon icon-forms"></span>
-                        <span  ng-click="formId(act.FormId)">{{act.FormName}}</span>
-                    </span>
-                </li>
-                
-            </ul>
-        </li>
+    background: #fcfcfc;
+    border-radius: 6px;
+    padding: 10px;" ng-show="showForm">
+                        <ul ng-repeat="act in Activities ">
+                            <li class="li-set" ng-if="act.ActivityId == 5">
+                                <span>
+                                    <span class="icon icon-forms"></span>
+                                    <span ng-click="formIdFilter(act.FormId)">{{act.FormName}}</span>
+                                </span>
+                            </li>
 
-
-
-      
-
-
-        <li  class="ddl-item ui-corner-all timemileage" name="Photos Place Activities" tabindex="0">
-            <span id="rn-ad-timemileage" ng-click="showSelectedText=' Photos Place Activities'" class="timemileage " title=""><span class="icon icon-photo"></span> Photos Place Activities </span>
-
-        </li>
-
-
-        <li class="ddl-item ui-corner-all timemileage" name=" Time & Mileage tracking"tabindex="0">
-            <span id="rn-ad-timemileage"   ng-click="showSelectedText=' Time & Mileage tracking'" title=""><span class="icon icon-timemileage"></span> Time &amp; Mileage tracking</span>
-
-        </li>
+                        </ul>
+                    </li>
 
 
 
 
-        <li class="ddl-item ui-corner-all visit" activity="visit" tabindex="0">
-            <span id="rn-ad-visit"  ng-click="showSelectedText='  Place Visits'" title="Chronological list of reps visits to places."><span class="icon icon-visit"></span> Place Visits</span>
-
-        </li>
 
 
+                    <li class="ddl-item ui-corner-all timemileage li-set" ng-click="showSelectedText=' Photos Place Activities';allActivitiesFilterShow = false" tabindex="0">
+                        <span id="rn-ad-timemileage" class="timemileage " title=""><span class="icon icon-photo"></span> Photos Place Activities </span>
+
+                    </li>
 
 
-        <li class="ddl-item ui-corner-all message" tabindex="0">
-            <span id="rn-ad-message"  ng-click="showSelectedText=' Messages'" title="Conversations within your team."><span class="icon icon-message"></span>&nbsp; &nbsp; Messages</span>
+                    <li class="ddl-item ui-corner-all timemileage li-set" ng-click="showSelectedText=' Time & Mileage tracking'; allActivitiesFilterShow = false" tabindex="0">
+                        <span id="rn-ad-timemileage" title=""><span class="icon icon-timemileage"></span> Time &amp; Mileage tracking</span>
 
-        </li>
-
-
-
-
-        <li ng-click="noteClick()">
-            <span id="rn-ad-message" ng-click="showSelectedText=' Place notes'" title="Conversations within your team."> <span class="icon icon-clientnote"></span> Place notes
-
-</li>
+                    </li>
 
 
 
 
-        <li class="ddl-item ui-corner-all newclient" activity="newclient" tabindex="0">
-            <span id="rn-ad-newclient" ng-click="showSelectedText=' New places'" title="New places acquired by your sales reps in a selected period."><span class="icon icon-newclient"></span> New places</span>
+                    <li class="ddl-item ui-corner-all visit li-set" ng-click="showSelectedText='Place Visits';allActivitiesFilterShow = false " tabindex="0">
+                        <span id="rn-ad-visit" title="Chronological list of reps visits to places."><span class="icon icon-visit"></span> Place Visits &nbsp; &nbsp;</span>
 
-        </li>
-
-
-
-
-        <li class="ddl-item ui-corner-all clientstatuschange" activity="clientstatuschange" tabindex="0">
-            <span id="rn-ad-clientstatuschange" ng-click="showSelectedText='  Status changes'" title="Status of a place changed, e.g. when lead converts to an active account."><span class="icon icon-clientstatuschange"></span> Status changes</span>
-            <a id="rn-ad-conversions-customizeButton" href="/Client/StatusEdit" class="home-activity-dropdown-customize">Customize</a>
-
-        </li>
+                    </li>
 
 
 
 
-        <li class="ddl-item ui-corner-all document" activity="document" tabindex="0">
-            <span id="rn-ad-document" ng-click="showSelectedText=' Orders'" title="Your places' purchases in a selected period."><span class="icon icon-document"></span> Orders</span>
+                    <li class="ddl-item ui-corner-all message li-set" ng-click="showSelectedText=' Messages'; allActivitiesFilterShow = false" tabindex="0">
+                        <span id="rn-ad-message" title="Conversations within your team."><span class="icon icon-message"></span> Messages &nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-        </li>
-
-
+                    </li>
 
 
-        <li class="ddl-item ui-corner-all pricescan" activity="pricescan" tabindex="0">
-            <span id="rn-ad-pricescan"  ng-click="showSelectedText=' Retail audits (all)'" title="Product retail auditing, availability and layout analysis."><span class="icon icon-pricescan"></span> Retail audits (all)</span>
-            <!--<span id="rn-ad-ra-arrow" class=""></span>--><span style="margin-left: 24px; font-size: 17px;" ng-click="AuditClick()">>></span>
 
-        </li>
 
-        <li style="
-    position: absolute;
+                    <li class="li-set" ng-click="noteClick()">
+                        <span id="rn-ad-message" ng-click="showSelectedText=' Place notes';allActivitiesFilterShow = false" title="Conversations within your team.">
+                            <span class="icon icon-clientnote"></span> Place notes
+                        </span>
+                    </li>
+
+
+
+
+                    <li class="ddl-item ui-corner-all newclient li-set" ng-click="showSelectedText=' New places';allActivitiesFilterShow = false" tabindex="0">
+                        <span id="rn-ad-newclient" title="New places acquired by your sales reps in a selected period."><span class="icon icon-newclient"></span> New places</span>
+
+                    </li>
+
+
+
+
+                    <li class="ddl-item ui-corner-all clientstatuschange li-set" ng-click="showSelectedText='Status changes';allActivitiesFilterShow = false" tabindex="0">
+                        <span id="rn-ad-clientstatuschange" title="Status of a place changed, e.g. when lead converts to an active account."><span class="icon icon-clientstatuschange"></span> Status changes</span>
+                        <a id="rn-ad-conversions-customizeButton" href="/Client/StatusEdit" class="home-activity-dropdown-customize">Customize</a>
+
+                    </li>
+
+
+
+
+                    <li class="ddl-item ui-corner-all document li-set" ng-click="showSelectedText=' Orders';allActivitiesFilterShow = false" tabindex="0">
+                        <span id="rn-ad-document" title="Your places' purchases in a selected period."><span class="icon icon-document"></span> Orders</span>
+
+                    </li>
+
+
+
+
+                    <li class="ddl-item ui-corner-all pricescan" ng-click="showSelectedText=' Retail audits (all)'" tabindex="0" style="
+    margin: 0px !important; margin-top:4px; width: 100%">
+                        <span id="rn-ad-pricescan" title="Product retail auditing, availability and layout analysis.">
+                            <span class="icon icon-pricescan"></span> Retail audits (all)
+
+                            <span class="fa fa-angle-right" ng-click="auditshow = !auditshow; allActivitiesFilterShow = true ; showForm =false" style="background: #b5b5b5;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    width: 20px !important;
+    float: right;
+    height: 22px;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    top: 4px;"></span>
+                        </span>
+                    </li>
+
+                    <li style="    position: absolute;
     height: auto;
     width: 100%;
-    left: 164px;
-    top: 420px;
+    left: 168px;
+    top: 322px;
     z-index: 100006;
     color: black;
-    background:  #fcfcfc;
-    border-radius: 14px;"  ng-show="auditshow">
-            <ul >
+    background: #fcfcfc;
+    border-radius: 6px;
+    padding: 10px;" ng-show="auditshow">
+                        <ul ng-click="allActivitiesFilterShow = false" class="li-set">
 
-                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939" tabindex="0" title="Initial Product Audit">
-                    <span class="pricescan" value="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939"><span class="icon icon-pricescan"></span> Initial Product Audit</span>
-                </li>
-
-
-                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad" tabindex="0" title="NEW AUDIT">
-                    <span class="pricescan" value="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad"><span class="icon icon-pricescan"></span> NEW AUDIT</span>
-                </li>
+                            <li class="ddl-item ui-corner-all pricescan li-set" activity="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939" tabindex="0" title="Initial Product Audit">
+                                <span class="pricescan" value="pricescan" formid="11772" rowid="8bc111af-0889-4271-9ab4-ea172f6e2939"><span class="icon icon-pricescan"></span> Initial Product Audit</span>
+                            </li>
 
 
-                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b" tabindex="0" title="Retail audit sample">
-                    <span class="pricescan" value="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b"><span class="icon icon-pricescan"></span> Retail audit sample</span>
-                </li>
+                            <li class="ddl-item ui-corner-all pricescan li-set" activity="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad" tabindex="0" title="NEW AUDIT">
+                                <span class="pricescan" value="pricescan" formid="12013" rowid="0ce95634-aa4e-46b1-a5fd-89e4c9d333ad"><span class="icon icon-pricescan"></span> NEW AUDIT</span>
+                            </li>
 
 
-                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625" tabindex="0" title="Store Audit Consumer goods only">
-                    <span class="pricescan" value="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625"><span class="icon icon-pricescan"></span> Store Audit Consumer goods only</span>
-                </li>
+                            <li class="ddl-item ui-corner-all pricescan li-set" activity="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b" tabindex="0" title="Retail audit sample">
+                                <span class="pricescan" value="pricescan" formid="11771" rowid="7be8d02f-8ce5-43d1-888c-1670f4db909b"><span class="icon icon-pricescan"></span> Retail audit sample</span>
+                            </li>
 
 
-                <li class="ddl-item ui-corner-all pricescan" activity="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184" tabindex="0" title="Test Audit">
-                    <span class="pricescan" value="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184"><span class="icon icon-pricescan"></span> Test Audit</span>
-                </li>
+                            <li class="ddl-item ui-corner-all pricescan li-set" activity="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625" tabindex="0" title="Store Audit Consumer goods only">
+                                <span class="pricescan" value="pricescan" formid="11773" rowid="d24be2c4-15c7-4819-8c58-968649b68625"><span class="icon icon-pricescan"></span> Store Audit Consumer goods only</span>
+                            </li>
 
-            </ul>
+
+                            <li class="ddl-item ui-corner-all pricescan li-set" activity="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184" tabindex="0" title="Test Audit">
+                                <span class="pricescan" value="pricescan" formid="12035" rowid="ce784adb-2c73-4116-9c0f-82b3ec946184"><span class="icon icon-pricescan"></span> Test Audit</span>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+
+
+            </span>
+        </li>
+        <li class="range-wrapper chunk" title="Use this period picker to select period you're observing.">
+
+            <input ng-click="showCalender=!showCalender;showCalender1 = false ; allActivitiesFilterShow=false" type="text" class="  rounded border " style="width: 100px;" ng-model="filterDataDate.from_date"> -
+            <input ng-click="showCalender1=!showCalender1;showCalender = false;allActivitiesFilterShow=false" type="text" style="width: 100px;" class="  rounded border " ng-model="filterDataDate.to_date ">
+            <div ng-show="showCalender" style="position:absolute; right: 200px;  top:38px;  z-index: 120;">
+                <date-picker on-date-selected="showCalender = false" ng-model="filterDataDate.from_date ">
+                </date-picker>
+            </div>
+            <div ng-show="showCalender1" style="position:absolute; left: 200px;  top:38px;  z-index: 120;">
+                <date-picker on-date-selected="showCalender1 = false" ng-model="filterDataDate.to_date">
+                </date-picker>
+            </div>
+            <span class="range-picker ui-corner-all">
+                <span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
+                <div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
+                    <ul class="">
+                        <li id="rn-range-picker-today" class="range rounded" db="9/23/2017" de="9/23/2017">Today</li>
+                        <li id="rn-range-picker-yesterday" class="range rounded" db="9/22/2017" de="9/22/2017">Yesterday</li>
+                        <li class="delimiter"></li>
+                        <li id="rn-range-picker-this-week" class="range rounded" db="9/18/2017" de="9/23/2017">This week</li>
+                        <li id="rn-range-picker-last-week" class="range rounded" db="9/11/2017" de="9/17/2017">Last week</li>
+                        <li class="delimiter"></li>
+                        <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/23/2017">This month</li>
+                        <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
+                        <li class="delimiter"></li>
+                        <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/23/2017">This year</li>
+                        <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
+                        <li class="delimiter"></li>
+                        <li id="rn-range-picker-no-date" class="range rounded recent" db="" de="">No date specified</li>
+                    </ul>
+                    <span class="clip"></span>
+                </div>
+            </span>
+
+
+
+
+
+
         </li>
 
+        <li class="drop chunk no-left-margin">
 
+            <a id="rn-more-filters-trigger" href="#" class="more-filters-trigger" tipsy="true" title="Use additional filter to select particular representative or place.">Add more filters</a>
+            <div id="megadrop_container" class="more-filters-container home" style="display: none;">
+                <span class="menu_pointer"></span>
+                <span id="rn-add-more-filters-close" class="close"></span>
+                <ul class="drop_content">
+                    <li class="filter-type-wrapper reps-wrapper" title="Select particular rep or choose to see all reps.">
+                        <h3 class="putnik"><i class="icon icon-representative"></i> Filter by representative</h3>
+                        <select id="MFPutnikID" databoundto="PutnikID" htmlboundto="PutnikNaziv" class="rounded border filter-data "><option value="">-</option><option value="67586">Glen- Sales Representative</option><option class="inactive-rep" title="Rep is deactivated" value="68066">xyz</option></select>
+                    </li>
 
-    </ul>
+                    <li class="filter-type-wrapper client-wrapper" title="Filter for a particular place. Start typing to search and then select searched place from a list.">
+                        <h3 class="kupac"><i class="icon icon-client"></i> Filter by place</h3>
+                        <input type="hidden" databoundto="KupacLokacijaRowID" class="filter-data filter-rowid rounded border" id="MFKupacLokacijaRowID">
+                        <input type="hidden" databoundto="KupacLokacijaID" class="filter-data filter-id rounded border" id="MFKupacLokacijaID">
+                        <input id="ClientSearch" databoundto="KupacLokacijaNaziv" type="text" class="rounded border autocomplete ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <span class="clear-client-filter ui-icon ui-icon-closethick" style="display: none;">  </span>
+                        <span class="input-loader" style="display: none;">  </span>
+                    </li>
+                    <li class="filter-type-wrapper tag-wrapper client" databoundto="ClientTagsID" htmlboundto="ClientTagsNaziv" title="Select particular place tag or choose to see all places.">
+                        <h3 class="clienttag">Filter by places tags</h3>
+                        <ul class="inline-input-tag-container rounded border">
 
+                            <li class="input-holder">
+                                <input id="ClientTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                <span class="input-loader" style="display: none;"></span>
+                                <div class="auto-list-holder"></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="filter-type-wrapper territory-wrapper" title="Select particular territory or choose to see all territories.">
+                        <h3 class="poslovnaJedinica"><i class="icon icon-teritorymanagement"></i> Filter by territory</h3>
+                        <select id="MFPoslovnaJedinicaID" databoundto="PoslovnaJedinicaID" htmlboundto="PoslovnaJedinicaNaziv" class="rounded border filter-data "><option value="">-</option></select>
+                    </li>
+                    <li id="photo-filter" class="filter-type-wrapper tag-wrapper photo" databoundto="PhotoTagsID" htmlboundto="PhotoTagsNaziv" title="Filter gallery by photo tags. Start typing to choose tags from a list." style="display: list-item;">
+                        <h3 class="phototag">Filter by photo tags (multiple selection)</h3>
+                        <ul class="inline-input-tag-container rounded border">
 
-    </span>
-    </li>
-    <li class="range-wrapper chunk" title="Use this period picker to select period you're observing.">
-        
-        <input ng-click="showCalender=!showCalender;showCalender1 = false" type="text" class=" datebegin rounded border " style="width: 100px;" ng-model="filterDataDate.from_date | date :'M/d/yy'"> - <input id="DateEnd" ng-click="showCalender1=!showCalender1;showCalender = false" type="text" style="width: 100px;" class=" dateend rounded border filter-data hasDatepicker" ng-model="filterDataDate.to_date | date :'M/d/yy'">
-        <div ng-show="showCalender" style="position:absolute; right: 200px;    z-index: 99;">
-            <date-picker on-date-selected="showCalender = false" ng-model="filterDataDate.from_date ">
-            </date-picker>
-        </div>
-        <div ng-show="showCalender1" style="position:absolute; left: 200px;    z-index: 99;">
-            <date-picker  on-date-selected="showCalender1 = false" ng-model="filterDataDate.to_date">
-            </date-picker>
-        </div>
-        <span class="range-picker ui-corner-all">
-            <span id="rn-range-picker-arrow" class="range-picker-overlay" title="Use some predefined date range"></span>
-            <div class="range-container ui-corner-bottom ui-corner-tr" style="display: none;">
-                <ul class="">
-                    <li id="rn-range-picker-today" class="range rounded" db="9/23/2017" de="9/23/2017">Today</li>
-                    <li id="rn-range-picker-yesterday" class="range rounded" db="9/22/2017" de="9/22/2017">Yesterday</li>
-                    <li class="delimiter"></li>
-                    <li id="rn-range-picker-this-week" class="range rounded" db="9/18/2017" de="9/23/2017">This week</li>
-                    <li id="rn-range-picker-last-week" class="range rounded" db="9/11/2017" de="9/17/2017">Last week</li>
-                    <li class="delimiter"></li>
-                    <li id="rn-range-picker-this-month" class="range rounded" db="9/1/2017" de="9/23/2017">This month</li>
-                    <li id="rn-range-picker-last-month" class="range rounded" db="8/1/2017" de="8/31/2017">Last month</li>
-                    <li class="delimiter"></li>
-                    <li id="rn-range-picker-this-year" class="range rounded" db="1/1/2017" de="9/23/2017">This year</li>
-                    <li id="rn-range-picker-last-year" class="range rounded" db="1/1/2016" de="12/31/2016">Last year</li>
-                    <li class="delimiter"></li>
-                    <li id="rn-range-picker-no-date" class="range rounded recent" db="" de="">No date specified</li>
+                            <li class="input-holder">
+                                <input id="PhotoTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                <span class="input-loader" style="display: none;"></span>
+                                <div class="auto-list-holder"></div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="form-field-filter" class="filter-type-wrapper form-wrapper" title="." style="display: none;">
+                        <h3 class="unidoccell">Filter by form field</h3>
+                        <select class="border rounded" typeof t1` ` contextmenu="UniDocCellID" id="MFUniDocCellID">
+                            <option class="emtpy-val" value="">-- Choose field in a form --</option>
+                        </select>
+                        <div class="cascade">
+                            <input type="text" id="UniDocCellTextValue" class="cascade-filter rounded border" placeholder="Write exact value" style="display: none;">
+                            <select id="UniDocCellDdlValue" class="cascade-filter rounded border" style="display: none;"></select>
+                        </div>
+                        <input type="hidden" class="filter-data rounded border" datatype="ClientExtraInfoValue" id="ClientExtraInfoValue">
+                    </li>
+                    <!-- TODO END -->
+                    <li class="filter-actions-wrapper">
+                        <button id="rn-add-this-filter" class="button add rounded border">Add this filter</button>
+                        <button id="rn-add-more-filters-cancel" class="button cancel rounded border">Cancel</button>
+                    </li>
                 </ul>
-                <span class="clip"></span>
+                <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-19" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-20" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-21" tabindex="0" style="z-index: 2001; display: none;"></ul>
             </div>
-        </span>
 
+        </li>
+        <li class="chunk no-left-margin"><button id="rn-home-apply-button" class="filter-trigger semafor-trigger rounded" ng-click="AllFilterDate()" title="Refresh screen according to filter selection.">Apply</button></li>
+        <li class="view chunk">
+            <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
+            <input type="hidden" id="ViewSelection" class="filter-data rounded border" value="stream">
+            <label title="Select how you'd like to have data displayed. Options change according to activity you selected.">View as:</label>
+            <a value="stream" class="option viewas_stream selected" use="all" title="Plain list"><i class="icon icon-plainlist"></i></a>
+            <a id="rn-viewas-tabular" value="table" class="option viewas_table" use="event visit form workday timemileage newclient clientstatuschange pricescan document clientnote" title="Tabular view" style="display: none;"><i class="icon icon-tabular"></i></a>
+            <a id="rn-viewas-gallery" value="gallery" class="option viewas_gallery" use="photo" title="Gallery" style="display: none;"><i class="icon icon-gallery"></i></a>
 
+            <a id="rn-viewas-summary" value="summary" class="option viewas_summary" use="summary" title="Summary report" style=""><i class="icon icon-summary"></i></a>
 
+        </li>
 
-
-
-    </li>
-
-    <li class="drop chunk no-left-margin">
-
-        <a id="rn-more-filters-trigger" href="#" class="more-filters-trigger" tipsy="true" title="Use additional filter to select particular representative or place.">Add more filters</a>
-        <div id="megadrop_container" class="more-filters-container home" style="display: none;">
-            <span class="menu_pointer"></span>
-            <span id="rn-add-more-filters-close" class="close"></span>
-            <ul class="drop_content">
-                <li class="filter-type-wrapper reps-wrapper" title="Select particular rep or choose to see all reps.">
-                    <h3 class="putnik"><i class="icon icon-representative"></i> Filter by representative</h3>
-                    <select id="MFPutnikID" databoundto="PutnikID" htmlboundto="PutnikNaziv" class="rounded border filter-data "><option value="">-</option><option value="67586">Glen- Sales Representative</option><option class="inactive-rep" title="Rep is deactivated" value="68066">xyz</option></select>
-                </li>
-
-                <li class="filter-type-wrapper client-wrapper" title="Filter for a particular place. Start typing to search and then select searched place from a list.">
-                    <h3 class="kupac"><i class="icon icon-client"></i> Filter by place</h3>
-                    <input type="hidden" databoundto="KupacLokacijaRowID" class="filter-data filter-rowid rounded border" id="MFKupacLokacijaRowID">
-                    <input type="hidden" databoundto="KupacLokacijaID" class="filter-data filter-id rounded border" id="MFKupacLokacijaID">
-                    <input id="ClientSearch" databoundto="KupacLokacijaNaziv" type="text" class="rounded border autocomplete ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                    <span class="clear-client-filter ui-icon ui-icon-closethick" style="display: none;">  </span>
-                    <span class="input-loader" style="display: none;">  </span>
-                </li>
-                <li class="filter-type-wrapper tag-wrapper client" databoundto="ClientTagsID" htmlboundto="ClientTagsNaziv" title="Select particular place tag or choose to see all places.">
-                    <h3 class="clienttag">Filter by places tags</h3>
-                    <ul class="inline-input-tag-container rounded border">
-
-                        <li class="input-holder">
-                            <input id="ClientTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                            <span class="input-loader" style="display: none;"></span>
-                            <div class="auto-list-holder"></div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="filter-type-wrapper territory-wrapper" title="Select particular territory or choose to see all territories.">
-                    <h3 class="poslovnaJedinica"><i class="icon icon-teritorymanagement"></i> Filter by territory</h3>
-                    <select id="MFPoslovnaJedinicaID" databoundto="PoslovnaJedinicaID" htmlboundto="PoslovnaJedinicaNaziv" class="rounded border filter-data "><option value="">-</option></select>
-                </li>
-                <li id="photo-filter" class="filter-type-wrapper tag-wrapper photo" databoundto="PhotoTagsID" htmlboundto="PhotoTagsNaziv" title="Filter gallery by photo tags. Start typing to choose tags from a list." style="display: list-item;">
-                    <h3 class="phototag">Filter by photo tags (multiple selection)</h3>
-                    <ul class="inline-input-tag-container rounded border">
-
-                        <li class="input-holder">
-                            <input id="PhotoTagSearch" type="text" class="autocomplete rounded border ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                            <span class="input-loader" style="display: none;"></span>
-                            <div class="auto-list-holder"></div>
-                        </li>
-                    </ul>
-                </li>
-
-                <li id="form-field-filter" class="filter-type-wrapper form-wrapper" title="." style="display: none;">
-                    <h3 class="unidoccell">Filter by form field</h3>
-                    <select class="border rounded" typeof t1` ` contextmenu="UniDocCellID" id="MFUniDocCellID">
-                        <option class="emtpy-val" value="">-- Choose field in a form --</option>
-                    </select>
-                    <div class="cascade">
-                        <input type="text" id="UniDocCellTextValue" class="cascade-filter rounded border" placeholder="Write exact value" style="display: none;">
-                        <select id="UniDocCellDdlValue" class="cascade-filter rounded border" style="display: none;"></select>
-                    </div>
-                    <input type="hidden" class="filter-data rounded border" datatype="ClientExtraInfoValue" id="ClientExtraInfoValue">
-                </li>
-                <!-- TODO END -->
-                <li class="filter-actions-wrapper">
-                    <button id="rn-add-this-filter" class="button add rounded border">Add this filter</button>
-                    <button id="rn-add-more-filters-cancel" class="button cancel rounded border">Cancel</button>
-                </li>
-            </ul>
-            <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-19" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-20" tabindex="0" style="z-index: 2001; display: none;"></ul><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-21" tabindex="0" style="z-index: 2001; display: none;"></ul>
-        </div>
-
-    </li>
-    <li class="chunk no-left-margin"><button id="rn-home-apply-button" class="filter-trigger semafor-trigger rounded" ng-click="AllFilterDate()" title="Refresh screen according to filter selection.">Apply</button></li>
-    <li class="view chunk">
-        <input type="hidden" id="ExportType" value="xlsx" class="filter-data rounded border">
-        <input type="hidden" id="ViewSelection" class="filter-data rounded border" value="stream">
-        <label title="Select how you'd like to have data displayed. Options change according to activity you selected.">View as:</label>
-        <a value="stream" class="option viewas_stream selected" use="all" title="Plain list"><i class="icon icon-plainlist"></i></a>
-        <a id="rn-viewas-tabular" value="table" class="option viewas_table" use="event visit form workday timemileage newclient clientstatuschange pricescan document clientnote" title="Tabular view" style="display: none;"><i class="icon icon-tabular"></i></a>
-        <a id="rn-viewas-gallery" value="gallery" class="option viewas_gallery" use="photo" title="Gallery" style="display: none;"><i class="icon icon-gallery"></i></a>
-
-        <a id="rn-viewas-summary" value="summary" class="option viewas_summary" use="summary" title="Summary report" style=""><i class="icon icon-summary"></i></a>
-
-    </li>
-
-    <li class="additional-filter-list-container chunk">
-        <ul id="AdditionalFilterListResult" class="filters"></ul>
-    </li>
+        <li class="additional-filter-list-container chunk">
+            <ul id="AdditionalFilterListResult" class="filters"></ul>
+        </li>
     </ul>
 
 
@@ -424,10 +453,11 @@
             </ul>
         </div>
 
+
         <!-- FEED -->
 
         <div id="feedWrap" class="feed-wrap">
-            <feed-item ng-repeat="act in Activities | filter : filterData | dateRange : filterDataDate.from_date : filterDataDate.to_date "  content="item">
+            <feed-item ng-repeat="act in Activities | filter : filterData | dateRange: filterDataDate.from_date : filterDataDate.to_date " content="item">
                 <div>
 
                     <!-- --------------------------------------------visit section--------------------------------------------------------- -->
@@ -616,8 +646,13 @@
 
         <footer></footer>
 
-        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;">
+
+        </div>
     </div>
+</div>
+
+
 
 
 

@@ -31,42 +31,27 @@ angular.module('activitiesDashboard.controllers', [])
             $scope.FormClickFilter = function () {
 
                 $scope.filterData.ActivityId = "5";
-               
-
+                $scope.allActivitiesFilterShow = false;
             }
-            $scope.showForm = false;
-
-            $scope.AllFormClickFilter = function () {
-                $scope.showForm = !$scope.showForm;
-                $scope.allActivitiesFilterShow = !$scope.allActivitiesFilterShow;
-
-            }
+           
 
             $scope.photoClikFilter = function () {
 
                 $scope.filterData.ActivityId = "3";
-               
+                $scope.allActivitiesFilterShow = false;
             }
-            $scope.allActivitiesFilterShow = false;
-            $scope.filterclick= function () {
-
-                $scope.allActivitiesFilterShow = !$scope.allActivitiesFilterShow;
-               
-            }
-            $scope.auditshow = false;
-            $scope.AuditClick = function () {
-                $scope.auditshow = !$scope.auditshow;
-                $scope.allActivitiesFilterShow = !$scope.allActivitiesFilterShow;
-            }
-        
-            
-
+           
             $scope.filterDataDate = {};
-              $scope.filterDataDate.from_date = new Date();
-              $scope.filterDataDate.to_date = new Date();
+            $scope.filterDataDate.from_date = new Date();
+            $scope.filterDataDate.to_date = new Date();
 
             
-            
+            $scope.formIdFilter = function (id)
+            {
+                $scope.filterData.FormId = id;
+                $scope.allActivitiesFilterShow = false;
+              
+            }
 
 
 })
