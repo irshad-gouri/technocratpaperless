@@ -161,6 +161,7 @@
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\CustomeFormsController.cs" />
     <Compile Include="Api\PlacesController.cs" />
+    <Compile Include="Api\ProductController.cs" />
     <Compile Include="Api\RepresentativeController.cs" />
     <Compile Include="Api\UtilityController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

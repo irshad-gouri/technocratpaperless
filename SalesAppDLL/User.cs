@@ -23,6 +23,9 @@ namespace SalesAppDLL
             this.UseActivitiesComments = new HashSet<UseActivitiesComment>();
             this.UserAssignedPlaces = new HashSet<UserAssignedPlace>();
             this.UsersActivities = new HashSet<UsersActivity>();
+            this.ProductOrderDetails = new HashSet<ProductOrderDetail>();
+            this.Products = new HashSet<Product>();
+            this.ProductsGroups = new HashSet<ProductsGroup>();
         }
     
         public int Id { get; set; }
@@ -60,5 +63,11 @@ namespace SalesAppDLL
         public virtual ICollection<UserAssignedPlace> UserAssignedPlaces { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersActivity> UsersActivities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductOrderDetail> ProductOrderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductsGroup> ProductsGroups { get; set; }
     }
 }

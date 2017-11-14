@@ -79,6 +79,7 @@
     <Compile Include="Repository\CustomeFormsRepository.cs" />
     <Compile Include="Repository\LogHandler.cs" />
     <Compile Include="Repository\PlacesRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RepresentativeRepository.cs" />
     <Compile Include="ResponseData.cs" />

@@ -43,6 +43,10 @@ namespace SalesAppDLL
         public virtual DbSet<UserAssignedPlace> UserAssignedPlaces { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersActivity> UsersActivities { get; set; }
+        public virtual DbSet<ProductOrderDetail> ProductOrderDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductsGroup> ProductsGroups { get; set; }
+        public virtual DbSet<ProductTransaction> ProductTransactions { get; set; }
     
         public virtual ObjectResult<GetAllPlacesInfo_Result> GetAllPlacesInfo(Nullable<int> userId)
         {
