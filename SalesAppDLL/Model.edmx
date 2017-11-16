@@ -134,6 +134,68 @@
           <Property Name="Tags" Type="varchar" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
+          <Property Name="PlaceStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="ContactName" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductOrderDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PlaceId" Type="int" />
+          <Property Name="OrderPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EAN" Type="varchar" MaxLength="100" />
+          <Property Name="DefaultPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="Tags" Type="varchar" MaxLength="50" />
+          <Property Name="ProductGroupId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductsGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProductTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalQuantity" Type="int" Nullable="false" />
+          <Property Name="TotalAmountPayable" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="DueDays" Type="int" />
+          <Property Name="Signature" Type="varchar" MaxLength="200" />
+          <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -291,6 +353,90 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductOrderDetails_PlacesDetails">
+          <End Role="PlacesDetails" Type="Self.PlacesDetails" Multiplicity="0..1" />
+          <End Role="ProductOrderDetails" Type="Self.ProductOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacesDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetails">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrderDetails_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ProductOrderDetails" Type="Self.ProductOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrderDetails_ProductTransaction">
+          <End Role="ProductTransaction" Type="Self.ProductTransaction" Multiplicity="0..1" />
+          <End Role="ProductOrderDetails" Type="Self.ProductOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTransaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetails">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrderDetails_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="ProductOrderDetails" Type="Self.ProductOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductsGroup">
+          <End Role="ProductsGroup" Type="Self.ProductsGroup" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductsGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ProductGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsGroup_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ProductsGroup" Type="Self.ProductsGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsGroup">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UseActivitiesComments_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="UseActivitiesComments" Type="Self.UseActivitiesComments" Multiplicity="*" />
@@ -401,6 +547,10 @@
           <EntitySet Name="NotesActivities" EntityType="Self.NotesActivities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoActivities" EntityType="Self.PhotoActivities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlacesDetails" EntityType="Self.PlacesDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductOrderDetails" EntityType="Self.ProductOrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductsGroup" EntityType="Self.ProductsGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTransaction" EntityType="Self.ProductTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesAppLogInfo" EntityType="Self.SalesAppLogInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UseActivitiesComments" EntityType="Self.UseActivitiesComments" Schema="dbo" store:Type="Tables" />
@@ -430,6 +580,34 @@
           <AssociationSet Name="FK_PhotoActivities_Users" Association="Self.FK_PhotoActivities_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="PhotoActivities" EntitySet="PhotoActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_PlacesDetails" Association="Self.FK_ProductOrderDetails_PlacesDetails">
+            <End Role="PlacesDetails" EntitySet="PlacesDetails" />
+            <End Role="ProductOrderDetails" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_Products" Association="Self.FK_ProductOrderDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductOrderDetails" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_ProductTransaction" Association="Self.FK_ProductOrderDetails_ProductTransaction">
+            <End Role="ProductTransaction" EntitySet="ProductTransaction" />
+            <End Role="ProductOrderDetails" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_Users" Association="Self.FK_ProductOrderDetails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProductOrderDetails" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductsGroup" Association="Self.FK_Products_ProductsGroup">
+            <End Role="ProductsGroup" EntitySet="ProductsGroup" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Users" Association="Self.FK_Products_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsGroup_Users" Association="Self.FK_ProductsGroup_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProductsGroup" EntitySet="ProductsGroup" />
           </AssociationSet>
           <AssociationSet Name="FK_UseActivitiesComments_Users" Association="Self.FK_UseActivitiesComments_Users">
             <End Role="Users" EntitySet="Users" />
@@ -543,6 +721,38 @@
           <AssociationSet Name="FK_UsersActivities_Users" Association="SalesAppModel.FK_UsersActivities_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="UsersActivity" EntitySet="UsersActivities" />
+          </AssociationSet>
+          <EntitySet Name="ProductOrderDetails" EntityType="SalesAppModel.ProductOrderDetail" />
+          <EntitySet Name="Products" EntityType="SalesAppModel.Product" />
+          <EntitySet Name="ProductsGroups" EntityType="SalesAppModel.ProductsGroup" />
+          <EntitySet Name="ProductTransactions" EntityType="SalesAppModel.ProductTransaction" />
+          <AssociationSet Name="FK_ProductOrderDetails_PlacesDetails" Association="SalesAppModel.FK_ProductOrderDetails_PlacesDetails">
+            <End Role="PlacesDetail" EntitySet="PlacesDetails" />
+            <End Role="ProductOrderDetail" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_Products" Association="SalesAppModel.FK_ProductOrderDetails_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductOrderDetail" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_ProductTransaction" Association="SalesAppModel.FK_ProductOrderDetails_ProductTransaction">
+            <End Role="ProductTransaction" EntitySet="ProductTransactions" />
+            <End Role="ProductOrderDetail" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrderDetails_Users" Association="SalesAppModel.FK_ProductOrderDetails_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProductOrderDetail" EntitySet="ProductOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductsGroup" Association="SalesAppModel.FK_Products_ProductsGroup">
+            <End Role="ProductsGroup" EntitySet="ProductsGroups" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Users" Association="SalesAppModel.FK_Products_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsGroup_Users" Association="SalesAppModel.FK_ProductsGroup_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProductsGroup" EntitySet="ProductsGroups" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetAllPlacesInfo_Result">
@@ -701,6 +911,12 @@
           <NavigationProperty Name="NotesActivities" Relationship="SalesAppModel.FK_Notes_PlacesDetails" FromRole="PlacesDetail" ToRole="NotesActivity" />
           <NavigationProperty Name="PhotoActivities" Relationship="SalesAppModel.FK_PhotoActivities_PlacesDetails" FromRole="PlacesDetail" ToRole="PhotoActivity" />
           <NavigationProperty Name="UserAssignedPlaces" Relationship="SalesAppModel.FK_UserAssignedPlaces_PlacesDetails" FromRole="PlacesDetail" ToRole="UserAssignedPlace" />
+          <Property Name="PlaceStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductOrderDetails" Relationship="SalesAppModel.FK_ProductOrderDetails_PlacesDetails" FromRole="PlacesDetail" ToRole="ProductOrderDetail" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -781,6 +997,9 @@
           <NavigationProperty Name="UseActivitiesComments" Relationship="SalesAppModel.FK_UseActivitiesComments_Users" FromRole="User" ToRole="UseActivitiesComment" />
           <NavigationProperty Name="UserAssignedPlaces" Relationship="SalesAppModel.FK_UserAssignedPlaces_Users" FromRole="User" ToRole="UserAssignedPlace" />
           <NavigationProperty Name="UsersActivities" Relationship="SalesAppModel.FK_UsersActivities_Users" FromRole="User" ToRole="UsersActivity" />
+          <NavigationProperty Name="ProductOrderDetails" Relationship="SalesAppModel.FK_ProductOrderDetails_Users" FromRole="User" ToRole="ProductOrderDetail" />
+          <NavigationProperty Name="Products" Relationship="SalesAppModel.FK_Products_Users" FromRole="User" ToRole="Product" />
+          <NavigationProperty Name="ProductsGroups" Relationship="SalesAppModel.FK_ProductsGroup_Users" FromRole="User" ToRole="ProductsGroup" />
         </EntityType>
         <Association Name="FK_Users_CompanyDetails">
           <End Type="SalesAppModel.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
@@ -970,6 +1189,157 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ProductOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="PlaceId" Type="Int32" />
+          <Property Name="OrderPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <NavigationProperty Name="PlacesDetail" Relationship="SalesAppModel.FK_ProductOrderDetails_PlacesDetails" FromRole="ProductOrderDetail" ToRole="PlacesDetail" />
+          <NavigationProperty Name="Product" Relationship="SalesAppModel.FK_ProductOrderDetails_Products" FromRole="ProductOrderDetail" ToRole="Product" />
+          <NavigationProperty Name="ProductTransaction" Relationship="SalesAppModel.FK_ProductOrderDetails_ProductTransaction" FromRole="ProductOrderDetail" ToRole="ProductTransaction" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_ProductOrderDetails_Users" FromRole="ProductOrderDetail" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="Tags" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductGroupId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="ProductOrderDetails" Relationship="SalesAppModel.FK_ProductOrderDetails_Products" FromRole="Product" ToRole="ProductOrderDetail" />
+          <NavigationProperty Name="ProductsGroup" Relationship="SalesAppModel.FK_Products_ProductsGroup" FromRole="Product" ToRole="ProductsGroup" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_Products_Users" FromRole="Product" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ProductsGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Products" Relationship="SalesAppModel.FK_Products_ProductsGroup" FromRole="ProductsGroup" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="SalesAppModel.FK_ProductsGroup_Users" FromRole="ProductsGroup" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ProductTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalQuantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmountPayable" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="DiscountPercentage" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="TaxPercentage" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="DueDays" Type="Int32" />
+          <Property Name="Signature" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="ProductOrderDetails" Relationship="SalesAppModel.FK_ProductOrderDetails_ProductTransaction" FromRole="ProductTransaction" ToRole="ProductOrderDetail" />
+        </EntityType>
+        <Association Name="FK_ProductOrderDetails_PlacesDetails">
+          <End Type="SalesAppModel.PlacesDetail" Role="PlacesDetail" Multiplicity="0..1" />
+          <End Type="SalesAppModel.ProductOrderDetail" Role="ProductOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacesDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetail">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrderDetails_Products">
+          <End Type="SalesAppModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="SalesAppModel.ProductOrderDetail" Role="ProductOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrderDetails_ProductTransaction">
+          <End Type="SalesAppModel.ProductTransaction" Role="ProductTransaction" Multiplicity="0..1" />
+          <End Type="SalesAppModel.ProductOrderDetail" Role="ProductOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTransaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetail">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrderDetails_Users">
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SalesAppModel.ProductOrderDetail" Role="ProductOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductOrderDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductsGroup">
+          <End Type="SalesAppModel.ProductsGroup" Role="ProductsGroup" Multiplicity="1" />
+          <End Type="SalesAppModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductsGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Users">
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="SalesAppModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsGroup_Users">
+          <End Type="SalesAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="SalesAppModel.ProductsGroup" Role="ProductsGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsGroup">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1115,6 +1485,11 @@
           <EntitySetMapping Name="PlacesDetails">
             <EntityTypeMapping TypeName="SalesAppModel.PlacesDetail">
               <MappingFragment StoreEntitySet="PlacesDetails">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PlaceStatus" ColumnName="PlaceStatus" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Tags" ColumnName="Tags" />
@@ -1221,6 +1596,67 @@
                 <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductOrderDetails">
+            <EntityTypeMapping TypeName="SalesAppModel.ProductOrderDetail">
+              <MappingFragment StoreEntitySet="ProductOrderDetails">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SalesAppModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DefaultPrice" ColumnName="DefaultPrice" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsGroups">
+            <EntityTypeMapping TypeName="SalesAppModel.ProductsGroup">
+              <MappingFragment StoreEntitySet="ProductsGroup">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="DisplayCode" ColumnName="DisplayCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTransactions">
+            <EntityTypeMapping TypeName="SalesAppModel.ProductTransaction">
+              <MappingFragment StoreEntitySet="ProductTransaction">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="DueDays" ColumnName="DueDays" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="TotalAmountPayable" ColumnName="TotalAmountPayable" />
+                <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

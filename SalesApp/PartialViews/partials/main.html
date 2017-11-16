@@ -283,13 +283,13 @@
                     </div>
                 </div>
             </li>
-            <li class="settings-menu submenu-holder liner" ng-click="hideNotifications()"><span id="SettingsTrigger" class="submenu-trigger" title="Manage account">
+            <li class="settings-menu submenu-holder liner" ng-click="hideNotifications=!hideNotifications"><span id="SettingsTrigger" class="submenu-trigger" title="Manage account">
                 <span class="icon"></span></span>
-                <div class="submenu manage" style="display: none;">
+                <div class="submenu manage" ng-show="hideNotifications">
                     <span class="menu_pointer"></span>
                     <ul>
                           <li class="menu_item rounded products" title="Define products that you use in your organization">
-                              <a href="/Product" id="more-settings-products"><span class="icon icon-product"></span>
+                              <a ui-sref="app.productLIst" id="more-settings-products"><span class="icon icon-product"></span>
                                                           Products</a>
                               <img id="ProductImportBadge" class="product-import-icon" src="/content2/img/import-badge.png">
                               <img id="ProductLoaderBadge" class="product-import-icon" src="/content2/img/input-loader3.gif">
@@ -302,7 +302,7 @@
                           </li>
                           <li class="menu_separator"></li>
                           <li class="menu_item rounded pricescan" title="Use retail audits to research your market.">
-                              <a href="/Pricescan" id="more-settings-audits"><span class="icon icon-pricescan"></span>
+                              <a ui-sref="app.retailAuditsLIst" id="more-settings-audits"><span class="icon icon-pricescan"></span>
                                                           Retail audits</a> </li>
                           <li class="menu_separator"></li>
                           <li class="menu_item rounded integrations" title="Integrations(key)">

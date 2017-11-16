@@ -2,10 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     <link href="~/Scripts/TechnocratWeb/lib/angular-date-picker/angular-date-picker.css" rel="stylesheet" />
+   
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -46,8 +50,20 @@
     <script src="~/Scripts/TechnocratWeb/js/representativeDashboard.js"></script>
     <script src="~/Scripts/TechnocratWeb/js/addPlace.js"></script>
     <script src="~/Scripts/TechnocratWeb/js/activitiesDashboard.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/updateCategory.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/RetailAudits_List.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/productLIst.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/productDetail.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/newRetailAudit.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/homeNews.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/dialog.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/addProduct_Setting.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/addProduct.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/addCategory.js"></script>
 
     <script src="~/Scripts/TechnocratWeb/lib/angular-date-picker/angular-date-picker.js"></script>
+    <script src="~/Scripts/TechnocratWeb/js/complecContro.js"></script>
+   
         @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 </body>

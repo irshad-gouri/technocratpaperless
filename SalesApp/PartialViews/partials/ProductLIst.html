@@ -1,17 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
 
-<meta charset="utf-8" />
-<title></title>
-<link href="../../Content/forms.min.css" rel="stylesheet" />
-<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
-<link href="../../Content/app.css" rel="stylesheet" />
 
-<div class="wrapper">
-    <div class="content">
+    <div class="content" >
         <span id="menu_pointer" class="hidden menu_pointer"></span>
         <div id="main">
-            <!-- ngView:  --><div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
-                <div ng-bind-html="content" class="ng-binding ng-scope">
+            <div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
+                <div>
 
 
 
@@ -24,7 +18,7 @@
                         </span>
                     </h1>
                     <div class="actions with_menu">
-                        <a id="rn-new-product" href="/product/view" class="button_create rounded" title="Add new product">
+                        <a id="rn-new-product" ui-sref="app.addProduct" class="button_create rounded" title="Add new product">
                             <i class="icon icon-plus"></i> New product
                         </a>
 
@@ -169,7 +163,7 @@
                     </div>
                     <div id="product-list-container" class="display-sheet" style="display: block;">
                         <div class="table_content">
-                            <table class="datatable grid" cellpadding="0" cellspacing="0">
+                            <table class="datatable grid" cellpadding="0" cellspacing="0" >
                                 <thead>
                                     <tr>
                                         <td class="rows-toggle-cell">
@@ -233,7 +227,7 @@
                             <a href="https://user.repsly.com/product/exportall" class="export post-link pager rounded" id="rn-product-export-plainlist">Export</a><a href="https://user.repsly.com/product/exportall" class="export post-link pager rounded" id="rn-product-export-plainlist">Export</a>
                         </div>
                     </div>
-                    <div id="nodata-container" class="display-sheet" style="display: none;">
+                    <!--<div id="nodata-container" class="display-sheet" style="display: none;">
                         <div class="nodatafound entity">
                             <span class="coach-sprite no-data"></span>
                             No products found.
@@ -266,112 +260,34 @@
                             <td class="numeric">${_UkOsnovicaFormatted}</td>
                         </tr>
                     </script>
-                </div>
+                </div>-->
             </div>
             <!--Shared elements stuff-->
-            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' --><div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
+            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' -->
+                <!--<div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
 
                 <div id="success-alert" class="alert alert-success hidden ng-scope">
                     <a href="#" class="close" aria-label="close">×</a>
                     <span id="alert-message"></span>
-                </div>
+                </div>-->
 
 
 
 
 
 
-                <div id="message-box" class="hidden ng-scope"></div>
+                <!--<div id="message-box" class="hidden ng-scope"></div>-->
 
 
-                <div id="requestDemoCloner" class="hidden ng-binding ng-scope">
+                <!--<div id="requestDemoCloner" class="hidden ng-binding ng-scope">
                     Message:
                     <br>
                     <textarea cols="30" rows="5" class="ng-binding rounded border">Hi! I would like to have Repsly Coaching Session.</textarea>
-                </div>
+                </div>-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                <script type="text/x-jquery-tmpl" id="tmpl-coach-item" class="ng-scope">
-                    {{if IsLive}}
-                    <tr>
-                        <td class="datetime">${LocalDate}<span class="subtitle">${LocalTime}</span></td>
-                        {{else}}
-                    <tr class="recorded">
-                        <td class="datetime">{{dictionary.CoachRecordedSession}}</td>
-                        {{/if}}
-
-                        <td>${Title}<span class="subtitle">({{dictionary.CoachCoachName}}: ${Author})</span></td>
-                        <td>${DurationMin} min</td>
-                        {{if IsLive}}
-                        <td class="action"><a href="${Url}" target="_blank" class="webinar-link">{{dictionary.CoachSignUp}}</a></td>
-                        {{else}}
-                        <td class="action"><a href="${Url}" target="_blank" class="youtube-link">{{dictionary.CoachViewNow}}</a></td>
-                        {{/if}}
-                    </tr>
-                </script>
-                <script type="text/x-jquery-tmpl" id="tmpl-additional-filter-item" class="ng-scope">
-                    <li class="${cssClass}" entity="${entity}" type="${type}" valueid="${id}" labelvalue="${label}">
-                        ${label}
-                        {{if extra!= null && extra!=""}}
-                        <div class="subtext">${extra}</div>
-                        {{/if}}
-                    </li>
-                </script>
-                <script type="text/x-jquery-tmpl" id="tmpl-additional-filter-result" class="ng-scope">
-                    <li class="${cssClass} add-filter-item" entity="${entity}" type="${type}" valueid="${id}" label="${label}" id="${htmlid}"><span class="label">${label}</span><span class="remove"><span></li>
-                </script>
-                <script type="text/x-jquery-tmpl" id="tmpl-DeleteSampleData" class="ng-scope">
-                    <div class="delete-sample-data">
-                        <h2 class="warning">{{dictionary.DeleteSampleDataTitle}}</h2>
-                        <p class="explanation">{{dictionary.DeleteSampleDataExplanation}}</p>
-                        <ul>
-                            <li class="bullet active">{{dictionary.Clients}}</li>
-                            <li class="bullet active">{{dictionary.SummaryActivities}} & {{dictionary.Documents | lowercase}}</li>
-                            <li class="bullet active">{{dictionary.Announcements}}</li>
-                            <li ng-if="usesForms" class="bullet active">{{dictionary.Forms}}</li>
-                            <li ng-if="isProductsAvailable" class="bullet active">{{dictionary.Products}}</li>
-                        </ul>
-
-                        <p class="trialRed">
-                            {{dictionary.TrialDel}}
-                            <br /><br />{{dictionary.TrialDelInstructions}} :
-                        </p>
-                        <input id="delTrial" type="text" />
-                    </div>
-                </script>
-
-                <script type="text/x-jquery-tmpl" id="tmpl-tag" class="ng-scope">
-                    <li class="tag-list-item" id="" valueid="${value}"><input type="checkbox" id="check_${value}" valueid="${value}" class="tag-list-result" /><label for="check_${value}">${label}</label></li>
-                </script>
-                <!-- jquery template for paging -->
-                <script type="text/x-jquery-tmpl" id="tmpl-paging" class="ng-scope">
-                    <div class="table_footer">
-                        <div class="grid_info">${ShowingInfo}</div>
-                        <div class="paging">
-                            <span id="rn-paging-prev" href="#" class="prev pager" page=${Previous}>{{dictionary.Previous}}</span>
-                            <span id="rn-paging-next" href="#" class="next pager" page=${Next}>{{dictionary.Next}}</span>
-                        </div>
-                    </div>
-                </script>
-                <!-- jquery template for quick search -->
-                <script type="text/x-jquery-tmpl" id="tmpl-quicksearch-row" class="ng-scope">
-                    <li class=""><a href="${link}">${label}</a></li>
-                </script>
             </div>
         </div>
         <footer></footer>
         <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
     </div>
-</div>
