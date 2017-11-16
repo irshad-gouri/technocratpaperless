@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿// T4 code generation is enabled for model 'D:\projects\New folder (2)\technocratpaperless\SalesAppDLL\Model.edmx'. 
-=======
-﻿// T4 code generation is enabled for model 'C:\Development\technocratpaperless\Project\SalesAppDLL\Model.edmx'. 
->>>>>>> cc4c754a38354cfe735645d9987975a51290001e
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

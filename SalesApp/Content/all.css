@@ -23240,7 +23240,7 @@ li.selected-recipients-holder .remove {
 }
 
 .new-item-editor .add-tag-icon {
-    background: url(/frontend-app/dist/img/icon-plus.png);
+    background: url(../images/icon-plus.png);
     width: 32px;
     height: 32px;
     float: right;
@@ -33293,3 +33293,20 @@ li ul :hover {
     z-index: 300;
     display: block;
 }
+
+.product-group-item-container__up-down1 {
+    right: 26px;
+    position: absolute;
+    width: 27px;
+    top: 2px;
+    height: 27px;
+    z-index: 300;
+    border-radius: 50%;
+    display: block;
+    background: black;
+}
+
+
+
+
+

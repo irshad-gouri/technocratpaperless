@@ -16,7 +16,7 @@
                                 <a id="PhoneLabel" class="phone_label block" href="tel:" style="display: none;"></a>
                                 <a id="MobileLabel" class="mobile_label block" href="tel:" style="display: none;"></a>
                             </span>
-                            <span class="header-main" id="NazivLabel">New product</span>
+                            <span class="header-main" id="NazivLabel">New product</span><div class="add-tag-icon"></div>
                             <span class="header-sub"><label id="lblAddress"></label></span>
 
                         </h1>
@@ -53,17 +53,17 @@
                                         <div class="form-grid" title="Product name. This is a required field.">
                                             <div class="unit w-2-5">
                                                 <div for="Name" class="label ng-binding">Name:</div>
-                                                <input type="text" id="Naziv" ng-model="data.Naziv" class="name  border-edit rounded required_field ng-pristine ng-untouched ng-valid">
+                                                <input type="text" id="Naziv" ng-model="addProductCtrl.ProductGroup.Name" class="name  border-edit rounded required_field ng-pristine ng-untouched ng-valid">
                                             </div>
                                             <div class="unit w-2-5" title="Product ID, this is ID used for all inserts and updates. This is a required field.">
-                                                <div ng-hide="isQuickBooksConnected" class="">
+                                                <div  class="">
                                                     <div for="Code" class="label ng-binding">ID:</div>
                                                     <input type="text" id="Sifra" ng-model="data.Sifra" class="code border-edit rounded required_field  ng-pristine ng-untouched ng-valid" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="unit w-1-5 aktivan" title="Determines if the product is available or not. Deactivating a product is similar to moving it to trash. This is not required field.">
                                                 <span class="isActiveCheckbox afterInput rounded" type="">
-                                                    <input type="checkbox" ng-model="data.Aktivan" id="Aktivan" class="ng-pristine ng-untouched ng-valid">
+                                                    <input type="checkbox" ng-model="addProductCtrl.ProductGroup.IsActive" id="Aktivan" class="ng-pristine ng-untouched ng-valid">
                                                     <label for="Aktivan" class="ng-binding">active product</label>
                                                 </span>
                                             </div>
@@ -71,20 +71,20 @@
                                         <div class="form-grid">
                                             <div class="unit w-2-5" title="EAN">
                                                 <div for="EAN" class="label ng-binding">EAN:</div>
-                                                <input type="text" id="EAN" class="code border-edit rounded ng-pristine ng-untouched ng-valid" ng-model="data.EAN" placeholder="...">
+                                                <input type="text" id="EAN" class="code border-edit rounded ng-pristine ng-untouched ng-valid" ng-model="addProductCtrl.ProductGroup.EAN" placeholder="...">
                                             </div>
                                             <div class="unit w-2-5 price" title="Product price. If not provided or is zero, then the product will not be available on orders. This is not required field.">
                                                 <div for="Price" class="label ng-binding">
                                                     Default price:
                                                     <!-- ngIf: hasMultiplePriceLists --><span ng-show="productId" class="pricelist-editor-link ng-binding ng-scope ng-hide" ng-if="hasMultiplePriceLists" ng-click="openPricelistEditor()" style="">Price on other price list</span><!-- end ngIf: hasMultiplePriceLists -->
                                                 </div>
-                                                <input type="text" id="OsnovicaCijena" force-numeric="" update="productUpdated" ng-model="data.OsnovicaCijenaFormatted" class="money border-edit rounded ng-pristine ng-untouched ng-valid ng-isolate-scope" placeholder="...">
+                                                <input type="text" id="OsnovicaCijena" force-numeric="" update="productUpdated" ng-model="addProductCtrl.ProductGroup.DefaultPrice" class="money border-edit rounded ng-pristine ng-untouched ng-valid ng-isolate-scope" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-grid">
                                             <div for="Note" class="unit w-1-1">
                                                 <div for="Note" class="label ng-binding" style=" margin-right: 39px;">Note:</div>
-                                                <textarea id="Napomena" class="border-edit ng-pristine ng-untouched ng-valid" placeholder="..." rows="5" cols="80" ng-model="data.Napomena"></textarea>
+                                                <textarea id="Napomena" class="border-edit ng-pristine ng-untouched ng-valid" placeholder="..." rows="5" cols="80" ng-model="addProductCtrl.ProductGroup.Note"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,10 @@
                                 <div class="title ng-binding">Product group</div>
                                 <span id="CustomizeGroups" class="customize ng-binding " data-toggle="modal" data-target="#CustoMizeModel" style="">Customize</span>
 
-                                <select class="medium border rounded required_field ng-pristine ng-valid ng-touched" id="ProizvodGrupaID" ng-model="productGroupSelect" style=""><option label="Consumer Goods - Consumer Goods" value="63297" selected="selected">Consumer Goods - Consumer Goods</option><option label="Free Samples - Free Samples" value="63298">Free Samples - Free Samples</option><option label="Shoes - Shoes" value="63299">Shoes - Shoes</option><option label="toothpaste - paste" value="68521">toothpaste - paste</option></select>
+                                <select class="medium border rounded required_field ng-pristine ng-valid ng-touched" id="ProizvodGrupaID" ng-model="addProductCtrl.ProductGroup.ProductGroupId" style="">
+                                <option ng-repeat="prgrb in addProductCtrl.ProductGroup" label=""  value="{{prgrb.Id}}" selected="selected">{{prgrb.DisplayCode}}-{{prgrb.Description}}</option>
+                               
+                                </select>
                             </div>
 
                             <div class="form_container tags-wrapper second ng-scope" title="Tags on a product separated with comma. For example &quot;New place, Big store, Promotion&quot;. This field is not required." style="">
@@ -147,7 +150,7 @@
                     <div class="right_bar flat">
                         <div class="clearfix">
                             <div class="actions clearfix" style="margin-top: -299px;">
-                                <input type="button" id="btnSave" value="Save" class="button_save rounded" ng-click="saveProduct()">
+                                <input type="button" id="btnSave" value="Save" class="button_save rounded" ng-click="addProductCtrl.saveProduct()">
                                 <span id="Reload" class="lnkCancel ng-binding" ng-click="discardChanges()">Discard</span>
                             </div>
                         </div>
@@ -175,7 +178,7 @@
 
     </div>
        
-        
+       
     <footer></footer>
 
     <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div><div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>
@@ -191,7 +194,7 @@
             <span id="tag-editor-close" class="close-tags" data-dismiss="modal"></span>
             <ul class="tags-editor-list">
 
-                <li class="tag-list-item ng-scope" style="">
+                <li class="tag-list-item ng-scope" style="" >
                     <input type="checkbox" id="check_New" ng-checked="false" ui-indeterminate="false" ng-click="checkTag(tag)" class="tag-list-result">
                     <label for="New" class="ng-binding">New</label>
                 </li>
@@ -253,7 +256,19 @@
                 </thead>
                 <tbody ui-sortable="sortableOptions" class="product-groups ng-pristine ng-untouched ng-valid ng-isolate-scope ui-sortable">
 
-                    <tr class="product-group-item-container ng-isolate-scope" product-group-item="" item="item" style="">
+                    <tr class="product-group-item-container ng-isolate-scope"  style="" ng-repeat="a in addProductCtrl.ProductGroup" >
+                        <td class="code-cell">
+                            <span class="product-group-item-container__up-down" title="This item is sortable.Drag it to other position to change sort"></span>
+                            <input type="text" ng-model="a.DisplayCode" placeholder="ID" class="large border-edit code rounded border sorteditem-code ng-pristine ng-untouched ng-valid">
+                        </td>
+                        <td class="name-cell">
+                            <input type="text" ng-model="a.Description" placeholder="Add new group" class="name edit-sorted-item-value large border-edit pen rounded border sorteditem-description ng-pristine ng-untouched ng-valid">
+                        </td>
+                        <td class="active-cell">
+                            <input type="checkbox" ng-model="a.IsActive" class="active ng-pristine ng-untouched ng-valid">
+                        </td>
+                    </tr>
+                    <!--<tr class="product-group-item-container ng-isolate-scope" product-group-item="" item="item">
                         <td class="code-cell">
                             <span class="product-group-item-container__up-down" title="This item is sortable.Drag it to other position to change sort"></span>
                             <input type="text" ng-model="item.Code" placeholder="ID" class="large border-edit code rounded border sorteditem-code ng-pristine ng-untouched ng-valid">
@@ -300,30 +315,23 @@
                         <td class="active-cell">
                             <input type="checkbox" ng-model="item.Active" class="active ng-pristine ng-untouched ng-valid">
                         </td>
-                    </tr>
-                    <tr class="product-group-item-container ng-isolate-scope" product-group-item="" item="item">
-                        <td class="code-cell">
-                            <span class="product-group-item-container__up-down" title="This item is sortable.Drag it to other position to change sort"></span>
-                            <input type="text" ng-model="item.Code" placeholder="ID" class="large border-edit code rounded border sorteditem-code ng-pristine ng-untouched ng-valid">
-                        </td>
-                        <td class="name-cell">
-                            <input type="text" ng-model="item.Val" placeholder="Add new group" class="name edit-sorted-item-value large border-edit pen rounded border sorteditem-description ng-pristine ng-untouched ng-valid">
-                        </td>
-                        <td class="active-cell">
-                            <input type="checkbox" ng-model="item.Active" class="active ng-pristine ng-untouched ng-valid">
-                        </td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
 
             <div id="NewGroupEditor" class="ng-scope" style="">
-                <input type="text" ng-model="newProductGroup.Code" on-enter="addNewGroup()" placeholder="ID" class="border-edit pen code rounded border ng-pristine ng-untouched ng-valid">
-                <input type="text" ng-model="newProductGroup.Val" on-enter="addNewGroup()" placeholder="Add new group and press enter" class="border-edit pen name rounded border ng-pristine ng-untouched ng-valid">
-                <div class="add-tag-icon" ng-click="addNewGroup()"></div>
+                <input type="text" ng-model="addProductCtrl.ProductGroup.DisplayCode"  placeholder="ID" class="border-edit pen code rounded border ng-pristine ng-untouched ng-valid">
+                <input type="text" ng-model="addProductCtrl.ProductGroup.Description"  placeholder="Add new group and press enter" class="border-edit pen name rounded border ng-pristine ng-untouched ng-valid">
+                <div class="product-group-item-container__up-down1" ng-click="addProductCtrl.addNewProductGroup()" ><span style="    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size: 22px;">+</span></div>
 
                 <div class="action-bar-middle">
-                    <span id="SaveGroupCustomization" class="button save ng-binding" ng-click="saveProductGroups()">Save customization</span>
-                    <span id="CancelGroupCustomization" class="button cancel ng-binding" ng-click="closePopup()">Cancel</span>
+                    <span id="SaveGroupCustomization" class="button save ng-binding" ng-click="addProductCtrl.saveProductGroups()">Save customization</span>
+                    <span id="CancelGroupCustomization" class="button cancel ng-binding" data-dismiss="modal" ng-click="closePopup()">Cancel</span>
                 </div>
 
             </div>

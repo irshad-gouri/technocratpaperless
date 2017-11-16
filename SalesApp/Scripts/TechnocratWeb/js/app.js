@@ -8,7 +8,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
     'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
     'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
     'representativeDashboard.controllers', 'activitiesDashboard.controllers', 'addPlaceCtrl.controllers', 'mp.datePicker', 'addProduct.controllers',
-    'addCategory.controllers', 'addProductSetting.controllers', 'dialog.controllers', 'homeNews.controllers', 'productDetail.controllers',
+    'addCategory.controllers', 'dialog.controllers', 'homeNews.controllers', 'productDetail.controllers',
     'newRetailAudit.controllers', 'retailAuditsLIst.controllers', 'updateCategory.controllers', 'productLIst.controllers'])
 
     .run(function ($rootScope, $state, AuthService) {
@@ -298,16 +298,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
                 }
             })
 
-            .state('app.addProductSetting', {
-                url: '/addProductSetting',
-                authenticate: true,
-                views: {
-                    'container': {
-                        templateUrl: './PartialViews/partials/AddProduct_Setting.html',
-                        controller: 'AddProductSettingCtrl'
-                    }
-                }
-            })
+           
 
             .state('app.dialog', {
                 url: '/dialog',
