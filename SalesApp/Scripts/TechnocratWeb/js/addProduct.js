@@ -66,22 +66,28 @@
                     EAN: $scope.addProductCtrl.ProductGroup.EAN,
                     CreatedBy: parseInt(localStorage.getItem("UserId")),
                     Note: $scope.addProductCtrl.ProductGroup.Note,
-                    ProductGroupId: $scope.addProductCtrl.ProductGroup.ProductGroupId,
+                    c: $scope.addProductCtrl.ProductGroup.ProductGroupId,
                     Tags: $scope.addProductCtrl.ProductGroup.Tags,
                     DefaultPrice: $scope.addProductCtrl.ProductGroup.DefaultPrice
                     
                 }
 
+            if (obj.Name && obj.DefaultPrice ) {
 
-            APIService.setData({ req_url: url_prifix + "product/addproduct", data: obj }).then(function (res) {
+                APIService.setData({ req_url: url_prifix + "product/addproduct", data: obj }).then(function (res) {
 
-                if (res.data.Status == 'SUCCESS') {
+                    if (res.data.Status == 'SUCCESS') {
 
-                    console.log("Succes");
-                }
+                        console.log("Succes");
+                    }
 
 
-            })
+                })
+            }
+            else {
+                alert("Please fill all the Field")
+            }
+           
 
 
 
