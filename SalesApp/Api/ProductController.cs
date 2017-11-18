@@ -107,5 +107,28 @@ namespace SalesApp.Api
                 return data;
             }
         }
+
+        [HttpPost, Route("addproductorderdetails")]
+        public ResponseData AddProductOrderDetails(AddProductOrderDetails prOrderDetails)
+        {
+            ResponseData data = new ResponseData();
+            try
+            {
+                var lst = _productRepo.AddProductOrderDetails(prOrderDetails);
+                data.Data = lst;
+                data.Status = "SUCCESS";
+                data.Error = "";
+                data.ErrorCode = "";
+                return data;
+            }
+            catch (Exception ex)
+            {
+                data.Data = "FAIL";
+                data.Status = "FAIL";
+                data.Error = ex.Message;
+                data.ErrorCode = "";
+                return data;
+            }
+        }
     }
 }

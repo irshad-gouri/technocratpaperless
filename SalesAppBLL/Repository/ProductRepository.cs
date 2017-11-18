@@ -115,7 +115,6 @@ namespace SalesAppBLL.Repository
             }
         }
 
-
         public object GetProducts(int adminId)
         {
             try
@@ -130,6 +129,62 @@ namespace SalesAppBLL.Repository
                 return null;
             }
         }
-        //getproducts
+
+        public AddCustomFormsResponse AddProductOrderDetails(AddProductOrderDetails prOrderDetails)
+        {
+            AddCustomFormsResponse objResp = new AddCustomFormsResponse();
+            try
+            {
+                if (prOrderDetails.ProductOrderDtl == null)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Product Order Details Can't Be Blank!";
+                }
+                else if (prOrderDetails.ProductTransactionDtl == null)
+                {
+                    objResp.Status = "Failed";
+                    objResp.Message = "Product Transaction Details Can't Be Blank!";
+                }
+                else
+                {
+                    // TODO : Save Trasaction Details.
+                    ProductTransaction prTras = new ProductTransaction();
+                    prTras.TotalQuantity = prOrderDetails.ProductTransactionDtl.TotalQuantity;
+                    prTras.TotalAmountPayable = prOrderDetails.ProductTransactionDtl.TotalAmountPayable;
+                    prTras.DiscountPercentage = prOrderDetails.ProductTransactionDtl.DiscountPercentage;
+                    prTras.TaxPercentage = prOrderDetails.ProductTransactionDtl.TaxPercentage;
+                    prTras.DueDays = prOrderDetails.ProductTransactionDtl.DueDays;
+                    prTras.Signature = prOrderDetails.ProductTransactionDtl.Signature;
+                    prTras.TotalAmount = prOrderDetails.ProductTransactionDtl.TotalAmount;
+                    DbContext.ProductTransactions.Add(prTras);
+                    DbContext.SaveChanges();
+
+
+                    //TODO : Save Order Details.
+                    ProductOrderDetail prOrdDtl = new ProductOrderDetail();
+                    prOrdDtl.UserId = prOrderDetails.ProductOrderDtl.UserId;
+                    prOrdDtl.PlaceId = prOrderDetails.ProductOrderDtl.PlaceId;
+                    prOrdDtl.OrderPrice = prOrderDetails.ProductOrderDtl.OrderPrice;
+                    prOrdDtl.ProductId = prOrderDetails.ProductOrderDtl.ProductId;
+                    prOrdDtl.ProductPrice = prOrderDetails.ProductOrderDtl.ProductPrice;
+                    prOrdDtl.Quantity = prOrderDetails.ProductOrderDtl.Quantity;
+                    prOrdDtl.TransactionId = prTras.Id;
+                    prOrdDtl.CreatedDate = System.DateTime.Now;
+                    prOrdDtl.CreatedBy = prOrderDetails.ProductOrderDtl.CreatedBy;
+                    DbContext.ProductOrderDetails.Add(prOrdDtl);
+                    DbContext.SaveChanges();
+
+                    objResp.Status = "Success";
+                    objResp.Message = "Product Order Successfully Saved!";
+                }
+                return objResp;
+            }
+            catch (System.Exception ex)
+            {
+                objResp.Status = "Failed";
+                objResp.Message = ex.Message;
+                return objResp;
+            }
+        }
     }
 }
