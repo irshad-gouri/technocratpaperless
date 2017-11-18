@@ -1,6 +1,6 @@
 angular.module('productDetail.controllers', [])
 
-.controller('ProductDetailCtrl', function ($scope, $state, $stateParams, $uibModal, ngDialog) {
+    .controller('ProductDetailCtrl', function ($scope) {
     //$scope.product = $stateParams.productObj;
     //if(!$scope.product) {
     //    $state.go('app.product');
@@ -52,7 +52,7 @@ angular.module('productDetail.controllers', [])
     // };
 })
 
-.controller('DeleteConfirmationCtrl', function ($scope, $rootScope, $uibModalInstance, APIService, product, url){
+
     // $scope.delete = function () {
     //     APIService.removeData({
     //         req_url: url,
@@ -67,4 +67,3 @@ angular.module('productDetail.controllers', [])
     // $scope.cancel = function () {
     //     $uibModalInstance.dismiss('cancel');
     // };
-});

@@ -1,9 +1,4 @@
-﻿<!DOCTYPE html>
-
-<meta charset="utf-8" />
-<title></title>
-<link href="../../Content/forms.min.css" rel="stylesheet" />
-<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
+﻿
 
 <div class="wrapper">
     <div class="content">
@@ -297,28 +292,36 @@
                              </div>
                          </div> -->
                         <div class="left_bar flat">
+                          
+                            <div class="form_container product-group-container" title="Product group. All products in Repsly need to be assigned to a group. Repsly supports one level of groupping, no more.">
+                                <div class="title ng-binding">Product group</div>
+                               <!--<span id="CustomizeGroups" class="customize ng-binding " ng-click="openProductGroupEditor()" style="">Customize</span>-->
 
-                            <div class="form_container" title="Note. This field is not required.">
-                                <div class="title">Note</div>
-                                <textarea id="Napomena" class="note border-edit rounded" ng-model="addplaceCtrl.placeObj.Note" rows="5" cols="" placeholder="..."></textarea>
+                                <select class="medium border rounded required_field ng-pristine ng-valid ng-touched" id="ProizvodGrupaID" ng-options="group as group.Code + ' - ' + group.Val for group in groups track by group.ID" ng-model="productGroupSelect" ng-change="switchProductGroup(productGroupSelect)" style=""><option label="Consumer Goods - Consumer Goods" value="63297" selected="selected">Consumer Goods - Consumer Goods</option><option label="Free Samples - Free Samples" value="63298">Free Samples - Free Samples</option><option label="Shoes - Shoes" value="63299">Shoes - Shoes</option><option label="toothpaste - paste" value="68521">toothpaste - paste</option></select>
                             </div>
-                            <div class="form_container tags-wrapper second" ng-model="$scope.addplaceCtrl.placeObj.tag" title="Tags on a place separated with comma. For example &quot;New place, Big store, Promotion&quot;. This field is not required.">
-                                <div class="title">Tags</div>
 
-                                <div>
-
-                                    <div class="tags-container KUPACLOKACIJA clearfix" mode="" tagtype="KUPACLOKACIJA" isreadonly="false">
-
-                                        <input class="tag-list-holder rounded border" type="hidden" id="Tags">
-                                        <div class="tag-list rounded border clearfix"></div>
-                                        <span class="tags-trigger icon-tags rounded">Add tags</span>
-                                    </div>
-
-
+                            <<div class="form_container tags-wrapper second ng-scope" title="Tags on a product separated with comma. For example &quot;New place, Big store, Promotion&quot;. This field is not required." style="">
+                                <div class="title ng-binding">Tags</div>
+                                <div class="tags-container PROIZVOD clearfix" tagtype="PROIZVOD" isreadonly="false">
+                                    <ul class="tag-list rounded border clearfix" ng-click="openTagEditor()">
+                                       
+                                    </ul>
+                                    <span class="tags-trigger icon-tags rounded ng-binding" ng-click="openTagEditor()">Add tags</span>
                                 </div>
-
-
                             </div>
+
+                            <div class="form_container packages ng-hide" ng-show="productId">
+                                <div class="title ng-binding">
+                                    Package types
+                                    <span class="packages-trigger icon-tags rounded ng-binding" ng-click="openPackagesEditor()">Add more package types</span>
+                                </div>
+                                <div class="packages-container">
+                                    <ul class="packages-list rounded border clearfix" ng-click="openPackagesEditor()">
+                                     
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="right_bar flat">

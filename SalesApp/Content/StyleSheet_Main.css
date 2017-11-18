@@ -3187,11 +3187,11 @@ span.active-icon {
     display: block;
     width: 16px;
     height: 16px;
-    background: url('../img/active.png') 50% 50% no-repeat
+    background: url('../images/active.png') 50% 50% no-repeat 50% 50% no-repeat
 }
 
     span.active-icon.False, span.active-icon.false {
-        background: url('../img/inactive.png') 50% 50% no-repeat
+        background: url('../images/active.png') 50% 50% no-repeat 50% 50% no-repeat
     }
 
 .button {
@@ -3734,7 +3734,7 @@ ul.filter a.home-activity-dropdown-customize {
                 }
 
 .new-item-editor .add-tag-icon {
-    background: url(../img/icon-plus.png);
+    background: url(../images/icon-plus.png);
     width: 32px;
     height: 32px;
     float: right;
@@ -4132,7 +4132,7 @@ ul.filter a.home-activity-dropdown-customize {
 
         .top-line-menu .personal-menu .submenu-trigger .icon {
             position: absolute;
-            background: url("../img/sprites/topbar_sprite.png?v=20130213") 0 -70px no-repeat;
+            /*background: url("../img/sprites/topbar_sprite.png?v=20130213") 0 -70px no-repeat;*/
             display: block;
             width: 12px;
             height: 12px;
@@ -4191,7 +4191,7 @@ ul.filter a.home-activity-dropdown-customize {
     }
 
         .top-line-menu .settings-menu .submenu-trigger {
-            background: url("../img/drop_arrow_white.png") 95% 50% no-repeat;
+            /*background: url("../images/drop_arrow_white.png") 95% 50% no-repeat;*/
             display: block;
             width: 40px;
             padding: 2px;
@@ -4215,7 +4215,7 @@ ul.filter a.home-activity-dropdown-customize {
         display: block;
         width: 35px;
         height: 35px;
-        background: url("../img/sprites/topbar_sprite.png?v=20130213") 6px -181px no-repeat
+        /*background: url("../img/sprites/topbar_sprite.png?v=20130213") 6px -181px no-repeat*/
     }
 
     .top-line-menu .tour-menu {
@@ -4366,11 +4366,11 @@ ul.filter a.home-activity-dropdown-customize {
 
     .top-line-menu .settings-menu .submenu-trigger {
         position: relative;
-        background: url("../img/sprites/topbar_sprite.png?v=20130213") 30px -62px no-repeat
+        /*background: url("../img/sprites/topbar_sprite.png?v=20130213") 30px -62px no-repeat*/
     }
 
         .top-line-menu .settings-menu .submenu-trigger .icon {
-            background: transparent url("../img/sprites/topbar_sprite.png?v=20130213") 0 -258px no-repeat;
+            /*background: transparent url("../img/sprites/topbar_sprite.png?v=20130213") 0 -258px no-repeat;*/
             display: block;
             width: 24px;
             height: 24px
@@ -4759,14 +4759,14 @@ ul.main_menu {
     background-size: 36px 18px !important
 }
 
-.content {
+/*.content {
     float: left;
     clear: left;
     width: 100%;
     position: relative;
     border: solid 1px #dadada;
     border-radius: 5px;
-    background: #fff
+    background: #fff*/
 }
 
 .content_top {
@@ -7281,7 +7281,7 @@ table.grid {
 .right_bar {
     float: left;
     width: 285px;
-    margin: 30px 10px 30px 20px
+    margin: 117px 10px 30px 20px
 }
 
     .right_bar ul {
@@ -18349,7 +18349,7 @@ input.button {
     position: absolute;
     width: 16px;
     height: 18px;
-    background-image: url(../img/notificationbell.png);
+    background-image: url(../images/notificationbell.png);
     background-repeat: no-repeat;
     top: 9px;
     left: 12px
@@ -18521,8 +18521,8 @@ input.button {
 }
 
 .modal-layout .modal-dialog {
-    margin: 30px auto;
-    width: 1000px;
+    margin: 0px !;
+    width: 200px;
     position: relative;
     max-height: 650px;
     z-index: 10000
@@ -22871,7 +22871,7 @@ li.selected-recipients-holder {
 }
 
 .new-item-editor .add-tag-icon {
-    background: url(/frontend-app/dist/img/icon-plus.png);
+    background: url(../images/icon-plus.png);
     width: 32px;
     height: 32px;
     float: right;
@@ -23410,7 +23410,7 @@ li.selected-recipients-holder {
 
 .icon-messages:before, .icon-message:before {
     content: ""
-}
+}u
 
 .icon-logout:before {
     content: ""
@@ -23544,3 +23544,14 @@ li.selected-recipients-holder {
     -moz-osx-font-smoothing: grayscale
 }
 
+.product-group-item-container__up-down {
+    left: 0;
+    top: 50%;
+    margin-top: -11px;
+    position: absolute;
+    width: 22px;
+    height: 26px;
+    background: url(../images/actions_sprite.png) 0 -444px no-repeat;
+    z-index: 300;
+    display: block;
+}

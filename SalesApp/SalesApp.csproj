@@ -245,10 +245,9 @@
     <Content Include="Content\angucomplete-alt.css" />
     <Content Include="Content\forms.min.css" />
     <Content Include="PartialViews\partials\AddPlace.html" />
-    <Content Include="PartialViews\partials\AddProduct_Setting.html" />
     <Content Include="PartialViews\partials\AddRepresentatives.html" />
     <Content Include="PartialViews\partials\NewRetailAudit.html" />
-    <Content Include="PartialViews\partials\ProductLIst.html" />
+    <Content Include="PartialViews\partials\productLIst.html" />
     <Content Include="PartialViews\partials\RetailAudits_List.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1091,8 +1090,16 @@
     <Content Include="Scripts\TechnocratWeb\js\activitiesDashboard.js" />
     <Content Include="Scripts\TechnocratWeb\js\placedashboard.js" />
     <Content Include="Scripts\TechnocratWeb\js\productDetail.js" />
+    <Content Include="Scripts\TechnocratWeb\js\addProduct.js" />
+    <Content Include="Scripts\TechnocratWeb\js\newRetailAudit.js" />
+    <Content Include="Scripts\TechnocratWeb\js\homeNews.js" />
+    <Content Include="Scripts\TechnocratWeb\js\dialog.js" />
+    <Content Include="Scripts\TechnocratWeb\js\addCategory.js" />
+    <Content Include="Scripts\TechnocratWeb\js\RetailAudits_List.js" />
+    <Content Include="Scripts\TechnocratWeb\js\productLIst.js" />
     <Content Include="Scripts\TechnocratWeb\js\requestService.js" />
     <Content Include="Scripts\TechnocratWeb\js\services.js" />
+    <Content Include="Scripts\TechnocratWeb\js\updateCategory.js" />
     <Content Include="Scripts\TechnocratWeb\js\updateProduct.js" />
     <Content Include="Scripts\TechnocratWeb\js\representativeDashboard.js" />
     <Content Include="Scripts\TechnocratWeb\lib\angucomplete\.gitignore" />
@@ -1534,6 +1541,7 @@
     <Folder Include="Public\" />
     <Folder Include="TechnocratWebApp\" />
     <Folder Include="Views\CustomeForms\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="Views\Representative\" />
   </ItemGroup>
   <ItemGroup>

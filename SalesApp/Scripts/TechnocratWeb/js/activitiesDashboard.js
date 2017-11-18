@@ -4,6 +4,7 @@ angular.module('activitiesDashboard.controllers', [])
 
         $scope.Activities = [];
         $scope.filterData = {};
+        $scope.activitiesDashboardCtrl = {};
         $scope.Activities.PhotoStorage = PhotoStorage;
             $scope.GetActivities = function () {
 
@@ -15,7 +16,9 @@ angular.module('activitiesDashboard.controllers', [])
                     console.log($scope.Activities)
                     
                    
-                })
+                    })
+
+                
 
 
             }
@@ -53,6 +56,60 @@ angular.module('activitiesDashboard.controllers', [])
               
             }
 
+
+            $scope.postCommentTrigger = function (act) {
+
+             
+           
+                var comments =
+                    {
+                        CommentByUserId: localStorage.getItem("UserId"),
+                        UsersActivitiesId: act.Id,
+                        UserComment: $scope.activitiesDashboardCtrl.adminComment,
+                        CreatedBy: localStorage.getItem("UserId")
+
+                    }
+
+             
+                APIService.setData({ req_url: url_prifix + "place/adduseractivitycomments", data: comments }).then(function (res) {
+
+
+                    APIService.getData({ req_url: url_prifix + "place/getusersactivitiescommentsbyactivityid?actId=" + act.Id }).then(function (res) {
+
+                        $scope.Admincomments = res.data.Data;
+                        console.log(res.data.Data)
+
+
+                    })
+                       
+
+
+                    })
+
+
+               
+
+                //APIService.getData({ req_url: url_prifix + "place/getusersactivitiescommentsbyactivityid?actId=" + act.Id }).then(function (res) {
+
+                //    $scope.Admincomments = res.data.Data;
+                //    console.log(res.data.Data)
+
+
+                //})
+            
+               
+            }
+          
+         
+            $scope.GetAllComments = function () {
+
+                var activityId = $scope.activityId;
+
+               
+
+            }
+            
+           
 
 })
     .filter('dateRange', function () {

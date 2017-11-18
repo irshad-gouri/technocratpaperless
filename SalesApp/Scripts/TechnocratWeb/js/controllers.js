@@ -6,5 +6,10 @@ angular.module('app.controllers', ['ui.bootstrap', 'APIModule'])
   //     localStorage.setItem('isLoggedIn','');
   //     $state.go('login');
   // }
-  // $rootScope.loadCompetition = false;
+    // $rootScope.loadCompetition = false;
+
+
+    
+
+
 });

@@ -1,22 +1,13 @@
-﻿<!DOCTYPE html>
-
-<meta charset="utf-8" />
-<title></title>
-<link href="../../Content/forms.min.css" rel="stylesheet" />
-<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
-
-
+﻿
 <div class="wrapper">
     <div class="content">
         <span id="menu_pointer" class="hidden menu_pointer"></span>
         <div id="main">
-            <!-- ngView:  --><div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
-                <style type="text/css" class="ng-binding ng-scope">
-                    @import url("/frontend-app/dist/css/audits.min.css?67");
-                </style>
+             <div id="main-content" class="main-content repsly-fade "  style="">
+               
                 
 
-                <!-- ngIf: pageLoaded --><div class="view-content clearfix ng-scope" ng-if="pageLoaded" style="">
+               <div class="view-content clearfix"  style="">
                     <div class="view-content-head clearfix">
                         <h1 class="page-head forms">
                             <i class="icon icon-pricescan"></i>
@@ -77,19 +68,19 @@
                                     <div class="title ng-binding">Built-in fields</div>
                                     <ul id="standardfields" class="">
                                         <li>
-                                            <input id="PRISUTAN" type="checkbox" checked="" disabled="">
+                                            <input id="PRISUTAN" type="checkbox" checked="" >
                                             <label for="PRISUTAN" rel="tipsy" title="Enables you to record product availability." class="ng-binding">
                                                 Product availability
                                             </label>
                                         </li>
                                         <li>
-                                            <input id="PROMOCIJA" type="checkbox" checked="" disabled="">
+                                            <input id="PROMOCIJA" type="checkbox" checked="">
                                             <label for="PROMOCIJA" rel="tipsy" title="Enables you to record if the product is promoted." class="ng-binding">
                                                 Product promoted
                                             </label>
                                         </li>
                                         <li>
-                                            <input id="CIJENA" type="checkbox" checked="" disabled="">
+                                            <input id="CIJENA" type="checkbox" checked="">
                                             <label for="CIJENA" rel="tipsy" title="Enables you to record product prices." class="ng-binding">
                                                 Product price
                                             </label>
@@ -405,6 +396,8 @@
                                 </div>
                             </div>
 
+
+
                         </div>
                     </div>
                 </div><!-- end ngIf: pageLoaded -->
@@ -433,7 +426,8 @@
                 </div>
             </div>
             <!--Shared elements stuff-->
-            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' --><div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
+            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' -->
+           
 
                 <div id="success-alert" class="alert alert-success hidden ng-scope">
                     <a href="#" class="close" aria-label="close">×</a>

@@ -4301,7 +4301,7 @@ ul.filter a.home-activity-dropdown-customize:hover {
 
 .top-line-menu .personal-menu .submenu-trigger .icon {
     position: absolute;
-    background: url("../images/sprites/topbar_sprite.png?v=20130213") 0 -70px no-repeat;
+    /*background: url("../images/sprites/topbar_sprite.png?v=20130213") 0 -70px no-repeat;*/
     display: block;
     width: 12px;
     height: 12px;
@@ -9741,7 +9741,7 @@ input.chk {
     cursor: pointer;
     background: url(/frontend-app/dist/img/jq_icon_sprites/ui-icons_3383bb_256x240.png) 0 -192px no-repeat;
     width: 18px;
-    height: 18px;
+    height: 200px;
     display: block
 }
 
@@ -23240,7 +23240,7 @@ li.selected-recipients-holder .remove {
 }
 
 .new-item-editor .add-tag-icon {
-    background: url(/frontend-app/dist/img/icon-plus.png);
+    background: url(../images/icon-plus.png);
     width: 32px;
     height: 32px;
     float: right;
@@ -31656,7 +31656,7 @@ button.close {
 
 .modal-dialog {
     position: relative;
-    width: auto;
+    width: 200px;
     margin: 10px
 }
 
@@ -31748,7 +31748,7 @@ button.close {
 @media (min-width:544px) {
     .modal-dialog {
         width: 600px;
-        margin: 30px auto
+        /*margin: 30px auto*/
     }
     .modal-sm {
         width: 300px
@@ -33281,3 +33281,32 @@ li ul :hover {
     margin: 0px !important;
     width: 100%;
 }
+
+.product-group-item-container__up-down {
+    left: 0;
+    top: 50%;
+    margin-top: -11px;
+    position: absolute;
+    width: 22px;
+    height: 26px;
+    background: url(../images/actions_sprite.png) 0 -444px no-repeat;
+    z-index: 300;
+    display: block;
+}
+
+.product-group-item-container__up-down1 {
+    right: 26px;
+    position: absolute;
+    width: 27px;
+    top: 2px;
+    height: 27px;
+    z-index: 300;
+    border-radius: 50%;
+    display: block;
+    background: black;
+}
+
+
+
+
+
