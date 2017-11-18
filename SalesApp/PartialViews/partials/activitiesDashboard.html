@@ -491,6 +491,25 @@
                         </div>
                         <div class="no-activities ng-binding ng-scope">
                             {{act.Activity_Type.Description}}
+<<<<<<< HEAD
+=======
+                        </div>
+                        <div class="comment-line popup-fade" ng-repeat="cm in Admincomments">
+                            <!--<img class="avatar ng-scope">-->
+
+                            <span class="person-line"><a class="ng-binding">{{act.AcivityAdded_UserDetails.FirstName}}</a></span>
+
+                            <span class="post-text-container ng-binding">{{cm.UserComment}}</span>
+
+                            <span class="time-stamp ng-binding">{{cm.CreatedDate | date:"MM/dd/yyyy  h:mma"}}</span>
+                        </div>
+                        <div class="comment-line input-line">
+
+                            <textarea type="text" ng-model="activitiesDashboardCtrl.adminComment" class="comment msgSelector ng-valid ng-dirty ng-valid-parse ng-touched" placeholder="Write a comment..." style=""></textarea>
+
+                            <input type="button" ng-click="postCommentTrigger(act)" class="button post-comment" value="post">
+
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
                         </div>
                     </div>
                 </div>
@@ -560,6 +579,7 @@
                         <div class="no-activities ">
                             <span ng-if="act.PhotoUrl"><img ui-sref="more" ng-src="{{PhotoStorage}}{{act.PhotoUrl}}" height="100" width="100" /></span>
                             
+<<<<<<< HEAD
                         </div>
                     </div>
                 </div>
@@ -594,6 +614,90 @@
                         <div class="no-activities ">
                             <i class="icon icon-forms" style="color:black"></i>
                             {{act.Note}}
+=======
+                        </div>
+
+                        <div class="comment-line popup-fade" ng-repeat="cm in Admincomments">
+                            <!--img class="avatar ng-scope">-->
+
+                            <span class="person-line"><a class="ng-binding">{{act.AcivityAdded_UserDetails.FirstName}}</a></span>
+
+                            <span class="post-text-container ng-binding">{{cm.UserComment}}</span>
+
+                            <span class="time-stamp ng-binding">{{cm.CreatedDate | date:"MM/dd/yyyy  h:mma"}}</span>
+                        </div>
+                        <div class="comment-line input-line">
+
+                            <textarea type="text" ng-model="activitiesDashboardCtrl.adminComment" class="comment msgSelector ng-valid ng-dirty ng-valid-parse ng-touched" placeholder="Write a comment..." style=""></textarea>
+
+                            <input type="button" ng-click="postCommentTrigger(act)" class="button post-comment" value="post">
+
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
+                        </div>
+
+                    </div>
+                </div>
+<<<<<<< HEAD
+                <div ng-if="act.ActivityId == 5">
+=======
+                <div ng-if="act.ActivityId == 4">
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
+
+                    <div data-feeditemrowid="f5f4fa38-3373-41c7-9541-233049bd9237" class="item-container nofill separate">
+                        <div class="item-header visit">
+                            <span class="time-line ">
+                                {{act.CreatedDate | date :"M/d/yy"}}<br>{{act.CreatedDate | date :"h:mm a"}}
+                                <!-- ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal --><span ng-if="content.TimeEndLocal != '' &amp;&amp; content.TimeEndLocal != content.TimeLocal" class="ng-binding ng-scope">
+                                    - 12:49 PM
+                                </span><!-- end ngIf: content.TimeEndLocal != '' && content.TimeEndLocal != content.TimeLocal -->
+                            </span>
+                            <!-- ngIf: content.EmployeeAvatar != '' --><img class="avatar ng-scope" alt="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D" ng-if="content.EmployeeAvatar != ''" src="https://repsly.s3.amazonaws.com/cc6ddebb-6a22-424c-9ef1-088fcbe4569b.jpg?AWSAccessKeyId=AKIAJNLZVQDKWR6HJR6A&amp;Expires=2147468400&amp;Signature=eA0B516%2Bgr5dwznnNGqcTdsJpfM%3D"><!-- end ngIf: content.EmployeeAvatar != '' -->
+                            <!-- ngIf: content.EmployeeAvatar == '' -->
+                            <span>
+                                <a href="">
+                                    {{act.AcivityAdded_UserDetails.FirstName}}
+                                </a><br>
+                            </span>
+                            <span>
+                                <a href="">
+                                    {{act.Place_Details.Name}}
+                                </a><br>
+                            </span>
+                            <span>
+                                <a href="">
+                                    {{act.Place_Details.Address}}
+                                </a><br>
+                            </span>
+<<<<<<< HEAD
+                        </div>
+                        <div class="no-activities ">
+                            <i class="icon icon-forms " style="color:blue"></i>
+                            {{act.FormName}}
+                        </div>
+                    </div>
+                </div>
+=======
+                        </div>
+                        <div class="no-activities ">
+                            <i class="icon icon-forms" style="color:black"></i>
+                            {{act.Note}}
+                        </div>
+                        <div class="comment-line popup-fade" ng-repeat="cm in Admincomments">
+                            <!--<img class="avatar ng-scope">-->
+
+                            <span class="person-line"><a class="ng-binding">{{act.AcivityAdded_UserDetails.FirstName}}</a></span>
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
+
+                            <span class="post-text-container ng-binding">{{cm.UserComment}}</span>
+
+                            <span class="time-stamp ng-binding">{{cm.CreatedDate | date:"MM/dd/yyyy  h:mma"}}</span>
+                        </div>
+                        <div class="comment-line input-line">
+                           
+                            <textarea type="text" ng-model="activitiesDashboardCtrl.adminComment"  class="comment msgSelector ng-valid ng-dirty ng-valid-parse ng-touched" placeholder="Write a comment..." style=""></textarea>
+                          
+                            <input type="button" ng-click="postCommentTrigger(act)" class="button post-comment" value="post">
+                            
                         </div>
                     </div>
                 </div>
@@ -629,6 +733,45 @@
                             <i class="icon icon-forms " style="color:blue"></i>
                             {{act.FormName}}
                         </div>
+
+<<<<<<< HEAD
+            </div>
+=======
+                        <div class="comment-line popup-fade" ng-repeat="cm in Admincomments">
+                            <!--<img class="avatar ng-scope">-->
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
+
+                            <span class="person-line"><a class="ng-binding">{{act.AcivityAdded_UserDetails.FirstName}}</a></span>
+
+<<<<<<< HEAD
+    </div>
+    <div ng-show="!(Activities| filter : filterData | dateRange: filterDataDate.from_date : filterDataDate.to_date).length ">
+        <h3 style="text-align: center;">No activities found in this time frame.</h3>
+    </div>
+
+</div>
+<footer></footer>
+
+        <div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;">
+
+        </div>
+    
+   
+
+
+=======
+                            <span class="post-text-container ng-binding">{{cm.UserComment}}</span>
+
+                            <span class="time-stamp ng-binding">{{cm.CreatedDate | date:"MM/dd/yyyy  h:mma"}}</span>
+                        </div>
+                        <div class="comment-line input-line">
+
+                            <textarea type="text" ng-model="activitiesDashboardCtrl.adminComment" class="comment msgSelector ng-valid ng-dirty ng-valid-parse ng-touched" placeholder="Write a comment..." style=""></textarea>
+
+                            <input type="button" ng-click="postCommentTrigger(act)" class="button post-comment" value="post">
+
+                        </div>
+
                     </div>
                 </div>
 
@@ -652,6 +795,7 @@
    
 
 
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
 
 
 

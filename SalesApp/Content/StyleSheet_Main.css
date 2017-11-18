@@ -3187,11 +3187,11 @@ span.active-icon {
     display: block;
     width: 16px;
     height: 16px;
-    background: url('../img/active.png') 50% 50% no-repeat
+    background: url('../images/active.png') 50% 50% no-repeat 50% 50% no-repeat
 }
 
     span.active-icon.False, span.active-icon.false {
-        background: url('../img/inactive.png') 50% 50% no-repeat
+        background: url('../images/active.png') 50% 50% no-repeat 50% 50% no-repeat
     }
 
 .button {
@@ -4215,7 +4215,7 @@ ul.filter a.home-activity-dropdown-customize {
         display: block;
         width: 35px;
         height: 35px;
-        background: url("../img/sprites/topbar_sprite.png?v=20130213") 6px -181px no-repeat
+        /*background: url("../img/sprites/topbar_sprite.png?v=20130213") 6px -181px no-repeat*/
     }
 
     .top-line-menu .tour-menu {
@@ -4759,14 +4759,14 @@ ul.main_menu {
     background-size: 36px 18px !important
 }
 
-.content {
+/*.content {
     float: left;
     clear: left;
     width: 100%;
     position: relative;
     border: solid 1px #dadada;
     border-radius: 5px;
-    background: #fff
+    background: #fff*/
 }
 
 .content_top {

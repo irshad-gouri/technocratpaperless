@@ -23240,7 +23240,7 @@ li.selected-recipients-holder .remove {
 }
 
 .new-item-editor .add-tag-icon {
-    background: url(/frontend-app/dist/img/icon-plus.png);
+    background: url(../images/icon-plus.png);
     width: 32px;
     height: 32px;
     float: right;
@@ -33292,4 +33292,25 @@ li ul :hover {
     background: url(../images/actions_sprite.png) 0 -444px no-repeat;
     z-index: 300;
     display: block;
+<<<<<<< HEAD
 }
+=======
+}
+
+.product-group-item-container__up-down1 {
+    right: 26px;
+    position: absolute;
+    width: 27px;
+    top: 2px;
+    height: 27px;
+    z-index: 300;
+    border-radius: 50%;
+    display: block;
+    background: black;
+}
+
+
+
+
+
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19

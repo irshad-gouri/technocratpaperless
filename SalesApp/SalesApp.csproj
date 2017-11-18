@@ -161,6 +161,7 @@
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\CustomeFormsController.cs" />
     <Compile Include="Api\PlacesController.cs" />
+    <Compile Include="Api\ProductController.cs" />
     <Compile Include="Api\RepresentativeController.cs" />
     <Compile Include="Api\UtilityController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -244,7 +245,6 @@
     <Content Include="Content\angucomplete-alt.css" />
     <Content Include="Content\forms.min.css" />
     <Content Include="PartialViews\partials\AddPlace.html" />
-    <Content Include="PartialViews\partials\AddProduct_Setting.html" />
     <Content Include="PartialViews\partials\AddRepresentatives.html" />
     <Content Include="PartialViews\partials\complex.html" />
     <Content Include="PartialViews\partials\NewRetailAudit.html" />
@@ -1093,7 +1093,10 @@
     <Content Include="Scripts\TechnocratWeb\js\productDetail.js" />
     <Content Include="Scripts\TechnocratWeb\js\addProduct.js" />
     <Content Include="Scripts\TechnocratWeb\js\newRetailAudit.js" />
+<<<<<<< HEAD
     <Content Include="Scripts\TechnocratWeb\js\addProduct_Setting.js" />
+=======
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
     <Content Include="Scripts\TechnocratWeb\js\homeNews.js" />
     <Content Include="Scripts\TechnocratWeb\js\dialog.js" />
     <Content Include="Scripts\TechnocratWeb\js\addCategory.js" />

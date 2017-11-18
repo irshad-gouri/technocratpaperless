@@ -8,7 +8,11 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
     'login.controllers', 'APIModule', 'placedashboard.controllers', 'angucomplete',
     'form.addcustomform', 'formsdashboard.controllers', 'addRepresentative.controllers', 'ngFileUpload',
     'representativeDashboard.controllers', 'activitiesDashboard.controllers', 'addPlaceCtrl.controllers', 'mp.datePicker', 'addProduct.controllers',
+<<<<<<< HEAD
     'addCategory.controllers', 'addProductSetting.controllers', 'dialog.controllers', 'homeNews.controllers', 'productDetail.controllers',
+=======
+    'addCategory.controllers', 'dialog.controllers', 'homeNews.controllers', 'productDetail.controllers',
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
     'newRetailAudit.controllers', 'retailAuditsLIst.controllers', 'updateCategory.controllers', 'productLIst.controllers'])
 
     .run(function ($rootScope, $state, AuthService) {
@@ -298,6 +302,7 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
                 }
             })
 
+<<<<<<< HEAD
             .state('app.addProductSetting', {
                 url: '/addProductSetting',
                 authenticate: true,
@@ -308,6 +313,9 @@ angular.module('technocrat', ['ui.router', 'ui.bootstrap', 'authModule', 'app.co
                     }
                 }
             })
+=======
+           
+>>>>>>> 81466302cbc040f96a9c4f872a7d8efac17f1a19
 
             .state('app.dialog', {
                 url: '/dialog',

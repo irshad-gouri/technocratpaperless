@@ -64,6 +64,8 @@
     <Compile Include="CustomModels\AddUserActivityComments.cs" />
     <Compile Include="CustomModels\CustomFormsDetails.cs" />
     <Compile Include="CustomModels\PlaceDetail.cs" />
+    <Compile Include="CustomModels\ProductOrderDetails.cs" />
+    <Compile Include="CustomModels\Product_Details.cs" />
     <Compile Include="CustomModels\UserActivityDashBoardList.cs" />
     <Compile Include="CustomModels\UserDetails.cs" />
     <Compile Include="FormsAnswer.cs">
