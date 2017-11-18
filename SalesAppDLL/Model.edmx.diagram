@@ -35,6 +35,17 @@
         <AssociationConnector Association="SalesAppModel.FK_UsersActivities_ActivitiesType" />
         <AssociationConnector Association="SalesAppModel.FK_UseActivitiesComments_UsersActivities" />
         <AssociationConnector Association="SalesAppModel.FK_UsersActivities_Users" />
+        <EntityTypeShape EntityType="SalesAppModel.ProductOrderDetail" Width="1.5" PointX="11.25" PointY="14.625" />
+        <EntityTypeShape EntityType="SalesAppModel.Product" Width="1.5" PointX="9" PointY="22.375" />
+        <EntityTypeShape EntityType="SalesAppModel.ProductsGroup" Width="1.5" PointX="6.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SalesAppModel.ProductTransaction" Width="1.5" PointX="9" PointY="18.875" />
+        <AssociationConnector Association="SalesAppModel.FK_ProductOrderDetails_PlacesDetails" />
+        <AssociationConnector Association="SalesAppModel.FK_ProductOrderDetails_Products" />
+        <AssociationConnector Association="SalesAppModel.FK_ProductOrderDetails_ProductTransaction" />
+        <AssociationConnector Association="SalesAppModel.FK_ProductOrderDetails_Users" />
+        <AssociationConnector Association="SalesAppModel.FK_Products_ProductsGroup" />
+        <AssociationConnector Association="SalesAppModel.FK_Products_Users" />
+        <AssociationConnector Association="SalesAppModel.FK_ProductsGroup_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

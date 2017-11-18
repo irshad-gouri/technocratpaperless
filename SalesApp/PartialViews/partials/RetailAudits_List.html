@@ -1,17 +1,17 @@
-﻿<!DOCTYPE html>
+﻿<!--<!DOCTYPE html>
 
 <meta charset="utf-8" />
 <title></title>
 <link href="../../Content/forms.min.css" rel="stylesheet" />
-<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />
+<link href="../../Content/StyleSheet_Main.css" rel="stylesheet" />-->
 
 
 <div class="wrapper">
     <div class="content">
         <span id="menu_pointer" class="hidden menu_pointer"></span>
         <div id="main">
-            <!-- ngView:  --><div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
-                <div ng-bind-html="content" class="ng-binding ng-scope">
+           <div id="main-content" class="main-content repsly-fade ng-scope" data-ng-view="" style="">
+                <div>
 
 
 
@@ -24,7 +24,7 @@
                         </span>
                     </h1>
                     <div class="actions">
-                        <a id="rn-new-retail-audit" href="/pricescan/view" class="button_create rounded" title="Create a new retail audit template.">
+                        <a id="rn-new-retail-audit" ui-sref="app.newRetailAudit" class="button_create rounded" title="Create a new retail audit template.">
                             <i class="icon icon-plus"></i> New retail audit
                         </a>
                     </div>
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <!--Shared elements stuff-->
-            <!-- ngInclude: '/frontend-app/src/common/views/common-elements.html' --><div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
+            <!--<div data-ng-include="'/frontend-app/src/common/views/common-elements.html'" class="ng-scope">
 
                 <div id="success-alert" class="alert alert-success hidden ng-scope">
                     <a href="#" class="close" aria-label="close">×</a>
@@ -112,7 +112,7 @@
                     Message:
                     <br>
                     <textarea cols="30" rows="5" class="ng-binding rounded border">Hi! I would like to have Repsly Coaching Session.</textarea>
-                </div>
+                </div>-->
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-                <script type="text/x-jquery-tmpl" id="tmpl-coach-item" class="ng-scope">
+                <!--<script type="text/x-jquery-tmpl" id="tmpl-coach-item" class="ng-scope">
                     {{if IsLive}}
                     <tr>
                         <td class="datetime">${LocalDate}<span class="subtitle">${LocalTime}</span></td>
@@ -174,13 +174,13 @@
                         </p>
                         <input id="delTrial" type="text" />
                     </div>
-                </script>
+                </script>-->
 
-                <script type="text/x-jquery-tmpl" id="tmpl-tag" class="ng-scope">
+                <!--<script type="text/x-jquery-tmpl" id="tmpl-tag" class="ng-scope">
                     <li class="tag-list-item" id="" valueid="${value}"><input type="checkbox" id="check_${value}" valueid="${value}" class="tag-list-result" /><label for="check_${value}">${label}</label></li>
-                </script>
+                </script>-->
                 <!-- jquery template for paging -->
-                <script type="text/x-jquery-tmpl" id="tmpl-paging" class="ng-scope">
+                <!--<script type="text/x-jquery-tmpl" id="tmpl-paging" class="ng-scope">
                     <div class="table_footer">
                         <div class="grid_info">${ShowingInfo}</div>
                         <div class="paging">
@@ -188,11 +188,11 @@
                             <span id="rn-paging-next" href="#" class="next pager" page=${Next}>{{dictionary.Next}}</span>
                         </div>
                     </div>
-                </script>
+                </script>-->
                 <!-- jquery template for quick search -->
-                <script type="text/x-jquery-tmpl" id="tmpl-quicksearch-row" class="ng-scope">
+                <!--<script type="text/x-jquery-tmpl" id="tmpl-quicksearch-row" class="ng-scope">
                     <li class=""><a href="${link}">${label}</a></li>
-                </script>
+                </script>-->
             </div>
         </div>
         <footer></footer>
